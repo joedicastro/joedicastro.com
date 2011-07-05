@@ -58,7 +58,7 @@ PATH = "source"
 #PDF_GENERATOR = True
 
 # Defines if pelican should use relative urls or not.
-RELATIVE_URL = True
+RELATIVE_URL = False
 
 #base URL of your website. Note that this is not a way to tell pelican to use
 #relative urls or static ones. You should rather use the RELATIVE_URL setting

@@ -18,10 +18,6 @@ files.
 
   Source files to generate my blog with Pelican. 
 
-* **site/output**:
-
-  Output directory for Pelican. The hosted blog files.
-
 * **site/joe_theme**
 
   The blog's theme.

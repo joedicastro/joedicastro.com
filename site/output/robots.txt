@@ -1,3 +1,0 @@
-User-agent: *
-Disallow: /static/pictures
-Disallow: /static/ammap

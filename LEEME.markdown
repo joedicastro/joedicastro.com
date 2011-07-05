@@ -19,10 +19,6 @@ Para generar el sitio utilizo el generador de blogs con contenido estático
   Los ficheros de origen que dan lugar a mi blog. La entrada que toma Pelican 
 para generarlo.
 
-* **site/output**:
-
-  Es el directorio de salida de Pelican. Son los ficheros alojados en mi blog.
-
 * **site/joe_theme**
 
   Es el tema que empleo en mi sitio.

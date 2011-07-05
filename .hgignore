@@ -8,3 +8,6 @@ syntax: regexp
 ^\.pydevproject$
 syntax: regexp
 ^\.settings$
+
+syntax: regexp
+^site/output$
