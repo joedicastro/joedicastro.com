@@ -133,3 +133,6 @@ def commit(message):
     """Make a commit to the local mercurial repository."""
     local("hg commit -m '{0}'".format(message))
 
+def push():
+    """Make a push to the remote mercurial repository."""
+    local("hg push ssh://hg@bitbucket.org/joedicastro/joedicastro.com")
