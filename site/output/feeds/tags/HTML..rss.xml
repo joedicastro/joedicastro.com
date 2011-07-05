@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>joe di castro</title><link>http://joedicastro.com</link><description></description><atom:link href="http://joedicastro.com/feeds/tags/HTML..rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 27 Jun 2011 18:27:00 -0000</lastBuildDate><item><title>Pelican - Creación de contenido</title><link>http://joedicastro.com/pelican-creacion-de-contenido.html</link><description>&lt;p&gt;Crear contenido con &lt;strong&gt;Pelican&lt;/strong&gt; es lo más sencillo que uno pueda imaginarse. Por 
+ejemplo, crear este articulo, se puede hacer del siguiente modo. Abrimos un 
+editor de textos cualquiera (por ejemplo vi o gedit) y creamos un archivo nuevo 
+llamado Pelican, con la extensión &lt;em&gt;.md&lt;/em&gt; si queremos emplear Markdown o &lt;em&gt;.rst&lt;/em&gt; si 
+queremos emplear reStructuredText. Vemos como lo haría, para este blog en 
+concreto. Este sería el texto para crearlo en formato reStructuredText:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gh"&gt;Pelican - Creación de contenido&lt;/span&gt;
+&lt;span class="gh"&gt;###############################&lt;/span&gt;
+
+&lt;span class="nc"&gt;:tags:&lt;/span&gt; &lt;span class="nf"&gt;Pelican, python, markdown, reStructuredText, blog, HTML.&lt;/span&gt;
+
+Crear contenido con &lt;span class="gs"&gt;**Pelican**&lt;/span&gt; es lo más sencillo que uno pueda imaginarse. Por 
+ejemplo, crear este articulo, se puede hacer del siguiente modo. Abrimos un 
+editor de textos cualquiera (por ejemplo vi o gedit) y creamos un archivo nuevo 
+llamado Pelican, con la extensión &lt;span class="ge"&gt;*.md*&lt;/span&gt; si queremos emplear Markdown o &lt;span class="ge"&gt;*.rst*&lt;/span&gt; si 
+queremos emplear reStructuredText.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y este el que usaría para crearlo en markdown, que es el que yo empleo:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;title: Pelican - Creación de contenido
+tags: Pelican, python, markdown, reStructuredText, blog, HTML, Piwik, Disqus.
+
+Crear contenido con **Pelican** es lo más sencillo que uno pueda imaginarse. Por 
+ejemplo, crear este articulo, se puede hacer del siguiente modo. Abrimos un 
+editor de textos cualquiera (por ejemplo vi o gedit) y creamos un archivo nuevo 
+llamado Pelican, con la extensión *.md* si queremos emplear Markdown o *.rst* si 
+queremos emplear reStructuredText. Vemos como lo haría, para este blog en 
+concreto.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora solo tendríamos que guardar este fichero en la carpeta raíz de nuestro 
+contenido y ejecutar Pelican para generar la página web resultante. Así de 
+sencillo. Por ejemplo, creamos una carpeta &lt;em&gt;prueba&lt;/em&gt; dentro de la estructura de 
+ficheros que habíamos creado en el &lt;a href="/pelican-introduccion-e-instalacion.html"&gt;articulo anterior&lt;/a&gt; (&lt;em&gt;myblog.com/&lt;/em&gt;) y 
+guardamos allí este fichero. Ahora ejecutamos pelican dentro del entorno virtual 
+y nos creara una carpeta &lt;em&gt;output&lt;/em&gt; donde como resultado tendremos un blog por 
+defecto creado como por arte de magia. Es decir, hacemos esto:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir prueba
+&lt;span class="gp"&gt;$&lt;/span&gt; vi prueba/pelican.md
+&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;source  &lt;/span&gt;env/bin/activate
+&lt;span class="gp"&gt;$&lt;/span&gt; pelican prueba/
+&lt;span class="gp"&gt;$&lt;/span&gt; ls
+&lt;span class="go"&gt;env  output  pelican  prueba  site  temp&lt;/span&gt;
+&lt;span class="gp"&gt;$&lt;/span&gt; firefox output/index.html
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;y obtenemos esto:&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;img src="pictures/sample_article.png" 
+alt="pelican sample article" title="pelican sample article" width=700 
+height=465 /&gt;&lt;/p&gt;
+
+&lt;h3 id="estructura_del_articulo"&gt;Estructura del articulo&lt;/h3&gt;
+&lt;p&gt;En el ejemplo anterior lo único que varía entre ambos formatos (aparte de la 
+sintaxis) es la cabecera del mismo. En la cabecera se incluye el titulo del 
+mismo (no tiene porque coincidir con el nombre del fichero) y los metadatos. El 
+titulo en reStructuredText va subrayado con símbolos &lt;code&gt;#&lt;/code&gt; y en markdown es un 
+metadato más. Excepto el título, todos los metadatos son opcionales. Los 
+metadatos en &lt;em&gt;.rst&lt;/em&gt; van precedidos de dos puntos &lt;code&gt;:&lt;/code&gt;. Después de los metadatos 
+es suficiente con dejar una linea en blanco para comenzar a redactar el 
+contenido de nuestro articulo. &lt;/p&gt;
+&lt;p&gt;Los metadatos que se pueden incorporar son los siguientes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;title&lt;/strong&gt; (solo como metadato en markdown): Es el titulo del artículo o página.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;date&lt;/strong&gt;: Es la fecha y hora de publicación. Si no se indica, tomara como tal 
+los valores del propio fichero de texto.  El formato es el siguiente: 
+año-mes-dia hora:minutos, es decir, &lt;code&gt;%Y-%m-%d %H:%M&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;category&lt;/strong&gt;: La categoría en la que queremos englobar el articulo. Si no se 
+especifica, puede coger la categoría por defecto que se haya especificado en el 
+fichero de configuración si así se ha establecido (por defecto es &lt;em&gt;misc&lt;/em&gt;). Otra 
+forma aún más simple, es crear un directorio dentro de nuestro directorio de 
+contenido y colgar los archivos dentro de él. Todos los que se encuentren dentro 
+de ese directorio caerán en la categoría que coincida con el nombre del mismo. 
+Así es como yo lo hago, con un directorio llamado blog, es idoneo para organizar 
+el contenido. &lt;/p&gt;
+&lt;p&gt;En el tema por defecto, las categorías se añaden como una entrada al menú 
+superior que al ser seleccionada, muestra todos los artículos englobados dentro 
+de ella.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;author / authors&lt;/strong&gt;: El autor(es) del articulo. Si se omite, escoge por 
+defecto el que se haya establecido en el fichero de configuración. Yo lo omito, 
+pero puede ser muy útil para blogs escritos por varios autores.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;tags&lt;/strong&gt;: Las etiquetas con las que etiquetamos a nuestro articulo. El tema 
+por defecto solo nos permite seleccionar una y ver todos los artículos 
+etiquetados de igual modo, pero es bastante sencillo crear una nube de etiquetas 
+como la que empleo en este blog.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;summary&lt;/strong&gt;: Es el resumen que queremos que se vea del articulo cuando se 
+emplea la paginación. Por defecto, si no se especifica este campo, los artículos 
+se resumen con las primeras 50 palabras del mismo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;slug&lt;/strong&gt;: Esta es uno de los campos más curiosos, pero al mismo tiempo más 
+geniales. Este campo es el nexo que nos permite enlazar varias versiones del 
+mismo articulo en distintos idiomas. En el tema por defecto, nos muestra las 
+distintas traducciones de un articulo, si es que existen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;status&lt;/strong&gt;: Esta es un campo especial que solo admite dos valores, &lt;code&gt;draft&lt;/code&gt; 
+(borrador) y &lt;code&gt;published&lt;/code&gt; (publicado). Cualquier otro valor es ignorado. Si el 
+valor es &lt;code&gt;draft&lt;/code&gt;, el articulo o pagina no aparece publicado ni referenciado de 
+algún modo al generar el contenido, y solo está disponible si accedemos a él a 
+través del directorio &lt;em&gt;drafts/&lt;/em&gt;. Esto es una ayuda para evitar que por un 
+descuido subamos a la web un articulo sin terminar. Yo no lo empleo, ya veremos 
+cuando hable de le automatización, como he resuelto este posible problema de 
+otro modo. Si lo empleamos, deberíamos añadir el directorio &lt;em&gt;drafts/&lt;/em&gt; a nuestro 
+fichero &lt;em&gt;robots.txt&lt;/em&gt; como &lt;code&gt;Disallow&lt;/code&gt; para que no fuera indexado por los 
+buscadores (de poco importaría ocultar el el borrador si lo haces accesible a 
+través del buscador). &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Para comprender el resto de opciones disponibles para crear el contenido, voy a 
+centrarme en el sitio de ejemplo que viene por defecto con Pelican. Empezaremos 
+eliminando las pruebas que acabamos de realizar.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; rm -r output/
+&lt;span class="gp"&gt;$&lt;/span&gt; rm -r prueba/
+&lt;span class="gp"&gt;$&lt;/span&gt; ls
+&lt;span class="go"&gt;env  pelican  site&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="estructura_del_contenido_del_ejemplo"&gt;Estructura del contenido del ejemplo&lt;/h3&gt;
+&lt;p&gt;Ahora, en el directorio de contenido del sitio de ejemplo, tenemos la siguiente 
+estructura de ficheros:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;site/
+&lt;span class="gp"&gt;$&lt;/span&gt; tree &lt;span class="nb"&gt;source&lt;/span&gt;/
+&lt;span class="go"&gt;source/&lt;/span&gt;
+&lt;span class="go"&gt;├── another_super_article-fr.rst&lt;/span&gt;
+&lt;span class="go"&gt;├── another_super_article.rst&lt;/span&gt;
+&lt;span class="go"&gt;├── cat1&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── article1.rst&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── article2.rst&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── article3.rst&lt;/span&gt;
+&lt;span class="go"&gt;│   └── markdown-article.md&lt;/span&gt;
+&lt;span class="go"&gt;├── draft_article.rst&lt;/span&gt;
+&lt;span class="go"&gt;├── extra&lt;/span&gt;
+&lt;span class="go"&gt;│   └── robots.txt&lt;/span&gt;
+&lt;span class="go"&gt;├── pages&lt;/span&gt;
+&lt;span class="go"&gt;│   └── test_page.rst&lt;/span&gt;
+&lt;span class="go"&gt;├── pictures&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── Fat_Cat.jpg&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── Sushi.jpg&lt;/span&gt;
+&lt;span class="go"&gt;│   └── Sushi_Macro.jpg&lt;/span&gt;
+&lt;span class="go"&gt;├── super_article.rst&lt;/span&gt;
+&lt;span class="go"&gt;├── unbelievable.rst&lt;/span&gt;
+&lt;span class="go"&gt;└── unwanted_file&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Donde:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;another_super_article-fr.rst&lt;/em&gt;&lt;/strong&gt; y &lt;strong&gt;&lt;em&gt;another_super_article.rst&lt;/em&gt;&lt;/strong&gt; son dos 
+versiones del mismo articulo en inglés y francés. Aunque cuelgan del directorio 
+raíz, ambos están englobados dentro del sitio en la categoría &lt;em&gt;bar&lt;/em&gt; a través del
+metadato &lt;strong&gt;category&lt;/strong&gt; y enlazados traducciones mediante el metadato &lt;strong&gt;slug&lt;/strong&gt; 
+&lt;code&gt;:slug: oh-yeah&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;draft_article.rst&lt;/em&gt;&lt;/strong&gt; es un articulo que no aparece publicado en el sitio 
+de ejemplo al estar marcado como borrador con el metadato &lt;strong&gt;status&lt;/strong&gt;, pero al 
+que podemos acceder igualmente a través de 
+&lt;code&gt;myblog.com/site/source/drafts/a-draft-article.html&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;super_article.rst&lt;/em&gt;&lt;/strong&gt; y  &lt;strong&gt;&lt;em&gt;unbelievable.rst&lt;/em&gt;&lt;/strong&gt; son ejemplos de uso de 
+metadados. El primero es un articulo que cuelga de la categoría &lt;em&gt;yeah&lt;/em&gt; y 
+que sirve como ejemplo del empleo de &lt;strong&gt;summary&lt;/strong&gt; y del uso de imágenes y 
+código. El segundo es un ejemplo de articulo sin más metadatos que la 
+fecha del mismo y de como cae en la categoría &lt;strong&gt;misc&lt;/strong&gt; por defecto.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;unwanted_file&lt;/em&gt;&lt;/strong&gt; es un articulo que no se procesa de ningún modo por 
+carecer de extensión que lo identifique como markdown o reStructuredText. Como 
+consecuencia este fichero ni siquiera se copia al sitio web generado. Puede ser 
+un truco útil para emplearlo como fichero de notas personales de cualquier tipo, 
+por ejemplo un recordatorio de como hemos definido la estructura de archivos, 
+una chuleta como usar marcado o reStructuredText, artículos pendientes, ...&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;cat1&lt;/em&gt;&lt;/strong&gt; Este directorio es un ejemplo de como todos los artículos que 
+cuelgan de él son englobados dentro de la categoría &lt;em&gt;cat1&lt;/em&gt; de forma automática. 
+Esto nos evita escribir el metadato &lt;strong&gt;category&lt;/strong&gt; en cada uno de ellos y nos 
+ayuda a clasificarlos en el directorio. Y nos muestra como se pueden mezclar 
+archivos markdown y reStructuredText sin ningún tipo de problemas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;extra&lt;/em&gt;&lt;/strong&gt; En esta carpeta (puede ser otra, es configurable) englobamos 
+archivos que queremos incluir en el sitio, pero que no han de ser procesados. 
+Como por ejemplo: .htaccess, .robots.txt, 
+&lt;a href="http://humanstxt.org/ES"&gt;.humans.txt&lt;/a&gt;, ... Esto puede cambiarse en el 
+fichero de configuración, especificando el origen dentro del directorio de 
+nuestro contenido y la ruta en la que queremos que esté en el sitio web. En 
+este caso, sería así en el fichero de configuración &lt;code&gt;pelican.conf.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;FILES_TO_COPY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;extra/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;pages&lt;/em&gt;&lt;/strong&gt; Serían las páginas estáticas del sitio, lo que no son artículos. 
+Este nombre de directorio está reservado para esta función por defecto. Por 
+ejemplo la página &lt;a href="pages/sobre-mi.html"&gt;&lt;em&gt;sobre mí&lt;/em&gt;&lt;/a&gt; que empleo en este blog, 
+sería una de estas páginas estáticas. En estas páginas no están disponibles los 
+comentarios. Si se especifica en el fichero de configuración, estas páginas 
+aparecerán como entradas en el menú principal del tema por defecto. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;pictures&lt;/em&gt;&lt;/strong&gt; Este es uno de los directorios que se pueden emplear para 
+albergar contenido estático como son las imágenes. Esto es configurable en el 
+fichero de configuración. En este caso lo que se guardan en el son las imágenes 
+empleadas en los artículos. Estas acabaran dentro del directorio 
+&lt;code&gt;static/pictures/&lt;/code&gt; de nuestro sitio. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Y ya está, es una estructura muy sencilla y que genera un resultado bastante 
+decente, comparado con los cientos de archivos que emplea (a parte de la BDD) 
+cualquier CMS como Wordpress o Drupal.&lt;/p&gt;
+&lt;p&gt;Si partiéramos de un blog ya creado, Pelican proporciona una herramienta, que 
+en nuestro caso estaría en &lt;em&gt;/myblog.com/pelican/tools/importer.py&lt;/em&gt; y que nos 
+permite importar artículos desde Wordpress o desde un fichero RSS y que nos 
+genera los contenidos en reStructuredText. Si quisiéramos emplear markdown, 
+existe una herramienta externa, &lt;a href="http://www.codefu.org/wiki/Main/Html2markdown"&gt;&lt;strong&gt;html2markdown&lt;/strong&gt;&lt;/a&gt; que nos permite obtener 
+un texto en markdown desde una página web. Otra herramienta similar a esta 
+última sería &lt;a href="http://www.aaronsw.com/2002/html2text/"&gt;html2text&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;No tiene más secreto que este, crear ficheros de texto plano en formato &lt;em&gt;.md&lt;/em&gt; o 
+&lt;em&gt;.rst&lt;/em&gt;, guardarlos en el directorio que empleamos para albergar el contenido 
+y generar el blog.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">joe di castro</dc:creator><pubDate>Mon, 27 Jun 2011 18:27:00 -0000</pubDate><category>Pelican</category><category>python</category><category>markdown</category><category>reStructuredText</category><category>blog</category><category>HTML.</category></item></channel></rss>

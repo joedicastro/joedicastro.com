@@ -1,0 +1,2330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>joe di castro</title><link href="http://joedicastro.com" rel="alternate"></link><link href="http://joedicastro.com/feeds/tags/reStructuredText.atom.xml" rel="self"></link><id>http://joedicastro.com</id><updated>2011-06-30T01:21:00Z</updated><entry><title>Pelican - Configuración y personalización</title><link href="http://joedicastro.com/pelican-configuracion-y-personalizacion.html" rel="alternate"></link><updated>2011-06-30T01:21:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-06-30:/pelican-configuracion-y-personalizacion.html/</id><summary type="html">&lt;p&gt;Con este articulo cierro la serie que le he dedicado a &lt;a href="/tag/Pelican.html"&gt;Pelican&lt;/a&gt; como 
+herramienta idónea para crear blogs estáticos con mantenimiento cero. Aquí voy a 
+tratar de la parte más compleja de Pelican, la que nos permite personalizarlo y 
+adaptarlo a nuestros gustos y necesidades. El primer nivel de personalización se 
+obtiene a través del fichero de configuración (aunque no es necesario, es 
+recomendable emplearlo). El segundo nivel vendría mediante la personalización del 
+tema empleado, bien creando uno nuevo o bien modificando el que viene por 
+defecto. El último nivel vendría de modificar el propio Pelican. Todos son 
+posibles y están a nuestro alcance, gracias a que es Software Libre. &lt;/p&gt;
+&lt;p&gt;Si bien yo he personalizado mi sitio con respecto al sitio por defecto, y aún 
+quedan ciertas cosas que aún quiero cambiar, no he necesitado de momento más que 
+modificar el fichero de configuración y el tema que viene por defecto. En 
+Pelican no he tocado nada exceptuando el activar por defecto &lt;strong&gt;Markdown Extra&lt;/strong&gt;, 
+algo que Alexis tuvo como gentileza &lt;a href="https://github.com/ametaireau/pelican/pull/138"&gt;aceptar como modificación&lt;/a&gt; a Pelican. Es 
+posible que en el futuro algunas de las cosas que tengo en mente me lleven a 
+modificarlo, y espero poder así contribuir en alguna medida a su desarrollo. &lt;/p&gt;
+&lt;h3 id="configuraci+n"&gt;Configuración&lt;/h3&gt;
+&lt;p&gt;La configuración se hace a través de un fichero python, que en el ejemplo por 
+defecto se llama &lt;code&gt;pelican.conf.py&lt;/code&gt; y en nuestro ejemplo estaría en 
+&lt;em&gt;myblog.com/site/pelican.conf.py&lt;/em&gt;. Para llamar al fichero de configuración se 
+utiliza la opción &lt;code&gt;-s&lt;/code&gt; y en nuestro ejemplo sería:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pelican -s ./site/pelican.conf.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Este es un tema que está muy bien resuelto en la &lt;a href="http://docs.notmyidea.org/alexis/pelican/settings.html"&gt;documentación&lt;/a&gt;. De todos 
+modos voy a hablar de unos cuantos campos interesantes y alguno no incluido 
+dentro de la documentación. Entre paréntesis indico los valores por defecto.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;OUTPUT_PATH&lt;/strong&gt; (&lt;code&gt;'output/'&lt;/code&gt;) y &lt;strong&gt;PATH&lt;/strong&gt; (&lt;code&gt;None&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Empleando estos dos valores, conseguimos que solo tengamos que especificar el 
+fichero de configuración en la linea de comandos empleada para llamar a Pelican.
+El primero define el directorio de salida donde queremos que se genere nuestro 
+sitio y el segundo el directorio origen de nuestro contenido. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SITESUBTITLE&lt;/strong&gt; (&lt;code&gt;u''&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Un subtitulo que se puede poner al blog, e.g. un lema. No aparece documentado.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JINJA_EXTENSIONS&lt;/strong&gt; (&lt;code&gt;[]&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Puede ser necesario habilitar ciertas extensiones de Jinja2 para personalizar 
+el tema que vamos a emplear. Por ejemplo, para mostrar la nube de etiquetas 
+con las etiquetas ordenadas alfabéticamente, he habilitado una extensión que 
+necesitaba para el proceso de esta manera:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;JINJA_EXTENSIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;jinja2.ext.do&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;STATIC_PATHS&lt;/strong&gt; (&lt;code&gt;['images',]&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Te permite especificar los contenidos estáticos que quieres añadir a tu blog 
+y que acabaran colgando de la carpeta &lt;em&gt;static&lt;/em&gt;. Yo por ejemplo lo empleo 
+para alojar las imágenes en &lt;em&gt;static/pictures&lt;/em&gt; y el mapa flash que utilizo en 
+el articulo &lt;a href="/combatir-el-spam-en-drupal.html"&gt;Combatir el spam en Drupal&lt;/a&gt; en &lt;em&gt;static/ammap&lt;/em&gt; así:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pictures&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ammap&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TAG_FEED&lt;/strong&gt; (&lt;code&gt;None&lt;/code&gt;) y &lt;strong&gt;TAG_FEED_RSS&lt;/strong&gt; (&lt;code&gt;None&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Te permiten establecer fuentes Atom y RSS por etiqueta, que es una opción 
+muy interesante para quienes solo les interesa un tema de los que trates o 
+para formar parte de un &lt;a href="http://es.wikipedia.org/wiki/Planeta_%28agregador%29"&gt;Planet&lt;/a&gt; sin mezclar temas. Eso si, lo lógico es 
+modificar luego el tema para que aparezcan disponibles. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;DIRECT_TEMPLATES&lt;/strong&gt; (&lt;code&gt;('index', 'tags', 'categories', 'archives')&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Estas son las plantillas del tema que generan una página por si mismas. No 
+viene documentada, pero yo he cambiado los valores por defecto para añadir 
+una página personalizada a la que redirijo los errores 404 (Página no 
+encontrada) de esta manera:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;DIRECT_TEMPLATES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;index&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;tags&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;categories&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;archives&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;notfound&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;PIWIK_URL&lt;/strong&gt; y &lt;strong&gt;PIWIK_SITE_ID&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Te permiten configurar tu sitio para emplear el magnifico sistema de 
+analíticas web &lt;a href="http://piwik.org/"&gt;Piwik&lt;/a&gt;. Yo hace unos dos años que lo empleo en mis sitios, 
+porque tiene la ventaja de que no dependes de un script de un dominio externo. 
+Esto te ahorra consultas DNS y que la página se quede esperando a cargar 
+completamente cuando estos fallan. De esta manera tienes el control total 
+sobre las estadísticas de tu web sin tener que renunciar a la calidad de 
+otros servicios externos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;FILES_TO_COPY&lt;/strong&gt; (&lt;code&gt;()&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Básica si queremos emplear ficheros como &lt;em&gt;.htaccess&lt;/em&gt; o &lt;em&gt;robots.txt&lt;/em&gt;. No está 
+documentada tampoco. El uso de la misma consiste en una tupla de tuplas con 
+los valores de las rutas del fichero origen y su destino. En este sitio por 
+ejemplo:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;FILES_TO_COPY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;extra/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;extra/favicon.ico&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;favicon.ico&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;extra/.htaccess&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;.htaccess&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="personalizaci+n"&gt;Personalización&lt;/h3&gt;
+&lt;p&gt;Pero si realmente queremos personalizar el sitio, tanto en funcionalidad básica 
+como en su aspecto, nos toca modificar el tema por defecto. Aquí podemos optar por 
+tres vías: Crear el nuestro propio, empezar un tema casi desde cero, 
+eligiendo el tema por defecto &lt;code&gt;simple&lt;/code&gt; (solo texto) o partir de la base del tema 
+por defecto &lt;code&gt;notmyidea&lt;/code&gt;. Este último es el que hemos estado empleado en nuestro 
+ejemplo y el que yo modifiqué hasta llegar donde lo tengo ahora. &lt;/p&gt;
+&lt;p&gt;Para comprender de que consta un tema y como podemos personalizarlo, lo mejor es 
+analizar el tema &lt;code&gt;notmyidea&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;notmyidea/&lt;/span&gt;
+&lt;span class="go"&gt;├── static&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── css&lt;/span&gt;
+&lt;span class="go"&gt;│   │   ├── main.css&lt;/span&gt;
+&lt;span class="go"&gt;│   │   ├── pygment.css&lt;/span&gt;
+&lt;span class="go"&gt;│   │   ├── reset.css&lt;/span&gt;
+&lt;span class="go"&gt;│   │   └── wide.css&lt;/span&gt;
+&lt;span class="go"&gt;│   └── images&lt;/span&gt;
+&lt;span class="go"&gt;│       └── icons&lt;/span&gt;
+&lt;span class="go"&gt;│           ├── delicious.png&lt;/span&gt;
+&lt;span class="go"&gt;│           ├── lastfm.png&lt;/span&gt;
+&lt;span class="go"&gt;│           ├── linkedin.png&lt;/span&gt;
+&lt;span class="go"&gt;│           ├── rss.png&lt;/span&gt;
+&lt;span class="go"&gt;│           └── twitter.png&lt;/span&gt;
+&lt;span class="go"&gt;└── templates&lt;/span&gt;
+&lt;span class="go"&gt;    ├── analytics.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── archives.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── article.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── article_infos.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── base.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── categories.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── category.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── comments.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── disqus_script.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── github.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── index.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── page.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── pagination.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── piwik.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── skribit_tab_script.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── skribit_widget_script.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── tag.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── taglist.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── tags.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── translations.html&lt;/span&gt;
+&lt;span class="go"&gt;    └── twitter.html&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;static/css&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Aquí es donde se guardan las &lt;a href="http://es.wikipedia.org/wiki/CSS"&gt;Hojas de estilo en cascada (CSS)&lt;/a&gt; que emplea el 
+tema. Aunque la el fichero &lt;em&gt;wide.css&lt;/em&gt; no es empleado por el tema, solo para la 
+versión wide del mismo. Yo la eliminé como primera medida. Luego tenemos 
+&lt;em&gt;main.css&lt;/em&gt; que es la hoja de estilo principal, &lt;em&gt;pygment.css&lt;/em&gt; que es la que emplea 
+Pygments para el resaltado de sintaxis y &lt;em&gt;reset.css&lt;/em&gt; para resetear los navegadores 
+a unos valores comunes por defecto. &lt;/p&gt;
+&lt;p&gt;Si lo que queremos es tener un sitio con un buen rendimiento, deberíamos dar 
+como mínimo dos pasos, consolidar todas la hojas de estilo en una sola y 
+minimizar el tamaño de esta. Consolidarla en este caso es realmente sencillo, 
+simplemente debemos insertar el contenido de &lt;em&gt;reset.css&lt;/em&gt; al principio del 
+fichero &lt;em&gt;main.css&lt;/em&gt; y &lt;em&gt;pygment.css&lt;/em&gt; al final del mismo. Depués hay que 
+eliminar los imports de estas hojas en &lt;em&gt;main.css&lt;/em&gt;*. Luego para minimizar 
+su tamaño eliminar comentarios y lineas en blanco y poner una regla por línea. &lt;/p&gt;
+&lt;p&gt;Otro paso que dí para mejorar el rendimiento es no usar las web fonts 
+externas (ni internas), que aunque le dan un aspecto inmejorable, hay que 
+reconocerlo, requieren cargar otro recurso externo, desde mi punto de vista 
+innecesario.&lt;/p&gt;
+&lt;p&gt;Lo mejor en estos casos es seguir siempre las recomendaciones de estas dos 
+magnificas herramientas: &lt;a href="http://developer.yahoo.com/yslow/"&gt;YSlow&lt;/a&gt; de &lt;strong&gt;Yahoo&lt;/strong&gt; y &lt;a href="http://code.google.com/speed/page-speed/"&gt;Page Speed&lt;/a&gt; de 
+&lt;strong&gt;Google&lt;/strong&gt;. Afortunadamente hay sitios web como &lt;a href="http://gtmetrix.com/"&gt;GTmetrix&lt;/a&gt; o 
+&lt;a href="http://www.webpagetest.org/"&gt;WebPagetest&lt;/a&gt; que nos permiten ver los resultados de ambas herramientas 
+en nuestro sitio web sin necesidad de instalarlas (aunque para el desarrollo 
+es más que recomendable). Si por ejemplo emplearamos &lt;strong&gt;GTmetrix&lt;/strong&gt; los valores 
+que arroja un sitio con el tema por defecto son:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Page Speed (tema por defecto)&lt;/th&gt;
+&lt;th&gt;YSlow (tema por defecto)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;B (80%)&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;B (85%)&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Valores bastante mejorables. Los valores actuales para este sitio, una vez 
+personalizado el tema y configurado correctamente el &lt;em&gt;.htaccess&lt;/em&gt; son:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Page Speed (tema personalizado)&lt;/th&gt;
+&lt;th&gt;YSlow (tema personalizado)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;A (91%)&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;A (95%)&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Y si nos fijamos en &lt;a href="http://gtmetrix.com/reports/joedicastro.com/BeFSzvAa"&gt;los resultados&lt;/a&gt;, las penalizaciones de rendimiento 
+vienen de los scrips externos de Piwik y Disqus, principalmente de este 
+último. Sin emplear estos scripts los valores suben a:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Page Speed (sin scripts)&lt;/th&gt;
+&lt;th&gt;YSlow (sin scripts)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;A (100%)&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;A (98%)&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;En resumen, una optimización más que correcta, solo hay que ver los valores 
+de las páginas del Top 1000 que ofrecen en GTmetrix. Obtener una optimización 
+como esta con un CMS no es imposible (había conseguido unos valores solo un 
+poquito peores con Drupal) pero si bastante más complicado. La experiencia 
+del usuario depende mucho de estos valores, hay que contar con que no todo 
+el mundo dispone de buenos accesos a Internet.&lt;/p&gt;
+&lt;p&gt;Evidentemente, después cada uno retocara el fichero CSS resultante a su 
+gusto para personalizar el aspecto del sitio. En este caso estoy empleando
+CSS 3 y valida correctamente. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p style="text-align:center;"&gt;
+    &lt;a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fjoedicastro.com%2F&amp;amp;profile=css3&amp;amp;usermedium=all&amp;amp;warning=1&amp;amp;vextwarning=&amp;amp;lang=es"&gt;
+        &lt;img style="border:0;width:88px;height:31px"
+            src="pictures/valid-css3.png"
+            alt="¡CSS 3 Válido!" title="¡CSS 3 Válido!" /&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;static/images/icons&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Son los iconos empleados por la hoja de estilo para los enlaces sociales de 
+la parte inferior de la página. Yo no los empleo. ¿Entonces como se ven? 
+Bueno lo primero que hice fue crear un &lt;a href="http://www.w3schools.com/css/css_image_sprites.asp"&gt;sprite&lt;/a&gt; para cargar una sola 
+imagen en lugar de 6, es decir menos solicitudes al servidor. Después 
+incorporé esta imagen &lt;a href="http://www.websiteoptimization.com/speed/tweak/inline-images/"&gt;dentro del propio fichero CSS con un Data URL&lt;/a&gt;, y 
+gracias a haberla optimizado hasta ocupar solamente ~3k, me compensaba 
+hacerlo. Una consulta menos al servidor. Lo mismo hice después con el 
+logotipo (1K) y al final no se carga ninguna imagen por defecto en el blog, 
+0 consultas. Los navegadores modernos soportan esto sin problemas, los que 
+no lo hacen, no muestran la imagen, solo el enlace, que tampoco es un ningún 
+problema.&lt;/p&gt;
+&lt;p&gt;Así es como queda en &lt;em&gt;main.css&lt;/em&gt; la imagen que da vida a los iconos de los 
+enlaces a la redes sociales:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="nf"&gt;#extras&lt;/span&gt; &lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;social&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-repeat&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;no-repeat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;background-image&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="sx"&gt;url(&amp;quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAACSCAMAAAB7VbqAAAAAwFBMVEWQBQCWFxU5VpedVy+tUE5LZaBPZZZDabDdYSpke75vfZBkfbJZgc+heztshKvldjBgld91j9+Uj4p5ksZ/lLzthzLqhz+MmrAcvuaDofihpYRzq/D4mDeUp9KetkSirsnQpKWpvV/qqHvHsJjnqY/3qWK1ubbIun2jwLHEu7xm1O+6xoOtv++7wte0yNzxwH563e/3xJjK06ya5vXY3p7U2+3e3tbm6IT63cLn7czr7fbZ9Prz7+r8+O/3+fb9//z6WVfkAAADNElEQVRIx9WV4XqiPBCFoyu4aVjQBrW2ImBX3aJYdQERIbn/u9qTRKzd7/n+b88jxHlnMswEY4hIGYUcLZYKklLbtixqNBymhNl2yG/2lBFqu1LKKjD2dEioxfIKKOfaVgA+HkoptsoGoDxPA8orKZTtEIdyNWE4zXEbUgVokAq4p1JuqQHIX8G9lYK2EdOpkNuhlJxec+TTrcxpJVENAOK3iK9oLkOLEmbqGQZ4dMAtRlJj617QZErQvqpHiVLVvvhL/y6oFx40HhktaqJt9X2mtSDwHg7L1p6NAJZY9eZwB8aHsgF61zaAnr8spXxX9piMR8umxAQQZBp5ZDTSOZYgzXjkKTCbvTeKNPLgKaCTK/dCNldQlu9wL0aNHH9XADnK2UGWXil/GoDJyFx6P69gNlPPWy698cIDWOj68DzvO+Qt0D7MsXcV2v86by55+qSEPP3+pKf/ARfxF5Dy8gH2+/0N7Pc3oCUMSJIWyESBRANxgX4nyQ1cEiMDEkR8BheT4jYl2bdJW5DsdczlA9z09N/2v86bw1Vs4vl8c6xbcI7ncQxkCBFFPM8a0QAfDTjOM70453lc630bx2ezXJt5oUARx40BmQF3EfFroXJs5gaU30inF+G3vombBnuu7JFer9OJ1JQMZcQ/SK8WEekRVRYqjb+RSMq60yHF8VzXRVHAWUsV0TZVIEekctzafEPKTnS/o+qog7z361FHkfhK/5ZV0MrnPAgqEvBWYZoGPCSt6aujLGScuC5j+LAdNkAVALCrUuVndwARvhoJs3C3WSXUFB8HjtW1LFxCvz3WtQC03Bw5fOsDdEPl794BPMW9Ap3DAMuyCc5nJQ2sO2AB+BgYCU1dCkwwhjjnfNUO8ycTl/lf6pxTtzzfQXl1BduXAQ5/7jiDl50CgcMnq6Ku69WEOQHAgD8+Pq5WbysMLle78tdq8jDR4oMc4HzKsuPuBRoMLKHB6+spG2hgrwCydQZpQH0NTmsgB/4BTVe1AphyNCBXoMk2p9MvB7bT1xEitB+eFXCch3WhSl/Z/T6dcMddr581KAD6fdd9fnyoTbdvrN93+v2uXbTt17sQyvV6/AE7UZJYs2UOngAAAABJRU5ErkJggg==&amp;quot;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;padding-left&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;25px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;atom.xml&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;6px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;rss.xml&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;-20px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;twitter.com&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;-46px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;identi.ca&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;-72px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;facebook.com&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;-98px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bitbucket.org&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;-124px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;static/templates&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Estas son las plantillas que dan vida al tema y emplean Jinja2. Los nombres 
+son bastante descriptivos de la función que realiza cada una de ellas. En mi 
+caso hay una serie de ellas que no empleo, como son: &lt;em&gt;analytics.html&lt;/em&gt;, 
+&lt;em&gt;article_infos.html&lt;/em&gt;, &lt;em&gt;github.html&lt;/em&gt;, &lt;em&gt;skribit_tab_script.html&lt;/em&gt;, 
+&lt;em&gt;skribit_widget_script.html&lt;/em&gt;, &lt;em&gt;translations.html&lt;/em&gt; y &lt;em&gt;twitter.html&lt;/em&gt;. He 
+realizado bastantes modificaciones en las plantillas y me extendería demasiado 
+explicándolo, además sigo realizando cambios. Aún no lo tengo todo como yo 
+lo quiero, y aún voy a personalizar y optimizar más cosas. Cuando lo tenga 
+todo listo, pienso publicar un repositorio con el contenido que genera este 
+blog, tanto a efectos de copia de seguridad, como de que le pueda servir a 
+alguien como guía para montar el suyo propio. &lt;/p&gt;
+&lt;p&gt;De todos modos si puedo decir que he añadido una que no existía, 
+&lt;em&gt;notfound.html&lt;/em&gt; para los errores 404 y pienso crear una nueva para los 
+errores 403. Además he creado los enlaces para los feeds RSS y Atom de las 
+etiquetas y eliminado el bloque de información que aparecía en cada articulo.
+Además en la plantilla &lt;em&gt;tags.html&lt;/em&gt; que por defecto viene vacía, he creado lo 
+necesario para generar la nube de etiquetas. &lt;em&gt;tags.html&lt;/em&gt; queda entonces así:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;base.html&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;content&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;section&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;content&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;etiquetas&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;ul&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cloud&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;all_tags&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;ctag&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;tag_cloud&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;
+      &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="nv"&gt;all_tags.update&lt;/span&gt;&lt;span class="o"&gt;({&lt;/span&gt;&lt;span class="nv"&gt;ctag.0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;ctag.1&lt;/span&gt;&lt;span class="o"&gt;})&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;tag&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;all_tags&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nf"&gt;sort&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;li&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tag-&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;all_tags&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;tag&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tag/&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;tag&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nf"&gt;replace&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;%20&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="s"&gt;.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;tag&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;También he realizado las modificaciones pertinentes para que el contenido 
+validara perfectamente en HTML 5. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p style="text-align:center;"&gt;
+    &lt;a href="http://validator.w3.org/check?uri=http%3A%2F%2Fjoedicastro.com%2F"&gt;
+        &lt;img style="border:0;width:88px;height:31px"
+            src="pictures/valid-html5.png"
+            alt="¡HTML 5 Válido!" title="¡HTML 5 Válido!" /&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Pero como ya he dicho es un proceso que aún no he finalizado. Cuando lo 
+termine y publique el repositorio, actualizaré también este articulo.&lt;/p&gt;</summary><category term="Pelican"></category><category term="python"></category><category term="markdown"></category><category term="reStructuredText"></category><category term="blog"></category><category term="HMTL"></category><category term="CSS"></category><category term="jinja2"></category></entry><entry><title>Pelican - Publicación y automatización</title><link href="http://joedicastro.com/pelican-publicacion-y-automatizacion.html" rel="alternate"></link><updated>2011-06-28T23:54:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-06-28:/pelican-publicacion-y-automatizacion.html/</id><summary type="html">&lt;p&gt;Una vez que sabemos como &lt;a href="/pelican-introduccion-e-instalacion.html"&gt;instalar Pelican&lt;/a&gt; y &lt;a href="/pelican-creacion-de-contenido.html"&gt;crear contenido&lt;/a&gt; con él, es 
+hora de saber como convertir ese contenido en un blog real disponible en 
+internet. Es decir, saber como publicar ese contenido. Como hemos visto hasta 
+ahora, al constar básicamente de simples ficheros HTML, un servidor de 
+archivos es más que suficiente para servir el blog. Esto nos abre un gran 
+abanico de posibilidades, desde emplear un potente (y barato) servidor de 
+ficheros en la &lt;em&gt;nube&lt;/em&gt; como &lt;strong&gt;Amazon S3&lt;/strong&gt; (&lt;a href="http://jdacpelican.s3-website-us-east-1.amazonaws.com/"&gt;un ejemplo&lt;/a&gt;), pasando por las 
+páginas web estáticas que nos permiten repositorios como &lt;strong&gt;Bitbucket&lt;/strong&gt; o 
+&lt;strong&gt;GitHub&lt;/strong&gt; (&lt;a href="http://marsam.github.com/blog/"&gt;un ejemplo&lt;/a&gt;), por los tradiciones hostings compartidos (e.g. 
+este blog), hasta un servidor casero sencillo montado sobre un &lt;a href="http://es.wikipedia.org/wiki/Network-attached_storage"&gt;NAS&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Aún cuando es posible emplear un simple servidor de archivos para alojar el blog, 
+siempre es mejor contar con un servidor web detrás (Apache, nginx, lighttpd, 
+...) que nos permita hacer redirecciones para nuestras antiguas páginas si ya 
+disponíamos de un blog anterior o manejar los errores HTTP &lt;a href="http://es.wikipedia.org/wiki/Error_404"&gt;404&lt;/a&gt; o &lt;a href="http://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP"&gt;403&lt;/a&gt; 
+de forma personalizada. &lt;/p&gt;
+&lt;h3 id="publicar_el_contenido"&gt;Publicar el contenido&lt;/h3&gt;
+&lt;p&gt;Publicar el contenido de una web es tan sencillo como volcar el contenido del 
+directorio que nos genera Pelican (en nuestro ejemplo sería 
+&lt;em&gt;myblog.com/site/output/*&lt;/em&gt;) en el directorio destino de nuestro servidor web. 
+Dependiendo del método que hayamos elegido para alojar nuestro blog, puede ser 
+tan sencillo como una copia de archivos o emplear FTP (SFTP) ó &lt;a href="http://es.wikipedia.org/wiki/SSH"&gt;SSH&lt;/a&gt; (&lt;a href="http://es.wikipedia.org/wiki/SCP"&gt;SCP&lt;/a&gt;, 
+&lt;a href="http://en.wikipedia.org/wiki/Unison_%28file_synchronizer%29"&gt;Unison&lt;/a&gt; ó &lt;a href="http://es.wikipedia.org/wiki/Rsync"&gt;rsync&lt;/a&gt;). Aquí el tema radica no en la primera vez que 
+vayamos a subir el contenido al servidor, si no en las sucesivas, a medida que 
+vayamos creando contenido nuevo. No tendría ningún sentido volver a subir todo 
+el contenido cada vez, si no solamente el nuevo o el que haya cambiado. Para eso 
+necesitamos sincronizar los dos directorios. &lt;/p&gt;
+&lt;p&gt;Si solamente disponemos de acceso FTP (o SFTP) a nuestro servidor, entonces 
+tendremos que emplear una herramienta que nos permita la sincronización sobre 
+FTP, como puede ser &lt;strong&gt;lftp&lt;/strong&gt;. Y el proceso se puede automatizar con un script 
+como el que describo en &lt;a href="/sincronizar-una-carpeta-local-y-una-remota-a-traves-de-ftp-lftp-mirror.html"&gt;Sincronizar una carpeta local y una remota a través de 
+FTP: lftp-mirror&lt;/a&gt;. Si disponemos de acceso a través de SSH, entonces la 
+elección es clarisima, &lt;strong&gt;rsync&lt;/strong&gt;. Más adelante explico una manera de emplearlo 
+de forma automática.&lt;/p&gt;
+&lt;p&gt;Cualquiera de ambas soluciones nos permite subir el contenido en apenas segundos, 
+(sobre todo en el caso de rsync) cuando se trata de añadir un articulo nuevo, 
+por ejemplo. Y lo mismo a la hora de hacer una rectificación, es tan inmediato 
+como lo pueden ser plataformas como Wordpress, Drupal y similares. Además, con 
+las potentes herramientas que existen para hacer cambios múltiples en varios 
+ficheros de texto a la vez, se pueden realizar tareas casi imposibles con una 
+plataforma de blogs tradicional sin recurrir a consultas SQL en la BDD o a 
+plugins externos. Una de estas herramientas, sin recurrir a &lt;code&gt;find&lt;/code&gt;, &lt;code&gt;grep&lt;/code&gt;, 
+&lt;code&gt;awk&lt;/code&gt; y &lt;code&gt;sed&lt;/code&gt;, puede ser &lt;a href="http://regexxer.sourceforge.net/"&gt;regexxer&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="generar_el_contenido_en_el_propio_servidor"&gt;Generar el contenido en el propio servidor&lt;/h3&gt;
+&lt;p&gt;Si el alojamiento que hemos escogido nos permite instalar programas python, 
+entonces tenemos la posibilidad de instalar Pelican en el servidor remoto. De 
+esta formar podríamos subir únicamente los archivos markdown o reStructuredText 
+al servidor y generar allí mismo el contenido web. De este modo la cantidad de 
+datos a subir sería ridícula y un simple comando FTP nos serviría. Luego bien 
+podríamos lanzar Pelican a través de una consola SSH o bien dependiendo del 
+servidor, tener un &lt;a href="http://es.wikipedia.org/wiki/Demonio_%28inform%C3%A1tica%29"&gt;demonio&lt;/a&gt; corriendo que cuando detectara un cambio en el 
+sistema de ficheros lanzará un script que generara el contenido con Pelican. &lt;/p&gt;
+&lt;p&gt;Otra posibilidad que me convence más, es de la poder instalar un repositorio en 
+el servidor con un software de control de versiones, como Git o Mercurial. La 
+idea sería tener un repositorio local, y al hacer un push hacia el repositorio 
+remoto, a través de un &lt;em&gt;hook&lt;/em&gt; activar la generación de la página con Pelican. 
+Esto nos permitiría además poder tener varias copias del repositorio (por 
+ejemplo en GitHub o Bitbucket) y por lo tanto de la web, haciendo "innecesarias" 
+las copias de seguridad. &lt;/p&gt;
+&lt;h3 id="automatizar_todos_los_procesos"&gt;Automatizar todos los procesos&lt;/h3&gt;
+&lt;p&gt;Pero lo ideal es poder automatizar todas las tareas que hemos visto hasta ahora, 
+empleando unos pocos comandos para realizarlas sin esfuerzo alguno (bueno, 
+a menos que tengas tú &lt;a href="http://es.wikipedia.org/wiki/Negro_%28escritor%29"&gt;ghostwriter&lt;/a&gt; particular, me temo que los artículos los 
+seguirás teniendo que escribir tú). Para poder realizar esto disponemos de la 
+fantástica y potente herramienta &lt;a href="http://fabfile.org"&gt;Fabric&lt;/a&gt; (el &lt;a href="http://en.wikipedia.org/wiki/Capistrano"&gt;Capistrano&lt;/a&gt; para Python) 
+que nos permite ejecutar comandos locales o remotos en múltiples servidores. Esto 
+nos permite hacer despliegues de software sin apenas esfuerzo en distintas 
+máquinas, copiar ficheros o ejecutar tareas repetitivas empleado una corta 
+serie de comandos. Una grandísima herramienta para administradores de sistema y 
+desarrolladores.&lt;/p&gt;
+&lt;p&gt;Lo único que necesitamos es instalar &lt;strong&gt;fabric&lt;/strong&gt; y crear un fichero llamado 
+&lt;code&gt;fabfile.py&lt;/code&gt; donde especificaremos las tareas que queremos programar. Para 
+instalar la última versión estable de fabric, lo mejor es emplear &lt;code&gt;easy_install&lt;/code&gt; 
+o &lt;code&gt;pip&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pip install fabric
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Una vez creado el fichero &lt;code&gt;fabfile.py&lt;/code&gt;, lo único que tendremos que hacer para 
+ejecutar una tarea del mismo, sería escribir el comando &lt;code&gt;fab&lt;/code&gt; seguido del nombre 
+que le hayamos dado a la tarea (este sería el funcionamiento básico). Y la tarea 
+se ejecutaría inmediatamente. &lt;/p&gt;
+&lt;p&gt;Para comprender mejor como funciona Fabric, muestro aquí el contenido actual de 
+mi fichero &lt;code&gt;fabfile.py&lt;/code&gt;&lt;br /&gt;
+&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class="c"&gt;# -*- coding: utf8 -*-&lt;/span&gt;
+
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    fabfile.py: A fabric script for generate my personal blog&lt;/span&gt;
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;__author__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;joe di castro &amp;lt;joe@joedicastro.com&amp;gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;__license__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;GNU General Public License version 3&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;__date__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;28/06/2011&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;__version__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0.2&amp;quot;&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fabric.api&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fabric.contrib.project&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;rsync_project&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fabric.contrib.console&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;confirm&lt;/span&gt;
+
+&lt;span class="n"&gt;PELICAN_REPOSITORY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;git://github.com/ametaireau/pelican.git&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;PROD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;joedicastro.com&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;PROD_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/home/joedicastro/webapps/joedicastro&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;LOCAL_WEB&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;~/www&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PROD&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;abspath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;ENV_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;env&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;PELICAN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;pelican&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;CONFIG_FILE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;site/pelican.conf.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;OUTPUT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;site/output&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_valid_HTML&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Remove the obsolete rel=&amp;quot;&amp;quot; and rev=&amp;quot;&amp;quot; links in footnotes.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dirs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;walk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OUTPUT&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;fil&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;fil&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sed -i {0} -r -e &amp;#39;s/re[l|v]=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;footnote&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;//g&amp;#39; {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+                      &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;r&amp;quot;\ &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_make_env&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Make a virtual enviroment&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;virtualenv {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ENV_PATH&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_del_env&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Delete a virtual enviroment.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;rm -rf {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ENV_PATH&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_clone_pelican&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Clone Pelican from repository.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;git clone {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PELICAN_REPOSITORY&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_install&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Install Pelican in the virtual enviroment.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;lcd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PELICAN&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{0}/bin/python setup.py install&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ENV_PATH&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_browse&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Browse the local Apache site.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;firefox -new-window http://localhost/joedicastro.com 2&amp;gt;/dev/null &amp;amp;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_gen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;autoreload&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Generate the site from source.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{0}/bin/pelican {2} -s {1}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ENV_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CONFIG_FILE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                                              &lt;span class="s"&gt;&amp;quot;-r&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;autoreload&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_clean&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;Remove the output folder.&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;rm -rf {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OUTPUT&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_local_deploy&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Deploy to the local apache web server.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;rm  -rf {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LOCAL_WEB&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cp -r {0} {1}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OUTPUT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;LOCAL_WEB&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;pull_pelican&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Update Pelican to last revision from repository.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;lcd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PELICAN&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;git pull&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;bootstrap&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Get Pelican and install it in a virtual enviroment.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;warn_only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;_del_env&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_make_env&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;warn_only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;_clone_pelican&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_install&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;regen&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Regenerate the site from source.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;_clean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_gen&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_valid_HTML&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_local_deploy&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="nd"&gt;@hosts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;my_user@&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;PROD&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;publish&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Publish into remote web server with rsync.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;regen&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_browse&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;confirm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;¿Estas seguro de querer publicarlo?&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;rsync_project&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PROD_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;OUTPUT&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Create a new blog article.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;gedit --new-window {0}/site/source/blog/{1}.md 2&amp;gt;/dev/null &amp;amp;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+          &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;\ &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;firefox --new-window {0}/index.html &amp;amp;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OUTPUT&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;_gen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;img4web&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Optimize .jpg &amp;amp; .png images and copy them into source pictures dir.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;./img4web.py -d {0} {1} {2}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+          &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;site/source/pictures&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                 &lt;span class="s"&gt;&amp;quot;--delete&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;delete&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                 &lt;span class="s"&gt;&amp;quot;-s {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora, veremos el funcionamiento básico que nos permite este script. Primero 
+vemos las tareas que tenemos disponibles:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab -l
+&lt;span class="go"&gt;    fabfile.py: A fabric script for generate my personal blog&lt;/span&gt;
+
+&lt;span class="go"&gt;Available commands:&lt;/span&gt;
+
+&lt;span class="go"&gt;    bootstrap     Get Pelican and install it in a virtual enviroment.&lt;/span&gt;
+&lt;span class="go"&gt;    img4web       Optimize .jpg &amp;amp; .png images and copy them into source pict...&lt;/span&gt;
+&lt;span class="go"&gt;    new           Create a new blog article.&lt;/span&gt;
+&lt;span class="go"&gt;    publish       Publish into remote server with rsync.&lt;/span&gt;
+&lt;span class="go"&gt;    pull_pelican  Update Pelican to last revision from repository.&lt;/span&gt;
+&lt;span class="go"&gt;    regen         Regenerate the site from source.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Veamos que hacen cada una de ellas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;bootstrap&lt;/em&gt;&lt;/strong&gt; Si observamos el código, veremos que lo hace es, en este orden: 
+eliminar cualquier entorno virtual previo, crear un entorno virtual nuevo, 
+descargar Pelican desde el repositorio (si no lo hemos hecho anteriormente) e 
+instalar Pelican dentro de este entorno virtual. Y todo esto en un solo paso, casi 
+todos los comandos que explicaba en &lt;a href="/pelican-introduccion-e-instalacion.html"&gt;Pelican - Introducción e Instalación&lt;/a&gt; con 
+solo  teclear &lt;code&gt;fab bootstrap&lt;/code&gt;. Así de fácil. Con este comando podemos tanto crear 
+una instalación de Pelican desde cero, como actualizar la instalación de Pelican 
+después de actualizar este a la última versión con &lt;strong&gt;&lt;em&gt;pull-pelican&lt;/em&gt;&lt;/strong&gt;. Siguiendo 
+con nuestro ejemplo, lo que haría este comando es crear los directorios &lt;em&gt;env&lt;/em&gt; y 
+&lt;em&gt;pelican&lt;/em&gt; dentro de &lt;em&gt;myblog.com&lt;/em&gt; con el entorno virtual creado y pelican 
+instalado.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab bootstrap
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;img4web&lt;/em&gt;&lt;/strong&gt; Este comando hace uso del script que describía en &lt;a href="/optimizar-imagenes-para-la-web.html"&gt;Optimizar 
+imágenes para la web&lt;/a&gt; para hacer precisamente eso, reducir el peso de las 
+imágenes que empleo en los artículos. Lo que hago es a medida que voy escribiendo 
+el articulo es ir guardando las imágenes en el directorio raíz (en nuestro 
+ejemplo, &lt;em&gt;myblog.com/&lt;/em&gt;) y cuando lo termino, simplemente ejecuto el comando 
+&lt;code&gt;fab img4web&lt;/code&gt; y este me optimiza las imágenes, me guarda las optimizadas en el 
+directorio de imágenes del contenido (&lt;em&gt;myblog.com/site/source/pictures/&lt;/em&gt;) y me 
+elimina las imágenes originales del directorio raíz. Cuando termina me muestra un 
+resumen con la cantidad de imágenes procesadas y el ahorro en espacio conseguido. 
+Espacio en disco ahorrado que se resume en menos ancho de banda consumido y en 
+páginas web que se cargan más rápido.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab img4web
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;new&lt;/em&gt;&lt;/strong&gt; Con este creo o edito los artículos del blog. Realiza 
+tres funciones: me abre una venta de Gedit con el articulo que le indico con la 
+extensión &lt;code&gt;.md&lt;/code&gt;, me abre una ventana de Firefox que me muestra el fichero 
+&lt;em&gt;index.html&lt;/em&gt; del directorio del sitio generado por Pelican 
+(&lt;em&gt;myblog.com/site/output/index.html&lt;/em&gt;) y finalmente me activa Pelican con la 
+opción &lt;code&gt;autoreload&lt;/code&gt;. Luego empleando el plugin &lt;strong&gt;Grid&lt;/strong&gt; de Compiz, divido la 
+pantalla en dos mitades y coloco a la izquierda Gedit y a la derecha Firefox. 
+Esto me permite, como explicaba en &lt;a href="/de-drupal-a-pelican.html"&gt;De Drupal a Pelican&lt;/a&gt; editar el contenido 
+y previsualizar el resultado casi en tiempo real, disponiendo al mismo tiempo de 
+un buen corrector ortográfico. &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab new:&lt;span class="s2"&gt;&amp;quot;Articulo de prueba&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;publish&lt;/em&gt;&lt;/strong&gt; El más importante, el que sube los artículos al servidor web. 
+Publicar el contenido de la web es tan sencillo como ejecutar este comando. Lo 
+que hace es regenerar el contenido (por si hubiera algún cambio sin guardar) y 
+luego mostrarme el resultado en firefox. Pero el resultado que me muestra no es 
+el del directorio de salida de Pelican, si no de una copia que tengo en un 
+servidor Apache local. Esto me permite ver los cambios de manera más fiel a la 
+versión web, puesto que hace uso del fichero .htaccess y de las reglas que tengo 
+establecidas en él. Finalmente me pregunta si realmente deseo publicar el 
+contenido, por si se me hubiera escapado algo. Si le digo que no, aborta la 
+publicación, pero si le digo que si, me sincroniza el contenido de la carpeta 
+local con la remota empleando &lt;strong&gt;rsync&lt;/strong&gt;. De esta manera solo se transmiten los 
+ficheros nuevos, se borran los que se hayan eliminado en local y &lt;strong&gt;solo transmite 
+la parte que haya cambiado de los archivos modificados&lt;/strong&gt;. Gracias a esto, 
+modificar o añadir contenido es cuestión de segundos. Y sencillisimo.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab publish
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;pull_pelican&lt;/em&gt;&lt;/strong&gt; Nos sirve para actualizar Pelican a la última revisión 
+disponible en el repositorio oficial. Si después de ejecutarlo, queremos instalar 
+la nueva versión en nuestro entorno virtual para poder emplearla, simplemente 
+tenemos que volver a ejecutar &lt;code&gt;fab bootstrap&lt;/code&gt; y todo se realizará de forma 
+automática.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab pull_pelican
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;regen&lt;/em&gt;&lt;/strong&gt; El proceso principal, es el que le pide a Pelican que genere el 
+sitio web a partir de nuestro directorio de origen. También realiza varios 
+procesos: primero eliminar el directorio de salida actual (para tener una copia 
+fresca), genera el nuevo contenido, luego procesa los archivos para que 
+validen en HTML5 y finalmente hace una copia del directorio de salida a mi 
+servidor local Apache. El procesar los archivos para validar en HTML5 se debe a 
+que markdown crea unos enlaces &lt;code&gt;rel="footnote"&lt;/code&gt; y &lt;code&gt;rev="footnote"&lt;/code&gt; en las notas 
+al pie que se han quedado obsoletos y no son necesarios. De momento es un 
+post-procesado, pero puede que finalmente modifique Pelican para que se haga en 
+tiempo de generación del sitio. Aunque creo que  el rendimiento de esta manera 
+sería menor que emplear el comando &lt;code&gt;sed&lt;/code&gt; que ejecuta este proceso, será cuestión 
+de probarlo. También se podría modificar markdown.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Con solo &lt;strong&gt;6&lt;/strong&gt; comandos tengo automatizadas todas las tareas básicas para 
+administrar y crear contenido en mi blog. Ni siquiera el potente y buenísimo 
+&lt;a href="http://drupal.org/project/drush"&gt;drush&lt;/a&gt; de Drupal me permitía este nivel de automatización (aunque se 
+acercaba bastante). De esta manera solo me tengo que preocupar de crear 
+artículos y de las posibles personalizaciones que le quiera realizar al tema del 
+sitio. Me olvido de todo lo demás, de todo lo que conlleva un CMS. Solo hay una 
+manera de bloguear más cómoda para los que a estos les parezca algo complejo, 
+servicios como Tumblr. Aunque si quieres tener el control sobre tu sitio, no 
+conozco manera más cómoda y con más ventajas que esta. &lt;/p&gt;</summary><category term="Pelican"></category><category term="python"></category><category term="markdown"></category><category term="reStructuredText"></category><category term="blog"></category><category term="HTML"></category><category term="rsync"></category><category term="fabric"></category></entry><entry><title>Pelican - Creación de contenido</title><link href="http://joedicastro.com/pelican-creacion-de-contenido.html" rel="alternate"></link><updated>2011-06-27T18:27:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-06-27:/pelican-creacion-de-contenido.html/</id><summary type="html">&lt;p&gt;Crear contenido con &lt;strong&gt;Pelican&lt;/strong&gt; es lo más sencillo que uno pueda imaginarse. Por 
+ejemplo, crear este articulo, se puede hacer del siguiente modo. Abrimos un 
+editor de textos cualquiera (por ejemplo vi o gedit) y creamos un archivo nuevo 
+llamado Pelican, con la extensión &lt;em&gt;.md&lt;/em&gt; si queremos emplear Markdown o &lt;em&gt;.rst&lt;/em&gt; si 
+queremos emplear reStructuredText. Vemos como lo haría, para este blog en 
+concreto. Este sería el texto para crearlo en formato reStructuredText:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gh"&gt;Pelican - Creación de contenido&lt;/span&gt;
+&lt;span class="gh"&gt;###############################&lt;/span&gt;
+
+&lt;span class="nc"&gt;:tags:&lt;/span&gt; &lt;span class="nf"&gt;Pelican, python, markdown, reStructuredText, blog, HTML.&lt;/span&gt;
+
+Crear contenido con &lt;span class="gs"&gt;**Pelican**&lt;/span&gt; es lo más sencillo que uno pueda imaginarse. Por 
+ejemplo, crear este articulo, se puede hacer del siguiente modo. Abrimos un 
+editor de textos cualquiera (por ejemplo vi o gedit) y creamos un archivo nuevo 
+llamado Pelican, con la extensión &lt;span class="ge"&gt;*.md*&lt;/span&gt; si queremos emplear Markdown o &lt;span class="ge"&gt;*.rst*&lt;/span&gt; si 
+queremos emplear reStructuredText.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y este el que usaría para crearlo en markdown, que es el que yo empleo:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;title: Pelican - Creación de contenido
+tags: Pelican, python, markdown, reStructuredText, blog, HTML, Piwik, Disqus.
+
+Crear contenido con **Pelican** es lo más sencillo que uno pueda imaginarse. Por 
+ejemplo, crear este articulo, se puede hacer del siguiente modo. Abrimos un 
+editor de textos cualquiera (por ejemplo vi o gedit) y creamos un archivo nuevo 
+llamado Pelican, con la extensión *.md* si queremos emplear Markdown o *.rst* si 
+queremos emplear reStructuredText. Vemos como lo haría, para este blog en 
+concreto.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora solo tendríamos que guardar este fichero en la carpeta raíz de nuestro 
+contenido y ejecutar Pelican para generar la página web resultante. Así de 
+sencillo. Por ejemplo, creamos una carpeta &lt;em&gt;prueba&lt;/em&gt; dentro de la estructura de 
+ficheros que habíamos creado en el &lt;a href="/pelican-introduccion-e-instalacion.html"&gt;articulo anterior&lt;/a&gt; (&lt;em&gt;myblog.com/&lt;/em&gt;) y 
+guardamos allí este fichero. Ahora ejecutamos pelican dentro del entorno virtual 
+y nos creara una carpeta &lt;em&gt;output&lt;/em&gt; donde como resultado tendremos un blog por 
+defecto creado como por arte de magia. Es decir, hacemos esto:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir prueba
+&lt;span class="gp"&gt;$&lt;/span&gt; vi prueba/pelican.md
+&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;source  &lt;/span&gt;env/bin/activate
+&lt;span class="gp"&gt;$&lt;/span&gt; pelican prueba/
+&lt;span class="gp"&gt;$&lt;/span&gt; ls
+&lt;span class="go"&gt;env  output  pelican  prueba  site  temp&lt;/span&gt;
+&lt;span class="gp"&gt;$&lt;/span&gt; firefox output/index.html
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;y obtenemos esto:&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;img src="pictures/sample_article.png" 
+alt="pelican sample article" title="pelican sample article" width=700 
+height=465 /&gt;&lt;/p&gt;
+
+&lt;h3 id="estructura_del_articulo"&gt;Estructura del articulo&lt;/h3&gt;
+&lt;p&gt;En el ejemplo anterior lo único que varía entre ambos formatos (aparte de la 
+sintaxis) es la cabecera del mismo. En la cabecera se incluye el titulo del 
+mismo (no tiene porque coincidir con el nombre del fichero) y los metadatos. El 
+titulo en reStructuredText va subrayado con símbolos &lt;code&gt;#&lt;/code&gt; y en markdown es un 
+metadato más. Excepto el título, todos los metadatos son opcionales. Los 
+metadatos en &lt;em&gt;.rst&lt;/em&gt; van precedidos de dos puntos &lt;code&gt;:&lt;/code&gt;. Después de los metadatos 
+es suficiente con dejar una linea en blanco para comenzar a redactar el 
+contenido de nuestro articulo. &lt;/p&gt;
+&lt;p&gt;Los metadatos que se pueden incorporar son los siguientes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;title&lt;/strong&gt; (solo como metadato en markdown): Es el titulo del artículo o página.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;date&lt;/strong&gt;: Es la fecha y hora de publicación. Si no se indica, tomara como tal 
+los valores del propio fichero de texto.  El formato es el siguiente: 
+año-mes-dia hora:minutos, es decir, &lt;code&gt;%Y-%m-%d %H:%M&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;category&lt;/strong&gt;: La categoría en la que queremos englobar el articulo. Si no se 
+especifica, puede coger la categoría por defecto que se haya especificado en el 
+fichero de configuración si así se ha establecido (por defecto es &lt;em&gt;misc&lt;/em&gt;). Otra 
+forma aún más simple, es crear un directorio dentro de nuestro directorio de 
+contenido y colgar los archivos dentro de él. Todos los que se encuentren dentro 
+de ese directorio caerán en la categoría que coincida con el nombre del mismo. 
+Así es como yo lo hago, con un directorio llamado blog, es idoneo para organizar 
+el contenido. &lt;/p&gt;
+&lt;p&gt;En el tema por defecto, las categorías se añaden como una entrada al menú 
+superior que al ser seleccionada, muestra todos los artículos englobados dentro 
+de ella.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;author / authors&lt;/strong&gt;: El autor(es) del articulo. Si se omite, escoge por 
+defecto el que se haya establecido en el fichero de configuración. Yo lo omito, 
+pero puede ser muy útil para blogs escritos por varios autores.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;tags&lt;/strong&gt;: Las etiquetas con las que etiquetamos a nuestro articulo. El tema 
+por defecto solo nos permite seleccionar una y ver todos los artículos 
+etiquetados de igual modo, pero es bastante sencillo crear una nube de etiquetas 
+como la que empleo en este blog.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;summary&lt;/strong&gt;: Es el resumen que queremos que se vea del articulo cuando se 
+emplea la paginación. Por defecto, si no se especifica este campo, los artículos 
+se resumen con las primeras 50 palabras del mismo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;slug&lt;/strong&gt;: Esta es uno de los campos más curiosos, pero al mismo tiempo más 
+geniales. Este campo es el nexo que nos permite enlazar varias versiones del 
+mismo articulo en distintos idiomas. En el tema por defecto, nos muestra las 
+distintas traducciones de un articulo, si es que existen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;status&lt;/strong&gt;: Esta es un campo especial que solo admite dos valores, &lt;code&gt;draft&lt;/code&gt; 
+(borrador) y &lt;code&gt;published&lt;/code&gt; (publicado). Cualquier otro valor es ignorado. Si el 
+valor es &lt;code&gt;draft&lt;/code&gt;, el articulo o pagina no aparece publicado ni referenciado de 
+algún modo al generar el contenido, y solo está disponible si accedemos a él a 
+través del directorio &lt;em&gt;drafts/&lt;/em&gt;. Esto es una ayuda para evitar que por un 
+descuido subamos a la web un articulo sin terminar. Yo no lo empleo, ya veremos 
+cuando hable de le automatización, como he resuelto este posible problema de 
+otro modo. Si lo empleamos, deberíamos añadir el directorio &lt;em&gt;drafts/&lt;/em&gt; a nuestro 
+fichero &lt;em&gt;robots.txt&lt;/em&gt; como &lt;code&gt;Disallow&lt;/code&gt; para que no fuera indexado por los 
+buscadores (de poco importaría ocultar el el borrador si lo haces accesible a 
+través del buscador). &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Para comprender el resto de opciones disponibles para crear el contenido, voy a 
+centrarme en el sitio de ejemplo que viene por defecto con Pelican. Empezaremos 
+eliminando las pruebas que acabamos de realizar.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; rm -r output/
+&lt;span class="gp"&gt;$&lt;/span&gt; rm -r prueba/
+&lt;span class="gp"&gt;$&lt;/span&gt; ls
+&lt;span class="go"&gt;env  pelican  site&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="estructura_del_contenido_del_ejemplo"&gt;Estructura del contenido del ejemplo&lt;/h3&gt;
+&lt;p&gt;Ahora, en el directorio de contenido del sitio de ejemplo, tenemos la siguiente 
+estructura de ficheros:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;site/
+&lt;span class="gp"&gt;$&lt;/span&gt; tree &lt;span class="nb"&gt;source&lt;/span&gt;/
+&lt;span class="go"&gt;source/&lt;/span&gt;
+&lt;span class="go"&gt;├── another_super_article-fr.rst&lt;/span&gt;
+&lt;span class="go"&gt;├── another_super_article.rst&lt;/span&gt;
+&lt;span class="go"&gt;├── cat1&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── article1.rst&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── article2.rst&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── article3.rst&lt;/span&gt;
+&lt;span class="go"&gt;│   └── markdown-article.md&lt;/span&gt;
+&lt;span class="go"&gt;├── draft_article.rst&lt;/span&gt;
+&lt;span class="go"&gt;├── extra&lt;/span&gt;
+&lt;span class="go"&gt;│   └── robots.txt&lt;/span&gt;
+&lt;span class="go"&gt;├── pages&lt;/span&gt;
+&lt;span class="go"&gt;│   └── test_page.rst&lt;/span&gt;
+&lt;span class="go"&gt;├── pictures&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── Fat_Cat.jpg&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── Sushi.jpg&lt;/span&gt;
+&lt;span class="go"&gt;│   └── Sushi_Macro.jpg&lt;/span&gt;
+&lt;span class="go"&gt;├── super_article.rst&lt;/span&gt;
+&lt;span class="go"&gt;├── unbelievable.rst&lt;/span&gt;
+&lt;span class="go"&gt;└── unwanted_file&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Donde:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;another_super_article-fr.rst&lt;/em&gt;&lt;/strong&gt; y &lt;strong&gt;&lt;em&gt;another_super_article.rst&lt;/em&gt;&lt;/strong&gt; son dos 
+versiones del mismo articulo en inglés y francés. Aunque cuelgan del directorio 
+raíz, ambos están englobados dentro del sitio en la categoría &lt;em&gt;bar&lt;/em&gt; a través del
+metadato &lt;strong&gt;category&lt;/strong&gt; y enlazados traducciones mediante el metadato &lt;strong&gt;slug&lt;/strong&gt; 
+&lt;code&gt;:slug: oh-yeah&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;draft_article.rst&lt;/em&gt;&lt;/strong&gt; es un articulo que no aparece publicado en el sitio 
+de ejemplo al estar marcado como borrador con el metadato &lt;strong&gt;status&lt;/strong&gt;, pero al 
+que podemos acceder igualmente a través de 
+&lt;code&gt;myblog.com/site/source/drafts/a-draft-article.html&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;super_article.rst&lt;/em&gt;&lt;/strong&gt; y  &lt;strong&gt;&lt;em&gt;unbelievable.rst&lt;/em&gt;&lt;/strong&gt; son ejemplos de uso de 
+metadados. El primero es un articulo que cuelga de la categoría &lt;em&gt;yeah&lt;/em&gt; y 
+que sirve como ejemplo del empleo de &lt;strong&gt;summary&lt;/strong&gt; y del uso de imágenes y 
+código. El segundo es un ejemplo de articulo sin más metadatos que la 
+fecha del mismo y de como cae en la categoría &lt;strong&gt;misc&lt;/strong&gt; por defecto.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;unwanted_file&lt;/em&gt;&lt;/strong&gt; es un articulo que no se procesa de ningún modo por 
+carecer de extensión que lo identifique como markdown o reStructuredText. Como 
+consecuencia este fichero ni siquiera se copia al sitio web generado. Puede ser 
+un truco útil para emplearlo como fichero de notas personales de cualquier tipo, 
+por ejemplo un recordatorio de como hemos definido la estructura de archivos, 
+una chuleta como usar marcado o reStructuredText, artículos pendientes, ...&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;cat1&lt;/em&gt;&lt;/strong&gt; Este directorio es un ejemplo de como todos los artículos que 
+cuelgan de él son englobados dentro de la categoría &lt;em&gt;cat1&lt;/em&gt; de forma automática. 
+Esto nos evita escribir el metadato &lt;strong&gt;category&lt;/strong&gt; en cada uno de ellos y nos 
+ayuda a clasificarlos en el directorio. Y nos muestra como se pueden mezclar 
+archivos markdown y reStructuredText sin ningún tipo de problemas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;extra&lt;/em&gt;&lt;/strong&gt; En esta carpeta (puede ser otra, es configurable) englobamos 
+archivos que queremos incluir en el sitio, pero que no han de ser procesados. 
+Como por ejemplo: .htaccess, .robots.txt, 
+&lt;a href="http://humanstxt.org/ES"&gt;.humans.txt&lt;/a&gt;, ... Esto puede cambiarse en el 
+fichero de configuración, especificando el origen dentro del directorio de 
+nuestro contenido y la ruta en la que queremos que esté en el sitio web. En 
+este caso, sería así en el fichero de configuración &lt;code&gt;pelican.conf.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;FILES_TO_COPY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;extra/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;pages&lt;/em&gt;&lt;/strong&gt; Serían las páginas estáticas del sitio, lo que no son artículos. 
+Este nombre de directorio está reservado para esta función por defecto. Por 
+ejemplo la página &lt;a href="pages/sobre-mi.html"&gt;&lt;em&gt;sobre mí&lt;/em&gt;&lt;/a&gt; que empleo en este blog, 
+sería una de estas páginas estáticas. En estas páginas no están disponibles los 
+comentarios. Si se especifica en el fichero de configuración, estas páginas 
+aparecerán como entradas en el menú principal del tema por defecto. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;pictures&lt;/em&gt;&lt;/strong&gt; Este es uno de los directorios que se pueden emplear para 
+albergar contenido estático como son las imágenes. Esto es configurable en el 
+fichero de configuración. En este caso lo que se guardan en el son las imágenes 
+empleadas en los artículos. Estas acabaran dentro del directorio 
+&lt;code&gt;static/pictures/&lt;/code&gt; de nuestro sitio. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Y ya está, es una estructura muy sencilla y que genera un resultado bastante 
+decente, comparado con los cientos de archivos que emplea (a parte de la BDD) 
+cualquier CMS como Wordpress o Drupal.&lt;/p&gt;
+&lt;p&gt;Si partiéramos de un blog ya creado, Pelican proporciona una herramienta, que 
+en nuestro caso estaría en &lt;em&gt;/myblog.com/pelican/tools/importer.py&lt;/em&gt; y que nos 
+permite importar artículos desde Wordpress o desde un fichero RSS y que nos 
+genera los contenidos en reStructuredText. Si quisiéramos emplear markdown, 
+existe una herramienta externa, &lt;a href="http://www.codefu.org/wiki/Main/Html2markdown"&gt;&lt;strong&gt;html2markdown&lt;/strong&gt;&lt;/a&gt; que nos permite obtener 
+un texto en markdown desde una página web. Otra herramienta similar a esta 
+última sería &lt;a href="http://www.aaronsw.com/2002/html2text/"&gt;html2text&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;No tiene más secreto que este, crear ficheros de texto plano en formato &lt;em&gt;.md&lt;/em&gt; o 
+&lt;em&gt;.rst&lt;/em&gt;, guardarlos en el directorio que empleamos para albergar el contenido 
+y generar el blog.&lt;/p&gt;</summary><category term="Pelican"></category><category term="python"></category><category term="markdown"></category><category term="reStructuredText"></category><category term="blog"></category><category term="HTML."></category></entry><entry><title>Pelican - Introducción e Instalación</title><link href="http://joedicastro.com/pelican-introduccion-e-instalacion.html" rel="alternate"></link><updated>2011-06-27T10:21:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-06-27:/pelican-introduccion-e-instalacion.html/</id><summary type="html">&lt;p&gt;&lt;a href="http://docs.notmyidea.org/alexis/pelican/"&gt;Pelican&lt;/a&gt; es un generador de sitios web con contenido estático. Está orientado 
+originalmente a la creación de blogs. &lt;strong&gt;Pelican&lt;/strong&gt; (Pelicano) es una anagrama de 
+la palabra francesa &lt;em&gt;Calepin&lt;/em&gt; que significa en español "cuaderno de notas" 
+(blog). Su creador y desarrollador principal es el programador francés 
+&lt;a href="http://blog.notmyidea.org/"&gt;Alexis Métaireau&lt;/a&gt;. Y es la aplicación que genera el contenido para este 
+blog. Personalmente le veo muchas ventajas frente a una plataforma de blogs 
+convencional como Wordpress o Drupal, como ya comentaba en mi &lt;a href="http://joedicastro.com/de-drupal-a-pelican.html"&gt;anterior articulo&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Pelican genera este contenido estático (páginas HTML) a partir de ficheros de 
+texto plano formateados en un lenguaje de marcado ligero como &lt;a href="http://es.wikipedia.org/wiki/Markdown"&gt;Markdown&lt;/a&gt; o 
+&lt;a href="http://es.wikipedia.org/wiki/ReStructuredText"&gt;reStructuredText&lt;/a&gt;. También crea fuentes RSS y Atom de los artículos. Y 
+dependiendo del tema empleado se pueden tener un archivo de los artículos 
+publicados, clasificación por categorías, nube de etiquetas, un &lt;a href="http://es.wikipedia.org/wiki/Blogroll"&gt;blogroll&lt;/a&gt;, 
+enlaces a redes sociales, botón para tweeter, paginación, traducciones, etc. 
+Aunque viene un tema completo por defecto y están disponibles &lt;a href="https://github.com/ametaireau/pelican-themes"&gt;algunos más&lt;/a&gt;, 
+se puede crear uno completamente personalizado desde cero. La creación de 
+estos temas se basa en el sistema de plantillas &lt;a href="http://jinja.pocoo.org/"&gt;jinja2&lt;/a&gt;, lo que nos 
+permite una gran flexibilidad. También disponemos de varios scripts que nos 
+proporcionan soporte para comentarios con &lt;a href="http://disqus.com"&gt;Disqus&lt;/a&gt; y de analíticas con 
+&lt;a href="http://www.google.com/intl/es/analytics/"&gt;Google Analytics&lt;/a&gt; ó &lt;a href="http://piwik.org/"&gt;Piwik&lt;/a&gt;. También nos permite generar ficheros PDFs de 
+los artículos automáticamente y mostrar los enlaces a ellos, siempre que los 
+artículos se hayan creado con reStructuredText.&lt;/p&gt;
+&lt;p&gt;Es un software muy joven, el primer commit en &lt;a href="https://github.com/ametaireau/pelican"&gt;GitHub&lt;/a&gt; data del 13 de Agosto de 
+2010, pero que ha evolucionado bastante rápido y que aún sigue desarrollándose a 
+un  buen ritmo. Es posible que por esto aún tenga alguna carencia o algún que 
+otro fallo, pero su autor es muy receptivo y acepta de buena gana las sugerencias, 
+informes de errores y colaboraciones de desarrollo. Cuenta con una documentación 
+bastante decente y actualizada. Alguno que otra cosa no está documentada, pero 
+lo veo normal dado el ritmo de desarrollo y de a quien va orientado un software 
+como este. Es muy sencilla su instalación y su utilización cuando se ha leído 
+esta, pero será mejor que lo explique con un ejemplo sobre la marcha.&lt;/p&gt;
+&lt;h3 id="instalaci+n_para_linux"&gt;Instalación (para Linux)&lt;/h3&gt;
+&lt;p&gt;La instalación del mismo es relativamente sencilla si no queremos complicarnos 
+la vida, siempre tenemos la última versión disponible en el &lt;a href="http://pypi.python.org/pypi/pelican/2.7.2"&gt;PyPi&lt;/a&gt;. Así que 
+instalarlo podría ser tan sencillo como esto:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; easy_install pelican
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Aunque recomiendo emplear &lt;a href="http://www.pip-installer.org/en/latest/index.html"&gt;&lt;code&gt;pip&lt;/code&gt;&lt;/a&gt; en lugar de &lt;code&gt;easy_install&lt;/code&gt;, de este modo:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pip install pelican
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;De todos modos desaconsejo emplear este método, me parece mejor solución, dada 
+la velocidad de desarrollo del software, emplear un entorno virtual para su 
+instalación. Un &lt;a href="http://www.virtualenv.org/en/latest/index.html"&gt;entorno virtual&lt;/a&gt; nos permite tener una versión de Python 
+independiente de la del resto del sistema, con sus propias librerías y con el 
+software instalado que nosotros deseemos. Todo esto solo estará disponible cuando 
+nos encontremos dentro de este entorno virtual, sin afectar al resto del 
+sistema. Y podemos eliminarlo o des/activarlo cuando deseemos. Es bastante más 
+sencillo de utilizar de lo que parece y es realmente potente. &lt;/p&gt;
+&lt;p&gt;Veamos, paso a paso, la forma en que yo lo instalaría.&lt;/p&gt;
+&lt;p&gt;Creamos una carpeta que contendrá Pelican, el entorno virtual y el sitio que 
+crearemos. Yo le daría el nombre de la URL del blog, por ejemplo, &lt;em&gt;myblog.com&lt;/em&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mdkir myblog.com
+&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;myblog.com
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Descargamos la revisión actual del repositorio de Pelican en GitHub. Esto nos 
+creara una carpeta llamada &lt;em&gt;pelican&lt;/em&gt; que contendrá una copia del repositorio en 
+local (lo cual nos será muy útil en el futuro para actualizarlo). &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git clone git://github.com/ametaireau/pelican.git
+&lt;span class="go"&gt;Cloning into pelican...&lt;/span&gt;
+&lt;span class="go"&gt;remote: Counting objects: 2603, done.&lt;/span&gt;
+&lt;span class="go"&gt;remote: Compressing objects: 100% (1143/1143), done.&lt;/span&gt;
+&lt;span class="go"&gt;remote: Total 2603 (delta 1541), reused 2420 (delta 1374)&lt;/span&gt;
+&lt;span class="go"&gt;Receiving objects: 100% (2603/2603), 687.30 KiB | 397 KiB/s, done.&lt;/span&gt;
+&lt;span class="go"&gt;Resolving deltas: 100% (1541/1541), done.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora vamos a crear nuestro entorno virtual. En caso de no tener instalado &lt;code&gt;pip&lt;/code&gt; 
+o &lt;code&gt;virtualenv&lt;/code&gt;, es rematadamente sencillo:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; easy_install pip
+&lt;span class="gp"&gt;$&lt;/span&gt; pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Voy a llamar &lt;em&gt;env&lt;/em&gt; a nuestro entorno virtual. Lo creamos así.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; virtualenv env
+&lt;span class="go"&gt;New python executable in env/bin/python&lt;/span&gt;
+&lt;span class="go"&gt;Installing distribute...........................................................&lt;/span&gt;
+&lt;span class="go"&gt;................................................................................&lt;/span&gt;
+&lt;span class="go"&gt;.......................................done.&lt;/span&gt;
+&lt;span class="gp"&gt;$&lt;/span&gt; ls
+&lt;span class="go"&gt;env  pelican&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora activaremos nuestro entorno virtual para "sumergirnos" dentro de él. &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;source &lt;/span&gt;env/bin/activate
+&lt;span class="go"&gt;(env)$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Vemos que aparece el nombre del entorno virtual entre paréntesis antes de la 
+línea del &lt;a href="http://es.wikipedia.org/wiki/Prompt"&gt;prompt&lt;/a&gt;. Eso quiere decir que 
+nos encontramos dentro de este entorno virtual. Ahora procederemos a instalar 
+Pelican. &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;pelican/
+&lt;span class="gp"&gt;$&lt;/span&gt; python setup.py install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora tenemos ya instalado Pelican, &lt;strong&gt;solo dentro de nuestro entorno virtual&lt;/strong&gt;. 
+Si probamos a llamar al programa fuera de él, veremos que no está disponible, 
+luego necesitaremos activar este entorno cada vez que queramos emplearlo.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pelican
+&lt;span class="go"&gt;CRITICAL: you need to specify a path containing the content (see pelican --help for &lt;/span&gt;
+&lt;span class="go"&gt;more information)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Nos da un error porque no le hemos pasado los parámetros necesarios. Ahora 
+desactivamos el entorno y volvemos a llamar al programa y nos dice que no 
+existe.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; deactivate
+&lt;span class="gp"&gt;$&lt;/span&gt; pelican
+&lt;span class="go"&gt;pelican: orden no encontrada&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Tenemos ahora dentro de &lt;em&gt;myblog.com/&lt;/em&gt; dos directorios, &lt;em&gt;env&lt;/em&gt; y &lt;em&gt;pelican&lt;/em&gt;. 
+Podríamos borrar ahora el directorio &lt;em&gt;pelican&lt;/em&gt; porque ya lo tenemos instalado 
+dentro del entorno virtual, pero sería bueno conservarlo para poder actualizarlo 
+en el futuro mediante &lt;code&gt;git pull&lt;/code&gt;. Yo crearía una tercer directorio, &lt;em&gt;site&lt;/em&gt; donde 
+se alojaría nuestro sitio, organizado a su vez en tres subdirectorios: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;source&lt;/strong&gt;: sería la carpeta donde alojaríamos los archivos de texto de 
+nuestro blog y todo aquello que quisiéramos que formara parte de nuestro sitio: 
+imágenes, fichero &lt;a href="http://es.wikipedia.org/wiki/Htaccess"&gt;.htacess&lt;/a&gt;, fichero &lt;a href="http://es.wikipedia.org/wiki/Robots.txt"&gt;robots.txt&lt;/a&gt;, páginas 
+personalizadas...&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;output&lt;/strong&gt;: El resultado del procesamiento de Pelican, es decir, nuestro blog.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;theme&lt;/strong&gt; : Sería el tema que usariamos para crear nuestro blog, en el 
+ estarían las plantillas &lt;strong&gt;jinja2&lt;/strong&gt;, las hojas de estilo .css, el contenido 
+ estático (iconos, imágenes), ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Luego, lo haríamos así:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; ..
+&lt;span class="gp"&gt;$&lt;/span&gt; mkdir -p site/source
+&lt;span class="gp"&gt;$&lt;/span&gt; mkdir site/output
+&lt;span class="gp"&gt;$&lt;/span&gt; mkdir site/theme
+&lt;span class="gp"&gt;$&lt;/span&gt; ls site/
+&lt;span class="go"&gt;output  source  theme&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ya está, tenemos instalado Pelican y creada nuestra estructura para empezar a 
+trabajar con él. Para eso nada mejor que crear un primer sitio de ejemplo. 
+Entramos en el entorno virtual y creamos el sitio que viene de ejemplo con 
+Pelican:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;source &lt;/span&gt;env/bin/activate
+&lt;span class="gp"&gt;$&lt;/span&gt; pelican pelican/samples/content/ -o site/output -s pelican/samples/pelican.conf.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y ahora si abrimos el fichero &lt;code&gt;myblog.com/site/output/index.html&lt;/code&gt; en un 
+navegador, veremos algo como esto (en la imagen se ve la categoría cat1 
+seleccionada):&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;img src="pictures/sample_blog.png" 
+alt="pelican sample blog" title="pelican sample blog" width=453 height=700 /&gt;&lt;/p&gt;
+
+&lt;p&gt;Es así de fácil de emplear Pelican, simplemente especificarle el directorio donde 
+está el origen del contenido, el directorio destino y el fichero de configuración. 
+Aunque con el fichero de configuración correctamente creado, solo será necesario 
+indicarle la ubicación del mismo. Para comprender mejor la estructura y como 
+funciona Pelican, sería buena idea copiar el tema, el fichero de configuración y 
+el contenido que han generado este sitio de ejemplo a la carpeta &lt;em&gt;site&lt;/em&gt; para no 
+empezar nuestro blog desde cero.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; cp -r pelican/samples/content/* site/source
+&lt;span class="gp"&gt;$&lt;/span&gt; cp -r pelican/pelican/themes/notmyidea/* site/theme/
+&lt;span class="gp"&gt;$&lt;/span&gt; cp pelican/samples/pelican.conf.py site/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En próximos artículos veremos como crear artículos, publicar el sitio, 
+personalizar el tema y automatizar todos estos procesos para hacerlo todo mucho 
+más sencillo. &lt;/p&gt;</summary><category term="Pelican"></category><category term="python"></category><category term="markdown"></category><category term="reStructuredText"></category><category term="blog"></category><category term="HTML"></category><category term="Piwik"></category><category term="Disqus"></category></entry><entry><title>De Drupal a Pelican</title><link href="http://joedicastro.com/de-drupal-a-pelican.html" rel="alternate"></link><updated>2011-06-22T02:10:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-06-22:/de-drupal-a-pelican.html/</id><summary type="html">&lt;p&gt;Este blog no está realizado con ningún &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt;, ni siquiera utiliza &lt;abbr title="Base de datos"&gt;BDD&lt;/abbr&gt; alguna, es 
+simplemente HTML + CSS y nada más. Es decir, es contenido estático, no dinámico.
+Hasta hace 3 días estaba funcionando con el mejor &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; &lt;a href="http://es.wikipedia.org/wiki/PHP"&gt;PHP&lt;/a&gt; que conozco, 
+&lt;a href="http://drupal.org"&gt;Drupal&lt;/a&gt;. Pero persiguiendo el camino hacia el minimalismo y la productividad 
+(fiel al espíritu &lt;a href="http://es.wikipedia.org/wiki/Principio_KISS"&gt;&lt;abbr title="Keep It Simple, Stupid (en español, &amp;quot;Mantenlo simple, estúpido&amp;quot;). Ver enlace"&gt;&lt;abbr title="Keep It Simple, Stupid (en español, &amp;quot;Mantenlo simple, estúpido&amp;quot;). Ver enlace"&gt;KISS&lt;/abbr&gt;&lt;/abbr&gt;&lt;/a&gt;) que ya inicie cuando &lt;a href="http://joedicastro.com/markdown-la-mejor-opcion-para-crear-contenidos-web.html"&gt;comencé a escribir todos mis 
+artículos en Drupal con Markdown&lt;/a&gt;, el siguiente paso era evidente. La pregunta
+era muy sencilla, si un blog consta de contenidos que rara vez cambian 
+(exceptuando los comentarios) ¿para que necesito un gestor de contenidos 
+dinámicos?&lt;/p&gt;
+&lt;p&gt;La respuesta es fácil, para nada. Actualmente, gracias a servicios como los de 
+&lt;a href="http://disqus.com"&gt;Disqus&lt;/a&gt;, &lt;a href="http://livefyre.com/"&gt;Livefyre&lt;/a&gt;, &lt;a href="http://intensedebate.com/"&gt;IntenseDebate&lt;/a&gt; ó &lt;a href="http://www.aboutecho.com/commenting"&gt;Echo&lt;/a&gt; es posible 
+externalizar el único contenido dinámico básico de un blog, los comentarios. 
+Todo lo demás puede ser contenido puramente estático, solo HTML y CSS, sin 
+renunciar a prácticamente nada de lo que nos ofrece un blog basado en un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; 
+como Wordpress o Drupal. Se pueden emplear scripts externos en javascript si se 
+desea, o insertarlos dentro del HTML. Lo que nos permite implementar lo mismo 
+que en un blog normal. Además se puede disponer también de feeds RSS y Atom.&lt;br /&gt;
+&lt;/p&gt;
+&lt;h2 id="elegir_un_generador_de_contenido_est+tico"&gt;Elegir un generador de contenido estático&lt;/h2&gt;
+&lt;p&gt;Evidentemente la idea no es crear las paginas HTML a mano, ni de broma, lo lógico 
+era seguir empleando la misma estrategia que ya había iniciado con Drupal, 
+emplear solo ficheros de texto en formato Markdown que nos generarán el HTML 
+necesario de forma automática. Entonces lo que tenía que encontrar era un 
+software que me permitiera hacer lo mismo que Drupal, pero sin toda la 
+parafernalia que rodea a un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt;. Un generador de sitios web estáticos (a partir 
+de markdown) y que a ser posible estuviera escrito en &lt;strong&gt;Python&lt;/strong&gt;, mi lenguaje 
+favorito. Como ya adelante en el &lt;a href="http://joedicastro.com/markdown-la-mejor-opcion-para-crear-contenidos-web.html"&gt;artículo sobre Markdown&lt;/a&gt;, existen varias opciones:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://docs.notmyidea.org/alexis/pelican/"&gt;Pelican&lt;/a&gt; de Alexis Métaireau, que emplea en su propio &lt;a href="http://blog.notmyidea.org/"&gt;blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.blogofile.com/"&gt;Blogofile&lt;/a&gt; de Ryan McGuire que también lo usa en su &lt;a href="http://www.enigmacurry.com/"&gt;blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://hyde.github.com/"&gt;Hyde&lt;/a&gt; de Lakshmi Vyas. Su &lt;a href="http://ringce.com/blog/"&gt;blog&lt;/a&gt; con Hyde también.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mitsuhiko/rstblog"&gt;rstblog&lt;/a&gt; de Armin Ronacher. Solo permite reStructuredText, con él crea su 
+&lt;a href="http://lucumr.pocoo.org/"&gt;blog&lt;/a&gt;, un ejemplo de elegancia y calidad.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bueno, tenía varias posibilidades, solo tenía que elegir una que se adaptara 
+mejor a mis necesidades. De entrada descarté &lt;strong&gt;rstblog&lt;/strong&gt; porque no permitía el 
+empleo de markdown, cuando los otros permitían tanto .rst como .md como formatos 
+de entrada. Solo me quedaban 3 candidatos. Así que lo primero que hice antes de 
+nada, fue buscar blogs creados con cada uno de ellos, para ver que posibilidades 
+reales ofrecían. Encontré ejemplos de blogs de mucha calidad de todos ellos. 
+Aunque enseguida me di cuenta de una cosa, en dos de ellos los mejores blogs lo 
+eran porque tenían una elevada personalización detrás (artículos de sus autores 
+contándolo). Y curiosamente con el tercero, casi todos preferían quedarse con la 
+configuración estándar, sin tocar prácticamente nada, y la verdad es que el 
+resultado era bastante decente. Luego miré que cargaba cada uno de ellos en la 
+página de entrada, y volvía a repetirse la misma tendencia. En los dos primeros 
+vi demasiadas hojas de estilo, imágenes y demasiados scripts javascript, en el 
+tercero, nuevamente se cargaban menos elementos. Finalmente comparé 
+características, modo de funcionamiento y le eché un vistazo rápido al código. 
+La impresión era otra vez la misma, dos de ellos, &lt;strong&gt;Hyde&lt;/strong&gt; y &lt;strong&gt;Blogofile&lt;/strong&gt; aunque 
+aparentemente potentes, los veía innecesariamente complejos, en cambió 
+&lt;strong&gt;Pelican&lt;/strong&gt; era bastante más sencillo. Otra forma de determinar su repercusión 
+era contar el número de descargas de cada una de las aplicaciones desde PyPi. 
+Los números son los siguientes (a 27 de Junio de 2011), obtenidos con 
+&lt;a href="https://github.com/aclark4life/vanity"&gt;Vanity&lt;/a&gt;:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Paquete&lt;/th&gt;
+&lt;th&gt;Descargas&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Blogofile&lt;/td&gt;
+&lt;td&gt;2.419&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hyde&lt;/td&gt;
+&lt;td&gt;1.945&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pelican&lt;/td&gt;
+&lt;td&gt;3.919&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;La elección final era Pelican y no me arrepiento en absoluto, la prueba es que 
+esté blog está funcionando gracias a él (Gracias Alexis!). Aunque las otras dos 
+son también muy buenas opciones, y seguramente serían la primera opción para más 
+de uno. Y siempre podría cambiar fácilmente, porque el contenido seguiría estando 
+guardado en ficheros de texto con marcado markdown. &lt;/p&gt;
+&lt;p&gt;No entraré en detalles ahora de como instalar y emplear &lt;strong&gt;Pelican&lt;/strong&gt;, eso lo dejo 
+para otro próximo articulo, &lt;a href="/pelican-introduccion-e-instalacion.html"&gt;Pelican&lt;/a&gt;. Pero si voy a hacer un repaso de los 
+pros y los contras de emplear Pelican frente a un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; como Drupal para crear un 
+blog.&lt;/p&gt;
+&lt;h2 id="ventajas_de_pelican_vs_cms"&gt;Ventajas de Pelican vs &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt;&lt;/h2&gt;
+&lt;h4 id="solo_ficheros_de_texto_no_bdd"&gt;Solo ficheros de texto, No &lt;abbr title="Base de datos"&gt;BDD&lt;/abbr&gt;&lt;/h4&gt;
+&lt;p&gt;Simplemente te tienes que preocupar de eso, ficheros de texto, es donde guardas 
+el contenido que creas. Todo lo demás lo genera Pelican por ti. Nada de crear y 
+gestiónar bases de datos, ni copias de seguridad de la misma y un montón de 
+espacio y recursos desaprovechado solamente para generar dinámicamente el mismo 
+contenido que te genera Pelican.&lt;/p&gt;
+&lt;h4 id="mejor_rendimiento_carga_de_p+gina_m+s_r+pida"&gt;Mejor rendimiento, carga de página más rápida&lt;/h4&gt;
+&lt;p&gt;Generar contenido dinámico es más caro en recursos y es más lento (consultas a 
+la &lt;abbr title="Base de datos"&gt;BDD&lt;/abbr&gt;). Sobre todo a medida que llenas tu &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; de personalizaciones y plugins. 
+¿Que hacen prácticamente todos los sistemas de caché?, generar contenido 
+estático para luego servirlo más rápidamente. ¿No es un poco estúpido crear 
+contenido que apenas cambia en el tiempo, en un sistema dinámico que genera ese 
+contenido cada vez y que para mejorar su rendimiento lo convierte en estático? 
+Y ya no hablemos de las múltiples hojas CSS, scripts javascript y enlaces a 
+contenido externo que cargan la mayoría de los &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; por defecto. Cada plugin que 
+añadimos pone su granito de arena y optimizar todo esto requiere dedicación y 
+esfuerzo (o seguir sumando aún más plugins en el mejor de los casos). Con 
+Pelican ya tienes directamente el contenido estático y menos recursos que 
+descargar. En este blog, sin contar con los ficheros javascript de Disqus y 
+Piwik, lo único que se descarga es un fichero HTML, una hoja CSS y las imágenes 
+que se incluyen en los artículos (cuando las hay). Es decir sirves el mismo 
+contenido pero generando menos tráfico desde tu servidor. &lt;/p&gt;
+&lt;h4 id="soporta_mejor_el_tr+fico"&gt;Soporta mejor el tráfico&lt;/h4&gt;
+&lt;p&gt;Cuando un sitio web soporta mucho tráfico, emplear un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; requiere de mucha 
+optimización y generalmente de mucha maquina o complejas instalaciones. Y la 
+base principal siempre es un sistema de caché que sirva contenido lo más 
+estático posible. Se cachea todo lo que se puede, y si es en memoria mejor. Las 
+&lt;abbr title="Base de datos"&gt;BDD&lt;/abbr&gt; son un problema aparte, desde soluciones NoSQL a clusters o &lt;abbr title="Base de datos"&gt;BDD&lt;/abbr&gt; distribuidas. 
+Con contenido estático no te tienes que preocupar de optimizar los accesos a la 
+&lt;abbr title="Base de datos"&gt;BDD&lt;/abbr&gt;, solo de tener un buen servidor web y si quieres, cachear en memoria o 
+ampliar máquina. Pero poco más.&lt;/p&gt;
+&lt;h4 id="seguridad"&gt;Seguridad&lt;/h4&gt;
+&lt;p&gt;Olvídate de problemas de seguridad, los únicos agujeros de seguridad de un sitio 
+con contenido estático están del lado del servidor web, de todo lo demás, te 
+olvidas. Establece bien los permisos en el sistema de ficheros y punto. El único 
+contenido dinámico del sitio (javascript) ni siquiera es algo que deba 
+preocuparte, es algo externo que le concierne a &lt;strong&gt;Disqus&lt;/strong&gt; o al sistema de 
+analíticas web que elijas (Google Analytics o Piwik).&lt;/p&gt;
+&lt;h4 id="olvidarse_de_gestionar_un_cms_mantenimiento_mucho_m+s_sencillo_nulo"&gt;Olvidarse de gestionar un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt;. Mantenimiento mucho más sencillo (nulo)&lt;/h4&gt;
+&lt;p&gt;Instalar el &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt;, crear la &lt;abbr title="Base de datos"&gt;BDD&lt;/abbr&gt;, encontrar, instalar y probar los plugins que 
+necesitas, actualizaciones, actualizaciones de seguridad, personalizaciones, 
+temas... Todo lo que rodea a cualquier &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt;. Y ya no digamos si hablamos de un 
+&lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; potente y complejo como Drupal, con cientos de posibilidades. Y sin olvidar 
+toda la basura que se va acumulando en las &lt;abbr title="Base de datos"&gt;BDD&lt;/abbr&gt; tras varias actualizaciones y 
+múltiples pruebas de plugins, con Pelican siempre tienes un sistema limpio. 
+Todo eso lo olvidas con Pelican, lo instalas, personalizas y automatizas una 
+sola vez, luego te olvidas de todo lo que no sea escribir (si quieres, nada te 
+impide seguir cambiándolo y mejorándolo). Emplea tú tiempo en crear contenido.&lt;/p&gt;
+&lt;h4 id="backups_m+s_sencillos"&gt;Backups más sencillos&lt;/h4&gt;
+&lt;p&gt;Con un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; &lt;abbr title="No hacerlas es una decisión nefasta"&gt;deberías hacer Backups&lt;/abbr&gt; del servidor web tanto del sistema de ficheros 
+como de la &lt;abbr title="Base de datos"&gt;BDD&lt;/abbr&gt;. Y sería aconsejable tener un servidor web local montado para 
+probar los cambios que vayas a hacer en el &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; sin miedo a romper nada. Con 
+Pelican ni siquiera necesitas hacer Backups del servidor ni del contenido web. 
+Todo lo que necesitas para generarlo ya está en tu ordenador en esos ficheros de 
+texto. Incluso si empleas un tema propio, también está en tu equipo. Así que las 
+copias de seguridad de tu sitio web no son distintas a las que 
+&lt;abbr title="No me digas que aún no las haces, ¿estas de broma?"&gt;regularmente ya haces&lt;/abbr&gt; de tu ordenador personal.&lt;/p&gt;
+&lt;h4 id="hosting_en_cualquier_sitio"&gt;Hosting en cualquier sitio&lt;/h4&gt;
+&lt;p&gt;Solo tienes que alojar contenido estático, no necesitas &lt;abbr title="Base de datos"&gt;BDD&lt;/abbr&gt; ni soporte para 
+ningún lenguaje o librería en particular. Puedes hasta utilizar recursos 
+gratuitos como las páginas de &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; o &lt;a href="http://bitbucket.org/"&gt;BitBucket&lt;/a&gt; o un sistema 
+de ficheros en la nube económico como &lt;a href="http://aws.amazon.com/es/s3/"&gt;Amazon S3&lt;/a&gt; (o 
+&lt;a href="http://aws.amazon.com/es/cloudfront/"&gt;Amazon CloudFront&lt;/a&gt;). Solo necesitas eso, servir ficheros, nada más. Hasta 
+el hosting más económico te sirve. &lt;/p&gt;
+&lt;h4 id="emplear_un_cvs_para_gestionarlo"&gt;Emplear un &lt;abbr title="Control Version System (en español, &amp;quot;Sistema de Control de Versiones&amp;quot;)"&gt;CVS&lt;/abbr&gt; para gestionarlo&lt;/h4&gt;
+&lt;p&gt;Poder emplear Git o Mercurial o cualquier otro &lt;abbr title="Control Version System (en español, &amp;quot;Sistema de Control de Versiones&amp;quot;)"&gt;CVS&lt;/abbr&gt; para gestionar los cambios 
+del blog no tiene precio. Ningún sistema de revisiones de &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; es tan potente. 
+Además tienes la posibilidad de crear un &lt;em&gt;hook&lt;/em&gt; para que al enviar un commit 
+después de crear un articulo (o realizar un cambio) se suba el contenido 
+automáticamente al servidor. Con esto realizar cualquier cambio o revertir un 
+error es algo trivial. Además te permite subir una copia a un sitio como GitHub 
+o BitBucket y tenerlo siempre disponible en cualquier sitio con conexión a la 
+red. Como maravillosa opción, esto permite que el contenido de un blog, incluso 
+de un mismo articulo, sea editado por más de una persona de manera bastante más 
+sencilla, potente y menos propensa a errores que con un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt;. &lt;/p&gt;
+&lt;h4 id="crear_los_articulos_off-line"&gt;Crear los articulos off-line&lt;/h4&gt;
+&lt;p&gt;Eso te permite ir creando los artículos al ritmo que te de la gana, cuando 
+quieras y en cualquier sitio con un portátil. No necesitas estar conectado a la 
+red. Esto también puede hacerse con un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt;, pero suele ser más complejo 
+(exceptuando emplear cortar y pegar) e inseguro (si se habilita el envío remoto 
+de artículos). Yo lo había logrado en Drupal empleando markdown, pero seguía 
+necesitando un segundo paso on-line para personalizar las etiquetas. &lt;/p&gt;
+&lt;h4 id="edici+n_de_art+culos_m+s_c+moda"&gt;Edición de artículos más cómoda&lt;/h4&gt;
+&lt;p&gt;Puede parecer que un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; con su editor WYSIWYG es más cómodo, pero todo lo 
+contrario. Ya lo comentaba en el &lt;a href="http://joedicastro.com/markdown-la-mejor-opcion-para-crear-contenidos-web.html"&gt;artículo sobre markdown&lt;/a&gt;. Pero es que 
+además me proporciona una mejor experiencia de edición y más potente. Explico 
+como redacto yo los artículos para que se entienda mejor. Divido la pantalla en 
+dos mitades, a la izquierda el editor de textos y a la derecha el navegador. 
+Como editor de textos empleo Gedit, que tiene resaltado de texto para markdown y 
+un corrector ortográfico (por esto no uso vim para esto) bastante mejor que el 
+de Firefox (que solo examina el texto hasta cierto número de casos dudosos). 
+Además Pelican tiene una maravillosa opción, &lt;code&gt;autoreload&lt;/code&gt; que lo hace correr en 
+segundo plano y cuando detecta un cambio en uno de los ficheros, vuelve a generar 
+el contenido. Entonces en gedit le digo que autoguarde el contenido cada 3 
+minutos (o a voluntad, manualmente) y cuando Pelican lo detecta, automáticamente 
+regenera los ficheros HTML. Como navegador empleo Firefox y tengo, abierto en 
+una pestaña, el fichero &lt;code&gt;index.html&lt;/code&gt; que genera Pelican y empleando la extensión 
+&lt;a href="https://addons.mozilla.org/es-ES/firefox/addon/auto-reload/?src=api"&gt;Auto Reload&lt;/a&gt; el contenido de la página (en local) se actualiza 
+automáticamente al detectar un cambio en el fichero. Es decir, como en la 
+primera página se puede ver el contenido completo del último articulo, lo que 
+estoy viendo es una previsualización automática del contenido en la página cada 
+3 minutos. Y todo esto en off-line, sin estar conectado a internet. Esto si es 
+un verdadero editor WYSIWYG, y no los otros. Además, que demonios, los 
+navegadores no se diseñaron para crear texto, cualquier editor de texto es más 
+potente.&lt;/p&gt;
+&lt;h4 id="control_del_spam"&gt;Control del Spam&lt;/h4&gt;
+&lt;p&gt;El Spam, esa lacra que azota toda la web. En Pelican, ese problema, lo tiene que 
+gestionar Disqus, no tú. Tú solo tienes que gestionar el poco que se le escape. 
+Pero el buscar un plugin, configurarlo y que funcione bien, es algo de lo que no 
+tienes que preocuparte. En Drupal tenía este asunto solucionado, pero fue cosa 
+de probar varios plugins, hasta que al final &lt;a href="http://joedicastro.com/combatir-el-spam-en-drupal.html"&gt;di con uno que me lo solucionaba de
+verdad&lt;/a&gt;. &lt;/p&gt;
+&lt;h4 id="recursos_de_cpu_y_ram"&gt;Recursos de CPU y RAM&lt;/h4&gt;
+&lt;p&gt;El contenido dinámico consume mucha más memoria RAM y CPU en el servidor que 
+servir contenido estático. Al fin y al cabo, en el caso del contenido estático, 
+es poco más complejo que servir ficheros. Si tienes que compartir el servidor 
+con más proyectos, agradecerás no tener que emplear un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; para servir el blog.&lt;/p&gt;
+&lt;h4 id="resaltado_de_sintaxis_incorporada_con_pygments"&gt;Resaltado de Sintaxis incorporada con Pygments&lt;/h4&gt;
+&lt;p&gt;Mientras en la mayoría de &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; necesitas un plugin para habilitar el resaltado de 
+sintaxis para código fuente, en Pelican esto viene por defecto empleando el 
+excelente &lt;a href="http://pygments.org/"&gt;Pygments&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="cumplimiento_de_est+ndares_web"&gt;Cumplimiento de Estándares Web&lt;/h4&gt;
+&lt;p&gt;Con Pelican es relativamente sencillo configurar el tema para que cumpla los 
+estándares web y genere contenido valido. Y una vez que lo haces, es para 
+siempre, a no ser que modifiques algo en el tema, todo el contenido que generes 
+cumplirá con los estándares (a no ser que incluyas HTML dentro que no lo sea). 
+De este modo, este sitio valida HTML5, CSS3 y genera feeds RSS y Atom validos. 
+Conseguir esto con un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; y empleando editores WYSIWYG es bastante más complejo
+y doloroso. Aunque yo lo había conseguido con Drupal y markdown, tuve que 
+modificar un tema casi por completo, casi como crearlo desde cero. &lt;/p&gt;
+&lt;h2 id="inconvenientes_de_pelican_vs_cms"&gt;Inconvenientes de Pelican vs &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt;&lt;/h2&gt;
+&lt;h4 id="comentarios_sin_resaltado_de_sintaxis"&gt;Comentarios sin resaltado de sintaxis&lt;/h4&gt;
+&lt;p&gt;Algo que me permitía Drupal y no me permite Disqus (por ahora) era emplear 
+markdown en los comentarios y resaltado de sintaxis para el código fuente. Es el 
+mayor inconveniente que he encontrado hasta ahora. Pero bueno, tampoco es algo 
+imprescindible y esperemos que Disqus lo soporte en un futuro.&lt;/p&gt;
+&lt;h4 id="sitemap"&gt;Sitemap&lt;/h4&gt;
+&lt;p&gt;Tampoco Pelican genera sitemaps en xml para los buscadores. Aunque tampoco es 
+algo imprescindible y Drupal tampoco lo soporta por defecto, si no a través de 
+un módulo. El autor lo tiene como tarea pendiente, y si tarda mucho, a lo mejor 
+me animo y lo creo yo mismo.&lt;/p&gt;
+&lt;h4 id="personalizaci+n_m+s_sencilla_para_non_geeks"&gt;Personalización más sencilla para non geeks&lt;/h4&gt;
+&lt;p&gt;Esta es la parte que menos me afecta, pero es el gran inconveniente para la gran 
+mayoría sin conocimientos avanzados. Aunque Pelican no es difícil de instalar y 
+configurar, si queremos personalizarlo bastante, la cosa cambia. Los &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; son 
+mucho más sencillos en ese sentido, pero el coste a pagar por otro lado no me 
+compensa. &lt;/p&gt;
+&lt;h4 id="no_tiene_b+squeda_incorporada"&gt;No tiene búsqueda incorporada&lt;/h4&gt;
+&lt;p&gt;Es otro pequeño inconveniente que puede suplirse empleando la de Google AdSense 
+en el sitio, por ejemplo. Personalmente no me importa demasiado, teniendo 
+disponibles en el sitio recursos como el archivo de todos los artículos 
+publicados o la nube de etiquetas.&lt;/p&gt;
+&lt;h4 id="no_puedes_personalizar_el_contenido_din+micamente"&gt;No puedes personalizar el contenido dinámicamente&lt;/h4&gt;
+&lt;p&gt;Con un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; puedes hacer cosas como mostrar un contenido o un tema distinto según 
+el perfil del usuario, o según la carga del servidor, etc. Con contenido 
+estático lógicamente no puedes hacer esto. A mi me da igual, no lo necesito, es 
+solo un blog.&lt;/p&gt;
+&lt;br /&gt;
+
+&lt;p&gt;Llevo varios años empleando Drupal en varios sitios y me sigue pareciendo un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; 
+excelente y una buenísima opción para generar contenido dinámico para no 
+desarrollladores (de otro modo prefiero un framework como Django). Pero 
+actualmente, para crear blogs, si se tienen conocimientos suficientes, emplear 
+un &lt;abbr title="Content Management System (en español, &amp;quot;Sistema de gestión de contenidos&amp;quot;)"&gt;CMS&lt;/abbr&gt; me parece una decisión poco acertada, es matar moscas a cañonazos. Hoy en 
+día hay soluciones como Pelican y las mencionadas arriba (y otras alternativas 
+en otros lenguajes) que te permiten crear blogs con facilidad, centrándote 
+únicamente en crear los artículos y automatizar todo lo demás. ¿Acaso esa no es 
+la razón principal del grandisimo éxito de &lt;a href="http://twitter.com/"&gt;twitter&lt;/a&gt; o &lt;a href="http://www.tumblr.com/"&gt;tumblr&lt;/a&gt;? 
+La inmediatez de los resultados y la delegación de la gestión a terceros, tú 
+solo escribes. Pelican te permite lo mismo, solo requiere la personalización 
+inicial y listo, con la ventaja añadida de que puedes personalizarlo a tu gusto 
+y hasta donde te dé la gana o seas capaz.&lt;/p&gt;</summary><category term="markdown"></category><category term="reStructuredText"></category><category term="Pelican"></category><category term="Drupal"></category><category term="cms"></category><category term="python"></category><category term="blog"></category><category term="HTML"></category></entry><entry><title>Comparativa de Lenguajes de marcado ligero</title><link href="http://joedicastro.com/comparativa-de-lenguajes-de-marcado-ligero.html" rel="alternate"></link><updated>2011-04-02T20:29:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-04-02:/comparativa-de-lenguajes-de-marcado-ligero.html/</id><summary type="html">&lt;p&gt;Esta es una comparativa de los lenguajes de marcado ligero más empleados de los 
+disponibles actualmente. Dicha comparativa surge a partir de este articulo, 
+&lt;a href="/markdown-la-mejor-opcion-para-crear-contenidos-web.html"&gt;Markdown, la mejor opción para crear contenidos web&lt;/a&gt;, donde defiendo la 
+idoneidad de markdown para crear contenidos web.&lt;/p&gt;
+&lt;p&gt;En esta comparativa se verá como emplear cada uno de los lenguajes de marcado 
+disponibles para crear un contenido web similar. Tomo como referencia a markdown, 
+aunque no todos los lenguajes soportan todas o las mismas características que 
+este.&lt;/p&gt;
+&lt;h2 id="documento_de_ejemplo_realizado_con_markdown"&gt;Documento de ejemplo realizado con Markdown&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 50%;"&gt;Markdown&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+Documento de ejemplo
+====================
+
+Lorem ipsum [dolor sit amet](#mark), consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit _sit amet aliquam_ vel, pulvinar molestie augue.
+
+&gt; Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+* **Markdown**
+ * Textile
+ * reStructuredText
+ * Texy!
+ * Txt2tags
+ * Marcado Wiki
+   1. Creole
+   2. MediaWiki
+
+![avatar](pictures/no_wysiwyg.png)
+
+### Cabecera H3 ###
+
+- - -
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+|   | solo texto | HTML Limpio  |
+| -------------- | -- | ------- |
+| Markdown       | Si | Si      |
+| Editor WYSISWG | X  | A veces |
+
+_Ejemplo de código_
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;import lifetime
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for each_day in lifetime.days():
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;carpe_diem()
+
+Suspendisse posuere velit et velit vehicula at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
+
+Esto es un texto con nota al pie [^ejemplo] y esta es otra nota [^segunda]
+
+*[vehicula]: automobila
+[^ejemplo]: Esto es una nota al pie.
+[^segunda]: Esto es la segunda nota.
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h1&gt;Documento de ejemplo&lt;/h1&gt;
+
+&lt;p&gt;Lorem ipsum &lt;a href="#mark"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;strong&gt;semper adipiscing leo&lt;/strong&gt; et blandit.&lt;/p&gt;
+
+&lt;p&gt;Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar molestie augue.&lt;/p&gt;
+
+&lt;blockquote&gt; 
+  &lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt; 
+&lt;/blockquote&gt;
+
+&lt;p&gt;Lenguajes de marcado ligero&lt;/p&gt;
+
+&lt;ul&gt; 
+&lt;li&gt;&lt;strong&gt;Markdown&lt;/strong&gt;&lt;/li&gt; 
+&lt;li&gt;Textile&lt;/li&gt; 
+&lt;li&gt;reStructuredText&lt;/li&gt; 
+&lt;li&gt;Texy!&lt;/li&gt; 
+&lt;li&gt;Txt2tags&lt;/li&gt; 
+&lt;li&gt;Marcado Wiki
+
+&lt;ol&gt; 
+&lt;li&gt;Creole&lt;/li&gt; 
+&lt;li&gt;MediaWiki&lt;/li&gt; 
+&lt;/ol&gt;&lt;/li&gt; 
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src="pictures/no_wysiwyg.png" alt="avatar" /&gt;&lt;/p&gt;
+
+&lt;h3&gt;Cabecera H3&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+
+&lt;table&gt; 
+&lt;thead&gt; 
+&lt;tr&gt; 
+  &lt;th&gt;&lt;/th&gt; 
+  &lt;th&gt;solo texto&lt;/th&gt; 
+  &lt;th&gt;HTML Limpio&lt;/th&gt; 
+&lt;/tr&gt; 
+&lt;/thead&gt; 
+&lt;tbody&gt; 
+&lt;tr&gt; 
+  &lt;td&gt;Markdown&lt;/td&gt; 
+  &lt;td&gt;Si&lt;/td&gt; 
+  &lt;td&gt;Si&lt;/td&gt; 
+&lt;/tr&gt; 
+&lt;tr&gt; 
+  &lt;td&gt;Editor WYSISWG&lt;/td&gt; 
+  &lt;td&gt;X&lt;/td&gt; 
+  &lt;td&gt;A veces&lt;/td&gt; 
+&lt;/tr&gt; 
+&lt;/tbody&gt; 
+&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;Ejemplo de código&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre class="txt" style="font-family:monospace;"&gt;import lifetime
+&amp;nbsp;
+for each_day in lifetime.days():
+    carpe_diem()&lt;/pre&gt;
+
+&lt;p&gt;Suspendisse posuere velit et velit &lt;abbr title="automobila"&gt;vehicula&lt;/abbr&gt; at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.&lt;/p&gt;
+
+&lt;p&gt;Esto es un texto con nota al pie &lt;sup id="fnref:ejemplo"&gt;&lt;a href="#fn:ejemplo" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; y esta es otra nota &lt;sup id="fnref:segunda"&gt;&lt;a href="#fn:segunda" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;div class="footnotes"&gt; 
+&lt;hr /&gt; 
+&lt;ol&gt;
+
+&lt;li id="fn:ejemplo"&gt; 
+&lt;p&gt;Esto es una nota al pie.&amp;#160;&lt;a href="#fnref:ejemplo" rev="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt; 
+&lt;/li&gt;
+
+&lt;li id="fn:segunda"&gt; 
+&lt;p&gt;Esto es la segunda nota.&amp;#160;&lt;a href="#fnref:segunda" rev="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt; 
+&lt;/li&gt;
+
+&lt;p&gt;&lt;/ol&gt; 
+&lt;/div&gt; 
+   &lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="textile"&gt;Textile&lt;/h2&gt;
+&lt;p&gt;Es una buena alternativa a Markdown y bastante extendido, aunque quizás menos 
+que Markdown. Tiene algunas posibilidades que no tiene Markdown como emplear 
+colores, poder alinear el texto o emplear superindice y subindice. También tiene 
+carencias como el no poder dibujar líneas horizontales o el poder emplear 
+acronimos solo con mayusculas y tener que declararlos en cada una de las partes 
+del texto que aparezcan. Pero quiźas para mi la mayor desventaja es la menor 
+legibilidad del texto, es menos evidente a un vistazo que markdown.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 50%;"&gt;Textile&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+h1. Documento de ejemplo
+
+Lorem ipsum "dolor sit amet":#mark, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit _sit amet aliquam_ vel, pulvinar molestie augue.
+
+bq. Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+* **Markdown**
+* Textile
+* reStructuredText
+* Texy!
+* Txt2tags
+* Marcado Wiki
+## Creole
+## MediaWiki
+
+!pictures/no_wysiwyg.png (avatar)!
+
+h3. Cabecera H3
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+|_. @@|_. solo texto|_. HTML Limpio|
+|Markdown|Si|Si|
+|Editor WYSISWG|X|A veces|
+
+_Ejemplo de código_
+
+bc.. import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+
+p. Suspendisse posuere velit et velit VEHICULA(automobila) at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
+
+Esto es un texto con nota al pie[1] y esta es otra nota[2]
+
+fn1. Esto es una nota al pie.
+
+fn2. Esto es la segunda nota.
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h1&gt;Documento de ejemplo&lt;/h1&gt;
+
+&lt;p&gt;Lorem ipsum &lt;a href="#mark"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;b&gt;semper adipiscing leo&lt;/b&gt; et blandit.&lt;/p&gt;
+
+&lt;p&gt;Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar molestie augue.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Lenguajes de marcado ligero &lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;b&gt;Markdown&lt;/b&gt;&lt;/li&gt;
+    &lt;li&gt;Textile&lt;/li&gt;
+    &lt;li&gt;reStructuredText&lt;/li&gt;
+    &lt;li&gt;Texy!&lt;/li&gt;
+    &lt;li&gt;Txt2tags&lt;/li&gt;
+    &lt;li&gt;Marcado Wiki
+&lt;ol&gt;
+    &lt;li&gt;Creole&lt;/li&gt;
+    &lt;li&gt;MediaWiki&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src="pictures/no_wysiwyg.png" title="avatar" alt="avatar" /&gt;&lt;/p&gt;
+
+&lt;h3&gt;Cabecera H3&lt;/h3&gt;
+
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th&gt;solo texto&lt;/th&gt;
+        &lt;th&gt;&lt;span class="caps"&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt;&lt;/span&gt; Limpio&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Markdown&lt;/td&gt;
+        &lt;td&gt;Si&lt;/td&gt;
+        &lt;td&gt;Si&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Editor &lt;span class="caps"&gt;&lt;span class="caps"&gt;WYSISWG&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;X&lt;/td&gt;
+        &lt;td&gt;A veces&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;Ejemplo de código&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;
+import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+&lt;/pre&gt;
+
+&lt;p&gt;Suspendisse posuere velit et velit &lt;acronym title="automobila"&gt;&lt;span class="caps"&gt;VEHICULA&lt;/span&gt;&lt;/acronym&gt; at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.&lt;/p&gt;
+
+&lt;p&gt;Esto es un texto con nota al pie&lt;sup class="footnote"&gt;&lt;a href="#fn8701048694d94660b0d4d4"&gt;1&lt;/a&gt;&lt;/sup&gt; y esta es otra nota&lt;sup class="footnote"&gt;&lt;a href="#fn13831162204d94660b122f5"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p id="fn8701048694d94660b0d4d4" class="footnote"&gt;&lt;sup&gt;1&lt;/sup&gt; Esto es una nota al pie.&lt;/p&gt;
+
+&lt;p id="fn13831162204d94660b122f5" class="footnote"&gt;&lt;sup&gt;2&lt;/sup&gt; Esto es la segunda nota.&lt;/p&gt;
+
+&lt;p&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="bbcode"&gt;BBCode&lt;/h2&gt;
+&lt;p&gt;Es uno de los más extendido porque es ampliamente usado en foros por toda la red. 
+Nació para ser empleado en foros y es prácticamente el único ámbito en el que se 
+emplea. Es también muy limitado porque no soporta muchas de las características 
+de los otros lenguajes y además hay múltiples variantes que no ayudan a crear un 
+estándar. Por ejemplo las listas y las tablas no son contempladas en algunas de 
+esas variantes.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 50%;"&gt;BBCode&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+Documento de ejemplo
+
+Lorem ipsum [url=http://joedicastro.com]dolor sit amet[/url], consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum [b]semper adipiscing leo[/b] et blandit.
+
+Sed nibh quam, hendrerit [i]sit amet aliquam[/i] vel, pulvinar molestie augue.
+
+[quote]Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.[/quote]
+
+[img]http://joedicastro/files/
+imagenes/no_wysiwyg.png[/img]
+
+Cabecera H3
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+[i]Ejemplo de codigo[/i]
+
+[code]
+import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+[/code]
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;div&gt;
+&lt;p&gt;
+Documento de ejemplo&lt;br /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lorem ipsum &lt;a href="http://joedicastro.com" target="_new"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;strong&gt;semper adipiscing leo&lt;/strong&gt; et blandit.
+&lt;/p&gt;
+&lt;p&gt;
+Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar molestie augue.
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="pictures/no_wysiwyg.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Cabecera H3&lt;/p&gt;
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+&lt;em&gt;Ejemplo de codigo&lt;/em&gt;
+&lt;pre class="code"&gt;
+import lifetime
+
+for each_day in lifetime.days():
+carpe_diem()
+&lt;/pre&gt;&lt;/div&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+&lt;h2 id="restructuredtext"&gt;reStructuredText&lt;/h2&gt;
+&lt;p&gt;Fue creado para crear documentación, en concreto documentación para lenguajes de 
+programación como Python. Tiene algunas carencias al no estar orientado a HTML, 
+pero también tiene posibilidades de las que carece Markdown. Es muy potente, 
+bastante legible, pero un poco incomodo para según que cosas, a mi modo de ver. &lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 53%;"&gt;reStructuredText&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+Documento de ejemplo
+====================
+
+Lorem ipsum `dolor sit amet &lt;#mark&gt;`_, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit *sit amet aliquam* vel, pulvinar molestie augue.
+
+Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+&amp;nbsp;* **Markdown**
+&amp;nbsp;* Textile
+&amp;nbsp;* reStructuredText
+&amp;nbsp;* Texy!
+&amp;nbsp;* Txt2tags
+&amp;nbsp;* Marcado Wiki
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Creole
+&amp;nbsp;&amp;nbsp;&amp;nbsp;2. MediaWiki
+
+.. image:: pictures/no_wysiwyg.png
+   :alt: avatar
+
+---------------
+
+Cabecera H3
+^^^^^^^^^^^
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+============== ========== ===========
+\              solo texto HTML Limpio
+============== ========== ===========
+Markdown           Si         Si      
+Editor WYSISWG     X        A veces 
+============== ========== ===========
+
+*Ejemplo de código*::
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;import lifetime
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for each_day in lifetime.days():
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;carpe_diem()
+
+Suspendisse posuere velit et velit vehicula at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
+
+Esto es un texto con nota al pie [1]_ y esta es otra nota [2]_
+
+.. [1] Esto es una nota al pie.
+.. [2] Esto es la segunda nota.
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h1 id="documento-de-ejemplo"&gt;Documento de ejemplo&lt;/h1&gt;
+&lt;p&gt;Lorem ipsum &lt;a href="#mark"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;strong&gt;semper adipiscing leo&lt;/strong&gt; et blandit.&lt;/p&gt;
+&lt;p&gt;Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar molestie augue.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Lenguajes de marcado ligero&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Markdown&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Textile&lt;/li&gt;
+&lt;li&gt;reStructuredText&lt;/li&gt;
+&lt;li&gt;Texy!&lt;/li&gt;
+&lt;li&gt;Txt2tags&lt;/li&gt;
+&lt;li&gt;Marcado Wiki
+&lt;ol style="list-style-type: decimal"&gt;
+&lt;li&gt;Creole&lt;/li&gt;
+&lt;li&gt;MediaWiki&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p /&gt;
+&lt;img src="pictures/no_wysiwyg.png" alt="avatar" /&gt;
+&lt;hr /&gt;
+&lt;h2 id="cabecera-h3"&gt;Cabecera H3&lt;/h2&gt;
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class="header"&gt;
+&lt;th align="left"&gt; &lt;/th&gt;
+&lt;th align="left"&gt;solo texto&lt;/th&gt;
+&lt;th align="left"&gt;HTML Limpio&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class="odd"&gt;
+&lt;td align="left"&gt;Markdown&lt;/td&gt;
+&lt;td align="left"&gt;Si&lt;/td&gt;
+&lt;td align="left"&gt;Si&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="even"&gt;
+&lt;td align="left"&gt;Editor WYSISWG&lt;/td&gt;
+&lt;td align="left"&gt;X&lt;/td&gt;
+&lt;td align="left"&gt;A veces&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;Ejemplo de código&lt;/em&gt;:&lt;/p&gt;
+&lt;pre&gt;import lifetime
+
+&lt;p&gt;for each_day in lifetime.days():
+    carpe_diem()
+&lt;/pre&gt;
+&lt;p&gt;Suspendisse posuere velit et velit vehicula at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.&lt;/p&gt;
+&lt;p&gt;Esto es un texto con nota al pie &lt;sup&gt;&lt;a href="#fn1" class="footnoteRef" id="fnref1"&gt;1&lt;/a&gt;&lt;/sup&gt; y esta es otra nota &lt;sup&gt;&lt;a href="#fn2" class="footnoteRef" id="fnref2"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn1"&gt;&lt;p&gt;Esto es una nota al pie. &lt;a href="#fnref1" class="footnoteBackLink" title="Jump back to footnote 1"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn2"&gt;&lt;p&gt;Esto es la segunda nota. &lt;a href="#fnref2" class="footnoteBackLink" title="Jump back to footnote 2"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="texy"&gt;Texy!&lt;/h2&gt;
+&lt;p&gt;Fue específicamente diseñado para crear documentos XHTML, por ello es bastante 
+completo, pero no está muy extendido. Es legible, pero también tiene carece de 
+soporte para ciertos tags de HTML.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 53%;"&gt;Texy!&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+Documento de ejemplo
+====================
+
+Lorem ipsum [dolor sit amet | http://joedicastro.com], consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit *sit amet aliquam* vel, pulvinar molestie augue.
+
+&gt; Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+- **Markdown**
+- Textile
+- reStructuredText
+- Texy!
+- Txt2tags
+- Marcado Wiki
+ 1) Creole
+ 2) MediaWiki
+
+[* pictures/no_wysiwyg.png .(alt text)[avatar] *]
+
+### Cabecera H3 ###
+
+-----
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+|------------------------------
+|   | solo texto | HTML Limpio  
+|------------------------------
+| Markdown       | Si | Si      
+| Editor WYSISWG | X  | A veces
+
+*Ejemplo de código*
+
+/---code
+&amp;nbsp;&amp;nbsp;import lifetime
+
+&amp;nbsp;&amp;nbsp;for each_day in lifetime.days():
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;carpe_diem()
+\---
+
+Suspendisse posuere velit et velit "vehicula"((automobila)) at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+
+&lt;h1 id="toc-documento-de-ejemplo"&gt;Documento de ejemplo&lt;/h1&gt;
+
+&lt;p&gt;Lorem ipsum &lt;a href="http://joedicastro.com"&gt;dolor sit amet&lt;/a&gt;, consectetur
+adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id
+rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula.
+Vestibulum &lt;strong&gt;semper adipiscing leo&lt;/strong&gt; et blandit.&lt;/p&gt;
+
+&lt;p&gt;Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar
+molestie&amp;nbsp;augue.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel
+    convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis,
+    ultrices pharetra&amp;nbsp;nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Lenguajes de marcado ligero&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Markdown&lt;/strong&gt;&lt;/li&gt;
+
+&lt;li&gt;Textile&lt;/li&gt;
+
+&lt;li&gt;reStructuredText&lt;/li&gt;
+
+&lt;li&gt;Texy!&lt;/li&gt;
+
+&lt;li&gt;Txt2tags&lt;/li&gt;
+
+&lt;li&gt;Marcado Wiki
+        &lt;ol&gt;
+            &lt;li&gt;Creole&lt;/li&gt;
+
+&lt;li&gt;MediaWiki&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div&gt;&lt;img src="pictures/no_wysiwyg.png" class="avatar"
+alt="alt text"&gt;&lt;/div&gt;
+
+&lt;h1 id="toc-cabecera-h3"&gt;Cabecera H3&lt;/h1&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce
+dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui
+fermentum vitae blandit risus aliquet.&lt;/p&gt;
+
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;&amp;nbsp;&lt;/th&gt;
+
+&lt;th&gt;solo texto&lt;/th&gt;
+
+&lt;th&gt;HTML Limpio&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+
+&lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Markdown&lt;/td&gt;
+
+&lt;td&gt;Si&lt;/td&gt;
+
+&lt;td&gt;Si&lt;/td&gt;
+        &lt;/tr&gt;
+
+&lt;tr&gt;
+            &lt;td&gt;Editor WYSISWG&lt;/td&gt;
+
+&lt;td&gt;X&lt;/td&gt;
+
+&lt;td&gt;A&amp;nbsp;veces&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;Ejemplo de código&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()&lt;/pre&gt;
+
+&lt;p&gt;Suspendisse posuere velit et velit &lt;acronym
+title="automobila"&gt;vehicula&lt;/acronym&gt; at scelerisque orci suscipit. Nulla
+facilisis lorem eu sem viverra varius nec ut&amp;nbsp;felis.&lt;/p&gt;
+
+&lt;p&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="txt2tags"&gt;txt2tags&lt;/h2&gt;
+&lt;p&gt;Está escrito en Python y es muy potente, al igual que RestructuredText, 
+permitiendo macros. Permite la salida en muchos formatos, incluido el XHTML. 
+Es muy legible y muy fácil de emplear, es una pena que no esté más extendido y 
+soportado. Aunque aún tiene algunas carencias como las notas al pie o las 
+abreviaturas, que pueden ser soportadas con macros, también tiene un desarrollo 
+muy activo. En la futura versión 3.0 serán soportados directamente las notas al 
+pie. Es una alternativa con muy buen futuro.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 53%;"&gt;txt2tags&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+=Documento de ejemplo=
+
+Lorem ipsum [dolor sit amet #mark], consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit //sit amet aliquam// vel, pulvinar molestie augue.
+
+&lt;tab&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+- **Markdown**
+ - Textile
+ - reStructuredText
+ - Texy!
+ - Txt2tags
+ - Marcado Wiki
+  + Creole
+  + MediaWiki
+
+[pictures/no_wysiwyg.png]
+
+===Cabecera H3===
+
+--------------------
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+||   | solo texto | HTML Limpio
+| Markdown       |  Si  |  Si  |
+| Editor WYSISWG |  X  |  A veces  |
+
+//Ejemplo de codigo//
+
+```
+import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+```
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h1&gt;Documento de ejemplo&lt;/h1&gt;
+
+&lt;p&gt;
+Lorem ipsum &lt;a href="#mark"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;b&gt;semper adipiscing leo&lt;/b&gt; et blandit.
+&lt;/p&gt;
+&lt;p&gt;
+Sed nibh quam, hendrerit &lt;i&gt;sit amet aliquam&lt;/i&gt; vel, pulvinar molestie augue.
+&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;
+Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+Lenguajes de marcado ligero 
+&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;b&gt;Markdown&lt;/b&gt;
+ &lt;li&gt;Textile
+ &lt;li&gt;reStructuredText
+ &lt;li&gt;Texy!
+ &lt;li&gt;Txt2tags
+ &lt;li&gt;Marcado Wiki
+  &lt;ol&gt;
+  &lt;li&gt;Creole
+  &lt;li&gt;MediaWiki
+  &lt;/ol&gt;
+ &lt;/ul&gt;
+
+&lt;p&gt;
+&lt;img src="pictures/no_wysiwyg.png" alt=""&gt;
+&lt;/p&gt;
+
+&lt;h3&gt;Cabecera H3&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+&lt;/p&gt;
+
+&lt;table cellapadding="4"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th&gt;solo texto&lt;/th&gt;
+    &lt;th&gt;HTML Limpio&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Markdown&lt;/td&gt;
+    &lt;td align="center"&gt;Si&lt;/td&gt;
+    &lt;td align="center"&gt;Si&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Editor WYSISWG&lt;/td&gt;
+    &lt;td align="center"&gt;X&lt;/td&gt;
+    &lt;td align="center"&gt;A veces&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;
+ &lt;i&gt;Ejemplo de codigo&lt;/i&gt;
+&lt;/p&gt;
+
+&lt;pre&gt;
+import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+&lt;/pre&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+&lt;h2 id="creole"&gt;Creole&lt;/h2&gt;
+&lt;p&gt;Creado a partir de los lenguajes más empleados en los Wikis y usado 
+fundamentalmente en Wikis, por lo que también tiene ciertas carencias.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 50%;"&gt;Creole&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+== Documento de ejemplo ==
+
+Lorem ipsum [[#mark|dolor sit amet]], consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit //sit amet aliquam// vel, pulvinar molestie augue.
+
+&gt; Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+* **Markdown**
+ * Textile
+ * reStructuredText
+ * Texy!
+ * Txt2tags
+ * Marcado Wiki
+ ## Creole
+ ## MediaWiki
+
+{{pictures/no_wysiwyg.png|avatar}}
+
+==== Cabecera H3 ====
+
+-----
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+|= |= solo texto |= HTML Limpio |
+| Markdown       | Si | Si      |
+| Editor WYSISWG | X  | A veces |
+
+//Ejemplo de código//
+{{{
+import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+}}}
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h1&gt;Documento de ejemplo&lt;/h1&gt;
+
+&lt;p&gt;Lorem ipsum &lt;a href="#mark"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;strong&gt;semper adipiscing leo&lt;/strong&gt; et blandit.&lt;/p&gt;
+&lt;p&gt;Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar molestie augue.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Lenguajes de marcado ligero &lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Markdown&lt;/strong&gt;
+&lt;/li&gt;&lt;li&gt;Textile
+&lt;/li&gt;&lt;li&gt;reStructuredText
+&lt;/li&gt;&lt;li&gt;Texy!
+&lt;/li&gt;&lt;li&gt;Txt2tags
+&lt;/li&gt;&lt;li&gt;Marcado Wiki
+&lt;ol&gt;&lt;li&gt;Creole
+&lt;/li&gt;&lt;li&gt;MediaWiki
+&lt;/li&gt;&lt;/ol&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;p&gt;&lt;img src="pictures/no_wysiwyg.png" alt="avatar" title="avatar" /&gt;&lt;/p&gt;
+&lt;h3&gt;Cabecera H3&lt;/h3&gt;
+&lt;p&gt;-----&lt;/p&gt;
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+
+&lt;table&gt;&lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;solo texto&lt;/th&gt;&lt;th&gt;HTML Limpio&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Markdown&lt;/td&gt;&lt;td&gt;Si&lt;/td&gt;&lt;td&gt;Si&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Editor WYSISWG&lt;/td&gt;&lt;td&gt;X&lt;/td&gt;&lt;td&gt;A veces&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;Ejemplo de código&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;
+import lifetime
+
+&lt;p&gt;for each_day in lifetime.days():
+    carpe_diem()
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="mediawiki"&gt;MediaWiki&lt;/h2&gt;
+&lt;p&gt;Quizás el más extendido, no en vano MediaWiki es el Wiki empleado por la 
+Wikipedia. Igual que Creole, tiene ciertas limitaciones que suple con plugins y 
+etiquetas HTML. No me acaba de gustar. La manera que tiene de crear tablas - 
+por ejemplo - aunque potente, no me parece nada legible en texto plano.&lt;br /&gt;
+&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 53%;"&gt;MediaWiki&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+==Documento de ejemplo==
+
+Lorem ipsum [http://joedicastro.com dolor sit amet], consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum '''semper adipiscing leo''' et blandit.
+
+Sed nibh quam, hendrerit ''sit amet aliquam'' vel, pulvinar molestie augue.
+
+&lt;blockquote&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/blockquote&gt;
+
+Lenguajes de marcado ligero
+
+* '''Markdown'''
+* Textile
+* reStructuredText
+* Texy!
+* Txt2tags
+* Marcado Wiki
+*# Creole
+*# MediaWiki
+
+[[File:pictures/no_wysiwyg.png|caption]]
+
+=== Cabecera H3 ===
+
+----
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+{| 
+! 
+! solo texto
+! HTML Limpio
+|-
+|Markdown
+|Si
+|Si
+|-
+|Editor WYSISWG
+|X
+|A veces
+|}
+
+''Ejemplo de código''
+
+&amp;nbsp;&amp;nbsp;import lifetime
+&amp;nbsp;&amp;nbsp; 
+&amp;nbsp;&amp;nbsp;for each_day in lifetime.days():
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;carpe_diem()
+
+Suspendisse posuere velit et velit &lt;span title="automobila"&gt;vehicula&lt;/span&gt; at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
+
+Esto es un texto con nota al pie &lt;ref name="ejemplo"&gt;Esto es una nota al pie.&lt;/ref&gt; y esta es otra nota &lt;ref name="segunda"&gt; Esto es la segunda nota.&lt;/ref&gt;
+
+{{reflist}}
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h2&gt;&lt;span class="mw-headline" id="Documento_de_ejemplo"&gt;Documento de ejemplo&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;Lorem ipsum &lt;a href="http://joedicastro.com" class="external text" rel="nofollow"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;b&gt;semper adipiscing leo&lt;/b&gt; et blandit.&lt;/p&gt;
+
+&lt;p&gt;Sed nibh quam, hendrerit &lt;i&gt;sit amet aliquam&lt;/i&gt; vel, pulvinar molestie augue.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Lenguajes de marcado ligero&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Markdown&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;Textile&lt;/li&gt;
+&lt;li&gt;reStructuredText&lt;/li&gt;
+
+&lt;li&gt;Texy!&lt;/li&gt;
+&lt;li&gt;Txt2tags&lt;/li&gt;
+&lt;li&gt;Marcado Wiki
+&lt;ol&gt;
+&lt;li&gt;Creole&lt;/li&gt;
+&lt;li&gt;MediaWiki&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="pictures/no_wysiwyg.png" alt="" /&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span class="mw-headline" id="Cabecera_H3"&gt;Cabecera H3&lt;/span&gt;&lt;/h3&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;solo texto&lt;/th&gt;
+&lt;th&gt;HTML Limpio&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Markdown&lt;/td&gt;
+&lt;td&gt;Si&lt;/td&gt;
+&lt;td&gt;Si&lt;/td&gt;
+
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Editor WYSISWG&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;A veces&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;i&gt;Ejemplo de código&lt;/i&gt;&lt;/p&gt;
+&lt;pre&gt;
+import lifetime
+
+&lt;p&gt;for each_day in lifetime.days():
+    carpe_diem()&lt;/p&gt;
+&lt;p&gt;&lt;/pre&gt;
+&lt;p&gt;Suspendisse posuere velit et velit &lt;span title="automobila"&gt;vehicula&lt;/span&gt; at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;Esto es un texto con nota al pie &lt;sup id="cite_ref-ejemplo_0-0" class="reference"&gt;&lt;a href="#cite_note-ejemplo-0"&gt;&lt;span&gt;[&lt;/span&gt;1&lt;span&gt;]&lt;/span&gt;&lt;/a&gt;&lt;/sup&gt; y esta es otra nota &lt;sup id="cite_ref-segunda_1-0" class="reference"&gt;&lt;a href="#cite_note-segunda-1"&gt;&lt;span&gt;[&lt;/span&gt;2&lt;span&gt;]&lt;/span&gt;&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;div class="reflist" style="list-style-type: decimal;"&gt;
+&lt;ol class="references"&gt;
+&lt;li id="cite_note-ejemplo-0"&gt;&lt;b&gt;&lt;a href="#cite_ref-ejemplo_0-0"&gt;^&lt;/a&gt;&lt;/b&gt; Esto es una nota al pie.&lt;/li&gt;
+&lt;li id="cite_note-segunda-1"&gt;&lt;b&gt;&lt;a href="#cite_ref-segunda_1-0"&gt;^&lt;/a&gt;&lt;/b&gt; Esto es la segunda nota.&lt;/li&gt;
+
+&lt;p&gt;&lt;/ol&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;</summary><category term="markdown"></category><category term="Textile"></category><category term="BBCode"></category><category term="reStructuredText"></category><category term="Texy!"></category><category term="txt2tags"></category><category term="Creole"></category><category term="MediaWiki"></category><category term="marcado"></category><category term="HTML"></category><category term="XHTML"></category></entry></feed>

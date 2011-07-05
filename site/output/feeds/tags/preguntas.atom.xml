@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>joe di castro</title><link href="http://joedicastro.com" rel="alternate"></link><link href="http://joedicastro.com/feeds/tags/preguntas.atom.xml" rel="self"></link><id>http://joedicastro.com</id><updated>2011-03-30T00:32:00Z</updated><entry><title>python majibu, preguntas y respuestas sobre python</title><link href="http://joedicastro.com/python-majibu-preguntas-y-respuestas-sobre-python.html" rel="alternate"></link><updated>2011-03-30T00:32:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-03-30:/python-majibu-preguntas-y-respuestas-sobre-python.html/</id><summary type="html">&lt;p&gt;&lt;a href="http://python.majibu.org/" title="python majibu, preguntas y respuestas sobre python"&gt;&lt;img alt="python majibu" src="pictures/majibu.png" title="python majibu" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Aunque ya hace casi dos meses que está funcionando, no es hasta ahora cuando he 
+tenido un momento para escribir sobre este nuevo proyecto que he iniciado. Este 
+surgió a partir de otro proyecto anterior que resulto ser un fracaso, deaparatos 
+PyR, un sitio de &lt;strong&gt;Q&amp;amp;A&lt;/strong&gt; (preguntas y respuestas) sobre gadgets y aparatos de 
+electrónica que se apoyaba en deaparatos.com mi anterior página sobre la misma 
+temática. Una vez realizado el esfuerzo de traducción al español y adaptación 
+del tema, se me ocurrió que podía aprovechar ese trabajo ya realizado para una 
+aventura bastante más práctica. Así el día 3 de febrero 
+&lt;a href="http://mail.python.org/pipermail/python-es/2011-February/029151.html"&gt;sugerí en la lista de Python en español&lt;/a&gt;, donde se agrupa una buena parte de 
+la comunidad hispana de Python, el poder aplicar este mismo formato a un sitio 
+de &lt;strong&gt;Q&amp;amp;A&lt;/strong&gt; sobre &lt;strong&gt;Python&lt;/strong&gt;. La idea tuvo una buena acogida, y así 
+&lt;a href="http://mail.python.org/pipermail/python-es/2011-February/029167.html"&gt;11 horas después&lt;/a&gt;, nacía &lt;a href="http://python.majibu.org/" title="python majibu, preguntas y respuestas sobre python"&gt;Python majibu&lt;/a&gt;, mi pequeña contribución a la 
+comunidad Python en español. Y como decía en ese correo:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Escogí la palabra &lt;strong&gt;majibu&lt;/strong&gt; porque &lt;strong&gt;significa respuestas en suajili&lt;/strong&gt;. Es un
+nombre sonoro y corto, en la moda de nombres como Ubuntu.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="origen_del_formato_qa"&gt;Origen del formato Q&amp;amp;A&lt;/h3&gt;
+&lt;p&gt;Este sitio se monta sobre la plataforma &lt;a href="http://www.osqa.net/" title="OSQA"&gt;&lt;strong&gt;OSQA&lt;/strong&gt;&lt;/a&gt; (Open Source Questions &amp;amp; 
+Answers) que la gente de &lt;strong&gt;&lt;a href="http://www.dzone.com"&gt;DZone&lt;/a&gt;&lt;/strong&gt; creo a partir del extinto proyecto 
+chino &lt;a href="https://github.com/cnprog/CNPROG"&gt;CNProg&lt;/a&gt; de &lt;a href="http://gchen.cn/about/"&gt;Mike Chen&lt;/a&gt; and &lt;a href="http://www.linkedin.com/pub/sailing-cai/b/2bb/383"&gt;Sailing Cai&lt;/a&gt;. Estos dos proyectos 
+eran un clon del original formato empleado por &lt;strong&gt;StackOverflow&lt;/strong&gt;, funcionando 
+sobre &lt;strong&gt;Django&lt;/strong&gt; (ergo &lt;strong&gt;Python&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://stackoverflow.com/"&gt;Stack Overflow&lt;/a&gt; es el sitio que ha conseguido revolucionar el formato de 
+Preguntas y Respuestas y causado un gran impacto mediático en la red, sobre todo 
+en el mundo anglosajón. Esto formato lo crearon &lt;a href="http://en.wikipedia.org/wiki/Joel_Spolsky"&gt;Joel Sposky&lt;/a&gt; y 
+&lt;a href="http://en.wikipedia.org/wiki/Jeff_Atwood"&gt;Jeff Atwwood&lt;/a&gt; para su red de sitios &lt;a href="http://stackexchange.com/"&gt;StackExchange&lt;/a&gt; (hoy ya constituida 
+como empresa) y que ha dado lugar a  sitios tan exitosos en el mundo anglosajón 
+como el propio &lt;strong&gt;Stack Overflow&lt;/strong&gt;, &lt;a href="http://serverfault.com/"&gt;Server Fault&lt;/a&gt;, &lt;a href="http://superuser.com/"&gt;Super User&lt;/a&gt;, 
+&lt;a href="http://askubuntu.com/"&gt;Ask Ubuntu&lt;/a&gt;, &lt;a href="http://www.howtogeek.com/"&gt;How to Geek&lt;/a&gt;, etc. Un formato que se creo para 
+StackOverflow, por programadores y para programadores, centrado únicamente en 
+aspectos técnicos de la programación informática. Y su éxito ha sido tan brutal 
+que se ha extendido a multitud de temáticas que no paran de crecer día a día. 
+Es el formato del futuro inmediato, ya lo es ahora mismo del presente para 
+ciertas temáticas y es sin duda el formato que podría enterrar a los clásicos, 
+veteranos y populares foros. Y no es ninguna broma, la red de sitios de 
+preguntas y respuestas StackExchange arroja unas cifras de 
+&lt;a href="http://techcrunch.com/2011/01/26/stack-overflow-steps-up-to-the-qa-plate-growing-131-in-2010-from-7m-to-over-16m-uniques/"&gt;16.6 millones de usuarios únicos mensuales&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; y 
+&lt;a href="http://www.javipas.com/2011/01/26/%C2%BFquora-nah-stack-overflow-es-el-verdadero-fenomeno/"&gt;72,8 millones de paginas vistas al mes&lt;/a&gt; y todo esto en poco más de dos años.&lt;/p&gt;
+&lt;p&gt;Aunque cronológicamente, primero fueron los foros, luego &lt;em&gt;Yahoo Answers&lt;/em&gt;, sitios 
+como &lt;em&gt;todoexpertos&lt;/em&gt;, luego el casi difunto servicio de &lt;em&gt;Ask&lt;/em&gt;, luego propuestas 
+como &lt;a href="http://www.wolframalpha.com/"&gt;Wolfram|Alpha&lt;/a&gt; e &lt;a href="http://www-03.ibm.com/innovation/us/watson/index.html"&gt;IBM Jeopardy&lt;/a&gt;&lt;sup id="fnref:2"&gt;&lt;a href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;, más tarde y centrado en un 
+perfil de gente muy determinado y elitista: &lt;a href="http://www.quora.com/"&gt;Quora&lt;/a&gt; Y por fin, 
+democratizando el formato y el conocimiento para todos los públicos: la red 
+StackExchange. De ahí surge luego &lt;strong&gt;OSQA&lt;/strong&gt; como clon sobre Django de Stack 
+Overflow, y el futuro &lt;a href="http://qato.com/"&gt;Qato&lt;/a&gt; por parte de la misma gente de DZone, pero de 
+pago y centrado en perfiles corporativos y grandes sitios de Q&amp;amp;A. Incluso la 
+gran red social, &lt;strong&gt;Facebook&lt;/strong&gt;, se ha sumado, creando &lt;a href="http://www.facebook.com/questions"&gt;su propia propuesta&lt;/a&gt; 
+del formato de Preguntas y Respuestas. &lt;/p&gt;
+&lt;p&gt;Y en español han surgido también varias alternativas. Desde la red de 
+&lt;a href="http://shapado.com/"&gt;Shapado&lt;/a&gt;, otro clon de Stack Overflow creado en &lt;em&gt;Ruby&lt;/em&gt;, a sitios como 
+&lt;a href="http://chaxpert.com/es_ES/"&gt;ChaxPert&lt;/a&gt;, &lt;a href="http://respuestasparatodo.com/"&gt;Respuestas para todo&lt;/a&gt; y otros sitios en español montados 
+también sobre OSQA como son &lt;a href="http://respuestas.trabber.com/"&gt;Trabber&lt;/a&gt; y &lt;a href="http://cientifi.net/"&gt;Cientifi.net&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="ventajas_del_formato_qa"&gt;Ventajas del formato Q&amp;amp;A&lt;/h3&gt;
+&lt;p&gt;Básicamente un sitio de Q&amp;amp;A, es una web de preguntas y respuestas dirigida por 
+sus propios usuarios, que son quienes hacen las preguntas, las responden 
+compartiendo su conocimiento y moderan la comunidad. Es un formato basado en el 
+karma de sus usuarios y ellos son los protagonistas absolutos. &lt;/p&gt;
+&lt;p&gt;La &lt;strong&gt;ventaja principal&lt;/strong&gt; es que a través de la participación de los usuarios 
+las &lt;strong&gt;respuestas más acertadas y valiosas ganan más visibilidad&lt;/strong&gt; que las menos 
+ajustadas a la solución. Lo que es una gran ventaja para los que se vuelvan a 
+plantear esa misma pregunta, pues al leerla encuentran la solución más idónea 
+antes, sin verse obligados a navegar entre un mar de respuestas, o incluso 
+off-topics, como es tan frecuente en en los habituales foros. A tal extremo llega 
+esto que si uno realiza preguntas sobre programación en inglés en un buscador 
+como Google, la probabilidad de que la respuesta esté en Stack Overflow y entre 
+los primeros resultados del buscador es muy elevada. &lt;/p&gt;
+&lt;p&gt;Por lo tanto es un formato bastante más eficaz y dinámico que el de los foros y 
+el sistema de karma ayuda a crear una comunidad de gente muy competente. Además 
+el que la propia comunidad modere el sitio (gracias al sistema de karma) causa 
+que apenas exista la lacra del spam, que en estos sitios brilla por su ausencia, 
+así como la inexistencia de trolls que con este formato tienen muy pocas 
+posibilidades de causar problemas. Pero lo fundamental es que consigue que las 
+personas se animen a preguntar y a compartir sus conocimientos con mayor 
+naturalidad que con los foros y con muchos mejores resultados.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;img src="pictures/python_majibu.png" title="Aspecto actual de python majibu"/&gt;&lt;/p&gt;
+
+&lt;h3 id="python_majibu"&gt;Python majibu&lt;/h3&gt;
+&lt;p&gt;Yo echaba de menos algo como Stack Overflow  en español, aunque no tengo 
+problemas con el inglés y consulto habitualmente los sitios de StackExchange, 
+era una pena que la comunidad en español no tuviera un sitio como este. Como 
+abarcar un campo tan amplio como el de la programación se me antojaba demasiado, 
+que menos que hacer mi humilde aportación a mi lenguaje de programación favorito, 
+&lt;strong&gt;Python&lt;/strong&gt;. Aunque yo solo puse la base, el sitio lo crean sus usuarios, 
+&lt;strong&gt;python majibu&lt;/strong&gt; no sería nada sin la gente que forma la comunidad de Python en 
+español. Ellos son los que aportan el conocimiento, la verdadera esencia del 
+sitio y los que decidirán el éxito o no del proyecto y su rumbo. &lt;/p&gt;
+&lt;p&gt;Para personalizar el sitio, con respecto a la instalación por defecto de OSQA, 
+completé la traducción que otros habían iniciado anteriormente al Español y cree 
+un nuevo tema para majibu. Este trabajo &lt;a href="http://code.joedicastro.com/majibu/"&gt;está disponible en mi repositorio&lt;/a&gt; 
+para todo aquel que quiera aprovecharlo.&lt;/p&gt;
+&lt;p&gt;Adelante, usadlo si queréis, resolver vuestras dudas sobre Python y ayudar a 
+resolver las de los demás... el sitio es todo vuestro, yo solamente soy el 
+intermediario necesario para que sea posible. Para utilizar este nuevo sitio no 
+es necesario crear una cuenta nueva, se puede entrar usando tu cuenta de 
+Facebook o Twitter. También puedes usar cualquier otro servicio que soporte 
+OpenID como Google, Yahoo, myOpenID, Blogger, Wordpress, Flickr, etc.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;A Diciembre de 2010
+&amp;#160;&lt;a href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;Propuestas mucho más complejas, automatizadas y más pruebas de concepto 
+que alternativas reales en el presente, pero un claro indicio de lo que nos 
+espera en el futuro.&amp;#160;&lt;a href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</summary><category term="python"></category><category term="majibu"></category><category term="preguntas"></category><category term="respuestas"></category><category term="OSQA"></category><category term="StackOverflow"></category></entry></feed>

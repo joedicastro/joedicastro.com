@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>joe di castro</title><link href="http://joedicastro.com" rel="alternate"></link><link href="http://joedicastro.com/feeds/tags/Lorem%20Ipsum.atom.xml" rel="self"></link><id>http://joedicastro.com</id><updated>2011-04-27T20:52:00Z</updated><entry><title>Crear un arbol de directorios falso para entorno de pruebas</title><link href="http://joedicastro.com/crear-un-arbol-de-directorios-falso-para-entorno-de-pruebas.html" rel="alternate"></link><updated>2011-04-27T20:52:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-04-27:/crear-un-arbol-de-directorios-falso-para-entorno-de-pruebas.html/</id><summary type="html">&lt;p&gt;A veces, para realizar pruebas con nuestros propios programas o para, por 
+ejemplo, hacer pruebas con programas de Backup o FTP, necesitamos crear un 
+entorno de pruebas que nos permita hacer todo tipo de operaciones sin comprometer 
+la seguridad de nuestros datos reales. Una practica habitual es hacer copias de 
+directorios de nuestros propios archivos y trabajar sobre ellos. Es algo que 
+creo se debería dejar únicamente para la última fase de las pruebas, cuando en 
+teoría ya todo funciona. Confundir ubicaciones y malograr los datos reales es 
+más fácil de lo que pueda parecer, sobre todo si se comparte el mismo sistema de 
+archivos. Otra veces lo que necesitamos es generar una estructura de directorios 
+totalmente aleatoria, con sus correspondientes archivos de forma temporal. &lt;/p&gt;
+&lt;p&gt;He creado un script &lt;strong&gt;Python&lt;/strong&gt; que hace precisamente esto último, generar una 
+jerarquía completa de directorios, de forma aleatoria, con sus correspondientes 
+archivos de texto para simular una estructura de directorios real. Cuando le 
+estaba dando vueltas a como generar de forma aleatoria los nombres de los 
+archivos y que al mismo tiempo fuera multiplataforma (respetando los caracteres 
+no permitidos según el sistema de archivos) me acorde de &lt;a href="http://es.wikipedia.org/wiki/Lorem_ipsum"&gt;Lorem Ipsum&lt;/a&gt;. El 
+texto que se lleva empleando desde los tiempos de la imprenta para generar 
+borradores y que aún se emplea en diseño gráfico para los contenidos de prueba 
+(al igual que en la web). No solo hacía de este modo un guiño a esta veterana 
+prueba de maquetación, si no que me solucionaba la papeleta de generar los 
+nombres de directorios y archivos. Al estar compuesto de "palabras" en latín 
+(solo caracteres del alfabeto) me olvidaba de las incompatibilidades entre 
+plataformas y sistemas de archivo. Un homenaje y un problema resuelto en un solo 
+paso.&lt;/p&gt;
+&lt;p&gt;Cuando me disponía ya a crear un modo de extraer palabras aleatorias del texto 
+original de Lorem Ipsum, pensé que seguro que no era el primero al que se le 
+ocurría hacer esto con Python, así que después de una pequeña búsqueda en el 
+&lt;a href="http://pypi.python.org/pypi"&gt;&lt;abbr title="Python Package Index"&gt;&lt;abbr title="Python Package Index"&gt;PyPI&lt;/abbr&gt;&lt;/abbr&gt;&lt;/a&gt;, di con el magnifico proyecto de James Hales, 
+&lt;a href="http://code.google.com/p/lorem-ipsum-generator/"&gt;Lorem-Ipsum-Generator&lt;/a&gt;. Importando el modulo de este proyecto en mi script, 
+tenía medio trabajo hecho.&lt;/p&gt;
+&lt;p&gt;El script, al que llamo &lt;strong&gt;test_dir_tree&lt;/strong&gt;, genera una estructura de directorios 
+de entre 7 y 39 directorios (estos parámetros pueden ser fácilmente cambiados en 
+el script), con sus correspondientes archivos. El número de archivos se decide 
+en función del número de directorios y se reparten también de forma aleatoria 
+entre los mismos. Como he comentado, los nombres tanto de directorios como 
+ficheros proceden de Lorem Ipsum. El tamaño de los archivos oscila entre 3 y 512 
+Kbytes, para no ocupar demasiado espacio en disco. Son archivos de texto 
+normales en los cuales el contenido está formado a su vez por párrafos 
+aleatorios de Lorem Ipsum.&lt;/p&gt;
+&lt;p&gt;No es necesario ningún parámetro para ejecutar el script:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;python test_dir_tree.py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Una vez ejecutado el script, se genera una estructura de directorios como la de 
+este ejemplo:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;test
+├── blandit
+│   ├── [234K]  bibendum.txt
+│   ├── [319K]  congue.txt
+│   ├── [382K]  consequat.txt
+│   └── [298K]  ligula.txt
+├── elit
+├── est
+│   ├── [ 22K]  condimentum.txt
+│   ├── [401K]  hac.txt
+│   ├── [139K]  nibh.txt
+│   └── [ 12K]  tincidunt.txt
+├── habitasse
+│   ├── [359K]  etiam.txt
+│   ├── [ 59K]  facilisi.txt
+│   ├── [ 12K]  integer.txt
+│   ├── [ 23K]  metus.txt
+│   └── [ 31K]  non.txt
+├── lacus
+│   ├── [394K]  faucibus.txt
+│   └── [ 29K]  torquent.txt
+├── laoreet
+│   └── [424K]  eros.txt
+├── litora
+│   └── [ 87K]  tellus.txt
+└── nostra
+    ├── [349K]  curabitur.txt
+    ├── [241K]  neque.txt
+    ├── [3.4K]  odio.txt
+    └── [ 78K]  sapien.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Donde el principio del contenido de uno de esos archivos de texto, sería algo así:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;Eget. Sem turpis tempus sagittis arcu, nullam ac rutrum turpis. Sem
+fusce lacus, cum neque fermentum potenti. Est aliquam donec, leo
+amet elit dapibus ipsum. Quam pellentesque eu fusce pellentesque
+torquent netus vivamus velit at nisl. Senectus ligula, erat dictum.
+Natoque metus urna quis vivamus in duis. Cras. Massa nam. Quisque.
+Potenti, sit. Urna metus, et eu duis suspendisse per primis. Duis,
+viverra massa enim hac.
+
+Fames ut leo in a turpis proin gravida ac, auctor. Natoque
+suspendisse nisl. Dictumst mus, amet pede, eni velit velit. Elit.
+Cum. Congue pretium ad id porta in massa enim purus. Tempus, porta
+donec molestie habitasse, urna urna nam. Tempor massa sed quam sit
+nec dapibus at, duis. Leo pellentesque. Orci arcu iaculis ac, elit
+netus conubia. Penatibus platea rutrum netus suspendisse non. Purus
+consequat. Inceptos platea, tempus metus eu consectetuer feugiat,
+urna at lorem pellentesque curae. Dapibus a, scelerisque cum, auctor
+ tincidunt primis. Augue nisi id per nulla, sit enim mus id eleifend
+ taciti, semper est.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;El script tarda muy poco en generar esta estructura, por ejemplo en un Core 2 
+Duo a 2 GHz, se tardan 1.72s en generar una estructura de 71 directorios y 114 
+ficheros.&lt;/p&gt;
+&lt;p&gt;Este es el núcleo central del script &lt;strong&gt;test_dir_tree.py&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_tree&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;min_dirs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_dirs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;79&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;make a fake directory hierarchy with files for test purposes.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;latin_words&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;generator&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Generate a list of latin words&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;words&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;generator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate_paragraphs_plain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;check_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;If no exists a path, make it.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;lorem&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lipsum&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MarkupGenerator&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;latins&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;latin_words&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lorem&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;dirs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;latins&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="n"&gt;randrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;min_dirs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_dirs&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+    &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;latins&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dirs&lt;/span&gt;&lt;span class="p"&gt;][:&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;dirs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="n"&gt;check_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dirs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;check_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;fil&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;filename&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dirs&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{0}.txt&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fil&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;randint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;524288&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# Files not bigger than 512 Kbytes&lt;/span&gt;
+        &lt;span class="n"&gt;sample&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lorem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate_paragraphs_plain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;randrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;sample&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linesep&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+        &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;dirs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para obtener el script completo, acudir a mi &lt;a href="https://bitbucket.org/joedicastro/python-recipes/src/tip/src/test_dir_tree.py"&gt;repositorio&lt;/a&gt;.&lt;/p&gt;</summary><category term="script"></category><category term="python"></category><category term="Lorem Ipsum"></category></entry></feed>

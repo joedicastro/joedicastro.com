@@ -1,0 +1,10 @@
+syntax: regexp
+^pelican$
+syntax: regexp
+^env$
+syntax: regexp
+^\.project$
+syntax: regexp
+^\.pydevproject$
+syntax: regexp
+^\.settings$

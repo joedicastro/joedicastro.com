@@ -1,0 +1,19 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+ 
+ 
+/* TEAM */
+Creator & Admin: joe di castro
+Site: joedicastro.com
+Contact joe [at] joedicastro.com
+Twitter: @joe_di_castro
+Location: A Coruña, Galicia, Spain
+ 
+/* THANKS */
+Names (& URL):  
+ 
+/* SITE */
+Language: Castellano
+Standards: HTML5, CSS3, Atom 1.0, RSS 1.0
+Components: Disqus, Piwik
+Software: Pelican, Fabric, Aptana Studio 3, Python, Linux.

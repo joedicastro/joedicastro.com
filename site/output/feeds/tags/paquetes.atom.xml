@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>joe di castro</title><link href="http://joedicastro.com" rel="alternate"></link><link href="http://joedicastro.com/feeds/tags/paquetes.atom.xml" rel="self"></link><id>http://joedicastro.com</id><updated>2011-05-06T22:55:00Z</updated><entry><title>Generar informes de cambios en paquetes instalados en Debian y Ubuntu.</title><link href="http://joedicastro.com/generar-informes-de-cambios-en-paquetes-instalados-en-debian-y-ubuntu.html" rel="alternate"></link><updated>2011-05-06T22:55:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-05-06:/generar-informes-de-cambios-en-paquetes-instalados-en-debian-y-ubuntu.html/</id><summary type="html">&lt;p&gt;Una de las políticas de seguridad que tengo con mis sistemas &lt;strong&gt;Linux&lt;/strong&gt;, es 
+además de efectuar respaldos periódicos (diarios) del contenido del directorio 
+&lt;code&gt;/home&lt;/code&gt; (en mi caso siempre es una partición o disco independiente), es siempre 
+guardar también una lista de los &lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt; instalados en los mismos. 
+Prácticamente nunca hago una copia completa de la partición o disco de de 
+sistema, y aunque si hago una copia de los directorios más importantes, prefiero 
+tener siempre una relación actualizada de los &lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt; instalados en cada 
+maquina.&lt;/p&gt;
+&lt;p&gt;En sistemas Linux &lt;a href="http://debian.org"&gt;Debian&lt;/a&gt; y otras distribuciones derivadas (&lt;a href="http://ubuntu.com"&gt;Ubuntu&lt;/a&gt;, 
+&lt;a href="http://www.linuxmint.com/"&gt;Mint&lt;/a&gt;, &lt;a href="http://www.mepis.org/"&gt;Mepis&lt;/a&gt;, &lt;a href="http://www.knoppix.org/"&gt;Knoppix&lt;/a&gt;, ...) obtener esta lista es realmente 
+sencillo, pues solo es necesario ejecutar este comando:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;dpkg -l &amp;gt; lista_paquetes.txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y con eso, se generaría una lista de los &lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt; instalados&lt;sup id="fnref:nota"&gt;&lt;a href="#fn:nota" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; en el 
+sistema en el fichero &lt;em&gt;lista_paquetes.txt&lt;/em&gt;. Y mantener actualizado este fichero 
+es tan sencillo como programar (via &lt;code&gt;crontab&lt;/code&gt; por ejemplo) la ejecución de este 
+comando con un sencillo &lt;a href="http://es.wikipedia.org/wiki/"&gt;script&lt;/a&gt; &lt;a href="http://es.wikipedia.org/wiki/Shell_de_UNIX"&gt;shell&lt;/a&gt;. Y así lo he realizado durante 
+años, hasta que quise tener aun más información.&lt;/p&gt;
+&lt;p&gt;Entonces me interesó conocer también los cambios que se producen en los 
+&lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt;, es decir nuevas (des)instalaciones y actualizaciones. Es lógico pensar 
+que si uno mismo es el que las realiza, pues ya sabe esta información de primera 
+mano. Pero la memoria es frágil y no demasiado confiable, además ¿que ocurre 
+cuando en una misma maquina tienen permisos para administrar los &lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt; más de 
+un usuario? &lt;/p&gt;
+&lt;p&gt;Se pueden conocer estos cambios de los &lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt; en el tiempo de varios modos, 
+desde acudir a los logs de &lt;strong&gt;dpkg&lt;/strong&gt; en &lt;code&gt;/var/log/dpkg.log&lt;/code&gt; y examinarlos con 
+algún analizador de logs (o el más sencillo e inmediato comando &lt;code&gt;less&lt;/code&gt;) hasta 
+consultarlos de una manera más sencilla y gráfica con el gestor de &lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt; 
+&lt;strong&gt;Synaptic&lt;/strong&gt; (en el menú &lt;em&gt;Archivo -&amp;gt; Histórico&lt;/em&gt;). Pero me interesaba automatizar 
+esto, para conocer esos cambios poco después de que se produjeran y lo lógico 
+era emplear el mismo script shell que empleaba para generar la lista de &lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt; 
+instalados. Así lo hice entonces, combinando los comandos &lt;code&gt;awk&lt;/code&gt;, &lt;code&gt;grep&lt;/code&gt;, &lt;code&gt;diff&lt;/code&gt; 
+y &lt;code&gt;mail&lt;/code&gt; con el comando del principio para obtener la lista, tenia los cambios 
+en mi buzón de correo al poco tiempo de producirse. Y ha funcionado 
+perfectamente hasta ahora.&lt;/p&gt;
+&lt;p&gt;Pero desde que me introduje en el lenguaje &lt;strong&gt;Python&lt;/strong&gt;, he ido migrando poco a 
+poco los scripts &lt;a href="http://es.wikipedia.org/wiki/Bash"&gt;bash&lt;/a&gt; que tengo para reescribirlos en este lenguaje. Y 
+recientemente le ha tocado a este. Ha sido muy fácil y la verdad es que el 
+resultado aunque funcionalmente es el mismo, me ha permitido entregar unos 
+informes más elegantes y fáciles de interpretar de un golpe de vista. &lt;/p&gt;
+&lt;p&gt;Ahora, cuando se realiza algún cambio en los &lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt; del sistema, de forma 
+automática, por mi o por otro usuario autorizado, yo recibo en mi correo un 
+informe similar a este:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;SCRIPT =========================================================================
+dpkg_diff (ver. 0.1)
+http://code.joedicastro.com/python-recipes
+
+Changes of packages installed on yourmachine
+ ===============================================================================
+
+START TIME =====================================================================
+                                                     Thursday 05/05/11, 10:30:01
+ ===============================================================================
+
+INSTALLED PACKAGES LIST FILE ___________________________________________________
+
+/your/path/to/package_list.txt
+
+CHANGES DIFF ___________________________________________________________________
+
+&lt;span class="gd"&gt;--- previous Wed May  4 22:59:51 2011&lt;/span&gt;
+&lt;span class="gi"&gt;+++ current  Thu May  5 10:30:01 2011&lt;/span&gt;
+&lt;span class="gu"&gt;@@ -34,1 +34,1 @@&lt;/span&gt;
+&lt;span class="gd"&gt;-ii  apt                 0.7.25.3ubuntu9.3&lt;/span&gt;
+&lt;span class="gi"&gt;+ii  apt                 0.7.25.3ubuntu9.4&lt;/span&gt;
+&lt;span class="gu"&gt;@@ -36,2 +36,2 @@&lt;/span&gt;
+&lt;span class="gd"&gt;-ii  apt-transport-https 0.7.25.3ubuntu9.3&lt;/span&gt;
+&lt;span class="gd"&gt;-ii  apt-utils           0.7.25.3ubuntu9.3&lt;/span&gt;
+&lt;span class="gi"&gt;+ii  apt-transport-https 0.7.25.3ubuntu9.4&lt;/span&gt;
+&lt;span class="gi"&gt;+ii  apt-utils           0.7.25.3ubuntu9.4&lt;/span&gt;
+
+END TIME =======================================================================
+                                                     Thursday 05/05/11, 10:30:01
+ ===============================================================================
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Donde se puede ver la información que nos indica el script que ha generado el 
+correo, la maquina en la que se han realizado los cambios, la localización del 
+fichero con la relación de todos los &lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt; instalados en el sistema, la fecha 
+y hora de la ejecución del script y el &lt;a href="http://es.wikipedia.org/wiki/Diff"&gt;diff&lt;/a&gt; con la relación de cambios en 
+los &lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt; en formato &lt;a href="http://en.wikipedia.org/wiki/Diff#Unified_format"&gt;Unified format&lt;/a&gt;. En este ejemplo podemos ver como se 
+han actualizado tres &lt;abbr title="En sistemas *NIX se denomina así a los programas"&gt;paquetes&lt;/abbr&gt; en esa maquina. No nos dice la hora en que se 
+efectuó la modificación (podemos verlo en el log de &lt;code&gt;dpkg&lt;/code&gt;) pero si podemos 
+saber que se efectuó entre dos intervalos de ejecución del script, información 
+que será más que suficiente la mayoría de las veces. Para datos concretos, ir al 
+log y filtrarlo con &lt;code&gt;grep&lt;/code&gt; y en segundos sabremos la respuesta. Si además como 
+es mi caso, ejecutamos el script cada 12 o 24 horas, pues será fácil saber 
+cuando se han realizado los cambios.&lt;/p&gt;
+&lt;p&gt;Un fragmento de código de la parte principal del script es el siguiente:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;pretty_diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Better format for package lines in diff.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;pkg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt; &lt;span class="c"&gt;# diff&amp;#39;s packages lines&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Get columns info for diff package lines&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;findall&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;^-{3}|^\+{3}|^@{2}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="c"&gt;# split the line in columns and remove the description column&lt;/span&gt;
+            &lt;span class="n"&gt;cols&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\s{2,}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)[:&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+            &lt;span class="c"&gt;# A nested dict, for each line index we have a dict that contains &lt;/span&gt;
+            &lt;span class="c"&gt;# the package line columns: &amp;#39;s&amp;#39; (status), &amp;#39;n&amp;#39; (name) &amp;amp; &amp;#39;v&amp;#39; (version)&lt;/span&gt;
+            &lt;span class="c"&gt;# and the width of the name column: w(width)&lt;/span&gt;
+            &lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;s&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;cols&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;n&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;cols&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;v&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;cols&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cols&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])}&lt;/span&gt;
+
+    &lt;span class="c"&gt;# maximum width in packages&amp;#39; name column for all lines&lt;/span&gt;
+    &lt;span class="n"&gt;mxw&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Replace each package line for a prettier one (more legible) &lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{0} {1} {2}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;s&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;n&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+                                            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mxw&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt; &lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;v&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;old&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Main section&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="c"&gt;# The path to store the debian packages list file&lt;/span&gt;
+    &lt;span class="n"&gt;pkg_lst_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;./package_list.txt&amp;quot;&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Start logging&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Logger&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://code.joedicastro.com/python-recipes&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;head&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Changes of packages installed on {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;platform&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Start time&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Read the old file and clean the list&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pkg_lst_file&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;old&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pkg_lst_file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readlines&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;old_date&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ctime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pkg_lst_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;st_mtime&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Get the current list of debian packages installed on system &lt;/span&gt;
+    &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Popen&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;dpkg&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;-l&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;stdout&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;PIPE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stdout&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readlines&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="c"&gt;# First, save the list file&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pkg_lst_file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;writelines&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;current&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;curr_date&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ctime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pkg_lst_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;st_mtime&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Compare both lists&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;old&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;file_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;realpath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pkg_lst_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ln&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;ln&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;unified_diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;old&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fromfile&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;previous&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                                          &lt;span class="n"&gt;tofile&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;current &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                                          &lt;span class="n"&gt;fromfiledate&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;old_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                                          &lt;span class="n"&gt;tofiledate&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;curr_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                                          &lt;span class="n"&gt;lineterm&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+        &lt;span class="c"&gt;# If there are differences write the log to disk and send mail&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Installed packages list file&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;file_path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Changes diff&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pretty_diff&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+            &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;End time&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="c"&gt;# Send mail to current system user. For other options, see logger &lt;/span&gt;
+            &lt;span class="c"&gt;# module info&lt;/span&gt;
+            &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Debian packages changes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Este script hace uso del modulo logger, que comento en este &lt;a href="http://joedicastro.com/logger_informes_legibles_para_tus_scripts_python"&gt;artículo&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Para obtener la versión más reciente del script y del modulo logger, consultar 
+mi &lt;a href="http://code.joedicastro.com/python-recipes"&gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:nota"&gt;
+&lt;p&gt;Es una relación de los programas instalados empleando el sistema de 
+paqueteria de Debian, los programas instalados manualmente vía compilación 
+u otros medios no aparecerán en ella. &amp;#160;&lt;a href="#fnref:nota" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</summary><category term="python"></category><category term="script"></category><category term="paquetes"></category><category term="linux"></category><category term="Debian"></category><category term="Ubuntu"></category><category term="dpkg"></category></entry></feed>

@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>joe di castro</title><link href="http://joedicastro.com" rel="alternate"></link><link href="http://joedicastro.com/feeds/tags/mysql.atom.xml" rel="self"></link><id>http://joedicastro.com</id><updated>2010-10-14T01:42:00Z</updated><entry><title>Combatir el spam en Drupal</title><link href="http://joedicastro.com/combatir-el-spam-en-drupal.html" rel="alternate"></link><updated>2010-10-14T01:42:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2010-10-14:/combatir-el-spam-en-drupal.html/</id><summary type="html">&lt;h3 id="articulo_publicado_originalmente_en_el_antiguo_sitio_deaparatoscom"&gt;Articulo publicado originalmente en el antiguo sitio deaparatos.com&lt;/h3&gt;
+&lt;p&gt;&lt;p style="text-align: center;"&gt;&lt;img src="pictures/spam_stats.png" 
+ alt="deaparatos spam statistiscs" title="estadísticas de spam en deaparatos" 
+ height="550" width="593" /&gt;&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;En esta gráfica se puede observar la &lt;strong&gt;disminución a lo largo del tiempo de los 
+ataques de spam a este sitio&lt;/strong&gt;, &lt;strong&gt;deaparatos.com&lt;/strong&gt;, que funciona sobre 
+&lt;strong&gt;Drupal&lt;/strong&gt;. Esto se ha conseguido gracias a una doble estrategia:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;emplear uno de los mejores módulos antispam existentes para Drupal, &lt;strong&gt;Mollom&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;emplear un script en python de elaboración propia, &lt;strong&gt;ban_drupal_spammers.py&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Esta doble estrategia no solo ha conseguido una más que &lt;strong&gt;notable reducción&lt;/strong&gt; 
+de la incidencia &lt;strong&gt;del molesto spam&lt;/strong&gt; en este sitio, &lt;strong&gt;de casi un 70%&lt;/strong&gt;, si no 
+que además ha conseguido &lt;strong&gt;una más que notable reducción del ancho de banda 
+consumido por los spammers&lt;/strong&gt;, como se puede observar en la siguiente tabla:&lt;/p&gt;
+&lt;p&gt;Estadísticas de Trafico generado por ataques de spam en deaparatos.com&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th /&gt;
+&lt;th /&gt;
+&lt;th&gt;Días&lt;/th&gt;
+&lt;th&gt;Ataques Spam&lt;/th&gt;
+&lt;th&gt;Trafico (GB)&lt;/th&gt;
+&lt;th&gt;Media pagina (KB)&lt;/th&gt;
+&lt;th&gt;Trafico mes (MB)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Mollom&lt;/td&gt;
+&lt;td /&gt;
+&lt;td&gt;&lt;strong&gt;359&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;48741&lt;/td&gt;
+&lt;td&gt;7,116&lt;/td&gt;
+&lt;td&gt;146,000&lt;/td&gt;
+&lt;td&gt;602,927&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Mollom + script&lt;/td&gt;
+&lt;td /&gt;
+&lt;td&gt;&lt;strong&gt;359&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;358666&lt;/td&gt;
+&lt;td&gt;0,016&lt;/td&gt;
+&lt;td&gt;0,046&lt;/td&gt;
+&lt;td&gt;1,389&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Total&lt;/strong&gt;&lt;/td&gt;
+&lt;td /&gt;
+&lt;td /&gt;
+&lt;td&gt;&lt;strong&gt;407407&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;7,133&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;17,507&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;604,316&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Si solo hubiera empleado el modulo Mollom, sin emplear mi script&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th /&gt;
+&lt;th /&gt;
+&lt;th&gt;Trafico (GB)&lt;/th&gt;
+&lt;th&gt;Ahorro (GB)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Trafico spam total&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;(358666 * (146,000 – 0,046) KB) + 7,133 GB =&lt;/td&gt;
+&lt;td&gt;59,481&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;52,349&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Trafico spam mensual&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;((59,465 GB * 365) / 359) / 12) MB =&lt;/td&gt;
+&lt;td&gt;5,040&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;4,435&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Como podemos ver en las cifras mostradas de esta tabla, &lt;strong&gt;se ha conseguido en&lt;/strong&gt; 
+un periodo de aproximadamente &lt;strong&gt;un año reducir el ancho de banda consumido por 
+los ataques de spam en más de 52 Gigabytes!&lt;/strong&gt;, una autentica barbaridad de 
+tráfico que de otro modo se hubiera malgastado. Estamos hablando de &lt;strong&gt;un ahorro 
+de&lt;/strong&gt; consumo de tráfico &lt;strong&gt;de casi 4,5 Gigabytes al mes!!!&lt;/strong&gt; Un ahorro de ancho 
+de banda mensual que en un hosting compartido puede tranquilamente suponer el 
+cambio de un plan de hosting a otro, simplemente basta con que los molestos 
+spammers pongan tu sitio web en su punto de mira. Y &lt;strong&gt;ha de tenerse en cuenta&lt;/strong&gt; 
+una cosa, &lt;strong&gt;que este trafico mensual hubiera sido muy superior si&lt;/strong&gt; esta doble 
+estrategia &lt;strong&gt;no hubiera conseguido reducir el numero de spammers en un 69.25%&lt;/strong&gt;, 
+no quiero ni pensar en las cifras que hubieran resultado...&lt;/p&gt;
+&lt;p&gt;Para que nos hagamos una idea del ahorro de ancho de banda que ha supuesto el 
+emplear mi script &lt;strong&gt;python&lt;/strong&gt;, en el siguiente gráfico podemos ver la diferencia 
+entre emplear solo &lt;strong&gt;Mollom&lt;/strong&gt; y emplear &lt;strong&gt;Mollom&lt;/strong&gt; combinado con
+&lt;strong&gt;ban_drupal_spammers.py&lt;/strong&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="pictures/Ahorros.png" 
+alt="Eficacia del script" title="Eficacia del script" height="292" 
+width="600" /&gt;&lt;/p&gt;
+
+&lt;p&gt;El gráfico es meridianamente claro, como podemos ver, &lt;strong&gt;por cada 1% de ataques 
+que son rechazados por ban_drupal_spammers.py&lt;/strong&gt; y no por Mollom, &lt;strong&gt;ahorramos un 
+1% de ancho de banda&lt;/strong&gt;, tanto en el peso por página como en el tráfico total. 
+Como podemos ver, &lt;strong&gt;hemos ahorrado un total de un 88% de ancho de banda del 
+trafico que sería generado por los ataques de spam en deaparatos.com&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Después de comprobar la eficacia de esta doble estrategia durante más de un año 
+(las estadísticas se interrumpen antes por el cambio de hosting) voy a 
+explicaros el porqué y el como he llegado a ella, a continuación. También se
+puede ver el script que ha marcado la diferencia de tráfico.&lt;/p&gt;
+&lt;h3 id="el_spam_en_internet"&gt;&lt;strong&gt;El spam en internet&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;El &lt;a href="http://es.wikipedia.org/wiki/Spam"&gt;spam&lt;/a&gt; es una de las lacras más tediosas y difíciles de combatir en 
+Internet, por no mencionar las tareas delictivas que se apoyan en él. Después 
+de 15 años combatiendo el spam en el correo electrónico, el problema aún está 
+lejos de solucionarse, si bien es cierto que con una adecuada configuración de 
+las herramientas de correo, se ha convertido en una molestia trivial para el 
+usuario final. Pero para los servidores de correo y el tráfico de internet
+sigue siendo un problema de dimensiones colosales, la lucha contra el mismo se 
+ha convertido una tarea titánica en la que se invierten ingentes sumas de dinero 
+todos los años. De hecho gran parte del tráfico de toda internet se
+debe al spam (hay quien arroja cifras del 80%, e incluso superiores al 90%), lo 
+que ha acarreado un costosísimo sobredimensionamiento en el equipamiento de 
+proveedores de internet y servidores.&lt;/p&gt;
+&lt;p&gt;Como antes comentaba, lejos de una solución definitiva (en gran medida depende 
+de un tipo muy común de usuario final con escasa cultura informática), esta 
+lacra se expandió hace unos años a hilos en foros, a comentarios en blogs,
+redes sociales, irc,... es decir, se ha expandido por toda la red. La explosión 
+de la llamada web 2.0 no ha incrementado si no este problema, multiplicándolo. 
+Y he aquí como un problema que afectaba a los usuarios de email y a los 
+proveedores de internet, se ha convertido también en un gran problema para los 
+webmasters.  Todo aquel que gestione un sitio web, ha tenido que enfrentarse 
+antes o después con este maldito problema. Un problema que no solo se traduce en 
+cientos o miles de detestables mensajes de spam, que se han de combatir de uno 
+u de otro modo (algunos o bien se rinden o bien tienen abandonados sus sitios y 
+se convierten en auténticos cementerios de spam), si no que además se traduce en 
+un serio problema para el trafico de una web. El número de solicitudes que 
+producen los ataques de spam puede llegar a ser tan elevado, que congestione 
+totalmente ya no solo la página, si no el servidor cuando se trate de un hosting 
+compartido, convirtiéndose casi de facto en un &lt;a href="http://es.wikipedia.org/wiki/DoS"&gt;ataque DoS&lt;/a&gt; en toda regla. 
+Aún sin llegar a este indeseable extremo, el incremento del tráfico en el sitio 
+debido al spam puede llegar a suponer un porcentaje muy importante del ancho de 
+banda contratado (incluso más del 50% con contramedidas ineficientes), con los 
+consiguientes perjuicios económicos que suponen al webmaster. Los spammers 
+siempre han ido por delante de las contra-medidas, y la actual situación, con 
+extensas  &lt;a href="http://es.wikipedia.org/wiki/Botnet"&gt;botnets&lt;/a&gt; a su disposición y con el &lt;a href="http://es.wikipedia.org/wiki/Cloud_computing"&gt;cloud computing&lt;/a&gt; (se ha 
+detectado el año pasado la primera 
+&lt;a href="http://www.idg.es/pcworldtech/Los-hackers-controlan-una-botnet-desde-Amazon-EC2/doc88089-actualidad.htm"&gt;botnet que empleaba los servicios de Amazon EC2&lt;/a&gt;) , nos ha llevado a un 
+combate continuo en las que tienen todas las de ganar a medio plazo... y observo 
+esto con cierta tristeza, por que entiendo que la solución final pasa 
+necesariamente por la educación del usuario final, haciéndole inmune a los -en 
+gran medida patéticos, infantiles, ridículos y chapuceros- reclamos del spam. Y 
+esto último desgraciadamente dista mucho de acercarse a una situación ideal. 
+También cabe mencionar que 
+&lt;a href="http://googlewebmaster-es.blogspot.com/2009/12/comentarios-spam-la-dura-realidad.html?utm_source=feedburner&amp;amp;utm_medium=feed&amp;amp;utm_campaign=Feed%3A+ElBlogParaWebmasters+%28El+Blog+para+Webmasters%29"&gt;el spam también perjudica al posicionamiento de una web,&lt;/a&gt; a su prestigio, a 
+su funcionalidad, a su aspecto, etc.&lt;/p&gt;
+&lt;h3 id="deaparatoscom_y_el_spam"&gt;&lt;strong&gt;deaparatos.com y el spam&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Y &lt;strong&gt;deaparatos&lt;/strong&gt; no está exento de esta amenaza, de hecho se había convertido en 
+un serio problema en el 2009. Este sitio está gestionado con &lt;a href="http://drupal.org/"&gt;Drupal&lt;/a&gt;, y 
+después de probar con distintos módulos y métodos, unos más frustrantes que 
+otros, ninguno solucionaba por completo el problema, ni me satisfacía como 
+solución. Al final, combinando el módulo más idóneo para combatir esta plaga 
+(idóneo por resultados y por comportamiento) con un script de factura propia en 
+&lt;a href="http://drupal.org/project/Modules"&gt;Python&lt;/a&gt;, he logrado, no acabar con todo el spam (se me antoja tarea cuasi 
+imposible), pero si minimizar sus efectos a un nivel muchísimo más que aceptable. 
+Y minimizar los efectos tanto a la hora de impedir/eliminar los comentarios spam, 
+como de reducir el abultado tráfico que estos ataques consumían. ¿Por qué un 
+script en &lt;strong&gt;Python&lt;/strong&gt;? bueno buscaba algo rápido, un prototipo para probar la 
+solución que tenia en la cabeza y porque estoy "enamorado" de este lenguaje de 
+programación. Quizás si veo que merece la pena, me plantee migrarlo a PHP y 
+convertirlo en un módulo de &lt;strong&gt;Drupal&lt;/strong&gt;, o bien modifique el modulo oficial que 
+estoy empleando para mitigar el spam y le incorpore el código que empleo ahora. 
+Bueno, veamos como he llevado a cabo esta solución y porqué.&lt;/p&gt;
+&lt;p&gt;Generalmente los métodos para combatir el spam se centran en:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;medidas activas: análisis &lt;a href="http://es.wikipedia.org/wiki/Heuristica"&gt;heurísticos&lt;/a&gt;, &lt;a href="http://es.wikipedia.org/wiki/Inferencia_estad%C3%ADstica"&gt;filtros estadísticos&lt;/a&gt; (&lt;a href="http://en.wikipedia.org/wiki/Bayesian_spam_filtering"&gt;bayesianos&lt;/a&gt;), diferenciación de &lt;a href="http://es.wikipedia.org/wiki/Bot"&gt;bots&lt;/a&gt;/humanos (&lt;a href="http://es.wikipedia.org/wiki/Captcha"&gt;captchas&lt;/a&gt;), filtros por &lt;a href="http://es.wikipedia.org/wiki/Host"&gt;host&lt;/a&gt;/email, mediante &lt;a href="http://es.wikipedia.org/wiki/Cookie"&gt;cookies&lt;/a&gt;, &lt;a href="http://es.wikipedia.org/wiki/Timestamp"&gt;timestamps&lt;/a&gt;, filtros por &lt;a href="http://es.wikipedia.org/wiki/User_agent"&gt;user-agent&lt;/a&gt;, ...&lt;/li&gt;
+&lt;li&gt;medidas pasivas: &lt;a href="http://es.wikipedia.org/wiki/Ofuscaci%C3%B3n"&gt;ofuscar&lt;/a&gt; direcciones de correo, moderación de comentarios, &lt;a href="http://es.wikipedia.org/wiki/Nofollow"&gt;enlaces nofollow&lt;/a&gt;, permisos de publicación, políticas de contraseñas, campos ocultos mediante &lt;a href="http://es.wikipedia.org/wiki/Css"&gt;css&lt;/a&gt;/&lt;a href="http://es.wikipedia.org/wiki/Javascript"&gt;javascript&lt;/a&gt;, cerrar los comentarios de un post pasado un tiempo, ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;De entrada tenía, y tengo, algo muy claro, no voy a emplear ninguno de estos 
+tres métodos habituales: &lt;em&gt;captchas&lt;/em&gt;, &lt;em&gt;moderación de comentarios&lt;/em&gt; y &lt;em&gt;requerir 
+registro&lt;/em&gt; para enviar comentarios. Y es una decisión inamovible, no pienso
+claudicar de ningún modo en este sentido. Son métodos que o bien me harían 
+perder un tiempo del que ni dispongo, ni estoy dispuesto a perder, o bien 
+suponen un incordio que me personalmente me incomodan mucho cuando me los
+encuentro en otros sitios y por los que no quiero hacer pasar a mis lectores. 
+Esto evidentemente deja fuera algunas de las medidas más efectivas para combatir 
+el spam, pero son medidas en las que el usuario o el webmaster siempre pierden, 
+de un modo u otro, y no estoy dispuesto a permitir que los spammers condicionen 
+en ningún modo el compartimiento de este sitio. Aunque suene contradictorio con 
+lo que acabo de decir, el método que voy a comentar aquí, y que empleo 
+actualmente, emplea en alguna medida el uso de captchas, aunque de modo tan 
+limitado, que afecta a menos del 0,5% de los comentarios enviados. Digamos que 
+lo acepto como una razonable excepción a la regla. Si empleo en cierta medida 
+algunos de los otros métodos.&lt;/p&gt;
+&lt;div&gt;
+&lt;script src="ammap/swfobject.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;div id="flashcontent" style="text-align: center;"&gt;
+&lt;strong&gt;You need to upgrade your Flash Player&lt;/strong&gt;
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;// &lt;![CDATA[
+
+var so = new SWFObject("ammap/ammap.swf", "ammap", "600", "400", "8", "#ffffff");
+  so.addVariable("path", "ammap/");
+  so.addVariable("settings_file", escape("ammap/ammap_settings.xml"));
+  so.addVariable("data_file", escape("ammap/ammap_data.xml"));  2
+  so.addVariable("loading_settings", "Cargando configuracion");
+  so.addVariable("loading_data", "Cargando datos"); 
+  so.addVariable("preloader_color", "#999999");       
+  so.write("flashcontent");
+// ]]&gt;&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;p&gt;En este mapa podemos ver el país de origen de los ataques de spam contra 
+deaparatos.com&lt;/p&gt;
+&lt;h3 id="drupal_y_el_spam"&gt;&lt;strong&gt;Drupal y el spam&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Con que armas contamos en &lt;strong&gt;Drupal&lt;/strong&gt; para combatir el spam? Por un lado tenemos 
+el clásico modulo &lt;a href="http://drupal.org/project/spam"&gt;Spam&lt;/a&gt;, que emplee en este mismo sitio durante más de dos 
+años,  y que su mayor ventaja es contar con un &lt;a href="http://es.wikipedia.org/wiki/Clasificador_bayesiano_ingenuo"&gt;filtro Bayesiano&lt;/a&gt;. Este 
+módulo es usado actualmente en unos 4.893 sitios &lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; con &lt;strong&gt;Drupal&lt;/strong&gt;. Durante 
+mucho tiempo funcionó perfectamente, de vez en cuando se colaba algún comentario 
+spam, pero era cuestión de reportarselo al modulo y el iba aprendiendo, así como 
+podíamos crear nuestros propios filtros personalizados. El problema comenzó 
+cuando los que se colaban ya eran unos 20 spam diarios y aumentando, y entonces 
+ya no era viable, ni cómodo, perder tanto tiempo para que el filtro bayesiano 
+aprendiera a combatir unos ataques que eran cada vez más sofisticados. Así que 
+tocaba mirar otra alternativa de entre alguna de las disponibles:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://drupal.org/project/captcha"&gt;Captcha&lt;/a&gt;, uno de los más usados en &lt;strong&gt;Drupal&lt;/strong&gt; 
+  (&lt;strong&gt;&lt;em&gt;80.286 sitios&lt;/em&gt;&lt;/strong&gt;), y uno de los métodos más empleados en la red. 
+  Es la clásica opción donde mediante una pregunta al usuario se intenta 
+  diferenciar entre humano y maquina. Los captchas pueden ser de varios tipos, 
+  desde cálculos matemáticos sencillos hasta gráficos donde se encuentran unos 
+  caracteres ofuscados y que el usuario debe introducir. Hay varios módulos que 
+  lo complementan, aportando distintos tipos de captchas, donde &lt;a href="http://drupal.org/project/recaptcha"&gt;reCaptcha&lt;/a&gt; 
+  es uno de los más empleados (16.684). &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://drupal.org/project/akismet"&gt;Akismet&lt;/a&gt;, todo un clásico, basado en el servicio homónimo, 
+  &lt;a href="http://wordpress.org/"&gt;Akismet&lt;/a&gt;, que creara en su día &lt;a href="http://wordpress.org/"&gt;Wordpress&lt;/a&gt; y que hoy es sostenido por 
+  &lt;a href="http://automattic.com/"&gt;Automattic&lt;/a&gt;, empresa donde trabajan la mayoría de los desarrolladores 
+  oficiales de &lt;strong&gt;Wordpress&lt;/strong&gt;. Es uno de los métodos más difundidos en la red, 
+  en parte por venir de la mano de la empresa más emblemática de los blogs. 
+  Esta implementación del servicio &lt;strong&gt;akismet&lt;/strong&gt; es ya un tanto antigua (ya no 
+  tiene soporte) y hay un modulo más reciente que lo supera y aporta más 
+  funcionalidades, &lt;strong&gt;Antispam&lt;/strong&gt;, también en esta lista. Es usado actualmente por 
+  solo &lt;strong&gt;&lt;em&gt;947 sitios&lt;/em&gt;&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://drupal.org/project/spamicide"&gt;Spamicide&lt;/a&gt;, se basa en la premisa de que la mayoría de los ataques spam 
+  se producen con bots que acceden a la página con navegadores en modo texto 
+  (&lt;a href="http://es.wikipedia.org/wiki/Script_%28inform%C3%A1tica%29"&gt;scripts&lt;/a&gt; en realidad), por lo tanto ni hacen uso de &lt;strong&gt;css&lt;/strong&gt;, ni de 
+  &lt;strong&gt;javascript&lt;/strong&gt;. Aprovechando esta circunstancia, crean un campo de formulario 
+  que es ocultado con css, con lo cual el usuario normal no lo ve, pero si el 
+  bot, que si lo rellena con texto, queda descartado. Pero los spammers aprenden 
+  muy rapido, así que la medida no es muy efectiva. Además últimamente empiezan 
+  a aparecer personas dedicadas a introducir comentarios spam a mano (de ahí 
+  vienen muchos de esos comentarios &lt;a href="http://www.frikipedia.es/friki/HOYGAN"&gt;hoygan&lt;/a&gt; absurdos que no parecen tener 
+  mucho sentido) y que cobraran una miseria en países subdesarrollados, en parte 
+  para saltarse los captcha. Por eso su efectividad es muy dudosa. Aunque si 
+  puede ser usado combinado con otros módulos spam, para reforzar su eficacia. 
+  Es muy poco usado, apenas &lt;strong&gt;&lt;em&gt;377 sitios&lt;/em&gt;&lt;/strong&gt; lo emplean. &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://drupal.org/project/antispam"&gt;Antispam&lt;/a&gt;, uno de los mejores módulos antispam para drupal. Con el se 
+  puede usar algunos de los mejores servicios antispam externos  que hay en la 
+  red: &lt;a href="http://akismet.com/"&gt;Akismet&lt;/a&gt;, &lt;a href="http://antispam.typepad.com/"&gt;Typepad&lt;/a&gt; y &lt;a href="http://defensio.com/"&gt;Defensio&lt;/a&gt;. Con él podemos abrir una 
+  cuenta en uno de estos servicios y configurar el módulo para emplearlo. Su 
+  eficacia es muy elevada, ya que son algunas de los mejores armas disponibles 
+  contra el spam. El funcionamiento básico es consultar la base de datos de 
+  alguno de estos servicios, muy completas, para comprobar si el comentario u 
+  el posteador son probable spam, y bloquearlo en caso de que la probabilidad 
+  sea muy elevada. En caso de duda, aparecerá un captcha para descartar bots. 
+  Tiene unas gráficas estadísticas muy útiles para comprobar la evolución del 
+  problema en nuestro sitio. No es demasiado empleado, estando instalado en 
+  unos &lt;strong&gt;&lt;em&gt;1.718 sitios&lt;/em&gt;&lt;/strong&gt;. &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://drupal.org/project/badbehavior%20"&gt;Bad Behavior&lt;/a&gt;, otro viejo conocido de las medidas antispam. Este se 
+  basa en parte en un análisis heurístico de las peticiones HTTP del bot y 
+  comparándolo con las bases de datos que poseen de spambots conocidos. Este 
+  hace uso también de las base de datos del &lt;strong&gt;Proyecto Honey Pot&lt;/strong&gt;, para 
+  reforzar la identificación de spammers. Es bastante eficiente, pero el 
+  problema está en que van por detrás siempre de los spammers y a veces se les 
+  cuela algún que otro comentario spam. Básicamente porque se basa en que uno 
+  reporte los spammers que aún no están en sus bases de datos, y hasta que 
+  alguien reporta a un spammer, este puede habernos colado unos cuantos 
+  mensajes. Es empleado en unos &lt;strong&gt;&lt;em&gt;918 sitios&lt;/em&gt;&lt;/strong&gt; drupal.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://drupal.org/project/httpbl"&gt;http:BL&lt;/a&gt;, ese se basa enteramente en el &lt;a href="http://www.projecthoneypot.org/"&gt;Proyecto Honey Pot&lt;/a&gt;. Usa 
+  sus bases de datos (&lt;a href="http://es.wikipedia.org/wiki/Lista_negra"&gt;DNS blacklist&lt;/a&gt;) para prevenir comentarios spam y 
+  recolectores de direcciones email. Es eficiente en la misma medida que el 
+  anterior, depende de su base de datos, que no es tan completa como las de los 
+  servicios que soporta el modulo &lt;strong&gt;Antispam&lt;/strong&gt;. Una de las virtudes de este 
+  modulo es que bloquea las solicitudes de pagina de aquellas Ips que están en 
+  su lista negra, con el consiguiente beneficio que esto reporta para el trafico 
+  de nuestro sitio. Permite también el uso de &lt;a href="http://en.wikipedia.org/wiki/Whitelist"&gt;whitelists&lt;/a&gt; y &lt;a href="http://en.wikipedia.org/wiki/Greylist"&gt;greylists&lt;/a&gt;. 
+  Podría ser uno de los mejores módulos antispam para Drupal si no se colaran 
+  más comentarios spam de lo deseable. Actualmente solo&lt;strong&gt;&lt;em&gt;443 sitios&lt;/em&gt;&lt;/strong&gt; emplean 
+  este modulo.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://drupal.org/project/phpids"&gt;PHPIDS&lt;/a&gt;, esta emplea una aproximación al problema diferente. Emplea un 
+  sistema de detección de intrusos desarrollado y mantenido por &lt;a href="http://php-ids.org/"&gt;PHPIDS&lt;/a&gt;. 
+  Este no solo detecta ataques de spam, si no que también otro tipo de ataques 
+  maliciosos al sitio, como &lt;a href="http://es.wikipedia.org/wiki/XSS"&gt;XSS (cross site scripting)&lt;/a&gt;, 
+  &lt;a href="http://es.wikipedia.org/wiki/Inyeccion_SQL"&gt;inyecciones sql&lt;/a&gt;, DoS, etc. El problema es que arroja demasiados falsos 
+  positivos y hemos de ir afinando la detección poco a poco, lo cual puede 
+  llegar a ser bastante tedioso. Se puede usar conjuntamente con otros módulos 
+  antispam, pero normalmente este bloqueará el ataque antes de que el otro se 
+  percate. Lo malo, claro, es que hasta que no esté completamente afinado, a 
+  los usuarios les puede dar mucho la lata ante comentarios completamente inocuos. 
+  También puede llegar a generar unos logs muy extensos que pueden incrementar 
+  bastante nuestra base de datos. Puede ser muy útil para aquellos sitios en 
+  los que los ataques van más allá del simple spam. Tampoco es muy empleado, 
+  solo &lt;strong&gt;&lt;em&gt;361 sitios&lt;/em&gt;&lt;/strong&gt; lo tienen implantado.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://drupal.org/project/mollom"&gt;Mollom&lt;/a&gt;, uno de los últimos en llegar, pero lo ha hecho arrasando, en 
+  dos años ha conseguido que ya sea empleado en &lt;strong&gt;23.983 sitios&lt;/strong&gt; drupal. Esto 
+  se debe en parte a que uno de los co-autores es el creador de &lt;strong&gt;Drupal&lt;/strong&gt;, 
+  &lt;a href="http://buytaert.net/"&gt;Dries Buytaert&lt;/a&gt;. &lt;a href="http://mollom.com/"&gt;Mollom&lt;/a&gt; es un servicio web en la misma linea que 
+  &lt;strong&gt;Askimet&lt;/strong&gt; o &lt;strong&gt;Defensio&lt;/strong&gt;, con una base de datos de usuarios en la que aparte 
+  de spammers, se registran reputaciones de usuario en función de parámetros 
+  como comentarios ofensivos, comentarios de "baja-calidad" (hoygans), 
+  comentarios off-topic, etc según como nosotros lo reportemos a &lt;strong&gt;Mollom&lt;/strong&gt;. Es 
+  decir que nos ayuda también a mejorar la calidad de nuestro sitio filtrando 
+  también a usuarios con baja reputación en función de los parametros que 
+  nosotros marquemos. Esto desde luego es un punto a favor del servicio, que 
+  nos permite matar dos pajaros de un tiro. El servicio analiza el texto del 
+  mensaje, y si es spam, lo bloquea y en caso de dudas mostrara un captcha como 
+  el de la imagen (menos del 2% de las ocasiones). Además todo el código es 
+  opensource, tanto el del modulo como el de la API de &lt;strong&gt;Mollom&lt;/strong&gt; y hay 
+  disponibles módulos para otros gestores de contenidos como &lt;strong&gt;Wordpress&lt;/strong&gt;, 
+  &lt;a href="http://www.joomla.org/"&gt;Joomla&lt;/a&gt; o &lt;a href="http://radiantcms.org/"&gt;Radiant&lt;/a&gt; y librerías para múltiples lenguajes (Java, PHP, 
+  Ruby, Python, Perl, .Net, ...).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Después de analizar las posibilidades y probar unos cuantos módulos 
+(&lt;strong&gt;Antispam&lt;/strong&gt;, &lt;strong&gt;Bad Behavior&lt;/strong&gt;, &lt;strong&gt;http:BL&lt;/strong&gt;, &lt;strong&gt;PHPIDS&lt;/strong&gt; y &lt;strong&gt;Mollom&lt;/strong&gt;) llegué a 
+valorar que las dos mejores soluciones en mi caso eran &lt;strong&gt;Antispam&lt;/strong&gt; Y
+&lt;strong&gt;Mollom&lt;/strong&gt;. Aunque &lt;strong&gt;PHPIDS&lt;/strong&gt; y &lt;strong&gt;http:BL&lt;/strong&gt; tenían algunas características 
+únicas que echaba de menos en ellos. Después de probar durante unas semanas 
+tanto &lt;strong&gt;Antispam&lt;/strong&gt; como &lt;strong&gt;Mollom&lt;/strong&gt;, observe que el indice de fallos de
+&lt;strong&gt;Mollom&lt;/strong&gt; era mucho menor y además era más transparente al usuario, mostrando 
+el captcha en menos ocasiones. Si, &lt;strong&gt;Captcha&lt;/strong&gt; es la opción más socorrida por la 
+mayoría de los usuarios de &lt;strong&gt;Drupal&lt;/strong&gt;, en cuanto que es la que menos molesta al 
+webmaster, claro, pero le traspasa la molestia al usuario. Yo odio directamente 
+los captcha, no los soporto, y he pasado de utilizar alguna web por ellos. 
+&lt;strong&gt;Mollom&lt;/strong&gt; tiene la ventaja de reducir esta molestia a la minima expresión, por 
+lo que el 98% de los usuarios de la web ni siquiera se darán cuenta de que en 
+ella funciona un sistema antispam, que es lo que buscaba desde el principio, un 
+servicio efectivo y transparente.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mollom&lt;/strong&gt; era pues, la opción elegida y la que está funcionando en este sitio 
+desde entonces.&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="pictures/captcha.png" 
+alt="Ejemplo de captcha de Mollom" title="Ejemplo de captcha de Mollom" 
+height="114" width="600" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ejemplo de captcha generado por Mollom&lt;/p&gt;
+&lt;h3 id="la_soluci+n_definitiva_mollom__ban_drupal_spammerspy"&gt;&lt;strong&gt;La solución definitiva, Mollom + ban_drupal_spammers.py&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Aunque Mollom funciona de manera muy efectiva, bloqueando aprox. el 99,98% 
+(en deaparatos.com) de los mensajes spam&lt;/strong&gt;, esto no impide que los atacantes 
+sigan intentando una y otra vez colar su spam en el sitio. Esto nos lleva a que 
+las páginas se cargan una y otra vez, consumiendo ancho de banda, ya que 
+&lt;strong&gt;Mollom&lt;/strong&gt; actúa a posteriori, cuando se envía el comentario, no antes de cargar 
+la página, lo que es el funcionamiento normal de estos sistemas antispam. Y 
+además los spammers tienen cierta inclinación a intentar introducir el spam en 
+las paginas más populares, las que suelen tener más comentarios y por lo tanto 
+de mayor peso por lo general. Basta con decir que el ancho de banda medio 
+generado por cada uno de estos ataques en este sitio ha sido de 146Kb.&lt;br /&gt;
+&lt;/p&gt;
+&lt;p&gt;Y es en este aspecto donde echaba de menos una de las características de 
+&lt;strong&gt;http:BL&lt;/strong&gt;, bloquear el acceso al sitio a los que están en su lista negra. 
+Empecé entonces a darle vueltas a la manera de implementar esta característica
+en mi sitio, pero pronto me di cuenta de dos cosas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;No quería hacer una consulta a projecthoneypot.org cada vez que alguien 
+  accediera al sitio, por evidentes mermas en el rendimiento del sitio.&lt;/li&gt;
+&lt;li&gt;No quería tampoco tener una lista negra local que se alimentara 
+  periódicamente de projecthoneypot.org, porque no quería tener que comprobar 
+  miles de ips que probablemente nunca accederían a mi sitio.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La solución entonces pasaba por bloquear solo a los que ya hubieran ejecutado 
+un ataque de spam contra el sitio y que hubieran sido bloqueados al menos una 
+vez por &lt;strong&gt;Mollom&lt;/strong&gt;, de modo que en los sucesivos ataques fueran rechazados antes 
+siquiera de cargar la página.&lt;/p&gt;
+&lt;p&gt;Hay una forma de hacer esto de forma manual en &lt;strong&gt;Drupal&lt;/strong&gt;, simplemente hay que 
+añadir las ips de los spammers a través de las &lt;em&gt;reglas de acceso&lt;/em&gt; en el menú de 
+&lt;em&gt;Administración&lt;/em&gt;. Claro que el método es evidentemente tedioso y aparatoso, 
+comprobar las ips atacantes e ir añadiéndolas una por una a través del 
+formulario. Tenía que hacerse de una manera automatizada.&lt;/p&gt;
+&lt;p&gt;La primera idea y más evidente era modificar el modulo &lt;strong&gt;Mollom&lt;/strong&gt; para lograr 
+esto, pero no me gusta PHP y procuro evitarlo, además quería un prototipo rápido 
+para evaluar la eficacia de la solución y su repercusión en el ancho de
+banda, así que todo empezó con un sencillo script en &lt;strong&gt;python&lt;/strong&gt;. Pronto me di 
+cuenta de que &lt;strong&gt;Mollom&lt;/strong&gt; registraba las ips de todos los atacantes que bloqueaba 
+en el registro de eventos de &lt;strong&gt;Drupal&lt;/strong&gt; (la tabla &lt;em&gt;watchdog&lt;/em&gt; del modulo opcional 
+&lt;em&gt;Database logging&lt;/em&gt;), y que alguna de ellas tenía hasta 30 entradas diferentes 
+en el registro. Y como &lt;strong&gt;Drupal&lt;/strong&gt; incorpora el método que citaba antes para 
+banear IPs, lo único necesario era añadir estas IPs a la tabla &lt;em&gt;access&lt;/em&gt;.&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="pictures/banned.png" 
+alt="Ejemplo de pagina de ip bloqueada por Drupal" 
+title="Ejemplo de pagina de ip bloqueada por Drupal" height="30" 
+width="233" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Este es un ejemplo de la pàgina que se encontraria un atacante de spam bloqueado 
+a través de la tabla &lt;em&gt;access&lt;/em&gt; en Drupal&lt;/p&gt;
+&lt;p&gt;Ahora bien, si añadimos automáticamente estas IPs, llegara un momento en que 
+tendremos varias miles de ellas, y el rendimiento de la página se vera afectado, 
+al tener que comprobar todas estas ips cada vez que alguien accede a la página. 
+Además hay que tener en cuenta que algunas de estas IPs tendrán como origen a un 
+usuario que teniendo el ordenador o router infectado por un 
+&lt;a href="http://es.wikipedia.org/wiki/Rootkit"&gt;rootkit&lt;/a&gt;/&lt;a href="http://es.wikipedia.org/wiki/Troyano_%28inform%C3%A1tica%29"&gt;troyano&lt;/a&gt;,  pertenezca a una &lt;a href="http://es.wikipedia.org/wiki/Botnet"&gt;Botnet&lt;/a&gt; sin saberlo. Es
+posible que estos usuarios acaben limpiando de &lt;a href="http://es.wikipedia.org/wiki/Malware"&gt;malware&lt;/a&gt; su equipo y en un 
+momento determinado quieran acceder legítimamente al sitio, por lo que no 
+deberían estar bloqueados de por vida. Esto lo solucioné en el script rotando 
+las IPs al llegar a umbral determinado, marcado por el número máximo de las IPs 
+que deseemos almacenar en esta tabla. Al llegar a este número máximo, se borra 
+un porcentaje de IPs, eligiendo siempre a las más antiguas. En estos momentos, 
+en función del rendimiento y tiempo que quiero que permanezcan en la tabla, 
+tengo este valor establecido en unas 2000 IPs. Para controlar la fecha en que 
+fueron introducidas cada una de las ips en la tabla, modifico la tabla access, 
+añadiéndole un campo &lt;em&gt;timestamp&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Como se pudo ver al principio del articulo, la efectividad del script es muy 
+elevada y a día de hoy sigo con este método, con un script que ha evolucionado 
+varias veces desde entonces y que se adapta perfectamente a mis necesidades.
+Los picos que se pueden ver en el primer gráfico del spam bloqueado por el 
+modulo &lt;strong&gt;Mollom&lt;/strong&gt;, se deben precisamente a los breves periodos de tiempo en los 
+que por una u otra razón el script no estaba funcionando.&lt;/p&gt;
+&lt;p&gt;El porqué del fantástico ahorro de ancho de banda se puede explicar con la 
+anterior imagen, que es un ejemplo de la página que se encontraría un atacante 
+bloqueado por &lt;strong&gt;ban_drupal_spammers.py&lt;/strong&gt;. &lt;strong&gt;Esta página tiene un peso ridículo 
+de entre 33 y 39 bytes, del orden de unas 4000 veces menos que el peso medio de 
+146 Kilobytes por página del trafico generado por los spammers&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Este script se puede ejecutar en remoto, para hostings compartidos que no pueden 
+correr scripts en &lt;strong&gt;python&lt;/strong&gt; pero si permiten acceso remoto a la base de datos en 
+MySQL, como mi anterior &lt;a href="http://www.hostsuar.com/"&gt;hosting&lt;/a&gt; (quede muy satisfecho). Pero
+también puede ser ejecutado de manera local, en hosting compartidos (que 
+soporten python), en &lt;a href="http://es.wikipedia.org/wiki/Servidor_virtual_privado"&gt;VPS&lt;/a&gt; y en servidores dedicados. No muchos hostings 
+compartidos permiten la ejecución de scripts en python, ni siquiera ssh o
+acceso remoto a la BDD. Afortunadamente, mi hosting actual, &lt;strong&gt;&lt;a href="http://www.webfaction.com/?affiliate=joedicastro"&gt;Webfaction&lt;/a&gt;&lt;/strong&gt;, 
+me permite todas esas posibilidades y no es ningún un problema. De hecho es el 
+mejor hosting compartido que haya probado nunca y uno de los mejores del mercado, 
+porque su manera de trabajar es única y es lo más parecido a un VPS, pero con 
+una facilidad para administrar las tareas más cotidianas apabullante. Eso si, 
+es distinto a todos los demás y necesita uno adaptarse a su manera de hacer las 
+cosas, pero luego ya no quieres saber nada de otros hosting compartidos.  Si 
+además quieres trabajar con ruby o python, pocos puede competir con su 
+flexibilidad, lo que me hizo decidirme por él.&lt;/p&gt;
+&lt;h3 id="el_script_ban_drupal_spammerspy"&gt;&lt;strong&gt;El script, ban_drupal_spammers.py&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;El script (siempre la versión más actualizada), los ficheros auxiliares y las 
+instrucciones de como emplearlos, pueden ser encontrados en mi repositorio&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://code.joedicastro.com/ban-drupal-spammers/wiki/Leer_en_espanol"&gt;&lt;strong&gt;code.joedicastro.com/ban-drupal-spammers&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;donde tambien se puede encontrar el script python que empleo para recoger los 
+datos que se muestran en el mapa de este árticulo.&lt;/p&gt;
+&lt;p&gt;El código de &lt;strong&gt;ban_drupal_spammers.py&lt;/strong&gt; es el siguiente:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class="c"&gt;# -*- coding: utf8 -*-&lt;/span&gt;
+
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    ban drupal spammers.py: ban spammers in Drupal with Mollom&amp;#39;s aid&lt;/span&gt;
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="c"&gt;#===============================================================================&lt;/span&gt;
+&lt;span class="c"&gt;# This Script uses the Mollom reports in Drupal for ban spammers&amp;#39; ips and&lt;/span&gt;
+&lt;span class="c"&gt;# reduce the bandwith usage in the website.&lt;/span&gt;
+&lt;span class="c"&gt;#===============================================================================&lt;/span&gt;
+
+&lt;span class="c"&gt;#===============================================================================&lt;/span&gt;
+&lt;span class="c"&gt;#    Copyright 2010 joe di castro &amp;lt;joe@joedicastro.com&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;#&lt;/span&gt;
+&lt;span class="c"&gt;#    This program is free software: you can redistribute it and/or modify&lt;/span&gt;
+&lt;span class="c"&gt;#    it under the terms of the GNU General Public License as published by&lt;/span&gt;
+&lt;span class="c"&gt;#    the Free Software Foundation, either version 3 of the License, or&lt;/span&gt;
+&lt;span class="c"&gt;#    (at your option) any later version.&lt;/span&gt;
+&lt;span class="c"&gt;#&lt;/span&gt;
+&lt;span class="c"&gt;#    This program is distributed in the hope that it will be useful,&lt;/span&gt;
+&lt;span class="c"&gt;#    but WITHOUT ANY WARRANTY; without even the implied warranty of&lt;/span&gt;
+&lt;span class="c"&gt;#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the&lt;/span&gt;
+&lt;span class="c"&gt;#    GNU General Public License for more details.&lt;/span&gt;
+&lt;span class="c"&gt;#&lt;/span&gt;
+&lt;span class="c"&gt;#    You should have received a copy of the GNU General Public License&lt;/span&gt;
+&lt;span class="c"&gt;#    along with this program.  If not, see &amp;lt;http://www.gnu.org/licenses/&amp;gt;.&lt;/span&gt;
+&lt;span class="c"&gt;#&lt;/span&gt;
+&lt;span class="c"&gt;#===============================================================================&lt;/span&gt;
+
+&lt;span class="n"&gt;__author__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;joe di castro - joe@joedicastro.com&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;__license__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;GNU General Public License version 3&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;__date__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;15/05/2010&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;__version__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0.52&amp;quot;&lt;/span&gt;
+
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;base64&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;collections&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;MySQLdb&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pygeoip&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;logger&lt;/span&gt;
+&lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;ImportError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="c"&gt;# Checks the installation of the necessary python modules&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linesep&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;An error found importing one module:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exc_info&lt;/span&gt;&lt;span class="p"&gt;()[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]),&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;You need to install it&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Exit...&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+    &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;connect_db&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pass_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3306&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Connect to MySQL database.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;data_base&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MySQLdb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;passwd&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;pass_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                                    &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;client_flag&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;65536&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c"&gt;# flag 65536 is to allow multiple statements in a single string, equals&lt;/span&gt;
+        &lt;span class="c"&gt;# to CLIENT_MULTI_STATEMENTS&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;MySQLdb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;OperationalError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Database connection fails, check that you gave the right &amp;quot;&lt;/span&gt;
+              &lt;span class="s"&gt;&amp;quot;credentials to access the database{0}Exit...&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linesep&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;data_base&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;curs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sql&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Runs a SQL SELECT query and returns a tuple as output.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;curs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sql&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;curs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;alter_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;curs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;db_table&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Create the aux field in the table if no exists, else do nothing.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;database_string&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;                        ALTER TABLE {0}&lt;/span&gt;
+&lt;span class="s"&gt;                        ADD timestamp INT(11) NOT NULL DEFAULT &amp;#39;0&amp;#39;;&lt;/span&gt;
+&lt;span class="s"&gt;                        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;db_table&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;curs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;database_string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Aux Field &amp;#39;timestamp&amp;#39; in table &amp;#39;{0}&amp;#39; created.&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;db_table&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;MySQLdb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;OperationalError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Can&amp;#39;t create the aux field, seems this exists previously.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c"&gt;# This output is not reported in the log, it will be repetitive.&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;ins_qstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;q_mask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;q_timestamp&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Create a SQL INSERT query string for the given ip.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;iqstr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;            INSERT INTO `access`&lt;/span&gt;
+&lt;span class="s"&gt;            (mask, type, status, timestamp)&lt;/span&gt;
+&lt;span class="s"&gt;            VALUES (&amp;#39;{0}&amp;#39;, &amp;#39;host&amp;#39;, &amp;#39;0&amp;#39;, {1});{2}&lt;/span&gt;
+&lt;span class="s"&gt;            &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;q_mask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;q_timestamp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linesep&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;iqstr&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;del_qstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;q_timestamp&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Create a DELETE query string for the given timestamp.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;dqstr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;            DELETE FROM access&lt;/span&gt;
+&lt;span class="s"&gt;            WHERE timestamp=&amp;#39;{0}&amp;#39;;{1}&lt;/span&gt;
+&lt;span class="s"&gt;            &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;q_timestamp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linesep&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;dqstr&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;ip_and_country&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l_ips&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;geo&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Create the log lines about the ips and their countries.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;l_ips&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;{0} IPs&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l_ips&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="n"&gt;ips_and_countries&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="n"&gt;geo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;country_name_by_addr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;l_ips&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;ips&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linesep&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;{0:16} {1}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt;  &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt;
+                               &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ips_and_countries&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
+        &lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linesep&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;total&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ips&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;renew_geoip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gip_path&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Check if the geoip data file is too old.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;out_str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;gz_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://geolite.maxmind.com/download/geoip/database/&amp;quot;&lt;/span&gt;
+                &lt;span class="s"&gt;&amp;quot;GeoLiteCountry/GeoIP.dat.gz&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;web_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://www.maxmind.com/app/geolitecountry&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;geoip_file_date&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getmtime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gip_path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;geoip_file_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;2592000&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="c"&gt;# 2592000s = 30 days&lt;/span&gt;
+        &lt;span class="n"&gt;out_str&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Your GeoIP data file* is older than 30 days!{0}{0}&amp;quot;&lt;/span&gt;
+                    &lt;span class="s"&gt;&amp;quot;You can look for a new version in:{0}{1}{0}or{0}{2}{0}{0}&amp;quot;&lt;/span&gt;
+                    &lt;span class="s"&gt;&amp;quot;  *{3}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linesep&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gz_file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;web_url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gip_path&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;out_str&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;main section&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="c"&gt;#===============================================================================&lt;/span&gt;
+&lt;span class="c"&gt;# SCRIPT PARAMATERS&lt;/span&gt;
+&lt;span class="c"&gt;#===============================================================================&lt;/span&gt;
+
+    &lt;span class="c"&gt;# database host, name or ip (&amp;#39;localhost&amp;#39; by default)&lt;/span&gt;
+    &lt;span class="n"&gt;host&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;
+    &lt;span class="c"&gt;# database user name (&amp;#39;root&amp;#39; by default)&lt;/span&gt;
+    &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;root&amp;#39;&lt;/span&gt;
+    &lt;span class="c"&gt;# database password, with a minimum security measure, encoded by base64&lt;/span&gt;
+    &lt;span class="c"&gt;# (&amp;#39;password&amp;#39; by default)&lt;/span&gt;
+    &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;base64&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;b64decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cGFzc3dvcmQ=&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c"&gt;# database name (&amp;#39;database&amp;#39; by default)&lt;/span&gt;
+    &lt;span class="n"&gt;database&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;database&amp;#39;&lt;/span&gt;
+
+    &lt;span class="c"&gt;# path to geolocation data file GeoIP.dat&lt;/span&gt;
+    &lt;span class="n"&gt;geoip_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/your/path/to/file/GeoIP.dat&amp;#39;&lt;/span&gt;
+
+    &lt;span class="c"&gt;# mail server, smtp protocol, to send the log (&amp;#39;localhost&amp;#39; by default)&lt;/span&gt;
+    &lt;span class="n"&gt;smtp_server&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;
+    &lt;span class="c"&gt;# sender&amp;#39;s email address (&amp;#39;&amp;#39; by default)&lt;/span&gt;
+    &lt;span class="n"&gt;from_addr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class="c"&gt;# a list of receiver(s)&amp;#39; email addresses ([&amp;#39;&amp;#39;] by default)&lt;/span&gt;
+    &lt;span class="n"&gt;to_addrs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="c"&gt;# smtp server user (&amp;#39;&amp;#39; by default)&lt;/span&gt;
+    &lt;span class="n"&gt;smtp_user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class="c"&gt;# smtp server password, with a minimum security measure, encoded by base64&lt;/span&gt;
+    &lt;span class="c"&gt;# (&amp;#39;password&amp;#39; by default)&lt;/span&gt;
+    &lt;span class="n"&gt;smtp_pass&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;base64&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;b64decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cGFzc3dvcmQ=&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# set the perfomace threshold (number of banned ips) for you site&lt;/span&gt;
+    &lt;span class="n"&gt;threshold&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2000&lt;/span&gt;
+
+&lt;span class="c"&gt;#===============================================================================&lt;/span&gt;
+&lt;span class="c"&gt;# END PARAMETERS&lt;/span&gt;
+&lt;span class="c"&gt;#===============================================================================&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Initialize the log&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Logger&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="c"&gt;# log the header&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://code.joedicastro.com/ban-drupal-spammers&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;connected&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Connected to {0} in {1} as {2}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;database&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;connected&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# log the start time&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Start Time&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# log the warning about old geolocation data file&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;The GeoIp.dat file is old&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;renew_geoip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;geoip_path&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="c"&gt;# connect to database, create the cursors &amp;amp; initialize the geolocation info&lt;/span&gt;
+    &lt;span class="n"&gt;mysql_db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;connect_db&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;database&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mysql_db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;dict_cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mysql_db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MySQLdb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursors&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DictCursor&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;gip&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pygeoip&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GeoIP&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;geoip_path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# optimize the database (instead a cron task in the server)&lt;/span&gt;
+    &lt;span class="n"&gt;all_tables&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tabl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;tabl&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;SHOW TABLES&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+    &lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;OPTIMIZE TABLE {0}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;, &amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;all_tables&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Adds the timestamp field to the &amp;#39;access&amp;#39; table if no exists&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;New aux table field created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alter_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;access&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Query the database and obtain the result. We collect the &amp;#39;access&amp;#39; table&lt;/span&gt;
+    &lt;span class="c"&gt;# ips and ips from spammers reported by Mollom in &amp;#39;watchdog&amp;#39; table&lt;/span&gt;
+    &lt;span class="c"&gt;# access = ({&amp;#39;timestamp&amp;#39;:timestamp, &amp;#39;mask&amp;#39;: &amp;#39;ip&amp;#39;}, ...)&lt;/span&gt;
+    &lt;span class="c"&gt;# mollom = ({&amp;#39;timestamp&amp;#39;:timestamp, &amp;#39;mask&amp;#39;: &amp;#39;ip&amp;#39;}, ...)&lt;/span&gt;
+    &lt;span class="n"&gt;access&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dict_cursor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;SELECT mask, timestamp FROM access&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;mollom&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dict_cursor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;SELECT hostname as mask, timestamp&lt;/span&gt;
+&lt;span class="s"&gt;                                    FROM `watchdog`&lt;/span&gt;
+&lt;span class="s"&gt;                                    WHERE `type` LIKE &amp;#39;%mollom%&amp;#39;&lt;/span&gt;
+&lt;span class="s"&gt;                                    AND `message` LIKE &amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;pam:%&amp;#39;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# From the &amp;#39;access&amp;#39; ips, select the ips blocked by this script from Mollom,&lt;/span&gt;
+    &lt;span class="c"&gt;# discarding those introduced through the Drupal administration interface&lt;/span&gt;
+    &lt;span class="c"&gt;# from_access = {&amp;#39;ip&amp;#39;:timestamp, ...}&lt;/span&gt;
+    &lt;span class="n"&gt;from_access&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a_row&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;access&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a_row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;timestamp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+            &lt;span class="n"&gt;from_access&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a_row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;mask&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a_row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;timestamp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Here we select the ips that Mollom reported, if there are multiple&lt;/span&gt;
+    &lt;span class="c"&gt;# occurrences of the same ip, we always choose the most recent&lt;/span&gt;
+    &lt;span class="c"&gt;# from_mollom = {&amp;#39;ip&amp;#39;:timestamp, ...}&lt;/span&gt;
+    &lt;span class="n"&gt;from_mollom&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;m_row&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;mollom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;m_row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;mask&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;from_mollom&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;from_mollom&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;m_row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;mask&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m_row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;timestamp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
+                &lt;span class="n"&gt;from_mollom&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;m_row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;mask&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;m_row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;timestamp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;from_mollom&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;m_row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;mask&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;m_row&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;timestamp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Now, from these ips, select the IPs of spammers that were not already&lt;/span&gt;
+    &lt;span class="c"&gt;# banned and generate queries to insert into the &amp;#39;access&amp;#39; table. It&amp;#39;s&lt;/span&gt;
+    &lt;span class="c"&gt;# necessary to check if some of ips reported through Mollom didn&amp;#39;t be&lt;/span&gt;
+    &lt;span class="c"&gt;# already banned, because of how the Drupal&amp;#39;s event log works. The optional&lt;/span&gt;
+    &lt;span class="c"&gt;# core module &amp;quot;Database logging&amp;quot; (which must be enabled to run his script)&lt;/span&gt;
+    &lt;span class="c"&gt;# is deleting records by the tail (into the &amp;#39;watchdog&amp;#39; table) on each cron&lt;/span&gt;
+    &lt;span class="c"&gt;# run, according to a maximum limit set in the admin menu. This limit may be&lt;/span&gt;
+    &lt;span class="c"&gt;# 100, 1000, 10000, 100000, 1000000 records, as determined in the &amp;quot;Loggin&lt;/span&gt;
+    &lt;span class="c"&gt;# and alerts -&amp;gt; Database logging&amp;quot; menu. Then depending on the record limit&lt;/span&gt;
+    &lt;span class="c"&gt;# set in the &amp;#39;watchdog&amp;#39; table, the frequency with which you run the cron job&lt;/span&gt;
+    &lt;span class="c"&gt;# and how often you run this script, it&amp;#39;s  very likely that in the previous&lt;/span&gt;
+    &lt;span class="c"&gt;# query we have returned a number of ips that have not yet eliminated from&lt;/span&gt;
+    &lt;span class="c"&gt;# the log (&amp;#39;watchdog&amp;#39;), but we have already added to the table of bannedd&lt;/span&gt;
+    &lt;span class="c"&gt;# ips (&amp;#39;access&amp;#39;). This will avoid duplicate ips on table &amp;#39;access&amp;#39;&lt;/span&gt;
+    &lt;span class="c"&gt;# ins_ips = [&amp;#39;ip0&amp;#39;, &amp;#39;ip1&amp;#39;, ...]&lt;/span&gt;
+    &lt;span class="n"&gt;ins_ips&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;f_ip&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f_ip&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;from_mollom&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;f_ip&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;from_access&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;query_str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ins_qstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i_ip&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;from_mollom&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i_ip&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i_ip&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;ins_ips&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# number of banned ips through this script&lt;/span&gt;
+    &lt;span class="n"&gt;banned_ips&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;from_access&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ins_ips&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c"&gt;# number of banned ips through Drupal administration interface&lt;/span&gt;
+    &lt;span class="n"&gt;drupal_banned_ips&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;access&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;from_access&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# After a certain number of records in the table &amp;#39;access&amp;#39;, the website&amp;#39;s&lt;/span&gt;
+    &lt;span class="c"&gt;# perfomance deteriorates and from an even larger number, the behavior of&lt;/span&gt;
+    &lt;span class="c"&gt;# Drupal just become erratic. In the case of the site on which to run this&lt;/span&gt;
+    &lt;span class="c"&gt;# script, we see a clear loss of performance from the 3000 records and&lt;/span&gt;
+    &lt;span class="c"&gt;# becomes erratic over 5000. To avoid this unpleasant side effect, and&lt;/span&gt;
+    &lt;span class="c"&gt;# that cure don&amp;#39;t be worse than the disease, I set a performance threshold&lt;/span&gt;
+    &lt;span class="c"&gt;# in 2000 records, from which records were removed from the table. If the&lt;/span&gt;
+    &lt;span class="c"&gt;# number of rows is greater than the performance threshold, we proceed to&lt;/span&gt;
+    &lt;span class="c"&gt;# calculate the ips to remove, selecting the oldest. The number of ips to&lt;/span&gt;
+    &lt;span class="c"&gt;# delete will be at least the 30% of &amp;quot;from_access&amp;quot;. Just delete records&lt;/span&gt;
+    &lt;span class="c"&gt;# inserted through this script, never the inserted via Drupal admin&lt;/span&gt;
+    &lt;span class="c"&gt;# interface&lt;/span&gt;
+    &lt;span class="n"&gt;trigger&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;bool&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;access&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;threshold&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# perfomance threshold&lt;/span&gt;
+
+    &lt;span class="n"&gt;del_ips&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;latest&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;  &lt;span class="c"&gt;# ips to delete (if trigger) &amp;amp; latest ip&amp;#39;s date&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;trigger&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c"&gt;# Now we&amp;#39;ll group the ips by date. Use the object collections.defauldict&lt;/span&gt;
+        &lt;span class="c"&gt;# to group the ips in a dictionary of lists (values) of ips by date&lt;/span&gt;
+        &lt;span class="c"&gt;# (keys)&lt;/span&gt;
+        &lt;span class="c"&gt;# ips_by_time = {timestamp:[&amp;#39;ip0&amp;#39;, ..], ...}&lt;/span&gt;
+        &lt;span class="n"&gt;ips_by_time&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;collections&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;defaultdict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;fa_ip&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;from_access&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;ips_by_time&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;from_access&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;fa_ip&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fa_ip&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="c"&gt;# We selected the oldest ips to have a number of them greater than or&lt;/span&gt;
+        &lt;span class="c"&gt;# equal to 30% of blocked by this script&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;ips_date&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ips_by_time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;()):&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;del_ips&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;from_access&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="n"&gt;query_str&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;del_qstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ips_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# delete by date, less queries&lt;/span&gt;
+                &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;d_ip&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;ips_by_time&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ips_date&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+                    &lt;span class="n"&gt;del_ips&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d_ip&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                    &lt;span class="n"&gt;banned_ips&lt;/span&gt; &lt;span class="o"&gt;-=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ips_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;latest&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                    &lt;span class="n"&gt;latest&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ips_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;latest&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;%A &lt;/span&gt;&lt;span class="si"&gt;%x&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;localtime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;latest&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+        &lt;span class="c"&gt;# log spammers&amp;#39; ips deleted from the table&lt;/span&gt;
+        &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Spammers&amp;#39; Ips deleted&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ip_and_country&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;del_ips&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gip&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Newest date of deleted IPs&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Date: {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;latest&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="c"&gt;# runs the database query&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;query_str&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;query_str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# close database cursors&lt;/span&gt;
+    &lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;dict_cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="c"&gt;# log spammers&amp;#39; ips inserted into the table&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Spammers&amp;#39; IPs inserted&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ip_and_country&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ins_ips&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gip&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="c"&gt;# log total banned ips by origin&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Banned IPs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Mollom: &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt; IPs&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;banned_ips&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                            &lt;span class="s"&gt;&amp;#39;Drupal: &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt; IPs&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;drupal_banned_ips&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="c"&gt;# log the end time&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;End Time&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# send the log by email&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Ban Drupal Spammers. Ins: {0} Del: {1}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+             &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ins_ips&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;del_ips&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="n"&gt;send_from&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;from_addr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+             &lt;span class="n"&gt;dest_to&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;to_addrs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mail_server&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;smtp_server&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;server_user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;smtp_user&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+             &lt;span class="n"&gt;server_pass&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;smtp_pass&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c"&gt;# write the log to a file&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;br /&gt;
+
+&lt;hr /&gt;
+&lt;h1 id="comentarios_realizados_anteriormente_en_drupal"&gt;Comentarios realizados anteriormente en Drupal&lt;/h1&gt;
+&lt;div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;"&gt;
+&lt;a href="http://inseguridad.org/"&gt;&lt;img src="pictures/avtr_jbone.png" height=28 
+width=28 alt="avatar" title="avatar de bjone"/&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2 id="muy_interesante"&gt;Muy interesante&lt;/h2&gt;
+&lt;p&gt;por &lt;a href="http://inseguridad.org/"&gt;bjone&lt;/a&gt; el Jue, 14/10/2010 - 11:40&lt;/p&gt;
+&lt;br /&gt;
+
+&lt;p&gt;muy interesante... voy a probar el mollom... gracias por la información.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;"&gt;
+&lt;img src="pictures/avtr_anonimo.png" height=28 width=28
+alt="avatar" title="avatar de anónimo"/&gt;&lt;/div&gt;
+
+&lt;h2 id="preguntita"&gt;Preguntita&lt;/h2&gt;
+&lt;p&gt;por Anónimo el Mié, 27/10/2010 - 14:00&lt;/p&gt;
+&lt;br /&gt;
+
+&lt;p&gt;Estoy armando mi sitio, que poseerá foro y tendré lo que entendí tu llamas 
+hosting compartido. Es decir, me alquilaran espacio de hosting. La pregunta es: 
+¿las precauciones contra el spam en mi sitio deberán correr exclusivamente por 
+mi cuenta o parte de la pelea la lleva el administrador de hospedaje?&lt;/p&gt;
+&lt;p&gt;Gracias.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;"&gt;
+&lt;img src="pictures/avtr_anonimo.png" height=28 width=28
+alt="avatar" title="avatar de anónimo"/&gt;&lt;/div&gt;
+
+&lt;h2 id="gracias_termin+_de_leer_el"&gt;Gracias, terminé de leer el&lt;/h2&gt;
+&lt;p&gt;por Anónimo el Mié, 27/10/2010 - 14:03&lt;/p&gt;
+&lt;br /&gt;
+
+&lt;p&gt;Gracias, terminé de leer el artículo y me respondí solo :)&lt;/p&gt;
+&lt;p&gt;Si, parece que deberé hacerme cargo activamente :(.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;"&gt;
+&lt;a href="pages/sobre-mi.html"&gt;&lt;img src="pictures/avtr_joedicastro.png" height=28 
+width=28 alt="avatar" title="avatar de joedicastro"/&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2 id="si_efectivamente_as+_es"&gt;Si, efectivamente así es,&lt;/h2&gt;
+&lt;p&gt;por &lt;a href="pages/sobre-mi.html"&gt;joe di castro&lt;/a&gt; el Mié, 27/10/2010 - 20:04&lt;/p&gt;
+&lt;br /&gt;
+
+&lt;p&gt;Si, efectivamente así es, pero además es así también en los servidores 
+administrados y en los servidores dedicados.&lt;/p&gt;
+&lt;p&gt;A lo sumo se dedican a administrar el hard, el sistema operativo y el sistema 
+base para la web (Apache, Mysql/PostgreSQL, NGINX, PHP, ...). Pero en cuanto a 
+la aplicación web en si misma y todo lo que a ella atañe, es la parte que te 
+toca. Luego dependiendo de según donde acabes teniendo el hosting, en una 
+situación determinada -de un ataque a la web por ejemplo- pueden desde echarte 
+una mano de buena fe hasta exigirte que lo arregles o te cierran la cuenta (si 
+no te la cierran directamente). Depende de con quien des y de la circunstancia 
+que se dé, en la mayoría de hostings compartidos no se paran mucho a dar soporte 
+a este tipo de situaciones, y si a penalizar a los que no gestionan 
+correctamente sus sitios.&lt;/p&gt;
+&lt;p&gt;De todos modos, si eliges un buen sistema de foros y aplicas un buen sistema 
+antispam, no deberías tener excesivos problemas y acabaras aprendiendo mucho por 
+el camino. La mayoría de los problemas vienen por la desidia y la poca 
+preocupación de los administradores de webs por estos temas.&lt;/p&gt;
+&lt;p&gt;Saludos y suerte con el foro.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;"&gt;
+&lt;a href="http://sigt.net/"&gt;&lt;img src="pictures/avtr_armonth.png" height=28 
+width=28 alt="avatar" title="avatar de armonth"/&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2 id="sobre_el_spamicide"&gt;Sobre el Spamicide&lt;/h2&gt;
+&lt;p&gt;por &lt;a href="http://sigt.net/archivo/sistema-antispam-del-campo-oculto-para-wordpress.xhtml"&gt;Armonth&lt;/a&gt; el Sáb, 30/10/2010 - 19:59 &lt;/p&gt;
+&lt;br /&gt;
+
+&lt;p&gt;Buenas, yo ese sistema lo conocía por el de "campo oculto" y lo comenté hace ya 
+más de 3 años en SigT (te he enlazado mi nombre al artículo) con la implementación.&lt;/p&gt;
+&lt;p&gt;Un detalle que cabe mencionar es que es mucho más efectivo poner como campo "te 
+echo atrás por spammer" el campo correspondiente a "nombre" originalmente en la 
+implementación de WordPress (author) y poner un nuevo author que no poner un 
+campo nuevo a ver si lo rellenan.&lt;/p&gt;
+&lt;p&gt;La mayoría de scripts para spamear no están hechos para rellenar todos los 
+campos, están hechos para rellenar el nombre (author), email, url y comment... 
+ignorando otros campos...&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;"&gt;
+&lt;a href="pages/sobre-mi.html"&gt;&lt;img src="pictures/avtr_joedicastro.png" height=28 
+width=28 alt="avatar" title="avatar de joedicastro"/&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2 id="si_desde_luego_es_bastante"&gt;Si, desde luego es bastante&lt;/h2&gt;
+&lt;p&gt;por &lt;a href="pages/sobre-mi.html"&gt;joe di castro&lt;/a&gt; el Sáb, 30/10/2010 - 22:05&lt;/p&gt;
+&lt;br /&gt;
+
+&lt;p&gt;Si, desde luego es bastante más lógico hacerlo de esa manera, engañando 
+doblemente a los spammers. De todos modos el modulo Spamicide te deja renombrar 
+el campo como quieras y se puede hacer pasar por uno de esos campos sin 
+problemas, por lo que se puede hacer lo que comentas.&lt;/p&gt;
+&lt;p&gt;Ya conocía el articulo que enlazas, hace mucho tiempo que te sigo :), aunque los 
+dos estamos muy inactivos últimamente.&lt;/p&gt;
+&lt;p&gt;Saludos&lt;/p&gt;
+&lt;hr /&gt;
+&lt;div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;"&gt;
+&lt;a href="http://sigt.net/"&gt;&lt;img src="pictures/avtr_armonth.png" height=28 
+width=28 alt="avatar" title="avatar de armonth"/&gt;&lt;/a&gt;&lt;/div&gt;
+
+&lt;h2 id="bueno"&gt;Bueno&lt;/h2&gt;
+&lt;p&gt;por &lt;a href="http://sigt.net/"&gt;Armonth&lt;/a&gt; el Sáb, 30/10/2010 - 22:57 &lt;/p&gt;
+&lt;br /&gt;
+
+&lt;p&gt;Bueno, yo estoy "inactivo" de sigt que no de otro proyecto aún no revelado y que 
+dejé los MMO ;P&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;Las estadísticas de uso emplean los datos de drupal.org a 12 de Octubre 
+de 2010&amp;#160;&lt;a href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</summary><category term="drupal"></category><category term="spam"></category><category term="python"></category><category term="mysql"></category><category term="mollom"></category><category term="script"></category></entry></feed>

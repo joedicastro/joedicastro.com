@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>joe di castro - informes</title>
+  <meta name="author" content="joe di castro" />
+  <meta name="keywords" content="joe di castro, blog">
+  <link rel="author" href="humans.txt" />
+  <link rel="stylesheet" href=".././theme/css/main.css" type="text/css" />
+  <link href=".././atom.xml" type="application/atom+xml" rel="alternate" title="joe di castro ATOM Feed" />
+  <link href=".././rss.xml" type="application/atom+xml" rel="alternate" title="joe di castro RSS Feed" />
+  
+  <link href=".././feeds/tags/informes.atom.xml" type="application/atom+xml" rel="alternate" title="joe di castro - informes ATOM Feed" />
+  <link href=".././feeds/tags/informes.rss.xml" type="application/atom+xml" rel="alternate" title="joe di castro - informes RSS Feed" />
+
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body id="index" class="home">
+
+  <header id="banner" class="body">
+    <h1><a href="../."><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAxBAMAAADKNk2HAAAAElBMVEW/kiXQsGLey5vn3b/s5dH3+fXlDfF2AAADFElEQVRIDa3Bu3LbOABA0QtQ7KFo0TPOqmfiZU/PmD1A8v7/r6yejpPIkxlL5+BP85aQ/Ty8WhJH2U/Dixl2ky80fhqeVaJHI34answ0nlS8bR38GzwhejYzeFPK/g0ejUyezUzesuBHusEzPFjIXlS8qTR+YMYLPOiDVwVvStkPjBsvUFdar0rwlgU/wt4L1IJvusZbSuMHanh9nTxB7aNvaL0lZX8z86tJUVPj1cLeG2b8Xd1ut09P337w3+vr8/PzNxU1Ra8K3jJu/ECJvkHt2T151kdvYe8HUvYNaoXgGa03VJy84dkZf8KDeTd5MrP3hr6t0T+Nwb519QrfK3jDyj5l/8RGhgWv8L2u8c3kVQkuvrc8eVAZSrALXuF7ZJ3j10m/gyfLtk2tF2tirz1kNW1M7Urrwcvui+I7FV2A1gTBowpbhpfBkxRS60hkryPDgoWp0woM4jt9XDsIqe3Zd3snXYh2YWXwqA8L+4V/1qALWKJ96IJCZFrwHQIHmSeyOm40RWfaEj2qDH00RUujXcSUTdA6wgtzwJ9mCClQSXEdXBmsaGIi22dN2TR0TJKtoYQFa9gyrdD0kYxv1sRupoSOg439RlNrJc44ozWoldYRV3LZlGjKJTqG1EAjXi3QOm4K8IMwVXRlWKEdW1OrXdYVpoXWFE1tynMw5ZWcICheLMBkGhbiVBkkaw12MDHUoCtqR2NiGPke2TF0ecEeCzsVz1ZCH1xxZDC1do1a4gt9nMPMoLXRnpR7qLQpMfIlWDaVxhQ8wLMUJloXOrIVx+BBgZzaGslqaX1hk7Z0sFkhdiFl+0CKicEDPOkZKpNC1NK8sPeg0qwMM40HJXZEO3IhusDA16A9TYXsER5Vsn1U571aYOPJq3PUV49miLoMzkFddEpZHfTH5Ake0SjZi4WdN3z/11998Vd4MDJZ8F6oC1nTxnuh9kFn9t4LXcg6Bu+GjkGl9W4orVYm74aVSVPj/bCLOrP3fkjWPvgAVHQl+wCUqAUfga5VWh8BsgUfAvJK60NAk/AxSJB9DEY2Psj/Dz0Ida72jQIAAAAASUVORK5CYII=" alt="joe di castro" title="joe di castro" width="150" height="49" /> </a></h1>
+      <nav>
+      	<ul>
+         
+         <li ><a href=".././category/blog.html">blog</a></li>
+         <li><a href=".././archives.html">archivos</a></li>
+         <li><a href=".././tags.html">etiquetas</a></li>
+         
+         <li><a href=".././pages/markdown.html">markdown</a></li><li><a href=".././pages/sobre-mi.html">sobre mi</a></li>
+         
+       </ul>
+     </nav>
+  </header><!-- /#banner -->        
+
+          
+    
+    
+    <aside id="featured" class="body">
+      <article>
+        <h1 class="entry-title"><a href=".././logger-informes-legibles-para-tus-scripts-python.html">Logger, informes legibles para tus scripts Python</a></h1> 
+        <p>Normalmente los scripts que se crean para ser ejecutados periódicamente, como 
+los de administración de sistemas, realizan tareas que generan cambios que 
+queremos conocer. Esta información se suele guardar en logs o se envía por 
+correo a una dirección de email. Hay muchas formas de generar estos logs, pero 
+normalmente es una simple salida de texto plano en consola, que no suele tener 
+una presentación muy "amigable" o legible. Cuando tienes una cantidad generosa 
+de estos scripts, los recibes por correo electrónico y con una frecuencia diaria 
+o mayor, lo que menos deseas es andar buscando la información entre lineas de 
+texto plano. Lo que yo quiero es poder identificar la información rápidamente de 
+un vistazo, además tenía una idea rondando por la cabeza, que seria aún más 
+cómodo si todos emplearan un formato similar. Con estas premisas cree un módulo 
+<strong>Python</strong>, <code>logger.py</code>, que empleo en muchos de mis scripts en Python y que me 
+permite analizar adecuadamente la información que me interesa.</p>
+<p>Un ejemplo de informe generado por este modulo Python sería el siguiente (el 
+mismo que se generaría si ejecutáramos el modulo como script):</p>
+<div class="codehilite"><pre>SCRIPT =========================================================================
+logger (ver. 0.3)
+http://code.joedicastro.com/python-recipes
+
+This is a test of class Logger
+================================================================================
+
+START TIME =====================================================================
+                                                     Saturday 05/07/11, 21:51:27
+================================================================================
+
+BLOCK ==========================================================================
+This
+is
+a
+sample
+of
+Logger.block()
+================================================================================
+
+LIST ___________________________________________________________________________
+
+This
+is
+a
+sample
+of
+Logger.list()
+
+This a sample of logger.free() text.
+
+&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed
+tortor eget justo vehicula consequat vel eu quam. Suspendisse non lectus eget
+orci varius adipiscing.&quot;
+
+END TIME =======================================================================
+                                                     Saturday 05/07/11, 21:51:27
+================================================================================
+</pre></div>
+
+
+<p>Este modulo contiene una clase, <code>Logger()</code>, que dispone de una serie de métodos 
+que nos permiten diversas tareas, supongamos que tenemos un objeto <code>log</code> de la 
+clase <code>Logger()</code>:</p>
+<ul>
+<li>
+<p><code>log.header(url, msg)</code></p>
+<p>Nos crea una cabecera para el script que nos aporta cierta información que 
+ nos sirve para  identificar el mismo y el contexto en el que se ejecuta. </p>
+<div class="codehilite"><pre>SCRIPT =========================================================================
+nombre del script (versión)
+http://miweb.com/script
+
+mensaje que nos informa de la finalidad del mismo o de 
+información dependiente del contexto. Totalmente 
+personalizable.
+================================================================================
+</pre></div>
+
+
+</li>
+<li>
+<p><code>log.time(title)</code></p>
+<p>Nos permite registrar el tiempo de un evento. Normalmente lo empleo para 
+   registrar el comienzo y el final de la ejecución del script. </p>
+<div class="codehilite"><pre>TITULO =========================================================================
+                                                       Sábado 07/05/11, 22:18:27
+================================================================================
+</pre></div>
+
+
+</li>
+<li>
+<p><code>log.block(title, content)</code></p>
+<p>Crea un bloque de texto con titulo y enmarcado por líneas compuestas por el 
+   carácter <code>=</code>. Entre esas lineas y el contenido no hay ninguna linea en 
+   blanco. Es útil para destacar cierto contenido del resto de forma muy 
+   notable, suelo utilizarlo para ubicar el script en su contexto. </p>
+<div class="codehilite"><pre>TITULO =========================================================================
+contenido
+sigue el contenido
+...
+================================================================================
+</pre></div>
+
+
+</li>
+<li>
+<p><code>log.list(title, content)</code></p>
+<p>Como su nombre bien indica, es una lista de líneas con un simple encabezado 
+  que lo distinga del resto. Suelo emplearlo para volcar la información generada 
+  por el script. Entre el encabezado y la primera línea de texto existe una 
+  línea en blanco.</p>
+<div class="codehilite"><pre>TITULO __________________________________________________
+
+Primera línea del contenido
+Segunda línea del contenido
+...
+</pre></div>
+
+
+</li>
+<li>
+<p><code>log.free(content)</code></p>
+<p>Texto libre, párrafos que se mostrarán tal y como son, sin formato ni 
+  cabecera alguna. Raramente lo empleo, pero es útil por ejemplo para 
+  introducir comentarios, licencias, etc.</p>
+</li>
+<li>
+<p><code>log.send(subject, send_from='', dest_to='', mail_server='localhost',
+             server_user='', server_pass='')</code></p>
+<p>El meollo del script. Se emplea para mandar el resultado por 
+   correo electrónico. Si solo especificamos el asunto, empleará nuestro 
+   servidor de correo local para mandar el informe al buzón local del usuario 
+   que programó/ejecuto el script. Pero se pueden especificar tanto el empleo 
+   de un servidor de correo (SMTP) distinto como otro (o varios) 
+   destinatario(s) en particular. </p>
+</li>
+<li>
+<p><code>log.write(append=False)</code></p>
+<p>Escribe el resultado del log en un fichero de texto. El nombre de este 
+   fichero estará compuesto por el nombre del script sin extensión, más la 
+   extensión <em>.log</em>. Si <code>append</code> es <code>True</code> entonces añadirá el resultado al 
+   final de texto, si no, lo reescribirá en cada ejecución guardando 
+   únicamente el último informe. </p>
+</li>
+<li>
+<p><code>log.get()</code></p>
+<p>Nos devuelve el contenido del log. Es útil cuando estamos con tareas de 
+  depurado, con un <code>print</code> llamando a este método podemos volcar en la 
+  consola la información registrada en el log.</p>
+</li>
+</ul>
+<p>El código del script es el siguiente: </p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    logger.py: Create a log object to log script messages in a elegant way</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c">#===============================================================================</span>
+<span class="c"># This module create a log object to log script messages in a elegant way</span>
+<span class="c">#===============================================================================</span>
+
+<span class="c">#===============================================================================</span>
+<span class="c">#    Copyright 2010 joe di castro &lt;joe@joedicastro.com&gt;</span>
+<span class="c">#</span>
+<span class="c">#    This program is free software: you can redistribute it and/or modify</span>
+<span class="c">#    it under the terms of the GNU General Public License as published by</span>
+<span class="c">#    the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#    (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#    This program is distributed in the hope that it will be useful,</span>
+<span class="c">#    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#    GNU General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#    You should have received a copy of the GNU General Public License</span>
+<span class="c">#    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#===============================================================================</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;joe di castro &lt;joe@joedicastro.com&gt;&quot;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s">&quot;GNU General Public License version 3&quot;</span>
+<span class="n">__date__</span> <span class="o">=</span> <span class="s">&quot;10/09/2010&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s">&quot;0.3&quot;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="kn">import</span> <span class="nn">smtplib</span>
+    <span class="kn">import</span> <span class="nn">socket</span>
+    <span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
+    <span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="kn">import</span> <span class="n">MIMEMultipart</span>
+    <span class="kn">from</span> <span class="nn">email.utils</span> <span class="kn">import</span> <span class="n">COMMASPACE</span><span class="p">,</span> <span class="n">formatdate</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="c"># Checks the installation of the necessary python modules </span>
+    <span class="k">print</span><span class="p">((</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&quot;An error found importing one module:&quot;</span><span class="p">,</span>
+    <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]),</span> <span class="s">&quot;You need to install it&quot;</span><span class="p">,</span> <span class="s">&quot;Stopping...&quot;</span><span class="p">]))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Logger</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Create a log object to log script messages.</span>
+
+<span class="sd">    These messages can be sended via email or writed in a log file</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create the object Logger itself and set various attributes.</span>
+
+<span class="sd">        These attributes are about the python file wich invokes this module:</span>
+
+<span class="sd">        __script_vers = The version of python file which invokes this module</span>
+<span class="sd">        __script_name = The name of the python file which invokes this module</span>
+<span class="sd">        filename = the log file&#39;s name</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">__main__</span> <span class="kn">import</span> <span class="n">__dict__</span> <span class="k">as</span> <span class="n">__dict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__log</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="k">if</span> <span class="s">&#39;__version__&#39;</span> <span class="ow">in</span> <span class="n">__dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__script_vers</span> <span class="o">=</span> <span class="n">__dict</span><span class="p">[</span><span class="s">&#39;__version__&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__script_vers</span> <span class="o">=</span> <span class="s">&#39;Unknown&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__script_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">__dict</span><span class="p">[</span><span class="s">&#39;__file__&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s">&#39;{0}.log&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__script_name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__log</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tit</span><span class="p">,</span> <span class="n">cont</span><span class="p">,</span> <span class="n">decor</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Format a block or a list of lines to enhance comprehension.</span>
+
+<span class="sd">        (str) tit -- title for the block or list</span>
+<span class="sd">        (str or iterable) cont -- line/s for the list/block content</span>
+<span class="sd">        (&#39;=&#39; or &#39;_&#39;) decor - define if it&#39;s list or block and decorate it</span>
+
+<span class="sd">        make the looks of self.block() and self.list()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ending</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;=&#39;</span><span class="p">:</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;_&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">}[</span><span class="n">decor</span><span class="p">]</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;=&#39;</span><span class="p">:</span> <span class="s">&#39;=&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">,</span> <span class="s">&#39;_&#39;</span><span class="p">:</span><span class="s">&#39;&#39;</span><span class="p">}[</span><span class="n">decor</span><span class="p">]</span>
+        <span class="n">begin</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">tit</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="p">(</span><span class="mi">80</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tit</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">decor</span><span class="p">])</span> <span class="o">+</span> <span class="n">ending</span>
+        <span class="n">cont</span> <span class="o">=</span> <span class="p">[</span><span class="n">cont</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cont</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">cont</span>
+        <span class="n">sep</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__log</span> <span class="o">+=</span> <span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">begin</span><span class="p">,</span> <span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cont</span><span class="p">),</span> <span class="n">end</span><span class="p">,</span> <span class="n">sep</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A block of text lines headed and followed by a line full of &#39;=&#39;.</span>
+
+<span class="sd">        (str) title -- The title that start the first line of &#39;=&#39;</span>
+<span class="sd">        (str or iterable) content -- The line/s between the &#39;=&#39; lines</span>
+
+<span class="sd">        There&#39;s not any empty line between the &#39;=&#39; lines and content, e.g.:</span>
+
+<span class="sd">        TITLE ==================================================</span>
+<span class="sd">        content</span>
+<span class="sd">        ========================================================</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__format__</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="s">&#39;=&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A list of text lines headed by a line full of &#39;_&#39;.</span>
+
+<span class="sd">        (str) title -- The title that start the line of &#39;_&#39;</span>
+<span class="sd">        (str or iterable) content -- The line/s after the &#39;_&#39; line</span>
+
+<span class="sd">        After the &#39;_&#39; line is a empty line between it and the content, e.g.:</span>
+
+<span class="sd">        TITLE __________________________________________________</span>
+
+<span class="sd">        content</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__format__</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="s">&#39;_&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">free</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Free text unformatted.</span>
+
+<span class="sd">        (str) content -- Text free formated</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__log</span> <span class="o">+=</span> <span class="n">content</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span> <span class="o">*</span> <span class="mi">2</span>
+
+    <span class="k">def</span> <span class="nf">time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A self.block() formated line with current time and date.</span>
+
+<span class="sd">        (str) title -- Title for self.block()</span>
+
+<span class="sd">        Looks like this, the data and time are right-justified:</span>
+
+<span class="sd">        TITLE ==================================================</span>
+<span class="sd">                                       Friday 09/10/10, 20:01:39</span>
+<span class="sd">        ========================================================</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="s">&#39;{0:&gt;80}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%A </span><span class="si">%x</span><span class="s">, </span><span class="si">%X</span><span class="s">&#39;</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">header</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A self.block() formated header for the log info.</span>
+
+<span class="sd">        (str) url -- The url of the script</span>
+<span class="sd">        (str) msg -- Message to show into the header. To Provide any useful info</span>
+
+<span class="sd">        It looks like this:</span>
+
+<span class="sd">        SCRIPT =================================================</span>
+<span class="sd">        script name and version</span>
+<span class="sd">        url</span>
+
+<span class="sd">        msg</span>
+<span class="sd">        ========================================================</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">script</span> <span class="o">=</span> <span class="s">&#39;{0} (ver. {1})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__script_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__script_vers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="s">&#39;Script&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">script</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">msg</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the log content.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__log</span>
+
+    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">send_from</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">dest_to</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">mail_server</span><span class="o">=</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span>
+             <span class="n">server_user</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">server_pass</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Send a email with the log.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            (str) send_from -- a sender&#39;s email address (default &#39;&#39;)</span>
+<span class="sd">            (str or list) dest_to -- a list of receivers&#39; email addresses (&#39;&#39;)</span>
+<span class="sd">            (str) subject -- the mail&#39;s subject</span>
+<span class="sd">            (str) mail_server -- the smtp server (default &#39;localhost&#39;)</span>
+<span class="sd">            (str) server_user -- the smtp server user (default &#39;&#39;)</span>
+<span class="sd">            (str) server_pass --the smtp server password (default &#39;&#39;)</span>
+
+<span class="sd">        If &#39;send_from&#39; or &#39;dest_to&#39; are empty or None, then script user&#39;s</span>
+<span class="sd">        mailbox is assumed instead. Useful for loggin scripts</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">local_email</span> <span class="o">=</span> <span class="s">&#39;@&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;LOGNAME&#39;</span><span class="p">),</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">()])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">send_from</span><span class="p">:</span>
+            <span class="n">send_from</span> <span class="o">=</span> <span class="n">local_email</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dest_to</span><span class="p">:</span>
+            <span class="n">dest_to</span> <span class="o">=</span> <span class="p">[</span><span class="n">local_email</span><span class="p">]</span>
+
+        <span class="n">dest_to_addrs</span> <span class="o">=</span> <span class="n">COMMASPACE</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dest_to</span><span class="p">)</span> <span class="c"># receivers mails</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
+        <span class="n">message</span><span class="p">[</span><span class="s">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;{0} - {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span>
+                                                <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%A </span><span class="si">%x</span><span class="s">, </span><span class="si">%X</span><span class="s">&#39;</span><span class="p">))</span>
+        <span class="n">message</span><span class="p">[</span><span class="s">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">send_from</span>
+        <span class="n">message</span><span class="p">[</span><span class="s">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dest_to_addrs</span>
+        <span class="n">message</span><span class="p">[</span><span class="s">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">formatdate</span><span class="p">(</span><span class="n">localtime</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">preamble</span> <span class="o">=</span> <span class="s">&quot;You&#39;ll not see this in a MIME-aware mail reader.</span><span class="se">\n</span><span class="s">&quot;</span>
+        <span class="n">message</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEText</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__log</span><span class="p">))</span>
+
+        <span class="c"># initialize the mail server</span>
+        <span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">()</span>
+        <span class="c"># Connect to mail server</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">server</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">mail_server</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">gaierror</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&#39;mail error&#39;</span><span class="p">,</span> <span class="s">&#39;Wrong server, are you sure is correct?&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&#39;mail error&#39;</span><span class="p">,</span> <span class="s">&#39;Server unavailable or connection refused&#39;</span><span class="p">)</span>
+        <span class="c"># Login in mail server</span>
+        <span class="k">if</span> <span class="n">mail_server</span> <span class="o">!=</span> <span class="s">&#39;localhost&#39;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">server</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">server_user</span><span class="p">,</span> <span class="n">server_pass</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTPAuthenticationError</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&#39;mail error&#39;</span><span class="p">,</span> <span class="s">&#39;Authentication error&#39;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTPException</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&#39;mail error&#39;</span><span class="p">,</span> <span class="s">&#39;No suitable authentication method&#39;</span><span class="p">)</span>
+        <span class="c"># Send mail</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">server</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">send_from</span><span class="p">,</span> <span class="n">dest_to_addrs</span><span class="p">,</span> <span class="n">message</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>
+        <span class="k">except</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTPRecipientsRefused</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&#39;mail error&#39;</span><span class="p">,</span> <span class="s">&#39;All recipients were refused.&#39;</span>
+                      <span class="s">&#39;Nobody got the mail.&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTPSenderRefused</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&#39;mail error&#39;</span><span class="p">,</span> <span class="s">&#39;The server didn’t accept the from_addr&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTPDataError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&#39;mail error&#39;</span><span class="p">,</span> <span class="s">&#39;An unexpected error code, Data refused&#39;</span><span class="p">)</span>
+        <span class="c"># Disconnect from server</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write the log to a file.</span>
+
+<span class="sd">        The name of the file will be like this:</span>
+
+<span class="sd">        script.log</span>
+
+<span class="sd">        where &#39;script&#39; is the name of the script file without extension (.py)</span>
+
+<span class="sd">        (boolean) append -- If true appends log to file, else writes a new one</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="s">&#39;ab&#39;</span> <span class="k">if</span> <span class="n">append</span> <span class="k">else</span> <span class="s">&#39;wb&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">log_file</span><span class="p">:</span>
+            <span class="n">log_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__log</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Main section&quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://code.joedicastro.com/python-recipes&#39;</span>
+    <span class="n">head</span> <span class="o">=</span> <span class="s">&#39;This is a test of class Logger&#39;</span>
+
+    <span class="n">log</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">head</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="s">&#39;Start time&#39;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="s">&#39;Block&#39;</span><span class="p">,</span> <span class="s">&#39;This is a sample of Logger.block()&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&#39;List&#39;</span><span class="p">,</span> <span class="s">&#39;This is a sample of Logger.list()&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">free</span><span class="p">(</span><span class="s">&#39;&#39;&#39;This a sample of logger.free() text.</span>
+
+<span class="s">&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed</span>
+<span class="s">tortor eget justo vehicula consequat vel eu quam. Suspendisse non lectus eget</span>
+<span class="s">orci varius adipiscing.&quot;&#39;&#39;&#39;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="s">&#39;End time&#39;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&#39;This is mail test&#39;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">free</span><span class="p">(</span><span class="s">&#39;All of this had been recorded in {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">filename</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Para acceder a la versión más reciente del mismo, acudir a mi <a href="http://code.joedicastro.com/python-recipes">repositorio</a></p>
+<p>Ejemplos de utilización de este modulo pueden ser 
+<a href="http://joedicastro.com/sincronizar_una_carpeta_local_y_una_remota_a_traves_de_ftp_lftp_mirror">lftp-mirror</a> (incluido dentro del mismo), <a href="http://joedicastro.com/ted_talks_descargar_videos_y_subtitulos_de_las_charlas">TEDTalks</a>, <a href="http://joedicastro.com/generar_informes_de_cambios_en_paquetes_instalados_en_debian_y_ubuntu">dpkg_diff</a> y <a href="http://joedicastro.com/combatir_el_spam_en_drupal">ban_drupal_spammers</a></p>
+        <p>Hay <a href=".././logger-informes-legibles-para-tus-scripts-python.html#disqus_thread">comentarios</a>.</p>
+      </article>
+      <li id="paginator">
+  
+  Pagina 1 de 1
+  
+</li>
+    </aside><!-- /#featured -->
+      
+    
+    
+    
+
+    
+
+<section id="extras" class="body">
+    
+    <div class="blogroll">
+      <h2>enlaces</h2>
+        <ul>
+          <li><a href="http://photo.joedicastro.com/">Fotografías</a></li>
+          <li><a href="http://code.joedicastro.com/">Código</a></li>
+          <li><a href="http://python.majibu.org/">python majibu</a></li>
+          <li><a href="http://python-hispano.org/">python hispano</a></li>
+          <li><a href="http://planet.python-hispano.org/">planeta python hispano</a></li>
+        </ul>
+    </div><!-- /.blogroll -->
+    
+    
+    <div class="social">
+      <h2>social</h2>
+        <ul>
+          <li><a href=".././atom.xml" rel="alternate">atom</a></li>
+          <li><a href=".././rss.xml" rel="alternate">rss</a></li>
+          
+          <li><a href="http://twitter.com/joe_di_castro">twitter</a></li>
+          <li><a href="http://identi.ca/joedicastro">identi.ca</a></li>
+          <li><a href="http://www.facebook.com/joedicastr0">facebook</a></li>
+          <li><a href="https://bitbucket.org/joedicastro">bitbucket</a></li>
+        </ul>
+    </div><!-- /.social -->
+    
+  </section><!-- /#extras -->
+  <footer id="contentinfo" class="body">
+    <address id="about" class="vcard body">
+      © 2010-2011 joe di castro. Powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a><span id="license">Los contenidos están bajo una <a href="http://creativecommons.org/licenses/by-sa/3.0/es">licencia Creative Commons</a></span>
+    </address><!-- /#about -->
+  </footer><!-- /#contentinfo -->
+
+  <script type="text/javascript">
+    
+        var pkBaseURL = (("https:" == document.location.protocol) ? "https://joedicastro.com/piwik/" : "http://joedicastro.com/piwik/");
+    
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    </script><script type="text/javascript">
+    try {
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+  </script><noscript><p><img src="http://joedicastro.com/piwik/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'joedicastro';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+</body>
+</html>

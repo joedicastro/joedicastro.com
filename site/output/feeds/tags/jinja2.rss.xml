@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>joe di castro</title><link>http://joedicastro.com</link><description></description><atom:link href="http://joedicastro.com/feeds/tags/jinja2.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 30 Jun 2011 01:21:00 -0000</lastBuildDate><item><title>Pelican - Configuración y personalización</title><link>http://joedicastro.com/pelican-configuracion-y-personalizacion.html</link><description>&lt;p&gt;Con este articulo cierro la serie que le he dedicado a &lt;a href="/tag/Pelican.html"&gt;Pelican&lt;/a&gt; como 
+herramienta idónea para crear blogs estáticos con mantenimiento cero. Aquí voy a 
+tratar de la parte más compleja de Pelican, la que nos permite personalizarlo y 
+adaptarlo a nuestros gustos y necesidades. El primer nivel de personalización se 
+obtiene a través del fichero de configuración (aunque no es necesario, es 
+recomendable emplearlo). El segundo nivel vendría mediante la personalización del 
+tema empleado, bien creando uno nuevo o bien modificando el que viene por 
+defecto. El último nivel vendría de modificar el propio Pelican. Todos son 
+posibles y están a nuestro alcance, gracias a que es Software Libre. &lt;/p&gt;
+&lt;p&gt;Si bien yo he personalizado mi sitio con respecto al sitio por defecto, y aún 
+quedan ciertas cosas que aún quiero cambiar, no he necesitado de momento más que 
+modificar el fichero de configuración y el tema que viene por defecto. En 
+Pelican no he tocado nada exceptuando el activar por defecto &lt;strong&gt;Markdown Extra&lt;/strong&gt;, 
+algo que Alexis tuvo como gentileza &lt;a href="https://github.com/ametaireau/pelican/pull/138"&gt;aceptar como modificación&lt;/a&gt; a Pelican. Es 
+posible que en el futuro algunas de las cosas que tengo en mente me lleven a 
+modificarlo, y espero poder así contribuir en alguna medida a su desarrollo. &lt;/p&gt;
+&lt;h3 id="configuraci+n"&gt;Configuración&lt;/h3&gt;
+&lt;p&gt;La configuración se hace a través de un fichero python, que en el ejemplo por 
+defecto se llama &lt;code&gt;pelican.conf.py&lt;/code&gt; y en nuestro ejemplo estaría en 
+&lt;em&gt;myblog.com/site/pelican.conf.py&lt;/em&gt;. Para llamar al fichero de configuración se 
+utiliza la opción &lt;code&gt;-s&lt;/code&gt; y en nuestro ejemplo sería:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pelican -s ./site/pelican.conf.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Este es un tema que está muy bien resuelto en la &lt;a href="http://docs.notmyidea.org/alexis/pelican/settings.html"&gt;documentación&lt;/a&gt;. De todos 
+modos voy a hablar de unos cuantos campos interesantes y alguno no incluido 
+dentro de la documentación. Entre paréntesis indico los valores por defecto.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;OUTPUT_PATH&lt;/strong&gt; (&lt;code&gt;'output/'&lt;/code&gt;) y &lt;strong&gt;PATH&lt;/strong&gt; (&lt;code&gt;None&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Empleando estos dos valores, conseguimos que solo tengamos que especificar el 
+fichero de configuración en la linea de comandos empleada para llamar a Pelican.
+El primero define el directorio de salida donde queremos que se genere nuestro 
+sitio y el segundo el directorio origen de nuestro contenido. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SITESUBTITLE&lt;/strong&gt; (&lt;code&gt;u''&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Un subtitulo que se puede poner al blog, e.g. un lema. No aparece documentado.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JINJA_EXTENSIONS&lt;/strong&gt; (&lt;code&gt;[]&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Puede ser necesario habilitar ciertas extensiones de Jinja2 para personalizar 
+el tema que vamos a emplear. Por ejemplo, para mostrar la nube de etiquetas 
+con las etiquetas ordenadas alfabéticamente, he habilitado una extensión que 
+necesitaba para el proceso de esta manera:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;JINJA_EXTENSIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;jinja2.ext.do&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;STATIC_PATHS&lt;/strong&gt; (&lt;code&gt;['images',]&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Te permite especificar los contenidos estáticos que quieres añadir a tu blog 
+y que acabaran colgando de la carpeta &lt;em&gt;static&lt;/em&gt;. Yo por ejemplo lo empleo 
+para alojar las imágenes en &lt;em&gt;static/pictures&lt;/em&gt; y el mapa flash que utilizo en 
+el articulo &lt;a href="/combatir-el-spam-en-drupal.html"&gt;Combatir el spam en Drupal&lt;/a&gt; en &lt;em&gt;static/ammap&lt;/em&gt; así:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pictures&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ammap&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TAG_FEED&lt;/strong&gt; (&lt;code&gt;None&lt;/code&gt;) y &lt;strong&gt;TAG_FEED_RSS&lt;/strong&gt; (&lt;code&gt;None&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Te permiten establecer fuentes Atom y RSS por etiqueta, que es una opción 
+muy interesante para quienes solo les interesa un tema de los que trates o 
+para formar parte de un &lt;a href="http://es.wikipedia.org/wiki/Planeta_%28agregador%29"&gt;Planet&lt;/a&gt; sin mezclar temas. Eso si, lo lógico es 
+modificar luego el tema para que aparezcan disponibles. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;DIRECT_TEMPLATES&lt;/strong&gt; (&lt;code&gt;('index', 'tags', 'categories', 'archives')&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Estas son las plantillas del tema que generan una página por si mismas. No 
+viene documentada, pero yo he cambiado los valores por defecto para añadir 
+una página personalizada a la que redirijo los errores 404 (Página no 
+encontrada) de esta manera:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;DIRECT_TEMPLATES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;index&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;tags&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;categories&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;archives&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;notfound&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;PIWIK_URL&lt;/strong&gt; y &lt;strong&gt;PIWIK_SITE_ID&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Te permiten configurar tu sitio para emplear el magnifico sistema de 
+analíticas web &lt;a href="http://piwik.org/"&gt;Piwik&lt;/a&gt;. Yo hace unos dos años que lo empleo en mis sitios, 
+porque tiene la ventaja de que no dependes de un script de un dominio externo. 
+Esto te ahorra consultas DNS y que la página se quede esperando a cargar 
+completamente cuando estos fallan. De esta manera tienes el control total 
+sobre las estadísticas de tu web sin tener que renunciar a la calidad de 
+otros servicios externos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;FILES_TO_COPY&lt;/strong&gt; (&lt;code&gt;()&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Básica si queremos emplear ficheros como &lt;em&gt;.htaccess&lt;/em&gt; o &lt;em&gt;robots.txt&lt;/em&gt;. No está 
+documentada tampoco. El uso de la misma consiste en una tupla de tuplas con 
+los valores de las rutas del fichero origen y su destino. En este sitio por 
+ejemplo:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;FILES_TO_COPY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;extra/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;extra/favicon.ico&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;favicon.ico&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;extra/.htaccess&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;.htaccess&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="personalizaci+n"&gt;Personalización&lt;/h3&gt;
+&lt;p&gt;Pero si realmente queremos personalizar el sitio, tanto en funcionalidad básica 
+como en su aspecto, nos toca modificar el tema por defecto. Aquí podemos optar por 
+tres vías: Crear el nuestro propio, empezar un tema casi desde cero, 
+eligiendo el tema por defecto &lt;code&gt;simple&lt;/code&gt; (solo texto) o partir de la base del tema 
+por defecto &lt;code&gt;notmyidea&lt;/code&gt;. Este último es el que hemos estado empleado en nuestro 
+ejemplo y el que yo modifiqué hasta llegar donde lo tengo ahora. &lt;/p&gt;
+&lt;p&gt;Para comprender de que consta un tema y como podemos personalizarlo, lo mejor es 
+analizar el tema &lt;code&gt;notmyidea&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;notmyidea/&lt;/span&gt;
+&lt;span class="go"&gt;├── static&lt;/span&gt;
+&lt;span class="go"&gt;│   ├── css&lt;/span&gt;
+&lt;span class="go"&gt;│   │   ├── main.css&lt;/span&gt;
+&lt;span class="go"&gt;│   │   ├── pygment.css&lt;/span&gt;
+&lt;span class="go"&gt;│   │   ├── reset.css&lt;/span&gt;
+&lt;span class="go"&gt;│   │   └── wide.css&lt;/span&gt;
+&lt;span class="go"&gt;│   └── images&lt;/span&gt;
+&lt;span class="go"&gt;│       └── icons&lt;/span&gt;
+&lt;span class="go"&gt;│           ├── delicious.png&lt;/span&gt;
+&lt;span class="go"&gt;│           ├── lastfm.png&lt;/span&gt;
+&lt;span class="go"&gt;│           ├── linkedin.png&lt;/span&gt;
+&lt;span class="go"&gt;│           ├── rss.png&lt;/span&gt;
+&lt;span class="go"&gt;│           └── twitter.png&lt;/span&gt;
+&lt;span class="go"&gt;└── templates&lt;/span&gt;
+&lt;span class="go"&gt;    ├── analytics.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── archives.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── article.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── article_infos.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── base.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── categories.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── category.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── comments.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── disqus_script.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── github.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── index.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── page.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── pagination.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── piwik.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── skribit_tab_script.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── skribit_widget_script.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── tag.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── taglist.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── tags.html&lt;/span&gt;
+&lt;span class="go"&gt;    ├── translations.html&lt;/span&gt;
+&lt;span class="go"&gt;    └── twitter.html&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;static/css&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Aquí es donde se guardan las &lt;a href="http://es.wikipedia.org/wiki/CSS"&gt;Hojas de estilo en cascada (CSS)&lt;/a&gt; que emplea el 
+tema. Aunque la el fichero &lt;em&gt;wide.css&lt;/em&gt; no es empleado por el tema, solo para la 
+versión wide del mismo. Yo la eliminé como primera medida. Luego tenemos 
+&lt;em&gt;main.css&lt;/em&gt; que es la hoja de estilo principal, &lt;em&gt;pygment.css&lt;/em&gt; que es la que emplea 
+Pygments para el resaltado de sintaxis y &lt;em&gt;reset.css&lt;/em&gt; para resetear los navegadores 
+a unos valores comunes por defecto. &lt;/p&gt;
+&lt;p&gt;Si lo que queremos es tener un sitio con un buen rendimiento, deberíamos dar 
+como mínimo dos pasos, consolidar todas la hojas de estilo en una sola y 
+minimizar el tamaño de esta. Consolidarla en este caso es realmente sencillo, 
+simplemente debemos insertar el contenido de &lt;em&gt;reset.css&lt;/em&gt; al principio del 
+fichero &lt;em&gt;main.css&lt;/em&gt; y &lt;em&gt;pygment.css&lt;/em&gt; al final del mismo. Depués hay que 
+eliminar los imports de estas hojas en &lt;em&gt;main.css&lt;/em&gt;*. Luego para minimizar 
+su tamaño eliminar comentarios y lineas en blanco y poner una regla por línea. &lt;/p&gt;
+&lt;p&gt;Otro paso que dí para mejorar el rendimiento es no usar las web fonts 
+externas (ni internas), que aunque le dan un aspecto inmejorable, hay que 
+reconocerlo, requieren cargar otro recurso externo, desde mi punto de vista 
+innecesario.&lt;/p&gt;
+&lt;p&gt;Lo mejor en estos casos es seguir siempre las recomendaciones de estas dos 
+magnificas herramientas: &lt;a href="http://developer.yahoo.com/yslow/"&gt;YSlow&lt;/a&gt; de &lt;strong&gt;Yahoo&lt;/strong&gt; y &lt;a href="http://code.google.com/speed/page-speed/"&gt;Page Speed&lt;/a&gt; de 
+&lt;strong&gt;Google&lt;/strong&gt;. Afortunadamente hay sitios web como &lt;a href="http://gtmetrix.com/"&gt;GTmetrix&lt;/a&gt; o 
+&lt;a href="http://www.webpagetest.org/"&gt;WebPagetest&lt;/a&gt; que nos permiten ver los resultados de ambas herramientas 
+en nuestro sitio web sin necesidad de instalarlas (aunque para el desarrollo 
+es más que recomendable). Si por ejemplo emplearamos &lt;strong&gt;GTmetrix&lt;/strong&gt; los valores 
+que arroja un sitio con el tema por defecto son:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Page Speed (tema por defecto)&lt;/th&gt;
+&lt;th&gt;YSlow (tema por defecto)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;B (80%)&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;B (85%)&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Valores bastante mejorables. Los valores actuales para este sitio, una vez 
+personalizado el tema y configurado correctamente el &lt;em&gt;.htaccess&lt;/em&gt; son:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Page Speed (tema personalizado)&lt;/th&gt;
+&lt;th&gt;YSlow (tema personalizado)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;A (91%)&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;A (95%)&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Y si nos fijamos en &lt;a href="http://gtmetrix.com/reports/joedicastro.com/BeFSzvAa"&gt;los resultados&lt;/a&gt;, las penalizaciones de rendimiento 
+vienen de los scrips externos de Piwik y Disqus, principalmente de este 
+último. Sin emplear estos scripts los valores suben a:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Page Speed (sin scripts)&lt;/th&gt;
+&lt;th&gt;YSlow (sin scripts)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;A (100%)&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;A (98%)&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;En resumen, una optimización más que correcta, solo hay que ver los valores 
+de las páginas del Top 1000 que ofrecen en GTmetrix. Obtener una optimización 
+como esta con un CMS no es imposible (había conseguido unos valores solo un 
+poquito peores con Drupal) pero si bastante más complicado. La experiencia 
+del usuario depende mucho de estos valores, hay que contar con que no todo 
+el mundo dispone de buenos accesos a Internet.&lt;/p&gt;
+&lt;p&gt;Evidentemente, después cada uno retocara el fichero CSS resultante a su 
+gusto para personalizar el aspecto del sitio. En este caso estoy empleando
+CSS 3 y valida correctamente. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p style="text-align:center;"&gt;
+    &lt;a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fjoedicastro.com%2F&amp;amp;profile=css3&amp;amp;usermedium=all&amp;amp;warning=1&amp;amp;vextwarning=&amp;amp;lang=es"&gt;
+        &lt;img style="border:0;width:88px;height:31px"
+            src="pictures/valid-css3.png"
+            alt="¡CSS 3 Válido!" title="¡CSS 3 Válido!" /&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;static/images/icons&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Son los iconos empleados por la hoja de estilo para los enlaces sociales de 
+la parte inferior de la página. Yo no los empleo. ¿Entonces como se ven? 
+Bueno lo primero que hice fue crear un &lt;a href="http://www.w3schools.com/css/css_image_sprites.asp"&gt;sprite&lt;/a&gt; para cargar una sola 
+imagen en lugar de 6, es decir menos solicitudes al servidor. Después 
+incorporé esta imagen &lt;a href="http://www.websiteoptimization.com/speed/tweak/inline-images/"&gt;dentro del propio fichero CSS con un Data URL&lt;/a&gt;, y 
+gracias a haberla optimizado hasta ocupar solamente ~3k, me compensaba 
+hacerlo. Una consulta menos al servidor. Lo mismo hice después con el 
+logotipo (1K) y al final no se carga ninguna imagen por defecto en el blog, 
+0 consultas. Los navegadores modernos soportan esto sin problemas, los que 
+no lo hacen, no muestran la imagen, solo el enlace, que tampoco es un ningún 
+problema.&lt;/p&gt;
+&lt;p&gt;Así es como queda en &lt;em&gt;main.css&lt;/em&gt; la imagen que da vida a los iconos de los 
+enlaces a la redes sociales:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="nf"&gt;#extras&lt;/span&gt; &lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;social&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-repeat&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;no-repeat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;background-image&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="sx"&gt;url(&amp;quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAACSCAMAAAB7VbqAAAAAwFBMVEWQBQCWFxU5VpedVy+tUE5LZaBPZZZDabDdYSpke75vfZBkfbJZgc+heztshKvldjBgld91j9+Uj4p5ksZ/lLzthzLqhz+MmrAcvuaDofihpYRzq/D4mDeUp9KetkSirsnQpKWpvV/qqHvHsJjnqY/3qWK1ubbIun2jwLHEu7xm1O+6xoOtv++7wte0yNzxwH563e/3xJjK06ya5vXY3p7U2+3e3tbm6IT63cLn7czr7fbZ9Prz7+r8+O/3+fb9//z6WVfkAAADNElEQVRIx9WV4XqiPBCFoyu4aVjQBrW2ImBX3aJYdQERIbn/u9qTRKzd7/n+b88jxHlnMswEY4hIGYUcLZYKklLbtixqNBymhNl2yG/2lBFqu1LKKjD2dEioxfIKKOfaVgA+HkoptsoGoDxPA8orKZTtEIdyNWE4zXEbUgVokAq4p1JuqQHIX8G9lYK2EdOpkNuhlJxec+TTrcxpJVENAOK3iK9oLkOLEmbqGQZ4dMAtRlJj617QZErQvqpHiVLVvvhL/y6oFx40HhktaqJt9X2mtSDwHg7L1p6NAJZY9eZwB8aHsgF61zaAnr8spXxX9piMR8umxAQQZBp5ZDTSOZYgzXjkKTCbvTeKNPLgKaCTK/dCNldQlu9wL0aNHH9XADnK2UGWXil/GoDJyFx6P69gNlPPWy698cIDWOj68DzvO+Qt0D7MsXcV2v86by55+qSEPP3+pKf/ARfxF5Dy8gH2+/0N7Pc3oCUMSJIWyESBRANxgX4nyQ1cEiMDEkR8BheT4jYl2bdJW5DsdczlA9z09N/2v86bw1Vs4vl8c6xbcI7ncQxkCBFFPM8a0QAfDTjOM70453lc630bx2ezXJt5oUARx40BmQF3EfFroXJs5gaU30inF+G3vombBnuu7JFer9OJ1JQMZcQ/SK8WEekRVRYqjb+RSMq60yHF8VzXRVHAWUsV0TZVIEekctzafEPKTnS/o+qog7z361FHkfhK/5ZV0MrnPAgqEvBWYZoGPCSt6aujLGScuC5j+LAdNkAVALCrUuVndwARvhoJs3C3WSXUFB8HjtW1LFxCvz3WtQC03Bw5fOsDdEPl794BPMW9Ap3DAMuyCc5nJQ2sO2AB+BgYCU1dCkwwhjjnfNUO8ycTl/lf6pxTtzzfQXl1BduXAQ5/7jiDl50CgcMnq6Ku69WEOQHAgD8+Pq5WbysMLle78tdq8jDR4oMc4HzKsuPuBRoMLKHB6+spG2hgrwCydQZpQH0NTmsgB/4BTVe1AphyNCBXoMk2p9MvB7bT1xEitB+eFXCch3WhSl/Z/T6dcMddr581KAD6fdd9fnyoTbdvrN93+v2uXbTt17sQyvV6/AE7UZJYs2UOngAAAABJRU5ErkJggg==&amp;quot;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;padding-left&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;25px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;atom.xml&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;6px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;rss.xml&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;-20px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;twitter.com&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;-46px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;identi.ca&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;-72px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;facebook.com&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;-98px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.social&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nt"&gt;href&lt;/span&gt;&lt;span class="o"&gt;*=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bitbucket.org&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;background-position&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;3px&lt;/span&gt; &lt;span class="m"&gt;-124px&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;static/templates&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Estas son las plantillas que dan vida al tema y emplean Jinja2. Los nombres 
+son bastante descriptivos de la función que realiza cada una de ellas. En mi 
+caso hay una serie de ellas que no empleo, como son: &lt;em&gt;analytics.html&lt;/em&gt;, 
+&lt;em&gt;article_infos.html&lt;/em&gt;, &lt;em&gt;github.html&lt;/em&gt;, &lt;em&gt;skribit_tab_script.html&lt;/em&gt;, 
+&lt;em&gt;skribit_widget_script.html&lt;/em&gt;, &lt;em&gt;translations.html&lt;/em&gt; y &lt;em&gt;twitter.html&lt;/em&gt;. He 
+realizado bastantes modificaciones en las plantillas y me extendería demasiado 
+explicándolo, además sigo realizando cambios. Aún no lo tengo todo como yo 
+lo quiero, y aún voy a personalizar y optimizar más cosas. Cuando lo tenga 
+todo listo, pienso publicar un repositorio con el contenido que genera este 
+blog, tanto a efectos de copia de seguridad, como de que le pueda servir a 
+alguien como guía para montar el suyo propio. &lt;/p&gt;
+&lt;p&gt;De todos modos si puedo decir que he añadido una que no existía, 
+&lt;em&gt;notfound.html&lt;/em&gt; para los errores 404 y pienso crear una nueva para los 
+errores 403. Además he creado los enlaces para los feeds RSS y Atom de las 
+etiquetas y eliminado el bloque de información que aparecía en cada articulo.
+Además en la plantilla &lt;em&gt;tags.html&lt;/em&gt; que por defecto viene vacía, he creado lo 
+necesario para generar la nube de etiquetas. &lt;em&gt;tags.html&lt;/em&gt; queda entonces así:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;base.html&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;content&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;section&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;content&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;etiquetas&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;ul&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cloud&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;all_tags&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;ctag&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;tag_cloud&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;
+      &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="nv"&gt;all_tags.update&lt;/span&gt;&lt;span class="o"&gt;({&lt;/span&gt;&lt;span class="nv"&gt;ctag.0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;ctag.1&lt;/span&gt;&lt;span class="o"&gt;})&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;tag&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;all_tags&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nf"&gt;sort&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;li&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tag-&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;all_tags&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;tag&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tag/&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;tag&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nf"&gt;replace&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;%20&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="s"&gt;.html&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;tag&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;También he realizado las modificaciones pertinentes para que el contenido 
+validara perfectamente en HTML 5. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p style="text-align:center;"&gt;
+    &lt;a href="http://validator.w3.org/check?uri=http%3A%2F%2Fjoedicastro.com%2F"&gt;
+        &lt;img style="border:0;width:88px;height:31px"
+            src="pictures/valid-html5.png"
+            alt="¡HTML 5 Válido!" title="¡HTML 5 Válido!" /&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Pero como ya he dicho es un proceso que aún no he finalizado. Cuando lo 
+termine y publique el repositorio, actualizaré también este articulo.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">joe di castro</dc:creator><pubDate>Thu, 30 Jun 2011 01:21:00 -0000</pubDate><category>Pelican</category><category>python</category><category>markdown</category><category>reStructuredText</category><category>blog</category><category>HMTL</category><category>CSS</category><category>jinja2</category></item></channel></rss>

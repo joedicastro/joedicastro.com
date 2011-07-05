@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>joe di castro</title><link>http://joedicastro.com</link><description></description><atom:link href="http://joedicastro.com/feeds/tags/mover.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 26 Apr 2011 23:17:00 -0000</lastBuildDate><item><title>Mover todos los archivos del mismo tipo de un arbol de directorios a la vez</title><link>http://joedicastro.com/mover-todos-los-archivos-del-mismo-tipo-de-un-arbol-de-directorios-a-la-vez.html</link><description>&lt;p&gt;A veces tenemos la necesidad de &lt;strong&gt;mover (o copiar o borrar)&lt;/strong&gt; varios ficheros 
+del mismo tipo a la vez, pero estos no "cuelgan" de un solo directorio, si no 
+que se encuentran repartidos dentro una jerarquía de subdirectorios. En este 
+caso los típicos comandos para mover/copiar/borrar archivos no nos sirven, ni 
+siquiera los útiles comodines nos resuelven el problema.  ¿Como lo hacemos 
+entonces?&lt;/p&gt;
+&lt;p&gt;Por ejemplo, si tenemos una estructura de directorios como esta:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;raiz
+├── dir_1
+│   ├── imagen_1.jpg
+│   ├── pdf_1.pdf
+│   ├── texto_1.txt
+│   └── texto_2.txt
+├── dir_2
+│   ├── imagen_2.jpg
+│   ├── imagen_3.gif
+│   └── texto_3.txt
+├── dir_3
+│   ├── doc_1.doc
+│   ├── pdf_2.pdf
+│   ├── pdf_3.pdf
+│   ├── pdf_4.pdf
+│   ├── texto_4.txt
+│   └── texto_5.txt
+├── dir_4
+│   ├── subdir_1
+│   │   └── imagen_4.png
+│   ├── subdir_2
+│   │   ├── pdf_5.pdf
+│   │   └── texto_7.txt
+│   ├── doc_2.doc
+│   └── texto_6.txt
+└── dir_5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y queremos mover todos los ficheros &lt;code&gt;.txt&lt;/code&gt; al &lt;code&gt;dir_5&lt;/code&gt; que tenemos vacío, ¿Como 
+lo hacemos? Bueno, en el caso de &lt;strong&gt;Linux&lt;/strong&gt; (y UNIX) podemos hacerlo en una sola 
+operación gracias al siempre útil y versátil &lt;code&gt;find&lt;/code&gt; con el siguiente comando 
+(ejecutado desde el directorio raíz):&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;find . -type f -name *.txt -exec mv &lt;span class="o"&gt;{}&lt;/span&gt; ./dir_5 &lt;span class="se"&gt;\;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Este comando nos encontraría todos los archivos con la extensión &lt;code&gt;.txt&lt;/code&gt; dentro 
+de todos los directorios y subdirectorios y los iría moviendo uno a uno al 
+&lt;code&gt;dir_5&lt;/code&gt;. Es un comando rápido y efectivo. Genéricamente, el comando sería así:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;find directorio_origen -type f -name *.EXT -exec mv &lt;span class="o"&gt;{}&lt;/span&gt; ./directorio_destino &lt;span class="se"&gt;\;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;donde &lt;code&gt;EXT&lt;/code&gt; sería la extensión del tipo de archivo que queremos mover. Se puede 
+emplear esta variante para copiar los archivos en vez de moverlos:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;find directorio_origen -type f -name *.EXT -exec cp &lt;span class="o"&gt;{}&lt;/span&gt; ./directorio_destino &lt;span class="se"&gt;\;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y esta otra para eliminarlos (¡emplear con cuidado!):&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;find directorio_origen -type f -name *.EXT -exec rm -f &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Partiendo de la idea de hacer algo equivalente en &lt;strong&gt;Python&lt;/strong&gt;, he creado un 
+script que hace algo similar a esto, sin la necesidad de teclear todo el comando 
+(y con el riesgo a equivocarse y liarla parda) y que también sirve para que los 
+no trabajen habitualmente con la consola no necesiten recordar (o anotar) esos 
+comandos.&lt;/p&gt;
+&lt;p&gt;La parte principal del script &lt;strong&gt;move_by_ext.py&lt;/strong&gt; es la siguiente:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;find_and_process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Find the files by file extension and process (move/copy/remove) them.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;the_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;the_file&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Process each file.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;processed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+        &lt;span class="n"&gt;src_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;the_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;the_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;dst_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dst&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;the_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rm&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;remove&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;src_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;processed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dst_file&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="c"&gt;# not replace if already exists &lt;/span&gt;
+                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cp&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                    &lt;span class="n"&gt;shutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;src_file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dst_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                    &lt;span class="n"&gt;shutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;move&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;src_file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dst_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                &lt;span class="n"&gt;processed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;processed&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dst&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dst&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;directories&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;walk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;fil&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="c"&gt;# ignore files without extension (can have the same name as the ext)&lt;/span&gt;
+            &lt;span class="n"&gt;file_ext&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+            &lt;span class="c"&gt;# ignore dots in given extensions&lt;/span&gt;
+            &lt;span class="n"&gt;extensions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ext&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;ext&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ext&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;file_ext&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;extensions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;opt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{0}{1}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rm&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cp&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;log&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Files {0}: {1}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;moved&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;copied&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;removed&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}[&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;log&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Este script nos permite realizar las mismas operaciones que los comandos 
+anteriores y además tiene dos ventajas adicionales:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Permite emplear varias extensiones a la vez&lt;/strong&gt;, lo que nos permite
+mover/copiar/borrar distintos tipos de archivo en una sola operación.
+Por ejemplo si queremos mover todos los tipos de imagen de la estructura de 
+directorios anterior, podríamos hacerlo indicándole que emplee las extensiones 
+&lt;code&gt;.jpg&lt;/code&gt;, &lt;code&gt;.gif&lt;/code&gt; y &lt;code&gt;.png&lt;/code&gt; en la misma operación. El comando sería el siguiente 
+(las extensiones pueden llevar o no el punto, funciona exactamente igual), 
+ejecutado desde el directorio raíz:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;python move_by_ext.py jpg .gif png -d ./dir_5&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Funciona en Windows&lt;/strong&gt;. A diferencia del comando para Linux, este se puede 
+emplear en Windows sin necesidad de instalar ningún entorno que nos simule un 
+shell Linux (como &lt;a href="http://www.cygwin.com/"&gt;Cygwin&lt;/a&gt;) y solo es necesario tener 
+instalado Python 2.7&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La sintaxis del script es muy sencilla y se puede ver reflejada en la ayuda del 
+mismo:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; python move_by_ext.py -h
+&lt;span class="go"&gt;usage: move_by_ext.py ext [-s SRC] [-d DST] [-c | -r] [--help]&lt;/span&gt;
+
+&lt;span class="go"&gt;Move (or copy/remove) all files selected by extension into a directory tree to&lt;/span&gt;
+&lt;span class="go"&gt;a destination directory.&lt;/span&gt;
+
+&lt;span class="go"&gt;positional arguments:&lt;/span&gt;
+&lt;span class="go"&gt;  ext                the extension(s) of the files to process. To use more&lt;/span&gt;
+&lt;span class="go"&gt;                     than one extension, separate them with a space&lt;/span&gt;
+
+&lt;span class="go"&gt;optional arguments:&lt;/span&gt;
+&lt;span class="go"&gt;  -h, --help         show this help message and exit&lt;/span&gt;
+&lt;span class="go"&gt;  -s SRC, --src SRC  the source path. Current dir if none is provided&lt;/span&gt;
+&lt;span class="go"&gt;  -d DST, --dst DST  the destination path. Current dir if none is provided&lt;/span&gt;
+&lt;span class="go"&gt;  -c, --copy         copy all the files with the given extension(s) to the&lt;/span&gt;
+&lt;span class="go"&gt;                     destination directory.&lt;/span&gt;
+&lt;span class="go"&gt;  -r, --remove       remove all the files with the given extension(s). Use&lt;/span&gt;
+&lt;span class="go"&gt;                     with caution! remove also in the subdirectories&lt;/span&gt;
+&lt;span class="go"&gt;  -v, --version      show program&amp;#39;s version number and exit&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;El script completo puede encontrarse en mi &lt;a href="https://bitbucket.org/joedicastro/python-recipes/src/tip/src/move_by_ext.py"&gt;repositorio&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">joe di castro</dc:creator><pubDate>Tue, 26 Apr 2011 23:17:00 -0000</pubDate><category>python</category><category>script</category><category>mover</category><category>copiar</category><category>borrar</category><category>linux</category><category>windows</category></item></channel></rss>

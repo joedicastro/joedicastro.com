@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="content" class="body">
+<h1>etiquetas</h1>
+  <ul id="cloud">
+	{%- set all_tags = {} -%}
+	{% for ctag in tag_cloud -%}
+      {% do all_tags.update({ctag.0:ctag.1}) %}
+    {%- endfor %}
+    {% for tag in all_tags|sort %}
+      <li class="tag-{{ all_tags[tag] }}"><a href="tag/{{ tag|replace(" ", "%20") }}.html">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

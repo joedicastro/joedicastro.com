@@ -1,0 +1,92 @@
+Redirect 301 /joe_di_castro /pages/sobre-mi.html
+Redirect 301 /etiquetas /tags.html
+Redirect 301 /buscar /archives.html
+Redirect 301 /consejos /pages/markdown.html
+Redirect 301 /sincronizar_una_carpeta_local_y_una_remota_a_traves_de_ftp_lftp_mirror /sincronizar-una-carpeta-local-y-una-remota-a-traves-de-ftp-lftp-mirror.html
+Redirect 301 /optimizar_imagenes_para_la_web /optimizar-imagenes-para-la-web.html
+Redirect 301 /ted_talks_descargar_videos_y_subtitulos_de_las_charlas /ted-talks-descargar-videos-y-subtitulos-de-las-charlas.html
+Redirect 301 /combatir_el_spam_en_drupal /combatir-el-spam-en-drupal.html
+Redirect 301 /python_majibu_preguntas_y_respuestas_sobre_python /python-majibu-preguntas-y-respuestas-sobre-python.html
+Redirect 301 /crear_un_arbol_de_directorios_falso_para_entorno_de_pruebas /crear-un-arbol-de-directorios-falso-para-entorno-de-pruebas.html
+Redirect 301 /mover_todos_los_archivos_del_mismo_tipo_de_un_arbol_de_directorios_a_la_vez /mover-todos-los-archivos-del-mismo-tipo-de-un-arbol-de-directorios-a-la-vez.html
+Redirect 301 /comprobar_si_un_programa_esta_instalado_con_python /comprobar-si-un-programa-esta-instalado-con-python.html
+Redirect 301 /python_one_liners_potencia_en_una_sola_linea /python-one-liners-potencia-en-una-sola-linea.html
+Redirect 301 /logger_informes_legibles_para_tus_scripts_python /logger-informes-legibles-para-tus-scripts-python.html
+Redirect 301 /enviar_un_correo_electronico_con_python /enviar-un-correo-electronico-con-python.html
+Redirect 301 /generar_informes_de_cambios_en_paquetes_instalados_en_debian_y_ubuntu /generar-informes-de-cambios-en-paquetes-instalados-en-debian-y-ubuntu.html
+Redirect 301 /conocer_el_tamano_de_un_directorio_con_python /conocer-el-tamano-de-un-directorio-con-python.html
+Redirect 301 /monitorizar_los_cambios_de_tamano_en_un_directorio /monitorizar-los-cambios-de-tamano-en-un-directorio.html
+Redirect 301 /markdown_la_mejor_opcion_para_crear_contenidos_web /markdown-la-mejor-opcion-para-crear-contenidos-web.html
+Redirect 301 /aplanar_listas_en_python /aplanar-listas-en-python.html
+Redirect 301 /algoritmos_shuffle /algoritmos-shuffle.html
+Redirect 301 /notificaciones_de_escritorio_en_ubuntu_desde_python /notificaciones-de-escritorio-en-ubuntu-desde-python.html
+  
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+
+  RewriteCond %{HTTP_HOST} ^www\.joedicastro\.com$ [NC]
+  RewriteRule ^(.*)$ http://joedicastro.com/$1 [L,R=301]
+  
+  RewriteRule ^pictures/(.*) /static/pictures/$1 [R=301,L]
+  RewriteRule ^ammap/(.*) /static/ammap/$1 [R=301,L] 
+  RewriteRule ^feeds/tags/pictures/(.*) /static/pictures/$1 [R=301,L]
+  RewriteRule ^etiquetas/(.*) /tag/$1.html [R=301,L]
+  
+</IfModule>
+
+
+<IfModule mod_expires.c> 
+  ExpiresActive on
+
+# Perhaps better to whitelist expires rules? Perhaps.
+  ExpiresDefault "access plus 1 month"
+
+# Your document html
+  ExpiresByType text/html "access plus 0 seconds"
+
+# Data
+  ExpiresByType text/xml "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 0 seconds"
+  
+# RSS feed
+  ExpiresByType application/rss+xml "access plus 1 hour"
+  
+# Favicon (cannot be renamed)
+  ExpiresByType image/x-icon "access plus 1 week"
+  
+# Media: images 
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpg "access plus 1 month"
+    
+# HTC files (css3pie)
+  ExpiresByType text/x-component "access plus 1 month"
+    
+# CSS and JavaScript
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+
+  <IfModule mod_headers.c>
+    Header append Cache-Control "public"
+  </IfModule>
+
+</IfModule>
+
+Options -Indexes
+Options +FollowSymLinks
+
+<IfModule mod_rewrite.c>
+  RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+ErrorDocument 403 /access_denied.html
+ErrorDocument 404 /notfound.html
+
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|xml|gz)$">
+    Header append Vary Accept-Encoding
+  </FilesMatch>
+</IfModule>
+               

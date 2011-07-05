@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>joe di castro - monitor</title>
+  <meta name="author" content="joe di castro" />
+  <meta name="keywords" content="joe di castro, blog">
+  <link rel="author" href="humans.txt" />
+  <link rel="stylesheet" href=".././theme/css/main.css" type="text/css" />
+  <link href=".././atom.xml" type="application/atom+xml" rel="alternate" title="joe di castro ATOM Feed" />
+  <link href=".././rss.xml" type="application/atom+xml" rel="alternate" title="joe di castro RSS Feed" />
+  
+  <link href=".././feeds/tags/monitor.atom.xml" type="application/atom+xml" rel="alternate" title="joe di castro - monitor ATOM Feed" />
+  <link href=".././feeds/tags/monitor.rss.xml" type="application/atom+xml" rel="alternate" title="joe di castro - monitor RSS Feed" />
+
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body id="index" class="home">
+
+  <header id="banner" class="body">
+    <h1><a href="../."><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAxBAMAAADKNk2HAAAAElBMVEW/kiXQsGLey5vn3b/s5dH3+fXlDfF2AAADFElEQVRIDa3Bu3LbOABA0QtQ7KFo0TPOqmfiZU/PmD1A8v7/r6yejpPIkxlL5+BP85aQ/Ty8WhJH2U/Dixl2ky80fhqeVaJHI34answ0nlS8bR38GzwhejYzeFPK/g0ejUyezUzesuBHusEzPFjIXlS8qTR+YMYLPOiDVwVvStkPjBsvUFdar0rwlgU/wt4L1IJvusZbSuMHanh9nTxB7aNvaL0lZX8z86tJUVPj1cLeG2b8Xd1ut09P337w3+vr8/PzNxU1Ra8K3jJu/ECJvkHt2T151kdvYe8HUvYNaoXgGa03VJy84dkZf8KDeTd5MrP3hr6t0T+Nwb519QrfK3jDyj5l/8RGhgWv8L2u8c3kVQkuvrc8eVAZSrALXuF7ZJ3j10m/gyfLtk2tF2tirz1kNW1M7Urrwcvui+I7FV2A1gTBowpbhpfBkxRS60hkryPDgoWp0woM4jt9XDsIqe3Zd3snXYh2YWXwqA8L+4V/1qALWKJ96IJCZFrwHQIHmSeyOm40RWfaEj2qDH00RUujXcSUTdA6wgtzwJ9mCClQSXEdXBmsaGIi22dN2TR0TJKtoYQFa9gyrdD0kYxv1sRupoSOg439RlNrJc44ozWoldYRV3LZlGjKJTqG1EAjXi3QOm4K8IMwVXRlWKEdW1OrXdYVpoXWFE1tynMw5ZWcICheLMBkGhbiVBkkaw12MDHUoCtqR2NiGPke2TF0ecEeCzsVz1ZCH1xxZDC1do1a4gt9nMPMoLXRnpR7qLQpMfIlWDaVxhQ8wLMUJloXOrIVx+BBgZzaGslqaX1hk7Z0sFkhdiFl+0CKicEDPOkZKpNC1NK8sPeg0qwMM40HJXZEO3IhusDA16A9TYXsER5Vsn1U571aYOPJq3PUV49miLoMzkFddEpZHfTH5Ake0SjZi4WdN3z/11998Vd4MDJZ8F6oC1nTxnuh9kFn9t4LXcg6Bu+GjkGl9W4orVYm74aVSVPj/bCLOrP3fkjWPvgAVHQl+wCUqAUfga5VWh8BsgUfAvJK60NAk/AxSJB9DEY2Psj/Dz0Ida72jQIAAAAASUVORK5CYII=" alt="joe di castro" title="joe di castro" width="150" height="49" /> </a></h1>
+      <nav>
+      	<ul>
+         
+         <li ><a href=".././category/blog.html">blog</a></li>
+         <li><a href=".././archives.html">archivos</a></li>
+         <li><a href=".././tags.html">etiquetas</a></li>
+         
+         <li><a href=".././pages/markdown.html">markdown</a></li><li><a href=".././pages/sobre-mi.html">sobre mi</a></li>
+         
+       </ul>
+     </nav>
+  </header><!-- /#banner -->        
+
+          
+    
+    
+    <aside id="featured" class="body">
+      <article>
+        <h1 class="entry-title"><a href=".././monitorizar-los-cambios-de-tamano-en-un-directorio.html">Monitorizar los cambios de tamaño en un directorio</a></h1> 
+        <p>Cuando administramos varias maquinas <abbr title="Linux, Unix, Solaris, BSD, etc">UN*X</abbr> nos puede interesar el tener 
+controlados los cambios de tamaño en algunos directorios determinados, para 
+poder observar pautas de comportamiento o ver cambios inesperados, para 
+solucionar los problemas cuando o antes de que se produzcan. Y aunque hay varias
+ formas de realizar esto, incluso con demonios que monitorizan los cambios en 
+tiempo real (incrond, inotify, dnotify, gamin, watch, ...), puede que una 
+solución más sencilla nos sea suficiente para directorios no críticos. Para 
+instalaciones no complejas nos puede servir, por ejemplo, para no tener que 
+lidiar con las <a href="http://en.wikipedia.org/wiki/Disk_quota">quotas de disco</a> (no siempre es una buena opción). O para 
+evitar que por ejemplo una mala configuración en la rotación de los logs de una 
+maquina acaben agotando el espacio disponible para la partición de sistema (caso
+ real que me he encontrado más de una vez). </p>
+<p>Para poder monitorizar los cambios de tamaño de un directorio (y subdirectorios)
+ he creado un sencillo script <strong>Python</strong> que registra los cambios en la ruta que
+  le proporcionemos y luego envía un informe por correo al buzón del usuario 
+local. Los datos de los directorios los registra en un fichero oculto (su 
+nombre empieza por un <code>.</code>) binario de tipo <a href="http://docs.python.org/library/pickle.html#module-pickle">pickle</a> y el informe se guarda 
+a su vez en un archivo de texto con el mismo nombre que el script, pero 
+terminado en <code>.log</code>. </p>
+<p>El informe que genera nos muestra por un lado tantos los nuevos directorios, 
+como los directorios que se han eliminado con la cifra del espacio en disco que 
+ocupan (o liberan). Por otro lado también nos informa de los directorios que han 
+cambiado de tamaño, mostrándonos en que porcentaje se han 
+incrementado/decrementado y la cantidad de espacio que ha variado. Aquí podemos 
+ver un ejemplo de uno de estos informes.</p>
+<div class="codehilite"><pre>SCRIPT =========================================================================
+dir_size_monitor (ver. 0.2)
+http://code.joedicastro.com/python-recipes
+
+Changes in size of directories for .. on yourmachine
+================================================================================
+
+START TIME =====================================================================
+                                                      Tuesday 05/17/11, 21:10:48
+================================================================================
+
+NEW DIRECTORIES ________________________________________________________________
+
+   799.72 KiB   ./src/test/bibendum
+     1.14 MiB   ./src/test/condimentum
+     2.31 MiB   ./src/test/laoreet
+   204.28 KiB   ./src/test/risus
+     2.90 MiB   ./src/test/torquent
+
+DELETED DIRECTORIES ____________________________________________________________
+
+   383.79 KiB   ./src/test/adipiscing
+     5.38 MiB   ./src/test/consequat
+   847.72 KiB   ./src/test/etiam
+   938.93 KiB   ./src/test/maecenas
+     3.55 MiB   ./src/test/tincidunt
+     2.33 MiB   ./src/test/viverra
+
+CHANGED DIRECTORIES ____________________________________________________________
+
+    34.79 %     55.5 MiB   ./src
+    34.82 %     55.5 MiB   ./src/test
+   -99.97 %     15.3 MiB   ./src/test/odio
+   -99.97 %     15.6 MiB   ./src/test/tellus
+
+THRESHOLD VALUES _______________________________________________________________
+
+The directories whose size differences are less than any of these values are ignored:
+
+Percentage:     10 %
+Size:        10.00 MiB
+
+.. STATISTICS __________________________________________________________________
+
+      78 directories
+  215.04 MiB
+
+END TIME =======================================================================
+                                                      Tuesday 05/17/11, 21:10:48
+================================================================================
+</pre></div>
+
+
+<p>Opcionalmente podemos establecer dos valores de umbral para que se ignoren todos 
+los cambios que estén por debajo de estas dos cifras. Para desactivarlos 
+simplemente hay que dejarlos a cero. Estas cifras se refieren por un lado al 
+porcentaje de diferencia mínimo que deseamos establecer para que se nos informe 
+y por otro a la cantidad mínima (expresada en bytes) de espacio en disco que se 
+ha incrementado/decrementado en ese directorio. Pueden funcionar los dos a la 
+vez, por lo que se han de cumplir las dos condiciones, o solamente uno dejando 
+el otro a cero.</p>
+<p>Si programamos este script para que se ejecute cada cierto tiempo, podemos tener 
+una idea aproximada de los cambios producidos en el. Y digo aproximada porque 
+este nos muestra únicamente los cambios registrados entre dos <em>instantáneas</em> 
+tomadas, una en la ejecución anterior y otra en la ejecución actual. Y por lo 
+tanto no esperemos obtener la relación de todos los cambios producidas entre 
+ellas. Para conocer algo a ese nivel de detalle es mejor emplear uno de los 
+servicios en tiempo real que mencionaba al principio. Dicho esto, es evidente 
+que en la primera ejecución no tiene sentido informar de nada y de hecho hasta 
+la segunda ejecución no empezara a generar informes.</p>
+<p>Este es el contenido de <a href="https://bitbucket.org/joedicastro/python-recipes/src/tip/src/dir_size_monitor.py">dir_size_monitor.py</a> es el siguiente:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    dir_size_monitor.py: Monitors changes in the size of dirs for a given path</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c">#===============================================================================</span>
+<span class="c"># This Script monitors the changes in disk size for the directories included in</span>
+<span class="c"># a given path. It reports what directories are new or deleted. Also reports the</span>
+<span class="c"># directories in which their size increases or decreases above threshold values.</span>
+<span class="c"># These threshold values refer to the amount in difference of size of the </span>
+<span class="c"># directory or/and the percentage difference. These values can be overrided by </span>
+<span class="c"># setting them to zero.</span>
+<span class="c">#</span>
+<span class="c"># The final report is sended via email to the local user. This script is </span>
+<span class="c"># intended to run periodically (e.g. via cron) </span>
+<span class="c">#===============================================================================</span>
+
+<span class="c">#===============================================================================</span>
+<span class="c">#    Copyright 2011 joe di castro &lt;joe@joedicastro.com&gt;</span>
+<span class="c">#</span>
+<span class="c">#    This program is free software: you can redistribute it and/or modify</span>
+<span class="c">#    it under the terms of the GNU General Public License as published by</span>
+<span class="c">#    the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c">#    (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c">#    This program is distributed in the hope that it will be useful,</span>
+<span class="c">#    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c">#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c">#    GNU General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c">#    You should have received a copy of the GNU General Public License</span>
+<span class="c">#    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c">#===============================================================================</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s">&quot;joe di castro &lt;joe@joedicastro.com&gt;&quot;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s">&quot;GNU General Public License version 3&quot;</span>
+<span class="n">__date__</span> <span class="o">=</span> <span class="s">&quot;17/05/2011&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s">&quot;0.2&quot;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">platform</span>
+    <span class="kn">import</span> <span class="nn">pickle</span>
+    <span class="kn">import</span> <span class="nn">logger</span>
+    <span class="kn">from</span> <span class="nn">get_size</span> <span class="kn">import</span> <span class="n">best_unit_size</span><span class="p">,</span> <span class="n">get_size_fast</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="c"># Checks the installation of the necessary python modules </span>
+    <span class="k">print</span><span class="p">((</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&quot;An error found importing one module:&quot;</span><span class="p">,</span>
+    <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]),</span> <span class="s">&quot;You need to install it&quot;</span><span class="p">,</span> <span class="s">&quot;Stopping...&quot;</span><span class="p">]))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">list4log</span><span class="p">(</span><span class="n">dirs_size_dict</span><span class="p">,</span> <span class="n">wpath</span><span class="p">,</span> <span class="n">dirs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a list of new or deleted directories for the log.&quot;&quot;&quot;</span>
+    <span class="n">llst</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ldir</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dirs</span><span class="p">):</span>
+        <span class="n">dsz</span> <span class="o">=</span> <span class="n">best_unit_size</span><span class="p">(</span><span class="n">dirs_size_dict</span><span class="p">[</span><span class="n">ldir</span><span class="p">])</span>
+        <span class="n">llst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot; {0:8.2f} {1}   ./{2}&quot;</span><span class="o">.</span>
+                    <span class="n">format</span><span class="p">(</span><span class="n">dsz</span><span class="p">[</span><span class="s">&#39;s&#39;</span><span class="p">],</span> <span class="n">dsz</span><span class="p">[</span><span class="s">&#39;u&#39;</span><span class="p">],</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">ldir</span><span class="p">,</span> <span class="n">wpath</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">llst</span>
+
+<span class="k">def</span> <span class="nf">diff4log</span><span class="p">(</span><span class="n">before</span><span class="p">,</span> <span class="n">current</span><span class="p">,</span> <span class="n">wpath</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">threshold_pct</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">threshold_sz</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a list of the directories that had size changes for the log.&quot;&quot;&quot;</span>
+    <span class="n">llst</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ddir</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dirs</span><span class="p">):</span>
+        <span class="n">pct</span> <span class="o">=</span> <span class="p">(((</span><span class="n">current</span><span class="p">[</span><span class="n">ddir</span><span class="p">]</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">before</span><span class="p">[</span><span class="n">ddir</span><span class="p">]))</span> <span class="o">/</span> <span class="n">before</span><span class="p">[</span><span class="n">ddir</span><span class="p">])</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">)</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">current</span><span class="p">[</span><span class="n">ddir</span><span class="p">]</span> <span class="o">-</span> <span class="n">before</span><span class="p">[</span><span class="n">ddir</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">pct</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">threshold_pct</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">threshold_sz</span><span class="p">:</span>
+            <span class="n">dsz</span> <span class="o">=</span> <span class="n">best_unit_size</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+            <span class="n">llst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot; {0:8.2f} % {1:8.1f} {2}   ./{3}&quot;</span><span class="o">.</span>
+                        <span class="n">format</span><span class="p">(</span><span class="n">pct</span><span class="p">,</span> <span class="n">dsz</span><span class="p">[</span><span class="s">&#39;s&#39;</span><span class="p">],</span> <span class="n">dsz</span><span class="p">[</span><span class="s">&#39;u&#39;</span><span class="p">],</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">ddir</span><span class="p">,</span>
+                                                                        <span class="n">wpath</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">llst</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">first_exec</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Main section&quot;&quot;&quot;</span>
+    <span class="c"># The path to monitor changes in directories dir_size</span>
+    <span class="n">mon_pth</span> <span class="o">=</span> <span class="s">&quot;/your/path/to/monitor&quot;</span>
+
+    <span class="c"># Ignore all directories that are below these percentage or absolute value </span>
+    <span class="c"># of size difference. There are optional, set to zero to override them.</span>
+    <span class="n">thld_pct</span> <span class="o">=</span> <span class="mi">20</span>      <span class="c"># In percentage of difference in size for a directory</span>
+    <span class="n">thld_sz</span> <span class="o">=</span> <span class="mf">10.486E6</span> <span class="c"># In bytes of absolute value of directory size difference</span>
+
+    <span class="c"># Prepare the log</span>
+    <span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">Logger</span><span class="p">()</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://code.joedicastro.com/python-recipes&quot;</span>
+    <span class="n">head</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;Changes in size of directories for {0} on {1}&quot;</span><span class="o">.</span>
+            <span class="n">format</span><span class="p">(</span><span class="n">mon_pth</span><span class="p">,</span> <span class="n">platform</span><span class="o">.</span><span class="n">node</span><span class="p">()))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">head</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="s">&quot;START TIME&quot;</span><span class="p">)</span>
+
+    <span class="c"># Load the last dictionary of directories/sizes if exists</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;.dir_sizes.pkl&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">input_file</span><span class="p">:</span>
+            <span class="n">bfr_dir</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">EOFError</span><span class="p">,</span> <span class="ne">IOError</span><span class="p">,</span> <span class="n">pickle</span><span class="o">.</span><span class="n">PickleError</span><span class="p">):</span>
+        <span class="n">bfr_dir</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">first_exec</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="c"># Get the current dictionary of directories/sizes</span>
+    <span class="n">crr_dir</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">mon_pth</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">directory</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+            <span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
+            <span class="n">dir_size</span> <span class="o">=</span> <span class="n">get_size_fast</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)</span>
+            <span class="n">crr_dir</span><span class="p">[</span><span class="n">dir_path</span><span class="p">]</span> <span class="o">=</span> <span class="n">dir_size</span>
+
+    <span class="c"># First, Save the current dirs/sizes</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;.dir_sizes.pkl&quot;</span><span class="p">,</span> <span class="s">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">crr_dir</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
+
+    <span class="c"># Create the list depending the status of directories</span>
+    <span class="n">deleted</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">bfr_dir</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">crr_dir</span><span class="p">]</span>
+    <span class="n">added</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">crr_dir</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">bfr_dir</span><span class="p">]</span>
+    <span class="n">changed</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">crr_dir</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">bfr_dir</span> <span class="k">if</span> <span class="n">crr_dir</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">!=</span> <span class="n">bfr_dir</span><span class="p">[</span><span class="n">d</span><span class="p">]]</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&quot;Deleted directories&quot;</span><span class="p">,</span> <span class="n">list4log</span><span class="p">(</span><span class="n">bfr_dir</span><span class="p">,</span> <span class="n">mon_pth</span><span class="p">,</span> <span class="n">deleted</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&quot;New directories&quot;</span><span class="p">,</span> <span class="n">list4log</span><span class="p">(</span><span class="n">crr_dir</span><span class="p">,</span> <span class="n">mon_pth</span><span class="p">,</span> <span class="n">added</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&quot;Changed directories&quot;</span><span class="p">,</span> <span class="n">diff4log</span><span class="p">(</span><span class="n">bfr_dir</span><span class="p">,</span> <span class="n">crr_dir</span><span class="p">,</span> <span class="n">mon_pth</span><span class="p">,</span> <span class="n">changed</span><span class="p">,</span>
+                                             <span class="n">thld_pct</span><span class="p">,</span> <span class="n">thld_sz</span><span class="p">))</span>
+
+    <span class="c"># If thresholds are nonzero, then report the values </span>
+    <span class="k">if</span> <span class="n">thld_pct</span> <span class="ow">or</span> <span class="n">thld_sz</span><span class="p">:</span>
+        <span class="n">tsz</span> <span class="o">=</span> <span class="n">best_unit_size</span><span class="p">(</span><span class="n">thld_sz</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&quot;Threshold Values&quot;</span><span class="p">,</span>
+                 <span class="p">[</span><span class="s">&quot;The directories whose size differences are less than any of &quot;</span>
+                  <span class="s">&quot;these values are ignored:&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+                  <span class="s">&quot;Percentage: {0:6} %&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thld_pct</span><span class="p">),</span>
+                  <span class="s">&quot;Size:       {0:6.2f} {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tsz</span><span class="p">[</span><span class="s">&#39;s&#39;</span><span class="p">],</span> <span class="n">tsz</span><span class="p">[</span><span class="s">&#39;u&#39;</span><span class="p">])])</span>
+
+    <span class="c"># Show some statistics for the analyzed path</span>
+    <span class="n">mon_pth_sz</span> <span class="o">=</span> <span class="n">best_unit_size</span><span class="p">(</span><span class="n">get_size_fast</span><span class="p">(</span><span class="n">mon_pth</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="s">&quot;{0} Statistics&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mon_pth</span><span class="p">),</span>
+             <span class="p">[</span><span class="s">&quot;{0:8} directories&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">crr_dir</span><span class="p">)),</span>
+              <span class="s">&quot;{0:8.2f} {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mon_pth_sz</span><span class="p">[</span><span class="s">&#39;s&#39;</span><span class="p">],</span> <span class="n">mon_pth_sz</span><span class="p">[</span><span class="s">&#39;u&#39;</span><span class="p">])])</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="s">&quot;END TIME&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">first_exec</span><span class="p">:</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&quot;Changes in size of directories&quot;</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Este script necesita los módulos <a href="http://joedicastro.com/conocer_el_tamano_de_un_directorio_con_python">get_size</a> y <a href="http://joedicastro.com/logger_informes_legibles_para_tus_scripts_python">logger</a> para poder 
+funcionar. Solo es necesario descargar los archivos y guardarlos en el mismo 
+directorio donde se aloje este script. La versión más actualizada de este script 
+se puede encontrar en <a href="http://code.joedicastro.com/python-recipes">mi repositorio</a></p>
+        <p>Hay <a href=".././monitorizar-los-cambios-de-tamano-en-un-directorio.html#disqus_thread">comentarios</a>.</p>
+      </article>
+      <li id="paginator">
+  
+  Pagina 1 de 1
+  
+</li>
+    </aside><!-- /#featured -->
+      
+    
+    
+    
+
+    
+
+<section id="extras" class="body">
+    
+    <div class="blogroll">
+      <h2>enlaces</h2>
+        <ul>
+          <li><a href="http://photo.joedicastro.com/">Fotografías</a></li>
+          <li><a href="http://code.joedicastro.com/">Código</a></li>
+          <li><a href="http://python.majibu.org/">python majibu</a></li>
+          <li><a href="http://python-hispano.org/">python hispano</a></li>
+          <li><a href="http://planet.python-hispano.org/">planeta python hispano</a></li>
+        </ul>
+    </div><!-- /.blogroll -->
+    
+    
+    <div class="social">
+      <h2>social</h2>
+        <ul>
+          <li><a href=".././atom.xml" rel="alternate">atom</a></li>
+          <li><a href=".././rss.xml" rel="alternate">rss</a></li>
+          
+          <li><a href="http://twitter.com/joe_di_castro">twitter</a></li>
+          <li><a href="http://identi.ca/joedicastro">identi.ca</a></li>
+          <li><a href="http://www.facebook.com/joedicastr0">facebook</a></li>
+          <li><a href="https://bitbucket.org/joedicastro">bitbucket</a></li>
+        </ul>
+    </div><!-- /.social -->
+    
+  </section><!-- /#extras -->
+  <footer id="contentinfo" class="body">
+    <address id="about" class="vcard body">
+      © 2010-2011 joe di castro. Powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a><span id="license">Los contenidos están bajo una <a href="http://creativecommons.org/licenses/by-sa/3.0/es">licencia Creative Commons</a></span>
+    </address><!-- /#about -->
+  </footer><!-- /#contentinfo -->
+
+  <script type="text/javascript">
+    
+        var pkBaseURL = (("https:" == document.location.protocol) ? "https://joedicastro.com/piwik/" : "http://joedicastro.com/piwik/");
+    
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    </script><script type="text/javascript">
+    try {
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+  </script><noscript><p><img src="http://joedicastro.com/piwik/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'joedicastro';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>joe di castro</title><link>http://joedicastro.com</link><description></description><atom:link href="http://joedicastro.com/feeds/tags/javascript.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 02 May 2011 22:18:00 -0000</lastBuildDate><item><title>Python one-liners. Potencia en una sola línea</title><link>http://joedicastro.com/python-one-liners-potencia-en-una-sola-linea.html</link><description>&lt;p&gt;Un &lt;a href="http://en.wikipedia.org/wiki/One-liner_program"&gt;one-liner&lt;/a&gt; propiamente dicho
+ es un comando de la consola que ejecuta una determinada función en "una sola 
+ línea de texto". En Python esto se consigue con una única orden de línea de 
+ comandos que llama al interprete y ejecuta los argumentos que le pasemos en 
+ la misma. Aunque también se les denomina así a veces a funciones lambda y 
+ funciones que han sido reducidas a una sola linea de código.&lt;/p&gt;
+&lt;p&gt;Un ejemplo de python one-liner es uno de los más famosos:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y que nos devuelve el popular &lt;a href="http://www.python.org/dev/peps/pep-0020/"&gt;Zen of Python&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren&amp;#39;t special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you&amp;#39;re Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it&amp;#39;s a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let&amp;#39;s do more of those!
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pero existen varios one-liners muy útiles que nos pueden hacer la vida más fácil 
+para determinadas tareas. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Iniciar un servidor web y compartir un directorio&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;SimpleHTTPServer&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Si ejecutamos este one-liner se iniciará un servidor web en el puerto &lt;code&gt;8000&lt;/code&gt; de 
+nuestra dirección local (&lt;code&gt;localhost&lt;/code&gt; o &lt;code&gt;127.0.0.1&lt;/code&gt;) que nos servirá los archivos 
+del directorio donde lo ejecutemos. Para ello solo tenemos que acceder desde 
+nuestro navegador a la dirección &lt;code&gt;http://localhost:8000&lt;/code&gt; o &lt;code&gt;http://127.0.0.1&lt;/code&gt;. 
+Para interrumpir el servicio basta con que interrumpamos el programa con 
+&lt;code&gt;Ctrl+C&lt;/code&gt;. Si quisiéramos emplear un puerto distinto de &lt;em&gt;8000&lt;/em&gt;, por ejemplo 
+&lt;em&gt;8080&lt;/em&gt;, solo tenemos que indicarselo:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;SimpleHTTPServer&lt;/span&gt; &lt;span class="mi"&gt;8080&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Iniciar un servidor SMTP&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;smtpd&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;DebuggingServer&lt;/span&gt; &lt;span class="n"&gt;localhost&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con este comando iniciamos un servidor de correo SMTP. Es básico, pero puede ser 
+muy útil para crear un entorno temporal de pruebas. Dependiendo de la 
+configuración de nuestro sistema, es muy probable que necesitemos ejecutar este 
+comando como administrador (&lt;em&gt;root&lt;/em&gt;). Si ya tenemos corriendo un servidor de 
+correo en ese puerto, podemos cambiarlo por otro (eg: &lt;em&gt;2525&lt;/em&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Iniciar un servidor FTP&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;pyftpdlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ftpserver&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para poder ejecutar este comando es necesario tener instalada la librería 
+&lt;a href="http://code.google.com/p/pyftpdlib/"&gt;pyftpdlib&lt;/a&gt;. Debemos además ser usuario con permisos de administrador de la 
+maquina para poder iniciar este servidor. Una vez ejecutado tendremos un 
+servidor FTP de solo lectura en el directorio en el que lo iniciemos.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ejecutar un cliente FTP&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;ftplib&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Si ejecutamos este comando, nos devolverá la ayuda con los argumentos necesarios 
+para poder conectarnos a un servidor FTP.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Abrir una página web en el navegador&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;webbrowser&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;joedicastro&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Nos abrirá la dirección web que le indiquemos en el navegador web predeterminado 
+de nuestro equipo.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Obtener el código fuente de una página web&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;urllib&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Esto nos imprime en pantalla el código fuente (HTML) de una dirección web.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Eliminar las etiquetas HTML de un fichero HTML&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;htmllib&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Esto nos imprime el contenido del fichero &lt;code&gt;test-html&lt;/code&gt; pero sin mostrarnos las 
+etiquetas HTML, solo texto plano. Algo parecido a lo que hace un navegador en 
+modo texto como &lt;em&gt;links&lt;/em&gt;, pero de forma estática.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Comparar dos directorios&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;filecmp&lt;/span&gt; &lt;span class="n"&gt;dir_1&lt;/span&gt; &lt;span class="n"&gt;dir_2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;De esta manera podemos comparar dos directorios. El resultado será un resumen de 
+que ficheros son iguales, cuales diferentes y lo mismo con los subdirectorios.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Identificar la plataforma&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;from sys import platform; print platform&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Este nos sirve para identificar la plataforma sobre la que se ejecuta el comando 
+(Windows, Linux, ...) No es de mucha utilidad, pero nos sirve como curiosidad. 
+Otra opción más simple y que nos devuelve un resultado más completo sería:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;platform&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Obtener el nombre de la maquina (hostname)&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;from socket import gethostname; print gethostname()&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ó&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;import platform; print platform.node()&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cualquiera de estos dos one-liners nos devolverán el nombre de la maquina en que 
+los ejecutemos.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Imprimir el calendario del año en curso&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;calendar&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Imprime en pantalla el calendario de todo el año. Para conocer más opciones, 
+como imprimir el calendario de otro año, mes, etc añadir la opción &lt;code&gt;-h&lt;/code&gt; al final 
+de la línea.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mostrar los módulos empleados en un script&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;modulefinder&lt;/span&gt; &lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;De esta manera podemos no solo saber que módulos son importados por el script, 
+si no que además nos muestra su ruta en el sistema de archivos.&lt;/p&gt;
+&lt;p&gt;Aquí he mencionado solo algunos que empleo con cierta frecuencia o que me han 
+parecido reseñables, pero existen bastantes más. Una buena pista es que la 
+mayoría hace uso de los módulos de la librería estándar de Python.&lt;/p&gt;
+&lt;h3 id="como_funciona"&gt;Como funciona&lt;/h3&gt;
+&lt;p&gt;Básicamente se trata de llamar al interprete Python utilizando uno de los 
+siguientes argumentos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-c&lt;/code&gt;: Lo que seguiría a esta opción sería un programa Python encerrado entre 
+ comillas. Por ejemplo, el primer ejemplo quedaría de este modo, 
+ &lt;code&gt;python -c 'import this'&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;-m&lt;/code&gt;: Está opción llama a un modulo de python, que puede a su vez tener 
+ distintas opciones y argumentos, y lo ejecuta como script. Por ejemplo: 
+ &lt;code&gt;python -m locale&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="https_server"&gt;HTTPS Server&lt;/h3&gt;
+&lt;p&gt;Este no es un one-liner en Python, pero sirve como complemento a los distintos 
+servidores que hemos visto que se podían iniciar con mucha facilidad gracias a 
+Python. Este código inicia un servidor HTTPS en Python en el puerto &lt;em&gt;4443&lt;/em&gt; de la 
+dirección local. Lo suyo sería iniciarlo en el puerto &lt;em&gt;443&lt;/em&gt;, y se puede hacer 
+simplemente cambiándolo, pero se necesitan entonces permisos de administrador 
+para iniciarlo.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;BaseHTTPServer&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;SimpleHTTPServer&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ssl&lt;/span&gt;
+
+&lt;span class="n"&gt;httpd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BaseHTTPServer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HTTPServer&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4443&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                                  &lt;span class="n"&gt;SimpleHTTPServer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SimpleHTTPRequestHandler&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;httpd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wrap_socket&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;httpd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                &lt;span class="n"&gt;certfile&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;path/to/localhost.pem&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                                &lt;span class="n"&gt;server_side&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;httpd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve_forever&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;El código es original de &lt;a href="http://www.piware.de/2011/01/creating-an-https-server-in-python/"&gt;Martin Pitt&lt;/a&gt; y me ha servido en más de una ocasión 
+para probar un script.&lt;/p&gt;
+&lt;br /&gt;
+
+&lt;h4 id="editar_una_p+gina_web_con_javascript"&gt;Editar una página web con javascript&lt;/h4&gt;
+&lt;p&gt;No es un one-liner escrito en Python, si no en javascript, pero lo menciono aquí 
+a modo de curiosidad porque siempre me ha parecido curioso y aparentemente 
+inútil, pero tiene sus aplicaciones (alguna broma ha caído gracias a él).&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="nx"&gt;javascript&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;contentEditable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;true&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;designMode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;on&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;void&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para ejecutarlo es muy sencillo. Abrimos nuestro navegador web favorito, 
+abrimos la página web que deseamos editar y luego simplemente sustituimos el 
+texto de la barra de direcciones por el de este one-liner y pulsamos Enter. 
+Ahora podemos editar la página web como si fuera un procesador de texto.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">joe di castro</dc:creator><pubDate>Mon, 02 May 2011 22:18:00 -0000</pubDate><category>one-liner</category><category>linux</category><category>python</category><category>javascript</category></item></channel></rss>

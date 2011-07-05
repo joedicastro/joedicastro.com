@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>joe di castro - recursividad</title>
+  <meta name="author" content="joe di castro" />
+  <meta name="keywords" content="joe di castro, blog">
+  <link rel="author" href="humans.txt" />
+  <link rel="stylesheet" href=".././theme/css/main.css" type="text/css" />
+  <link href=".././atom.xml" type="application/atom+xml" rel="alternate" title="joe di castro ATOM Feed" />
+  <link href=".././rss.xml" type="application/atom+xml" rel="alternate" title="joe di castro RSS Feed" />
+  
+  <link href=".././feeds/tags/recursividad.atom.xml" type="application/atom+xml" rel="alternate" title="joe di castro - recursividad ATOM Feed" />
+  <link href=".././feeds/tags/recursividad.rss.xml" type="application/atom+xml" rel="alternate" title="joe di castro - recursividad RSS Feed" />
+
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body id="index" class="home">
+
+  <header id="banner" class="body">
+    <h1><a href="../."><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAxBAMAAADKNk2HAAAAElBMVEW/kiXQsGLey5vn3b/s5dH3+fXlDfF2AAADFElEQVRIDa3Bu3LbOABA0QtQ7KFo0TPOqmfiZU/PmD1A8v7/r6yejpPIkxlL5+BP85aQ/Ty8WhJH2U/Dixl2ky80fhqeVaJHI34answ0nlS8bR38GzwhejYzeFPK/g0ejUyezUzesuBHusEzPFjIXlS8qTR+YMYLPOiDVwVvStkPjBsvUFdar0rwlgU/wt4L1IJvusZbSuMHanh9nTxB7aNvaL0lZX8z86tJUVPj1cLeG2b8Xd1ut09P337w3+vr8/PzNxU1Ra8K3jJu/ECJvkHt2T151kdvYe8HUvYNaoXgGa03VJy84dkZf8KDeTd5MrP3hr6t0T+Nwb519QrfK3jDyj5l/8RGhgWv8L2u8c3kVQkuvrc8eVAZSrALXuF7ZJ3j10m/gyfLtk2tF2tirz1kNW1M7Urrwcvui+I7FV2A1gTBowpbhpfBkxRS60hkryPDgoWp0woM4jt9XDsIqe3Zd3snXYh2YWXwqA8L+4V/1qALWKJ96IJCZFrwHQIHmSeyOm40RWfaEj2qDH00RUujXcSUTdA6wgtzwJ9mCClQSXEdXBmsaGIi22dN2TR0TJKtoYQFa9gyrdD0kYxv1sRupoSOg439RlNrJc44ozWoldYRV3LZlGjKJTqG1EAjXi3QOm4K8IMwVXRlWKEdW1OrXdYVpoXWFE1tynMw5ZWcICheLMBkGhbiVBkkaw12MDHUoCtqR2NiGPke2TF0ecEeCzsVz1ZCH1xxZDC1do1a4gt9nMPMoLXRnpR7qLQpMfIlWDaVxhQ8wLMUJloXOrIVx+BBgZzaGslqaX1hk7Z0sFkhdiFl+0CKicEDPOkZKpNC1NK8sPeg0qwMM40HJXZEO3IhusDA16A9TYXsER5Vsn1U571aYOPJq3PUV49miLoMzkFddEpZHfTH5Ake0SjZi4WdN3z/11998Vd4MDJZ8F6oC1nTxnuh9kFn9t4LXcg6Bu+GjkGl9W4orVYm74aVSVPj/bCLOrP3fkjWPvgAVHQl+wCUqAUfga5VWh8BsgUfAvJK60NAk/AxSJB9DEY2Psj/Dz0Ida72jQIAAAAASUVORK5CYII=" alt="joe di castro" title="joe di castro" width="150" height="49" /> </a></h1>
+      <nav>
+      	<ul>
+         
+         <li ><a href=".././category/blog.html">blog</a></li>
+         <li><a href=".././archives.html">archivos</a></li>
+         <li><a href=".././tags.html">etiquetas</a></li>
+         
+         <li><a href=".././pages/markdown.html">markdown</a></li><li><a href=".././pages/sobre-mi.html">sobre mi</a></li>
+         
+       </ul>
+     </nav>
+  </header><!-- /#banner -->        
+
+          
+    
+    
+    <aside id="featured" class="body">
+      <article>
+        <h1 class="entry-title"><a href=".././aplanar-listas-en-python.html">Aplanar listas en Python</a></h1> 
+        <p>Una lista multinivel o anidada es aquella que a su vez contiene otra(s) listas o
+ tuplas (o generadores, en general cualquier iterable). Estas listas pueden a su
+ vez contener otras, que a su vez puede contener otras, etc. Cada una de estas
+listas dentro de otra constituye un nivel de anidamiento. Un ejemplo sencillo
+puede ser el siguiente:</p>
+<div class="codehilite"><pre><span class="n">lista_anidada</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;aA&#39;</span><span class="p">,</span> <span class="s">&#39;bB&#39;</span><span class="p">,</span> <span class="s">&#39;cC&#39;</span><span class="p">),</span> <span class="s">&#39;B&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Esta es una lista con dos niveles de anidamiento, porque la segunda lista dentro
+ de la primera incluye a su vez dentro una tupla.</p>
+<p>Dada una lista de estas características, en ocasiones necesitamos aplanarla, es
+decir tener todos los elementos dentro de una única lista sin anidamiento, una
+lista plana. Siguiendo con el ejemplo anterior, esta lista una vez aplanada
+quedaría del siguiente modo:</p>
+<div class="codehilite"><pre><span class="n">lista_aplanada</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="s">&#39;aA&#39;</span><span class="p">,</span> <span class="s">&#39;bB&#39;</span><span class="p">,</span> <span class="s">&#39;cC&#39;</span><span class="p">,</span> <span class="s">&#39;B&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+
+<p>Bien, ¿y como se consigue esto? Eso es precisamente lo que voy a tratar aquí,
+diversos métodos para aplanar una lista.</p>
+<h3 id="listas_anidadas_a_un_solo_nivel">Listas anidadas a un solo nivel.</h3>
+<p>Un primer modo de hacer esto podría ser emplear una función similar a esta:</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">flattener_sum</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="p">[])</span>
+</pre></div>
+
+
+<p>Que parece muy simple y eficaz:</p>
+<div class="codehilite"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lista_anidada</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;aA&#39;</span><span class="p">,</span> <span class="s">&#39;bB&#39;</span><span class="p">,</span> <span class="s">&#39;cC&#39;</span><span class="p">),</span> <span class="s">&#39;B&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flattener_sum</span><span class="p">(</span><span class="n">lista_anidada</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;input&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;&lt;input&gt;&quot;</span>, line <span class="m">2</span>, in <span class="n">flattener_sum</span>
+<span class="gr">TypeError</span>: <span class="n">can only concatenate list (not &quot;int&quot;) to list</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lista_anidada</span> <span class="o">=</span> <span class="p">[[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;aA&#39;</span><span class="p">,</span> <span class="s">&#39;bB&#39;</span><span class="p">,</span> <span class="s">&#39;cC&#39;</span><span class="p">),</span> <span class="s">&#39;B&#39;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flattener_sum</span><span class="p">(</span><span class="n">lista_anidada</span><span class="p">)</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;A&#39;, (&#39;aA&#39;, &#39;bB&#39;, &#39;cC&#39;), &#39;B&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>Pero que como vemos tiene un problema, solo funciona con lista de un solo nivel
+de anidamiento y además solo funciona únicamente con listas que solo contienen
+otras listas.</p>
+<p>Otro método que solo funciona un nivel de anidamiento, y solo con listas de
+iterables (soporta tuplas, generadores...) es el siguiente:</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">flattener</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lista_anidada</span> <span class="o">=</span> <span class="p">[[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">],</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">))]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">flattener</span><span class="p">(</span><span class="n">lista_anidada</span><span class="p">)</span>
+<span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>Pero las listas anidadas compuestas únicamente de otros iterables son un caso
+demasiado concreto y probablemente poco frecuente. Vamos a ver ahora cuatro
+métodos que funcionan en todos los casos, en todo tipo de listas anidadas y a
+cualquier nivel de anidamiento.</p>
+<h3 id="aplanar_cualquier_tipo_de_lista_anidada">Aplanar cualquier tipo de lista anidada.</h3>
+<p>El primer ejemplo que pongo aquí se deriva del primero en que empleábamos la
+función <code>sum()</code> y que realizó <a href="http://Ch3m4.org">Chema Cortés</a> en <a href="http://python.majibu.org/preguntas/547/serendipia-aplanando-una-lista">esta pregunta</a> de
+<a href="http://python.majibu.org">majibu</a>.</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">flat_sum</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">flat_sum</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">if</span>
+                <span class="nb">hasattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s">&quot;__iter__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)</span>
+                <span class="k">else</span> <span class="p">[</span><span class="n">elem</span><span class="p">]</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">),</span> <span class="p">[])</span>
+</pre></div>
+
+
+<p>Y que como podemos ver, ya puede aplanar sin problemas el primer ejemplo que
+poníamos:</p>
+<div class="codehilite"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lista_anidada</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;A&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;aA&#39;</span><span class="p">,</span> <span class="s">&#39;bB&#39;</span><span class="p">,</span> <span class="s">&#39;cC&#39;</span><span class="p">),</span> <span class="s">&#39;B&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flat_sum</span><span class="p">(</span><span class="n">lista_anidada</span><span class="p">)</span>
+<span class="go">[0, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, 1, &#39;A&#39;, &#39;aA&#39;, &#39;bB&#39;, &#39;cC&#39;, &#39;B&#39;, 2]</span>
+</pre></div>
+
+
+<p>Este método es relativamente fácil de recordar, pero tiene un rendimiento muy
+pobre, como ya veremos más adelante.</p>
+<p>El siguiente método lo encontré en <a href="http://stackoverflow.com/questions/2158395#2158532">esta pregunta de StackOverflow</a>, y
+obtiene la mejor puntuación de todas las soluciones propuestas. Seguramente se
+debe a lo elegante de la solución y a que los generadores tienen fama de
+eficaces y de consumir poco espacio en RAM. Aunque como luego veremos, es quizá
+la peor de las soluciones que aquí comento.</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">flat_yield</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">elm</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span> <span class="s">&quot;__iter__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">flatten</span><span class="p">(</span><span class="n">elm</span><span class="p">):</span>
+                    <span class="k">yield</span> <span class="n">sub</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">elm</span>
+
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">flatten</span><span class="p">(</span><span class="n">lst</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Aunque en la función original esta línea:</p>
+<div class="codehilite"><pre><span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span> <span class="s">&quot;__iter__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+</pre></div>
+
+
+<p>es sustuida por esta otra:</p>
+<div class="codehilite"><pre><span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">)):</span>
+</pre></div>
+
+
+<p>el resultado es el mismo. Aunque la solución que yo propongo es ligeramente más
+rápida.</p>
+<p>Esta otra solución la hallé <a href="http://kogs-www.informatik.uni-hamburg.de/~meine/python_tricks">aquí</a> y es un método que ya ofrece un
+rendimiento aceptable a la par de ser muy elegante y <em>pythonica</em>. Esta emplea 
+los métodos propios de la listas <code>append()</code> y <code>expand()</code> para conseguir su 
+objetivo. Es una función recursiva al igual que la anterior.</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">flat_list</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s">&quot;__iter__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">flat_list</span><span class="p">(</span><span class="n">elem</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+
+<h4 id="el_problema_de_la_recursividad">El problema de la recursividad.</h4>
+<p>El problema de los dos métodos anteriores es que emplean recursividad, y no
+digo que la recursividad sea un problema, el problema son los limites por
+defecto en Python. Por defecto Python solo admite 1000 niveles de recursividad
+(e.g. una lista con 1000 niveles de anidamiento), y a nada que nuestra función
+supere estos niveles, nos encontraremos con un bonito error como este:</p>
+<div class="codehilite"><pre><span class="gp">&gt;&gt;&gt; </span><span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">maximum</span> <span class="n">recursion</span> <span class="n">depth</span> <span class="n">exceeded</span> <span class="k">while</span> <span class="n">calling</span> <span class="n">a</span> <span class="n">Python</span> <span class="nb">object</span>
+</pre></div>
+
+
+<p>Aunque esto es algo que puede sortearse y podemos ampliar el limite de recursión
+de esta forma:</p>
+<div class="codehilite"><pre><span class="go">&gt;&gt;&gt;import sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">setrecursionlimit</span><span class="p">(</span><span class="mi">200000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># ahora comprobamos el nuevo limite de recursividad</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">getrecursionlimit</span><span class="p">()</span>
+<span class="go">200000</span>
+</pre></div>
+
+
+<p>Ahora ya podríamos emplear el método hasta que alcanzáramos los 20.000 niveles
+de recursión. Aunque no me parece la manera idónea de hacer las cosas, desde
+luego. Si bien es cierto que será bastante difícil que nos encontremos listas
+anidadas hasta estos niveles en el mundo real.</p>
+<h3 id="la_mejor_soluci+n">La mejor solución.</h3>
+<p>Sin embargo tenemos una última solución que funciona en todos los casos y que no
+ es recursiva y que además tiene el mejor rendimiento, con diferencia, de todos
+los aquí comentados. Este se basa en la sustitución en línea de los elementos de
+ la lista empleando la operación <em>slice</em> Esta solución fue aportada por Chema
+Cortés en <a href="http://python.majibu.org/preguntas/547/serendipia-aplanando-una-lista">la misma pregunta</a> de majibu.</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">flat_slice</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="n">lst</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s">&quot;__iter__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">basestring</span><span class="p">)):</span>
+            <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">lst</span>
+</pre></div>
+
+
+<h3 id="pruebas_de_rendimiento">Pruebas de rendimiento</h3>
+<p>Para poder comprobar las diferencias de rendimiento entre unos métodos y otros,
+he preparado unos tests que ejecutan cada una de las funciones analizadas 10
+veces por cada caso planteado. Las funciones que he analizado son las cuatro que
+ soportan cualquier tipo de lista. Al final se generan unas gráficas y unos
+archivos en formato csv con los resultados de las pruebas. Para ello se generan
+un par de valores (caso) en función del número de elementos de la lista y los
+niveles de anidamiento de la misma. A partir de ahí planteo tres supuestos:</p>
+<ol>
+<li>Número de elementos en aumento, número de niveles constante.</li>
+<li>Número de elementos constante, número de niveles en aumento.</li>
+<li>Número de elementos en aumento, número de niveles en aumento.</li>
+</ol>
+<p>Para poder realizar estas pruebas, tenía que generar una lista que cumpliera las
+ condiciones planteadas para cada caso. Para ello he creado una función que
+genera una lista anidada con el número de elementos y niveles que nosotros le
+indiquemos. Los elementos que la componen son números y cadenas (o solo números)
+organizados aleatoriamente aunque con una estructura que es constante a
+cualquier nivel de anidamiento o número de elementos. La razón de esto es que
+aunque las listas se generen de forma aleatoria, si la estructura de las mismas
+fuera dispar, estaríamos introduciendo un tercer factor, cuando lo que queremos
+medir es el rendimiento en función de dos: nº elementos y nº niveles. De esta
+manera podemos medir de una manera bastante fiable el rendimiento de los
+distintos métodos en función de estos dos factores. Aunque aún existe otro
+factor que podemos controlar solo hasta cierto punto, que son los procesos
+corriendo simultáneamente y en segundo plano en nuestra maquina. Aunque los
+reduzcamos al mínimo, los pocos que queden pueden generar pequeños "artefactos"
+que desvirtúan un poco nuestra medida, pero que para el objetivo que perseguimos
+ podemos considerar como despreciables. La estructura de estas listas generadas
+es el de una lista de listas anidadas en la que se agrupan todos los elementos
+posibles hasta el último nivel de anidamiento solicitado. Los elementos que
+sobran se añaden al nivel base de la lista. Es algo así como si en el mundo real
+ tuviéramos un campo lleno de zigurats (pirámides escalonadas de piedra) con las
+ piedras sobrantes desperdigadas por el mismo. De ahí el nombre que le he puesto
+ a la función.</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">ziggurat</span><span class="p">(</span><span class="n">stones</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">with_iters</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">only_numbers</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a list of nested lists, like a field of ziggurats.&quot;&quot;&quot;</span>
+    <span class="c"># First, generate the list of the stones (numbers and &quot;strings&quot;)</span>
+    <span class="n">as_str</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">only_numbers</span> <span class="k">else</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">stones</span><span class="p">),</span> <span class="n">stones</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">stones_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">stn</span><span class="p">)</span> <span class="k">if</span> <span class="n">stn</span> <span class="ow">in</span> <span class="n">as_str</span> <span class="k">else</span> <span class="n">stn</span> <span class="k">for</span> <span class="n">stn</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stones</span><span class="p">)]</span>
+    <span class="c"># Find the number of step pyramids (aka ziggurats)</span>
+    <span class="n">num_zggts</span> <span class="o">=</span> <span class="n">stones</span> <span class="o">/</span> <span class="p">(</span><span class="n">steps</span> <span class="o">+</span> <span class="p">(</span><span class="n">steps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">ziggurats</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">zggt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_zggts</span><span class="p">):</span>
+        <span class="n">zggt_step</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c"># Build a step pyramid, step by step, until the chosen level</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+            <span class="c"># Get a choice of stones from the list to make a step &amp; remove them</span>
+            <span class="n">choice</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">stones_list</span><span class="p">,</span> <span class="mi">1</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">step</span> <span class="k">else</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">choosen</span> <span class="ow">in</span> <span class="n">choice</span><span class="p">:</span>
+                <span class="n">stones_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">choosen</span><span class="p">)</span>
+            <span class="c"># Build a step</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">step</span><span class="p">:</span>
+                <span class="n">zggt_step</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">choice</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">choice</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">iter</span><span class="p">(</span><span class="n">zggt_step</span><span class="p">)</span> <span class="k">if</span> <span class="n">with_iters</span> <span class="k">else</span> <span class="n">zggt_step</span><span class="p">)</span>
+                <span class="n">zggt_step</span> <span class="o">=</span> <span class="n">choice</span>
+        <span class="n">ziggurats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">zggt_step</span><span class="p">)</span>
+    <span class="c"># IF don&#39;t have stones enough to make even a ziggurat, then will make</span>
+    <span class="c"># multiple one-stone-many-airsteps ziggurats</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">num_zggts</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">stn</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">stones</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="n">stones_list</span><span class="p">[</span><span class="n">stn</span><span class="p">]</span> <span class="o">=</span> <span class="n">stones_list</span><span class="p">[</span><span class="n">stn</span><span class="p">:</span><span class="n">stn</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="c"># Finally, mix the remaining stones and the ziggurats, et Voila!!!</span>
+    <span class="n">stones_list</span> <span class="o">+=</span> <span class="n">ziggurats</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">stones_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">stones_list</span>
+</pre></div>
+
+
+<p>Ejemplos de listas generadas por esta función:</p>
+<div class="codehilite"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="o">.</span><span class="n">ziggurat</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">[[&#39;7&#39;, [&#39;14&#39;, [12, [&#39;13&#39;], &#39;10&#39;], 5], &#39;11&#39;], 1, [&#39;2&#39;, [&#39;0&#39;, [4, [8], 3], 9], 6]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="o">.</span><span class="n">ziggurat</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">[5, [[[[[&#39;2&#39;]]]]], &#39;1&#39;, [[[[[4]]]]], [[[[[&#39;6&#39;]]]]], 3, [[[[[&#39;0&#39;]]]]], 7]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="o">.</span><span class="n">ziggurat</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="go">[[&#39;2&#39;, [&#39;7&#39;, [&lt;listiterator object at 0x9fe47ac&gt;], &#39;5&#39;], 1], 0, 6, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">final</span><span class="o">.</span><span class="n">ziggurat</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">only_numbers</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">[[7, [3], 1], [2, [5], 8], [4, [0], 6]]</span>
+</pre></div>
+
+
+<p>Una vez ejecutados estos test, podemos ver en estas gráficas los resultados de
+los mismos:</p>
+<p style="text-align: center;"><img src="../static/pictures/test_results.png" width="650" 
+height="880" alt="test_results.png" title="all functions, no iterables"/></p>
+
+<p>Analizemos gráfica a gráfica:</p>
+<ol>
+<li>
+<p>Aquí podemos ver que tal y como adelantaba anteriormente, la función 
+<code>flat_slice()</code> es la más eficaz y la función <code>flat_sum()</code> la peor de todas. 
+Además como podemos ver el incremento es constante, pero de magnitudes muy 
+diferentes. Bueno, la verdad es que una diferencia de unos 2,25 ms por ejecución
+ cuando la lista consta de 1400 elementos es insignificante, el hecho es que 
+puede ser importante si se busca el rendimiento y se aplanan listas de forma 
+masiva. En este caso no se ven afectado por el limite de recursión, todos los 
+metodos han seguido funcionando sin problemas incluso cuando he aumentado a 
+10.000 elementos por lista.</p>
+</li>
+<li>
+<p>En esta progresión podemos ver que las diferencias de rendimiento entre el 
+ peor método y el mejor son aún más acusadas. Curiosamente el método empleando
+generadores (<code>flat_yield()</code>) y el metodo que emplea los métodos de las listas
+(<code>flat_list()</code>) tienen un rendimiento identico. Aquí aparece por vez primer el
+limite de recursividad por defecto de python. Evidentemente la primera en caer
+es la función <code>flat_sum()</code>, ya que emplea doble recursividad y deja de funcionar
+ a los 500 niveles de anidamiento por lista. Despues se caen sin remedio las 
+funciones <code>flat_yield()</code> y <code>flat_list()</code> al alcanzar los 1000 niveles. La 
+función <code>flat_slice()</code> al no ser recursiva no se ve afectada por este limite.</p>
+</li>
+<li>
+<p>Finalmente en esta gŕafica despejamos todas las dudas. Al aumentar
+simultaneamente y en la misma proporción el número de elementos y el número de
+niveles, podemos ver como la función <code>flat_yield()</code> aumenta de manera drástica 
+el tiempo empleado en cada ejecución. Antes de caer debido al limite de la
+recursividad, tenemos una diferencia de 119,38 ms por cada ejecución para
+1980 elementos y 990 niveles con la función <code>flat_slice()</code>. Una diferencia de 
+más de un segundo para diez ejecuciones. Y aunque esta gran diferencia desvirtua
+ un poco la comparación entre el resto de funciones, básicamente siguen un 
+ comportamiento similar a la de la anterior gráfica, destacando otra vez el 
+metodo flat_slice como el más eficaz de todos ellos.</p>
+</li>
+</ol>
+<p>Como conclusión podriamos decir que moviendonos en los valores que nos movemos,
+en ms, y con listas anidadas "normales" (sin llegar a cifras tan elevadas en
+elementos/niveles), que cualquier metodo a priori nos sirve. Aunque yo
+descartaría directamente el método de la función <code>flat_sum()</code> y apostaría por 
+emplear siempre <code>flat_slice()</code>, sobre todo si va a ser ejecutado numerosas veces.</p>
+<p>Estas funciones, alguna más, ejemplos de uso y los test de rendimento se 
+encuentran en el fichero <a href="https://bitbucket.org/joedicastro/python-recipes/src/tip/src/flatten_nested_lists.py">flatten_nested_lists.py</a> de <a href="https://code.joedicastro.com/python-recipes/">mi repositorio</a>.</p>
+<br />
+
+<hr />
+<h1 id="comentarios_realizados_anteriormente_en_drupal">Comentarios realizados anteriormente en Drupal</h1>
+<div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
+<img src="../static/pictures/avtr_kiko.png" height=28 width=28
+alt="avatar" title="avatar de kikocorreoso"/></div>
+
+<h2 id="interesante_art+culo">Interesante artículo.</h2>
+<p>por kikocorreoso el Jue, 02/06/2011 - 10:53</p>
+<br />
+
+<p>Interesante artículo.</p>
+<p>Por cierto, ¡Qué gráficas más chulas! ;-D</p>
+<hr />
+<div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
+<a href="../static/pages/sobre-mi.html"><img src="../static/pictures/avtr_joedicastro.png" height=28 
+width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
+
+<h2 id="si_la_librer+a_matplotlib_da">Si, la librería matplotlib da</h2>
+<p>por <a href="../static/pages/sobre-mi.html">joe di castro</a> el Jue, 02/06/2011 - 11:03</p>
+<br />
+
+<p>Si, la librería <a href="http://matplotlib.sourceforge.net/">matplotlib</a> da unos 
+resultados muy buenos :)</p>
+<p>Gracias por la <a href="http://python.majibu.org/preguntas/713/que-me-aconsejais-para-realizar-graficos-desde-tablas">recomendación</a>.</p>
+<hr />
+<div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
+<a href="http://ch3m4.org/blog"><img src="../static/pictures/avtr_ch3m4.png" height=28 
+width=28 alt="avatar" title="avatar de Chema Cortés"/></a></div>
+
+<h2 id="+buen_trabajo">¡Buen trabajo!</h2>
+<p>por <a href="http://ch3m4.org/blog">Chema Cortés</a> el Vie, 03/06/2011 - 21:28 </p>
+<br />
+
+<p>¡Buen trabajo!</p>
+<p>Se me hace raro que las gráficas salgan tan <em>lineales</em>. Esperaba que los 
+rendimientos se degradaran al aumentar niveles y elementos.</p>
+<p>Que la soluciones <code>flat_list</code> y <code>flat_yield</code> vayan tan parejas me da que es 
+porque esta última está utilizando al final el constructor <code>list()</code> para generar 
+la lista; pero que vaya tan mal cuando se incrementa el número de elementos y 
+de niveles, tiene que ser debido a la sobrecarga de <em>clausuras</em> que hace falta 
+mantener.</p>
+<p>Creo que habría una opción más eficiente para reducir las clausuras. ¿Podrías 
+hacer la prueba con esta versión de <code>flat_yield</code>? Gasta más memoria, pero tiene 
+que acercarse más a <code>flat_list</code>. Sólo he cambiado que la recursividad se haga 
+sobre el nivel superior en lugar de hacerlo dentro de la clausura. Ésto, en la 
+práctica, va creando listas intermedias que sustituyen las clausuras, lo que 
+debería simplificar el número de "contextos" a mantener:</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">flat_yield</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">elm</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span> <span class="s">&quot;__iter__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">flat_yield</span><span class="p">(</span><span class="n">elm</span><span class="p">):</span>
+                    <span class="k">yield</span> <span class="n">sub</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">elm</span>
+
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">flatten</span><span class="p">(</span><span class="n">lst</span><span class="p">))</span>
+</pre></div>
+
+
+<hr />
+<div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
+<a href="../static/pages/sobre-mi.html"><img src="../static/pictures/avtr_joedicastro.png" height=28 
+width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
+
+<h2 id="gracias_si_la_verdad_es_que_yo">Gracias. Si, la verdad es que yo</h2>
+<p>por <a href="../static/pages/sobre-mi.html">joe di castro</a> el Vie, 03/06/2011 - 23:16</p>
+<br />
+
+<p>Gracias. Si, la verdad es que yo tampoco esperaba una respuesta tan lineal en 
+los resultados, pero engañan algo, como ya comentaba, la espectacular 
+degradación en el rendimiento de la función <code>flat_yield</code>, enmascara el 
+comportamiento del resto de funciones en el último supuesto. He realizado una 
+comparativa con todas las funciones sin emplear <code>flat_yield</code>, y como ves la cosa 
+cambia ligeramente y ya se parece algo más a lo esperado, aunque siguen siendo 
+bastante <em>lineales</em>.</p>
+<p style="text-align: center;"><img src="../static/pictures/test_results_wy.png" 
+width="650" height="980" alt="test_results_wy.png" 
+title="no flat_yield, no iterables"/></p>
+
+<p>Si, el utilizar el constructor list, cambia bastante las cosas, de hecho el 
+método de la función <code>flat_yield</code> es el más rápido de todos si dejamos que 
+devuelva solo el generador, es el crear la lista lo que lo ralentiza. Si 
+fuéramos a emplear el resultado de la función como un iterable (en un bucle 
+<code>for</code> por ejemplo), desde luego creo que sería una de las mejores soluciones 
+(en el primer supuesto, en el resto, la recursividad sigue pesando demasiado), 
+porque nos ahorraríamos el proceso de creación de la lista. </p>
+<p>He realizado la prueba que me comentas con la función que me propones, la he 
+llamado <code>flat_yield_cc</code>, cc por Chema Cortés :)</p>
+<p style="text-align: center;"><img src="../static/pictures/test_results_cc.png" 
+width="650" height="980" alt="test_results_cc.png" 
+title="all functions plus flat_yield_cc, no iterables"/></p>
+
+<p>Creo que los resultados te chocarán un poco, no solo tiene peor rendimiento, 
+si no que se aumenta el nivel de recursividad y se cae a los 340 niveles de 
+anidamiento. Aunque en el tercer supuesto el rendimiento es idéntico a la 
+función anterior, en los demás supuestos tiene el peor comportamiento de las 
+cinco. Creo que se debe a que de esta manera, generamos aún más recursividad, 
+una función recursiva que llama a otra que también es recursiva (después de 
+la primera llamada a <code>flat_yield</code> desde <code>flatten</code>), lo que hace que se 
+multipliquen los niveles de anidamiento como se ve en la gráfica.</p>
+<p><em>He hecho algunas rectificaciones, las horas intempestivas a las que realice 
+los comentarios, parece que me pesaban demasiado :-)</em></p>
+<hr />
+<div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
+<a href="../static/pages/sobre-mi.html"><img src="../static/pictures/avtr_joedicastro.png" height=28 
+width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
+
+<h2 id="f+jate_en_lo_que_ocurre">Fíjate en lo que ocurre</h2>
+<p>por <a href="../static/pages/sobre-mi.html">joe di castro</a> el Sáb, 04/06/2011 - 00:56</p>
+<br />
+
+<p>Fíjate en lo que ocurre cuando empleo iterables dentro de las listas anidadas 
+generadas:</p>
+<p style="text-align: center;"><img src="../static/pictures/test_results_ga.png" 
+width="650" height="880" alt="test_results_ga.png" 
+title="all functions, with iterables"/></p>
+
+<p>Se pueden observar dos cosas:</p>
+<ul>
+<li>
+<p>Lo primero que se puede ver es que el aumentar el número de elementos no 
+supone una penalización tan grande en el tiempo empleado, gracias al empleo de 
+iterables. De hecho, vemos que en el tercer supuesto, los tiempos son diez veces 
+menores, lo que confirma una vez más la eficacia de los iterables al iterarlos 
+(valga la redundancia).</p>
+</li>
+<li>
+<p>Lo segundo es que la función <code>flat_slice</code> (aunque apenas se distingue) tiene 
+idéntico rendimiento que <code>flat_yield</code>, aunque sigue siendo la más eficaz en los 
+otros supuestos. Yo diría que esto confirma lo que comentábamos, de que es 
+precisamente la creación de la lista en <code>flat_yield</code> lo que penaliza su 
+rendimiento, ya que la función <code>flat_slice</code> también la crea en el primer paso, 
+y ahora al incluir iterables en la lista anidada, su rendimiento se ve 
+perjudicado, aunque no en la misma medida que <code>flat_yield</code> al no ser recursiva 
+(razón por la cual en el incremento en los niveles de anidamiento este hecho no 
+la perjudica tanto, es decir la recursividad tiene una penalización varias 
+magnitudes mayor que la creación de la lista).</p>
+</li>
+</ul>
+        <p>Hay <a href=".././aplanar-listas-en-python.html#disqus_thread">comentarios</a>.</p>
+      </article>
+      <li id="paginator">
+  
+  Pagina 1 de 1
+  
+</li>
+    </aside><!-- /#featured -->
+      
+    
+    
+    
+
+    
+
+<section id="extras" class="body">
+    
+    <div class="blogroll">
+      <h2>enlaces</h2>
+        <ul>
+          <li><a href="http://photo.joedicastro.com/">Fotografías</a></li>
+          <li><a href="http://code.joedicastro.com/">Código</a></li>
+          <li><a href="http://python.majibu.org/">python majibu</a></li>
+          <li><a href="http://python-hispano.org/">python hispano</a></li>
+          <li><a href="http://planet.python-hispano.org/">planeta python hispano</a></li>
+        </ul>
+    </div><!-- /.blogroll -->
+    
+    
+    <div class="social">
+      <h2>social</h2>
+        <ul>
+          <li><a href=".././atom.xml" rel="alternate">atom</a></li>
+          <li><a href=".././rss.xml" rel="alternate">rss</a></li>
+          
+          <li><a href="http://twitter.com/joe_di_castro">twitter</a></li>
+          <li><a href="http://identi.ca/joedicastro">identi.ca</a></li>
+          <li><a href="http://www.facebook.com/joedicastr0">facebook</a></li>
+          <li><a href="https://bitbucket.org/joedicastro">bitbucket</a></li>
+        </ul>
+    </div><!-- /.social -->
+    
+  </section><!-- /#extras -->
+  <footer id="contentinfo" class="body">
+    <address id="about" class="vcard body">
+      © 2010-2011 joe di castro. Powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a><span id="license">Los contenidos están bajo una <a href="http://creativecommons.org/licenses/by-sa/3.0/es">licencia Creative Commons</a></span>
+    </address><!-- /#about -->
+  </footer><!-- /#contentinfo -->
+
+  <script type="text/javascript">
+    
+        var pkBaseURL = (("https:" == document.location.protocol) ? "https://joedicastro.com/piwik/" : "http://joedicastro.com/piwik/");
+    
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    </script><script type="text/javascript">
+    try {
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+  </script><noscript><p><img src="http://joedicastro.com/piwik/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'joedicastro';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+</body>
+</html>

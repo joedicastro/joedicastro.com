@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="content" class="body">
+<h1>Archivos de {{ SITENAME }}</h1>
+{%- set years_month = {} -%}
+{%- set months = {1:'Enero', 2:'Febrero', 3:'Marzo', 4:'Abril', 5:'Mayo', 
+				  6:'Junio', 7:'Julio', 8:'Agosto', 9:'Septiembre', 
+				  10:'Octubre', 11:'Noviembre', 12:'Diciembre'} -%} 
+{%- for article in dates -%}
+  {%- if article.date.year not in years_month -%}
+    {%- do years_month.update({article.date.year:[article.date.month]}) -%}
+  {%- else -%}
+  	{%- if article.date.month not in years_month[article.date.year] -%}	
+	  {%- do years_month[article.date.year].append(article.date.month) -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor %}
+
+{% for year in years_month|sort(reverse=True) -%}
+  <h2 class="year">{{ year }}</h2><dl>	
+  {% for month in years_month[year] -%}
+    <dt class="month">{{ months[month] }}</dt>
+    {% for article in dates -%}
+      {% if article.date.year == year and article.date.month == month -%}
+  	    <dd><span class="day">{{ article.locale_date.split()[1] }}</span>  <a href='{{ article.url }}'>{{ article.title }}</a></dd>
+  	  {%- endif %}
+    {%- endfor %}
+  {% endfor %}</dl>
+{% endfor %}
+</section>
+{% endblock %}

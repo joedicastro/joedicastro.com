@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>joe di castro - windows</title>
+  <meta name="author" content="joe di castro" />
+  <meta name="keywords" content="joe di castro, blog">
+  <link rel="author" href="humans.txt" />
+  <link rel="stylesheet" href=".././theme/css/main.css" type="text/css" />
+  <link href=".././atom.xml" type="application/atom+xml" rel="alternate" title="joe di castro ATOM Feed" />
+  <link href=".././rss.xml" type="application/atom+xml" rel="alternate" title="joe di castro RSS Feed" />
+  
+  <link href=".././feeds/tags/windows.atom.xml" type="application/atom+xml" rel="alternate" title="joe di castro - windows ATOM Feed" />
+  <link href=".././feeds/tags/windows.rss.xml" type="application/atom+xml" rel="alternate" title="joe di castro - windows RSS Feed" />
+
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body id="index" class="home">
+
+  <header id="banner" class="body">
+    <h1><a href="../."><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAxBAMAAADKNk2HAAAAElBMVEW/kiXQsGLey5vn3b/s5dH3+fXlDfF2AAADFElEQVRIDa3Bu3LbOABA0QtQ7KFo0TPOqmfiZU/PmD1A8v7/r6yejpPIkxlL5+BP85aQ/Ty8WhJH2U/Dixl2ky80fhqeVaJHI34answ0nlS8bR38GzwhejYzeFPK/g0ejUyezUzesuBHusEzPFjIXlS8qTR+YMYLPOiDVwVvStkPjBsvUFdar0rwlgU/wt4L1IJvusZbSuMHanh9nTxB7aNvaL0lZX8z86tJUVPj1cLeG2b8Xd1ut09P337w3+vr8/PzNxU1Ra8K3jJu/ECJvkHt2T151kdvYe8HUvYNaoXgGa03VJy84dkZf8KDeTd5MrP3hr6t0T+Nwb519QrfK3jDyj5l/8RGhgWv8L2u8c3kVQkuvrc8eVAZSrALXuF7ZJ3j10m/gyfLtk2tF2tirz1kNW1M7Urrwcvui+I7FV2A1gTBowpbhpfBkxRS60hkryPDgoWp0woM4jt9XDsIqe3Zd3snXYh2YWXwqA8L+4V/1qALWKJ96IJCZFrwHQIHmSeyOm40RWfaEj2qDH00RUujXcSUTdA6wgtzwJ9mCClQSXEdXBmsaGIi22dN2TR0TJKtoYQFa9gyrdD0kYxv1sRupoSOg439RlNrJc44ozWoldYRV3LZlGjKJTqG1EAjXi3QOm4K8IMwVXRlWKEdW1OrXdYVpoXWFE1tynMw5ZWcICheLMBkGhbiVBkkaw12MDHUoCtqR2NiGPke2TF0ecEeCzsVz1ZCH1xxZDC1do1a4gt9nMPMoLXRnpR7qLQpMfIlWDaVxhQ8wLMUJloXOrIVx+BBgZzaGslqaX1hk7Z0sFkhdiFl+0CKicEDPOkZKpNC1NK8sPeg0qwMM40HJXZEO3IhusDA16A9TYXsER5Vsn1U571aYOPJq3PUV49miLoMzkFddEpZHfTH5Ake0SjZi4WdN3z/11998Vd4MDJZ8F6oC1nTxnuh9kFn9t4LXcg6Bu+GjkGl9W4orVYm74aVSVPj/bCLOrP3fkjWPvgAVHQl+wCUqAUfga5VWh8BsgUfAvJK60NAk/AxSJB9DEY2Psj/Dz0Ida72jQIAAAAASUVORK5CYII=" alt="joe di castro" title="joe di castro" width="150" height="49" /> </a></h1>
+      <nav>
+      	<ul>
+         
+         <li ><a href=".././category/blog.html">blog</a></li>
+         <li><a href=".././archives.html">archivos</a></li>
+         <li><a href=".././tags.html">etiquetas</a></li>
+         
+         <li><a href=".././pages/markdown.html">markdown</a></li><li><a href=".././pages/sobre-mi.html">sobre mi</a></li>
+         
+       </ul>
+     </nav>
+  </header><!-- /#banner -->        
+
+          
+    
+    
+    <aside id="featured" class="body">
+      <article>
+        <h1 class="entry-title"><a href=".././mover-todos-los-archivos-del-mismo-tipo-de-un-arbol-de-directorios-a-la-vez.html">Mover todos los archivos del mismo tipo de un arbol de directorios a la vez</a></h1> 
+        <p>A veces tenemos la necesidad de <strong>mover (o copiar o borrar)</strong> varios ficheros 
+del mismo tipo a la vez, pero estos no "cuelgan" de un solo directorio, si no 
+que se encuentran repartidos dentro una jerarquía de subdirectorios. En este 
+caso los típicos comandos para mover/copiar/borrar archivos no nos sirven, ni 
+siquiera los útiles comodines nos resuelven el problema.  ¿Como lo hacemos 
+entonces?</p>
+<p>Por ejemplo, si tenemos una estructura de directorios como esta:</p>
+<div class="codehilite"><pre>raiz
+├── dir_1
+│   ├── imagen_1.jpg
+│   ├── pdf_1.pdf
+│   ├── texto_1.txt
+│   └── texto_2.txt
+├── dir_2
+│   ├── imagen_2.jpg
+│   ├── imagen_3.gif
+│   └── texto_3.txt
+├── dir_3
+│   ├── doc_1.doc
+│   ├── pdf_2.pdf
+│   ├── pdf_3.pdf
+│   ├── pdf_4.pdf
+│   ├── texto_4.txt
+│   └── texto_5.txt
+├── dir_4
+│   ├── subdir_1
+│   │   └── imagen_4.png
+│   ├── subdir_2
+│   │   ├── pdf_5.pdf
+│   │   └── texto_7.txt
+│   ├── doc_2.doc
+│   └── texto_6.txt
+└── dir_5
+</pre></div>
+
+
+<p>Y queremos mover todos los ficheros <code>.txt</code> al <code>dir_5</code> que tenemos vacío, ¿Como 
+lo hacemos? Bueno, en el caso de <strong>Linux</strong> (y UNIX) podemos hacerlo en una sola 
+operación gracias al siempre útil y versátil <code>find</code> con el siguiente comando 
+(ejecutado desde el directorio raíz):</p>
+<div class="codehilite"><pre>find . -type f -name *.txt -exec mv <span class="o">{}</span> ./dir_5 <span class="se">\;</span>
+</pre></div>
+
+
+<p>Este comando nos encontraría todos los archivos con la extensión <code>.txt</code> dentro 
+de todos los directorios y subdirectorios y los iría moviendo uno a uno al 
+<code>dir_5</code>. Es un comando rápido y efectivo. Genéricamente, el comando sería así:</p>
+<div class="codehilite"><pre>find directorio_origen -type f -name *.EXT -exec mv <span class="o">{}</span> ./directorio_destino <span class="se">\;</span>
+</pre></div>
+
+
+<p>donde <code>EXT</code> sería la extensión del tipo de archivo que queremos mover. Se puede 
+emplear esta variante para copiar los archivos en vez de moverlos:</p>
+<div class="codehilite"><pre>find directorio_origen -type f -name *.EXT -exec cp <span class="o">{}</span> ./directorio_destino <span class="se">\;</span>
+</pre></div>
+
+
+<p>Y esta otra para eliminarlos (¡emplear con cuidado!):</p>
+<div class="codehilite"><pre>find directorio_origen -type f -name *.EXT -exec rm -f <span class="o">{}</span> <span class="se">\;</span>
+</pre></div>
+
+
+<p>Partiendo de la idea de hacer algo equivalente en <strong>Python</strong>, he creado un 
+script que hace algo similar a esto, sin la necesidad de teclear todo el comando 
+(y con el riesgo a equivocarse y liarla parda) y que también sirve para que los 
+no trabajen habitualmente con la consola no necesiten recordar (o anotar) esos 
+comandos.</p>
+<p>La parte principal del script <strong>move_by_ext.py</strong> es la siguiente:</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">find_and_process</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Find the files by file extension and process (move/copy/remove) them.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">the_path</span><span class="p">,</span> <span class="n">the_file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process each file.&quot;&quot;&quot;</span>
+        <span class="n">processed</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">src_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">the_path</span><span class="p">,</span> <span class="n">the_file</span><span class="p">)</span>
+        <span class="n">dst_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dst</span><span class="p">,</span> <span class="n">the_file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">rm</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">src_file</span><span class="p">)</span>
+            <span class="n">processed</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dst_file</span><span class="p">):</span> <span class="c"># not replace if already exists </span>
+                <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">cp</span><span class="p">:</span>
+                    <span class="n">shutil</span><span class="o">.</span><span class="n">copy2</span><span class="p">(</span><span class="n">src_file</span><span class="p">,</span> <span class="n">dst_file</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">src_file</span><span class="p">,</span> <span class="n">dst_file</span><span class="p">)</span>
+                <span class="n">processed</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">processed</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dst</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dst</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">src</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">fil</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="c"># ignore files without extension (can have the same name as the ext)</span>
+            <span class="n">file_ext</span> <span class="o">=</span> <span class="n">fil</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fil</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="bp">None</span>
+            <span class="c"># ignore dots in given extensions</span>
+            <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="n">ext</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">ext</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">file_ext</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="n">process</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">fil</span><span class="p">)</span>
+
+    <span class="n">opt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s">&quot;{0}{1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">rm</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">cp</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">log</span> <span class="o">=</span> <span class="s">&quot;Files {0}: {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span><span class="s">&quot;moved&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s">&quot;copied&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s">&quot;removed&quot;</span><span class="p">}[</span><span class="n">opt</span><span class="p">],</span> <span class="n">count</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">log</span>
+</pre></div>
+
+
+<p>Este script nos permite realizar las mismas operaciones que los comandos 
+anteriores y además tiene dos ventajas adicionales:</p>
+<ul>
+<li>
+<p><strong>Permite emplear varias extensiones a la vez</strong>, lo que nos permite
+mover/copiar/borrar distintos tipos de archivo en una sola operación.
+Por ejemplo si queremos mover todos los tipos de imagen de la estructura de 
+directorios anterior, podríamos hacerlo indicándole que emplee las extensiones 
+<code>.jpg</code>, <code>.gif</code> y <code>.png</code> en la misma operación. El comando sería el siguiente 
+(las extensiones pueden llevar o no el punto, funciona exactamente igual), 
+ejecutado desde el directorio raíz:</p>
+<p><code>python move_by_ext.py jpg .gif png -d ./dir_5</code></p>
+</li>
+<li>
+<p><strong>Funciona en Windows</strong>. A diferencia del comando para Linux, este se puede 
+emplear en Windows sin necesidad de instalar ningún entorno que nos simule un 
+shell Linux (como <a href="http://www.cygwin.com/">Cygwin</a>) y solo es necesario tener 
+instalado Python 2.7</p>
+</li>
+</ul>
+<p>La sintaxis del script es muy sencilla y se puede ver reflejada en la ayuda del 
+mismo:</p>
+<div class="codehilite"><pre><span class="gp">$</span> python move_by_ext.py -h
+<span class="go">usage: move_by_ext.py ext [-s SRC] [-d DST] [-c | -r] [--help]</span>
+
+<span class="go">Move (or copy/remove) all files selected by extension into a directory tree to</span>
+<span class="go">a destination directory.</span>
+
+<span class="go">positional arguments:</span>
+<span class="go">  ext                the extension(s) of the files to process. To use more</span>
+<span class="go">                     than one extension, separate them with a space</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help         show this help message and exit</span>
+<span class="go">  -s SRC, --src SRC  the source path. Current dir if none is provided</span>
+<span class="go">  -d DST, --dst DST  the destination path. Current dir if none is provided</span>
+<span class="go">  -c, --copy         copy all the files with the given extension(s) to the</span>
+<span class="go">                     destination directory.</span>
+<span class="go">  -r, --remove       remove all the files with the given extension(s). Use</span>
+<span class="go">                     with caution! remove also in the subdirectories</span>
+<span class="go">  -v, --version      show program&#39;s version number and exit</span>
+</pre></div>
+
+
+<p>El script completo puede encontrarse en mi <a href="https://bitbucket.org/joedicastro/python-recipes/src/tip/src/move_by_ext.py">repositorio</a>.</p>
+        <p>Hay <a href=".././mover-todos-los-archivos-del-mismo-tipo-de-un-arbol-de-directorios-a-la-vez.html#disqus_thread">comentarios</a>.</p>
+      </article>
+      <li id="paginator">
+  
+  Pagina 1 de 1
+  
+</li>
+    </aside><!-- /#featured -->
+      
+    
+    
+    
+
+    
+
+<section id="extras" class="body">
+    
+    <div class="blogroll">
+      <h2>enlaces</h2>
+        <ul>
+          <li><a href="http://photo.joedicastro.com/">Fotografías</a></li>
+          <li><a href="http://code.joedicastro.com/">Código</a></li>
+          <li><a href="http://python.majibu.org/">python majibu</a></li>
+          <li><a href="http://python-hispano.org/">python hispano</a></li>
+          <li><a href="http://planet.python-hispano.org/">planeta python hispano</a></li>
+        </ul>
+    </div><!-- /.blogroll -->
+    
+    
+    <div class="social">
+      <h2>social</h2>
+        <ul>
+          <li><a href=".././atom.xml" rel="alternate">atom</a></li>
+          <li><a href=".././rss.xml" rel="alternate">rss</a></li>
+          
+          <li><a href="http://twitter.com/joe_di_castro">twitter</a></li>
+          <li><a href="http://identi.ca/joedicastro">identi.ca</a></li>
+          <li><a href="http://www.facebook.com/joedicastr0">facebook</a></li>
+          <li><a href="https://bitbucket.org/joedicastro">bitbucket</a></li>
+        </ul>
+    </div><!-- /.social -->
+    
+  </section><!-- /#extras -->
+  <footer id="contentinfo" class="body">
+    <address id="about" class="vcard body">
+      © 2010-2011 joe di castro. Powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a><span id="license">Los contenidos están bajo una <a href="http://creativecommons.org/licenses/by-sa/3.0/es">licencia Creative Commons</a></span>
+    </address><!-- /#about -->
+  </footer><!-- /#contentinfo -->
+
+  <script type="text/javascript">
+    
+        var pkBaseURL = (("https:" == document.location.protocol) ? "https://joedicastro.com/piwik/" : "http://joedicastro.com/piwik/");
+    
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    </script><script type="text/javascript">
+    try {
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+  </script><noscript><p><img src="http://joedicastro.com/piwik/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'joedicastro';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+</body>
+</html>

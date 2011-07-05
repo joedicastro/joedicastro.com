@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map map_file="maps/world.swf" url="#movie1" zoom="100%" zoom_x="0%" zoom_y="0%">
+   <areas>
+      <area mc_name="AR" title="Argentina" value="1"/>
+      <area mc_name="AU" title="Australia" value="3"/>
+      <area mc_name="BY" title="Belarus" value="1"/>
+      <area mc_name="BZ" title="Belize" value="1"/>
+      <area mc_name="BR" title="Brazil" value="5"/>
+      <area mc_name="BG" title="Bulgaria" value="1"/>
+      <area mc_name="CN" title="China" value="10"/>
+      <area mc_name="DE" title="Germany" value="11"/>
+      <area mc_name="HK" title="Hong Kong" value="1"/>
+      <area mc_name="IN" title="India" value="1"/>
+      <area mc_name="ID" title="Indonesia" value="1"/>
+      <area mc_name="IE" title="Ireland" value="2"/>
+      <area mc_name="IL" title="Israel" value="4"/>
+      <area mc_name="IT" title="Italy" value="1"/>
+      <area mc_name="JP" title="Japan" value="3"/>
+      <area mc_name="LV" title="Latvia" value="8"/>
+      <area mc_name="LT" title="Lithuania" value="1"/>
+      <area mc_name="LU" title="Luxembourg" value="2"/>
+      <area mc_name="MD" title="Moldova, Republic of" value="1"/>
+      <area mc_name="NL" title="Netherlands" value="7"/>
+      <area mc_name="PK" title="Pakistan" value="2"/>
+      <area mc_name="PL" title="Poland" value="4"/>
+      <area mc_name="RO" title="Romania" value="5"/>
+      <area mc_name="RU" title="Russian Federation" value="80"/>
+      <area mc_name="RS" title="Serbia" value="1"/>
+      <area mc_name="SG" title="Singapore" value="2"/>
+      <area mc_name="ES" title="Spain" value="1"/>
+      <area mc_name="SE" title="Sweden" value="7"/>
+      <area mc_name="UA" title="Ukraine" value="43"/>
+      <area mc_name="AE" title="United Arab Emirates" value="2"/>
+      <area mc_name="GB" title="United Kingdom" value="6"/>
+      <area mc_name="US" title="United States" value="26"/>
+   </areas>
+   <movies>
+      <movie file="da.swf" height="32" width="150" x="5" y="364"/>
+   </movies>
+   <labels>
+      <label align="center" color="#005000" text_size="18" width="100%" x="0" y="14">
+         <text>
+<![CDATA[<b>Ataques de spam por pais</b>]]>         </text>
+      </label>
+      <label align="right" text_size="8" width="100%" x="0" y="388">
+         <text>
+<![CDATA[Actualizado a 21:18 18 March 2011]]>         </text>
+      </label>
+   </labels>
+</map>

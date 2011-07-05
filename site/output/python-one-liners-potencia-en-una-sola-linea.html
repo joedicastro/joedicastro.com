@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Python one-liners. Potencia en una sola línea</title>
+  <meta name="author" content="joe di castro" />
+  <meta name="keywords" content="one-liner, linux, python, javascript">
+  <link rel="author" href="humans.txt" />
+  <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
+  <link href="./atom.xml" type="application/atom+xml" rel="alternate" title="joe di castro ATOM Feed" />
+  <link href="./rss.xml" type="application/atom+xml" rel="alternate" title="joe di castro RSS Feed" />
+  
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body id="index" class="home">
+
+  <header id="banner" class="body">
+    <h1><a href="."><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAxBAMAAADKNk2HAAAAElBMVEW/kiXQsGLey5vn3b/s5dH3+fXlDfF2AAADFElEQVRIDa3Bu3LbOABA0QtQ7KFo0TPOqmfiZU/PmD1A8v7/r6yejpPIkxlL5+BP85aQ/Ty8WhJH2U/Dixl2ky80fhqeVaJHI34answ0nlS8bR38GzwhejYzeFPK/g0ejUyezUzesuBHusEzPFjIXlS8qTR+YMYLPOiDVwVvStkPjBsvUFdar0rwlgU/wt4L1IJvusZbSuMHanh9nTxB7aNvaL0lZX8z86tJUVPj1cLeG2b8Xd1ut09P337w3+vr8/PzNxU1Ra8K3jJu/ECJvkHt2T151kdvYe8HUvYNaoXgGa03VJy84dkZf8KDeTd5MrP3hr6t0T+Nwb519QrfK3jDyj5l/8RGhgWv8L2u8c3kVQkuvrc8eVAZSrALXuF7ZJ3j10m/gyfLtk2tF2tirz1kNW1M7Urrwcvui+I7FV2A1gTBowpbhpfBkxRS60hkryPDgoWp0woM4jt9XDsIqe3Zd3snXYh2YWXwqA8L+4V/1qALWKJ96IJCZFrwHQIHmSeyOm40RWfaEj2qDH00RUujXcSUTdA6wgtzwJ9mCClQSXEdXBmsaGIi22dN2TR0TJKtoYQFa9gyrdD0kYxv1sRupoSOg439RlNrJc44ozWoldYRV3LZlGjKJTqG1EAjXi3QOm4K8IMwVXRlWKEdW1OrXdYVpoXWFE1tynMw5ZWcICheLMBkGhbiVBkkaw12MDHUoCtqR2NiGPke2TF0ecEeCzsVz1ZCH1xxZDC1do1a4gt9nMPMoLXRnpR7qLQpMfIlWDaVxhQ8wLMUJloXOrIVx+BBgZzaGslqaX1hk7Z0sFkhdiFl+0CKicEDPOkZKpNC1NK8sPeg0qwMM40HJXZEO3IhusDA16A9TYXsER5Vsn1U571aYOPJq3PUV49miLoMzkFddEpZHfTH5Ake0SjZi4WdN3z/11998Vd4MDJZ8F6oC1nTxnuh9kFn9t4LXcg6Bu+GjkGl9W4orVYm74aVSVPj/bCLOrP3fkjWPvgAVHQl+wCUqAUfga5VWh8BsgUfAvJK60NAk/AxSJB9DEY2Psj/Dz0Ida72jQIAAAAASUVORK5CYII=" alt="joe di castro" title="joe di castro" width="150" height="49" /> </a></h1>
+      <nav>
+      	<ul>
+         
+         <li class="active"><a href="./category/blog.html">blog</a></li>
+         <li><a href="./archives.html">archivos</a></li>
+         <li><a href="./tags.html">etiquetas</a></li>
+         
+         <li><a href="./pages/markdown.html">markdown</a></li><li><a href="./pages/sobre-mi.html">sobre mi</a></li>
+         
+       </ul>
+     </nav>
+  </header><!-- /#banner -->        
+<section id="content" class="body">    
+<article>
+  <header> 
+  	<h1 class="entry-title">
+      <a href="python-one-liners-potencia-en-una-sola-linea.html" rel="bookmark" title="Permalink a Python one-liners. Potencia en una sola línea">Python one-liners. Potencia en una sola línea</a>
+  	</h1>
+  	
+  </header>
+  <div class="entry-content">
+    <abbr class="published" title="2011-05-02T22:18:00">
+      Públicado el lun 02 mayo 2011
+    </abbr>
+    <p>Un <a href="http://en.wikipedia.org/wiki/One-liner_program">one-liner</a> propiamente dicho
+ es un comando de la consola que ejecuta una determinada función en "una sola 
+ línea de texto". En Python esto se consigue con una única orden de línea de 
+ comandos que llama al interprete y ejecuta los argumentos que le pasemos en 
+ la misma. Aunque también se les denomina así a veces a funciones lambda y 
+ funciones que han sido reducidas a una sola linea de código.</p>
+<p>Un ejemplo de python one-liner es uno de los más famosos:</p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">this</span>
+</pre></div>
+
+
+<p>Y que nos devuelve el popular <a href="http://www.python.org/dev/peps/pep-0020/">Zen of Python</a>:</p>
+<div class="codehilite"><pre>The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren&#39;t special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you&#39;re Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it&#39;s a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let&#39;s do more of those!
+</pre></div>
+
+
+<p>Pero existen varios one-liners muy útiles que nos pueden hacer la vida más fácil 
+para determinadas tareas. </p>
+<p><strong>Iniciar un servidor web y compartir un directorio</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">SimpleHTTPServer</span>
+</pre></div>
+
+
+<p>Si ejecutamos este one-liner se iniciará un servidor web en el puerto <code>8000</code> de 
+nuestra dirección local (<code>localhost</code> o <code>127.0.0.1</code>) que nos servirá los archivos 
+del directorio donde lo ejecutemos. Para ello solo tenemos que acceder desde 
+nuestro navegador a la dirección <code>http://localhost:8000</code> o <code>http://127.0.0.1</code>. 
+Para interrumpir el servicio basta con que interrumpamos el programa con 
+<code>Ctrl+C</code>. Si quisiéramos emplear un puerto distinto de <em>8000</em>, por ejemplo 
+<em>8080</em>, solo tenemos que indicarselo:</p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">SimpleHTTPServer</span> <span class="mi">8080</span>
+</pre></div>
+
+
+<p><strong>Iniciar un servidor SMTP</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">smtpd</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">c</span> <span class="n">DebuggingServer</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">25</span>
+</pre></div>
+
+
+<p>Con este comando iniciamos un servidor de correo SMTP. Es básico, pero puede ser 
+muy útil para crear un entorno temporal de pruebas. Dependiendo de la 
+configuración de nuestro sistema, es muy probable que necesitemos ejecutar este 
+comando como administrador (<em>root</em>). Si ya tenemos corriendo un servidor de 
+correo en ese puerto, podemos cambiarlo por otro (eg: <em>2525</em>)</p>
+<p><strong>Iniciar un servidor FTP</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pyftpdlib</span><span class="o">.</span><span class="n">ftpserver</span>
+</pre></div>
+
+
+<p>Para poder ejecutar este comando es necesario tener instalada la librería 
+<a href="http://code.google.com/p/pyftpdlib/">pyftpdlib</a>. Debemos además ser usuario con permisos de administrador de la 
+maquina para poder iniciar este servidor. Una vez ejecutado tendremos un 
+servidor FTP de solo lectura en el directorio en el que lo iniciemos.</p>
+<p><strong>Ejecutar un cliente FTP</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ftplib</span>
+</pre></div>
+
+
+<p>Si ejecutamos este comando, nos devolverá la ayuda con los argumentos necesarios 
+para poder conectarnos a un servidor FTP.</p>
+<p><strong>Abrir una página web en el navegador</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">webbrowser</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">joedicastro</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+
+
+<p>Nos abrirá la dirección web que le indiquemos en el navegador web predeterminado 
+de nuestro equipo.</p>
+<p><strong>Obtener el código fuente de una página web</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">urllib</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+
+
+<p>Esto nos imprime en pantalla el código fuente (HTML) de una dirección web.</p>
+<p><strong>Eliminar las etiquetas HTML de un fichero HTML</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">htmllib</span> <span class="n">test</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+
+
+<p>Esto nos imprime el contenido del fichero <code>test-html</code> pero sin mostrarnos las 
+etiquetas HTML, solo texto plano. Algo parecido a lo que hace un navegador en 
+modo texto como <em>links</em>, pero de forma estática.</p>
+<p><strong>Comparar dos directorios</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">filecmp</span> <span class="n">dir_1</span> <span class="n">dir_2</span>
+</pre></div>
+
+
+<p>De esta manera podemos comparar dos directorios. El resultado será un resumen de 
+que ficheros son iguales, cuales diferentes y lo mismo con los subdirectorios.</p>
+<p><strong>Identificar la plataforma</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">&#39;from sys import platform; print platform&#39;</span>
+</pre></div>
+
+
+<p>Este nos sirve para identificar la plataforma sobre la que se ejecuta el comando 
+(Windows, Linux, ...) No es de mucha utilidad, pero nos sirve como curiosidad. 
+Otra opción más simple y que nos devuelve un resultado más completo sería:</p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">platform</span>
+</pre></div>
+
+
+<p><strong>Obtener el nombre de la maquina (hostname)</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">&#39;from socket import gethostname; print gethostname()&#39;</span>
+</pre></div>
+
+
+<p>ó</p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">&#39;import platform; print platform.node()&#39;</span>
+</pre></div>
+
+
+<p>Cualquiera de estos dos one-liners nos devolverán el nombre de la maquina en que 
+los ejecutemos.</p>
+<p><strong>Imprimir el calendario del año en curso</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">calendar</span>
+</pre></div>
+
+
+<p>Imprime en pantalla el calendario de todo el año. Para conocer más opciones, 
+como imprimir el calendario de otro año, mes, etc añadir la opción <code>-h</code> al final 
+de la línea.</p>
+<p><strong>Mostrar los módulos empleados en un script</strong></p>
+<div class="codehilite"><pre><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">modulefinder</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+
+
+<p>De esta manera podemos no solo saber que módulos son importados por el script, 
+si no que además nos muestra su ruta en el sistema de archivos.</p>
+<p>Aquí he mencionado solo algunos que empleo con cierta frecuencia o que me han 
+parecido reseñables, pero existen bastantes más. Una buena pista es que la 
+mayoría hace uso de los módulos de la librería estándar de Python.</p>
+<h3 id="como_funciona">Como funciona</h3>
+<p>Básicamente se trata de llamar al interprete Python utilizando uno de los 
+siguientes argumentos:</p>
+<ul>
+<li>
+<p><code>-c</code>: Lo que seguiría a esta opción sería un programa Python encerrado entre 
+ comillas. Por ejemplo, el primer ejemplo quedaría de este modo, 
+ <code>python -c 'import this'</code></p>
+</li>
+<li>
+<p><code>-m</code>: Está opción llama a un modulo de python, que puede a su vez tener 
+ distintas opciones y argumentos, y lo ejecuta como script. Por ejemplo: 
+ <code>python -m locale</code></p>
+</li>
+</ul>
+<h3 id="https_server">HTTPS Server</h3>
+<p>Este no es un one-liner en Python, pero sirve como complemento a los distintos 
+servidores que hemos visto que se podían iniciar con mucha facilidad gracias a 
+Python. Este código inicia un servidor HTTPS en Python en el puerto <em>4443</em> de la 
+dirección local. Lo suyo sería iniciarlo en el puerto <em>443</em>, y se puede hacer 
+simplemente cambiándolo, pero se necesitan entonces permisos de administrador 
+para iniciarlo.</p>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">BaseHTTPServer</span><span class="o">,</span> <span class="nn">SimpleHTTPServer</span>
+<span class="kn">import</span> <span class="nn">ssl</span>
+
+<span class="n">httpd</span> <span class="o">=</span> <span class="n">BaseHTTPServer</span><span class="o">.</span><span class="n">HTTPServer</span><span class="p">((</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">4443</span><span class="p">),</span>
+                                  <span class="n">SimpleHTTPServer</span><span class="o">.</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">)</span>
+<span class="n">httpd</span><span class="o">.</span><span class="n">socket</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">wrap_socket</span> <span class="p">(</span><span class="n">httpd</span><span class="o">.</span><span class="n">socket</span><span class="p">,</span> 
+                                <span class="n">certfile</span><span class="o">=</span><span class="s">&#39;path/to/localhost.pem&#39;</span><span class="p">,</span> 
+                                <span class="n">server_side</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">httpd</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</pre></div>
+
+
+<p>El código es original de <a href="http://www.piware.de/2011/01/creating-an-https-server-in-python/">Martin Pitt</a> y me ha servido en más de una ocasión 
+para probar un script.</p>
+<br />
+
+<h4 id="editar_una_p+gina_web_con_javascript">Editar una página web con javascript</h4>
+<p>No es un one-liner escrito en Python, si no en javascript, pero lo menciono aquí 
+a modo de curiosidad porque siempre me ha parecido curioso y aparentemente 
+inútil, pero tiene sus aplicaciones (alguna broma ha caído gracias a él).</p>
+<div class="codehilite"><pre><span class="nx">javascript</span><span class="o">:</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">contentEditable</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">designMode</span><span class="o">=</span><span class="s1">&#39;on&#39;</span><span class="p">;</span> <span class="k">void</span> <span class="mi">0</span>
+</pre></div>
+
+
+<p>Para ejecutarlo es muy sencillo. Abrimos nuestro navegador web favorito, 
+abrimos la página web que deseamos editar y luego simplemente sustituimos el 
+texto de la barra de direcciones por el de este one-liner y pulsamos Enter. 
+Ahora podemos editar la página web como si fuera un procesador de texto.</p>
+  </div><!-- /.entry-content -->
+  <p class="tagged">Etiquetado como: <a href="./tag/one-liner.html">one-liner</a>, <a href="./tag/linux.html">linux</a>, <a href="./tag/python.html">python</a>, <a href="./tag/javascript.html">javascript</a>.</p>
+
+  
+  <div class="comments">
+    <h2>Comentarios !</h2>
+    <div id="disqus_thread"></div>
+      <script type="text/javascript">
+         var disqus_identifier = "python-one-liners-potencia-en-una-sola-linea.html";
+         (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = 'http://joedicastro.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+  
+</article>
+</section>
+<section id="extras" class="body">
+    
+    <div class="blogroll">
+      <h2>enlaces</h2>
+        <ul>
+          <li><a href="http://photo.joedicastro.com/">Fotografías</a></li>
+          <li><a href="http://code.joedicastro.com/">Código</a></li>
+          <li><a href="http://python.majibu.org/">python majibu</a></li>
+          <li><a href="http://python-hispano.org/">python hispano</a></li>
+          <li><a href="http://planet.python-hispano.org/">planeta python hispano</a></li>
+        </ul>
+    </div><!-- /.blogroll -->
+    
+    
+    <div class="social">
+      <h2>social</h2>
+        <ul>
+          <li><a href="./atom.xml" rel="alternate">atom</a></li>
+          <li><a href="./rss.xml" rel="alternate">rss</a></li>
+          
+          <li><a href="http://twitter.com/joe_di_castro">twitter</a></li>
+          <li><a href="http://identi.ca/joedicastro">identi.ca</a></li>
+          <li><a href="http://www.facebook.com/joedicastr0">facebook</a></li>
+          <li><a href="https://bitbucket.org/joedicastro">bitbucket</a></li>
+        </ul>
+    </div><!-- /.social -->
+    
+  </section><!-- /#extras -->
+  <footer id="contentinfo" class="body">
+    <address id="about" class="vcard body">
+      © 2010-2011 joe di castro. Powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a><span id="license">Los contenidos están bajo una <a href="http://creativecommons.org/licenses/by-sa/3.0/es">licencia Creative Commons</a></span>
+    </address><!-- /#about -->
+  </footer><!-- /#contentinfo -->
+
+  <script type="text/javascript">
+    
+        var pkBaseURL = (("https:" == document.location.protocol) ? "https://joedicastro.com/piwik/" : "http://joedicastro.com/piwik/");
+    
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+    </script><script type="text/javascript">
+    try {
+    var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+  </script><noscript><p><img src="http://joedicastro.com/piwik/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'joedicastro';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
+</body>
+</html>

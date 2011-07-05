@@ -1,0 +1,2 @@
+{% if article.tags %}<p class="tagged">Etiquetado como: {% for tag in article.tags[:-1] %}<a href="{{ SITEURL }}/tag/{{ tag }}.html">{{ tag }}</a>, {% endfor %}<a href="{{ SITEURL }}/tag/{{ article.tags[-1:][0] }}.html">{{ article.tags[-1:][0] }}</a>.</p>{% endif %}
+{% if PDF_GENERATOR %}<p><a href="{{ SITEURL }}/pdf/{{ article.slug }}.pdf">Descarga el pdf</a></p>{% endif %}

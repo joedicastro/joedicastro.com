@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>joe di castro</title><link>http://joedicastro.com</link><description></description><atom:link href="http://joedicastro.com/feeds/tags/algoritmos.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 09 Jun 2011 23:35:00 -0000</lastBuildDate><item><title>Algoritmos Shuffle</title><link>http://joedicastro.com/algoritmos-shuffle.html</link><description>&lt;p&gt;Los algoritmos &lt;strong&gt;shuffle&lt;/strong&gt; se emplean para barajar o desordenar los elementos de
+ una lista (como si fueran las cartas de una baraja) al azar. Se intenta 
+ reproducir lo que ocurre en la realidad cuando barajamos un mazo de cartas o 
+ extraemos bolas de un bombo para formar una combinación. El comportamiento 
+ ideal de estos algoritmos debe de ser imparcial, es decir que todas las 
+ posibles &lt;a href="http://es.wikipedia.org/wiki/Permutaci%C3%B3n"&gt;permutaciones&lt;/a&gt; de esta lista tengan las mismas oportunidades
+ de aparecer como resultado. Este reparto uniforme es clave para el buen 
+ funcionamiento del mismo, pues de no ser así se crearían tendencias y el 
+ resultado seria predecible, lo que acabaría con la aleatoriedad que se 
+ pretende conseguir.&lt;/p&gt;
+&lt;p&gt;Imaginemos tres distintas cartas de una baraja inglesa: As, Rey y Reina (Ace, 
+King &amp;amp; Queen) como una lista en &lt;strong&gt;Python&lt;/strong&gt;, y ahora veamos todas las posibles 
+permutaciones de la misma (&lt;em&gt;n!&lt;/em&gt;, es decir, &lt;em&gt;3! = 6&lt;/em&gt;):&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;img src="pictures/permutations.png" width="500" 
+height="249" alt="permutations.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Representación gráfica de las distintas permutaciones.&lt;sup id="fnref:diseño"&gt;&lt;a href="#fn:diseño" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;K&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Q&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;permutations&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;...&lt;/span&gt;
+&lt;span class="go"&gt;(&amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;)&lt;/span&gt;
+&lt;span class="go"&gt;(&amp;#39;A&amp;#39;, &amp;#39;Q&amp;#39;, &amp;#39;K&amp;#39;)&lt;/span&gt;
+&lt;span class="go"&gt;(&amp;#39;K&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;Q&amp;#39;)&lt;/span&gt;
+&lt;span class="go"&gt;(&amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;)&lt;/span&gt;
+&lt;span class="go"&gt;(&amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;)&lt;/span&gt;
+&lt;span class="go"&gt;(&amp;#39;Q&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;A&amp;#39;)&lt;/span&gt;
+&lt;span class="go"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Vemos entonces que existen 6 permutaciones posibles que pueden darse como 
+resultado de barajar las cartas. Ahora imaginemos que escogemos una estas 
+permutaciones, y jugamos a barajar las cartas una y otra vez partiendo siempre 
+desde esta permutación. Como ya adelantábamos, si el algoritmo shuffle fuese 
+perfecto, el resultado de estas operaciones debería repartirse de forma 
+imparcial (equiprobable) entre las distintas permutaciones posibles. Es decir, 
+que al ejecutar un fragmento de código como el que sigue, donde empleamos el 
+algoritmo shuffle que por defecto trae Python (en el modulo &lt;strong&gt;random&lt;/strong&gt; de la 
+librería estándar), &lt;code&gt;ramdom.suffle()&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;shuffle&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;K&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Q&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="n"&gt;shuffle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;...&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;Q&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;A&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;Q&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;A&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;K&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;Q&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;Q&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;A&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;los resultados en pantalla deberían irse repartiendo a partes iguales entre las 
+distintas permutaciones. Del mismo modo, si ejecutáramos este algoritmo 
+&lt;em&gt;600.000&lt;/em&gt; veces sobre la misma permutación, los resultados deberían repartirse 
+de esta forma:&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;img src="pictures/ideal_shuffle.png" width="373" 
+height="248" alt="ideal_shuffle.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Donde las apariciones de cada permutación posible son idénticas, es decir, 
+&lt;em&gt;600.000/6 = 100.000&lt;/em&gt;. Pero veremos que en la realidad ocurre algo distinto, 
+como ya podíamos adivinar al ver los resultados del código anterior. Veamos con 
+detalle que  es lo que ocurre con el algoritmo &lt;code&gt;shuffle&lt;/code&gt; para ese mismo número 
+de ejecuciones.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;img src="pictures/realvsideal_radar.png" 
+width="680" height="248" alt="realvsideal_radar.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Como podemos ver, el comportamiento real de un algoritmo shuffle no se ajusta 
+al comportamiento ideal. Unas combinaciones están sobre-representadas como QAK 
+y KQA y el resto sub-representadas, siendo la combinación AQK la más cercana a 
+los valores ideales. Pero estos valores no debemos verlos como una tendencia, 
+puesto que si volvemos a ejecutar otras &lt;em&gt;100.000&lt;/em&gt; operaciones de barajado, aunque 
+seguirá sin ser un reparto equitativo, si es imparcial en cuanto que no se 
+repiten las mismas desviaciones por permutación. Es decir, unas veces unas serán 
+unas permutaciones las más sobre-representadas (y viceversa) y otras lo serán 
+otras distintas, no hay una tendencia clara. Las variaciones en este caso oscilan 
+entre &lt;em&gt;99.678 (-322)&lt;/em&gt; y &lt;em&gt;100.446 (+446)&lt;/em&gt; apariciones sobre un valor ideal de 
+&lt;em&gt;100.000&lt;/em&gt; con una &lt;a href="http://es.wikipedia.org/wiki/Desviaci%C3%B3n_media"&gt;desviación media&lt;/a&gt; de &lt;em&gt;±0.039%&lt;/em&gt;, unos valores no ideales 
+pero si muy razonables y más que suficientes para la mayoría de necesidades.&lt;/p&gt;
+&lt;p&gt;Es importante volver a incidir en que un algoritmo de barajado bien diseñado 
+siempre ha de ser imparcial, de hecho &lt;code&gt;random.shuffle&lt;/code&gt; lo es, si no será erróneo 
+y nos creara tendencias que pueden pasar inadvertidas a no ser que se comprueben 
+correctamente (en este caso de forma estadística). Tendencias que pueden suponer 
+un verdadero problema y echar al traste todos los cálculos y procesos que empleen 
+este algoritmo como base. El emplear un algoritmo de barajado erróneo le ha 
+causado &lt;a href="http://www.cigital.com/news/index.php?pg=art&amp;amp;artid=20"&gt;más de un&lt;/a&gt; &lt;a href="http://www.cigital.com/papers/download/developer_gambling.php"&gt;disgusto a algún casino online&lt;/a&gt;, ya que las 
+tendencias permiten predecir el resultado de el barajado y usarlo para hacer 
+trampas en el juego.&lt;/p&gt;
+&lt;p&gt;Pero si &lt;code&gt;random.suffle&lt;/code&gt; es imparcial, ¿por qué no se reparten los resultados de 
+manera uniforme? El problema es aquí entra en juego un segundo actor, que 
+independientemente de lo bien diseñado que este nuestro algoritmo shuffle, nos 
+condicionará que el reparto sea uniforme o no. Este segundo actor es la 
+&lt;a href="http://es.wikipedia.org/wiki/Aleatoriedad"&gt;aleatoriedad&lt;/a&gt;, lo que precisamente intentamos conseguir. Para que nuestro 
+algoritmo funcione necesitamos que se elijan las cartas al azar para ir 
+desordenándolas también al azar. Y es aquí donde está el problema, el que 
+impide que &lt;code&gt;random.shuffle&lt;/code&gt; tenga un comportamiento ideal, que los ordenadores y 
+la aleatoriedad, no son buenos "amigos". No existe algo así como un generador de 
+números aleatorios perfecto basado en software (si los hay casi perfectos 
+basados en hardware), debido a que son deterministas al estar basados en formulas 
+matemáticas. Por lo que empleamos lo que se denomina &lt;a href="http://es.wikipedia.org/wiki/Generador_de_n%C3%BAmeros_pseudoaleatorios"&gt;generadores de números 
+pseudoaleatorios&lt;/a&gt;. Estos generadores pueden ser más o menos "perfectos", pero 
+al no generar verdadera aleatoriedad, nos impiden que nuestro algoritmo consiga 
+efectuar un reparto uniforme. Matemáticamente se ha demostrado que algunos 
+algoritmos, como el que emplea &lt;code&gt;ramdon.shuffle&lt;/code&gt; (luego aclararemos cual es) 
+tienen un funcionamiento ideal, y de hecho podemos acercarnos muchísimo al 
+modelo ideal cuando empleamos un &lt;a href="http://en.wikipedia.org/wiki/Hardware_random_number_generator"&gt;generador de aleatoriedad por hardware&lt;/a&gt; 
+(que se acerca mucho a la verdadera aleatoriedad). Al final, aunque sean 
+matemáticamente correctos, tu algoritmo de barajado será tan bueno como lo sea 
+tu generador de números aleatorios.&lt;/p&gt;
+&lt;p&gt;Python, en su modulo &lt;code&gt;random&lt;/code&gt;, emplea por defecto uno de los mejores generadores 
+de números pseudoaleatorios existentes actualmente, el &lt;a href="http://en.wikipedia.org/wiki/Mersenne_twister"&gt;Mersenne twister&lt;/a&gt; 
+(hasta la versión 2.4 se empleaba el &lt;a href="http://www2.imperial.ac.uk/~hohs/S9/2007-2008/wichmannhill.pdf"&gt;Wichmann-Hill&lt;/a&gt;, que sigue disponible 
+como clase) y está implementado en C. Los resultados entregados por él son muy 
+fiables (excepto para su empleo en &lt;a href="http://es.wikipedia.org/wiki/Criptograf%C3%ADa"&gt;criptografía&lt;/a&gt;), generando números float 
+con una precisión de 53 bits y con un elevado periodo de 2¹⁹⁹³⁷-1. Otra buena 
+opción que nos ofrece el modulo &lt;code&gt;random&lt;/code&gt; para entornos Unix/Linux es la clase 
+&lt;code&gt;random.SystemRandom()&lt;/code&gt; que nos ofrece la entropía generada por &lt;code&gt;os.random()&lt;/code&gt; 
+que a su vez la toma de la generada en &lt;code&gt;/dev/random&lt;/code&gt;. Esta es una fuente 
+bastante decente de aleatoriedad que en las pruebas me ha ofrecido resultados 
+similares a el generador por defecto en Python.&lt;/p&gt;
+&lt;h2 id="los_algoritmos"&gt;Los algoritmos&lt;/h2&gt;
+&lt;p&gt;Utilizar la función &lt;code&gt;random.shuffle()&lt;/code&gt; es la forma más cómoda de barajar una 
+lista en Python, y desde luego la más recomendable. Pero si quisiéramos 
+desarrollar nuestro propio algoritmo, esta es una de esas ocasiones en las que o 
+tienes unos solidos conocimientos matemáticos (o estadísticos) o mejor no 
+intentes reinventar la rueda, recurre a lo conocido y solido, y como mínimo 
+prueba siempre que los resultados que obtienes son lo que tu esperas. Esto no es 
+una afirmación gratuita, esta es una de las ocasiones en la que la diferencia es 
+tan sutil, que es facilísimo equivocarse sin siquiera darse cuenta. Veamos porqué.&lt;/p&gt;
+&lt;h3 id="la_intuici+n_a_veces_nos_enga+a_no_seas_ingenuo"&gt;La intuición a veces nos engaña, no seas ingenuo!&lt;/h3&gt;
+&lt;p&gt;Aparentemente barajar una lista es de lo más sencillo, después de razonar un 
+poco, podríamos acabar con un código parecido a este:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;faulty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;An example of a intuitive but very bad algorithm.&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;lst_length&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst_length&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst_length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Que aparentemente debería ser correcto, algo que han pensado muchos 
+programadores ingenuamente hasta caer en la cuenta "a la fuerza" de que no es 
+correcto. Es más, si por ejemplo nos limitáramos a ejecutarlo unas &lt;em&gt;360&lt;/em&gt; veces 
+para probarlo (las cuales aparentemente no son pocas), veríamos que tiene un 
+comportamiento muy parecido al que nos da la función &lt;code&gt;random.shuffle&lt;/code&gt;:&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;img src="pictures/shuffle_faulty.png" width="467" 
+height="350" alt="shuffle_faulty.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Como podemos ver las desviaciones del valor ideal son muy similares y con una 
+desviación media muy parecida, &lt;em&gt;±2.130%&lt;/em&gt; para &lt;code&gt;shuffle&lt;/code&gt; y &lt;em&gt;±2.222%&lt;/em&gt; para nuestro 
+algoritmo, &lt;code&gt;faulty&lt;/code&gt;. Y creeríamos erróneamente que nuestro algoritmo funcionaría 
+correctamente. Pero es que para comprobar que no haya tendencia alguna es 
+necesario ejecutarlo, muchas, pero muchas veces (por encima de los cientos de 
+miles), ya que a mayor número de repeticiones, más se manifiestan esas 
+tendencias. Al mismo tiempo, cuantos más elementos tenga la lista, mayores son 
+las desviaciones y la tendencia. Además, con este número de ejecuciones aún no 
+observamos las tendencias reales que se manifestarán luego en lo sucesivo. 
+Veamos unos ejemplos para &lt;em&gt;2.400.000&lt;/em&gt; ejecuciones para nuestra lista de tres 
+cartas y para otra a la que hemos añadido la Sota (Jack).&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;a href="pictures/shuffle_faulty_2M4.png"&gt;&lt;img 
+src="pictures/shuffle_faulty_2m4_small.png" width="700" height="245" 
+alt="shuffle_faulty_2m4_small.png" title="Pulsar para ver a tamaño completo"/&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;En el gráfico de la izquierda ya se muestran claramente las diferencias, mientras 
+la función &lt;code&gt;shuffle&lt;/code&gt; varía entre &lt;em&gt;-741&lt;/em&gt; y &lt;em&gt;+668&lt;/em&gt; (sobre &lt;em&gt;400.000&lt;/em&gt;) con una 
+desviación media de &lt;em&gt;±0.017%&lt;/em&gt;, nuestra función tiene una desviación media de 
+&lt;em&gt;±1.869%&lt;/em&gt; (&lt;em&gt;~110&lt;/em&gt; veces superior) y varia entre &lt;em&gt;-46.062&lt;/em&gt; y &lt;em&gt;+46.090&lt;/em&gt;. Como 
+podemos ver es una autentica barbaridad. El gráfico de la derecha, nos confirma 
+que a mayor número de elementos en la lista, mayores aún son las tendencias. 
+Mientras que &lt;code&gt;shuffle&lt;/code&gt; se sigue comportando correctamente con una desviación 
+media de &lt;em&gt;±0.009%&lt;/em&gt; y varía entre &lt;em&gt;-486&lt;/em&gt; y &lt;em&gt;+427&lt;/em&gt; (sobre &lt;em&gt;100.000&lt;/em&gt;), nuestro 
+pobre algoritmo se desmanda completamente, variando entre &lt;em&gt;+31.326&lt;/em&gt; y &lt;em&gt;-25.254&lt;/em&gt;, 
+una desviación media de &lt;em&gt;±0.541%&lt;/em&gt; (&lt;em&gt;~61&lt;/em&gt; veces más). Hay que tener en cuenta, 
+que al ser mayor número de cartas, son &lt;em&gt;24&lt;/em&gt; permutaciones, lo que nos da unas 
+&lt;em&gt;4&lt;/em&gt; veces menos repeticiones por permutación, es decir, que para tener el mismo 
+número tendríamos que hacer &lt;em&gt;9.600.00&lt;/em&gt; ejecuciones. Y como podemos ver, los 
+resultados no son cuatro veces mejores, ni mucho menos, además sabemos que la 
+tendencia se acentúa con el número de ejecuciones. Viendo estos resultados vemos 
+claramente que determinadas permutaciones tienen muy pocas probabilidades de 
+salir, cuando otras son altamente predecibles.&lt;/p&gt;
+&lt;p&gt;¿Entiendes ahora porqué no debes fiarte únicamente de tu instinto?&lt;/p&gt;
+&lt;p&gt;Vamos a conocer ahora los algoritmos que funcionan, están matemáticamente 
+comprobados y son sobradamente conocidos (aunque a la vista está que no lo 
+suficiente).&lt;/p&gt;
+&lt;h3 id="fisher-yates"&gt;Fisher-Yates&lt;/h3&gt;
+&lt;p&gt;Este algoritmo fue desarrollado por &lt;a href="http://en.wikipedia.org/wiki/Ronald_Fisher"&gt;Ronald Fisher&lt;/a&gt; y &lt;a href="http://en.wikipedia.org/wiki/Frank_Yates"&gt;Frank Yates&lt;/a&gt; en 
+1938&lt;sup id="fnref:FYa"&gt;&lt;a href="#fn:FYa" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt; como un método a realizar con lápiz y papel. Para ello empleaban una 
+tabla de números aleatorios calculada anteriormente para generar la aleatoriedad 
+que necesitaban para el algoritmo. Este algoritmo esta comprobado 
+matemáticamente y funciona correctamente siempre que la fuente de aleatoriedad 
+sea completamente aleatoria. No deja de ser curioso, que un algoritmo que fue 
+creado hace más de 70 años y que sigue actualmente vigente y presente en 
+multitud de aplicaciones, sea al mismo tiempo desconocido por muchos 
+desarrolladores, lo que les lleva a cometer los errores que comentaba 
+anteriormente al implementar los suyos propios. Por eso como programadores 
+deberíamos ser humildes y procurar no inventar siempre lo ya inventado y 
+buscar siempre una solución previa para nuestros propósitos. Y probar, probar y 
+volver a probar nuestro código...&lt;/p&gt;
+&lt;p&gt;La típica implementación del algoritmo en Python sería así:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fisher_yates&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;Python implementation of the original Fisher-Yates algorithm.&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;sel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sel&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sel&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+            &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;-=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="knuth-durstenfeld"&gt;Knuth-Durstenfeld&lt;/h3&gt;
+&lt;p&gt;Este algoritmo es en realidad una variante del Fisher-Yates y fue publicado 
+originalmente por Richard Durstenfeld en 1964&lt;sup id="fnref:RDa"&gt;&lt;a href="#fn:RDa" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;, pero fue popularizado por 
+el genial &lt;a href="http://en.wikipedia.org/wiki/Donald_E._Knuth"&gt;Donald Knuth&lt;/a&gt; en el volumen 2 de su gran obra, 
+&lt;a href="http://en.wikipedia.org/wiki/The_Art_of_Computer_Programming"&gt;The Art of Computer Programming&lt;/a&gt;, como el &lt;strong&gt;algoritmo P&lt;/strong&gt;&lt;sup id="fnref:DKa"&gt;&lt;a href="#fn:DKa" rel="footnote"&gt;4&lt;/a&gt;&lt;/sup&gt;. De ahí 
+que sea generalmente conocido como Knuth-Durstenfeld o simplemente como Knuth 
+Shuffle. Aunque curiosamente ninguno de los dos conocía anteriormente el trabajo 
+previo de Fisher y Yates. Este algoritmo se ejecuta en tiempo polinómico lineal 
+&lt;em&gt;O(n)&lt;/em&gt;, por lo que es muy eficiente.&lt;/p&gt;
+&lt;p&gt;Implementado en Python, sería algo así:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;knuth_durstenfeld&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;Python implementation of the Durstenfeld algorithm popularized by Knuth.&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;reversed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;))):&lt;/span&gt;
+        &lt;span class="c"&gt;# pick an element in lst[:idx+1] with which to exchange lst[idx]&lt;/span&gt;
+        &lt;span class="n"&gt;sel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sel&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sel&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Este algoritmo es el que está detrás de la función &lt;code&gt;random.shuffle&lt;/code&gt; que hemos 
+venido usando desde el principio del articulo. Lógicamente si está empleando el 
+mejor algoritmo hasta la fecha, es absurdo implementar el nuestro propio cuando 
+podemos usar esta función estándar de Python. De hecho el código de esta función 
+es el siguiente:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;shuffle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;x, random=random.random -&amp;gt; shuffle list x in place; return None.&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Optional arg random is a 0-argument function returning a random&lt;/span&gt;
+&lt;span class="sd"&gt;    float in [0.0, 1.0); by default, the standard random.random.&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;random&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;reversed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;xrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;))):&lt;/span&gt;
+        &lt;span class="c"&gt;# pick an element in x[:i+1] with which to exchange x[i]&lt;/span&gt;
+        &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Que como podemos ver, el algoritmo es el Knuth Shuffle.&lt;/p&gt;
+&lt;h3 id="a_tener_en_cuenta"&gt;A tener en cuenta&lt;/h3&gt;
+&lt;p&gt;Conviene tener en cuenta una cosa, todos estos algoritmos modifican la propia 
+lista &lt;em&gt;in-place&lt;/em&gt;, es decir que no crean una nueva, y por lo tanto no devuelven 
+ningún valor. Por lo tanto, no puedes asignar el resultado de una de estas 
+operaciones a una variable, porque por defecto devuelven &lt;code&gt;None&lt;/code&gt;. Es un error 
+muy común, de hecho &lt;a href="http://learning-python.com/formalbio.html"&gt;Mark Lutz&lt;/a&gt; lo define en su libro "Learning Python" 
+como uno de los &lt;em&gt;Common Coding Gotchas&lt;/em&gt;, es decir, uno de los errores más 
+comunes en Python. Y dice claramente (pág. 388, cap. 15)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Don’t expect results from functions that change objects in-place&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;No esperes resultados desde funciones que cambien objetos en el sitio (sin crear
+ nuevos objetos modificados). Y pone como ejemplos los métodos &lt;code&gt;append&lt;/code&gt;, &lt;code&gt;sort&lt;/code&gt; 
+y &lt;code&gt;reverse&lt;/code&gt; en listas.&lt;/p&gt;
+&lt;p&gt;Para verlo aún más claro, nada mejor que verlo con un ejemplo:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;shuffle&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# Obtenemos el id del objeto (todo en Python es un objeto)&lt;/span&gt;
+&lt;span class="go"&gt;3077959916L&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;shuffle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;      &lt;span class="c"&gt;# La lista ya aparece barajada&lt;/span&gt;
+&lt;span class="go"&gt;[2, 3, 1]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# Sin embargo vemos que el identificador es el mismo&lt;/span&gt;
+&lt;span class="go"&gt;3077959916L&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;variable&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;shuffle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# Esto no tiene sentido, porque no se devuelve nada&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;variable&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;shuffle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  &lt;span class="c"&gt;# Aquí vemos que la función devuelve None&lt;/span&gt;
+&lt;span class="go"&gt;None&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="go"&gt;3077959916L&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;
+&lt;span class="go"&gt;[1, 3, 2]&lt;/span&gt;
+&lt;span class="go"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En esta gráfica vemos los tres algoritmos comparados, los he ejecutado 
+&lt;em&gt;solamente 48.000&lt;/em&gt; veces, para apreciar mejor las diferencias entre ellos.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;&lt;img src="pictures/shuffle_algorithms.png" 
+width="600" height="500" alt="suffle_algorithms.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Las desviaciones medias son de &lt;em&gt;±0.068%&lt;/em&gt; para Fisher-Yates, &lt;em&gt;±0.069%&lt;/em&gt; para 
+Knuth-Durstenfeld y de ±0.554% para Faulty.&lt;/p&gt;
+&lt;h3 id="sattolo-cycle"&gt;Sattolo-Cycle&lt;/h3&gt;
+&lt;p&gt;Este algoritmo es muy parecido a los anteriores, pero con una significativa 
+diferencia, este algoritmo solo genera ciclos, de ahí su nombre. Es decir, 
+reparte uniformemente los resultados solo entre algunas permutaciones que se van 
+rotando (aunque comparte el mismo problema con los anteriores al depender de una 
+aleatoriedad no perfecta). Para resumir su funcionamiento, lo que hace es que 
+después de ejecutarlo, ningún elemento de la lista repite la posición anterior 
+que tenía en la misma. Ese algoritmo fue publicado por Sandra Sattolo en 1986&lt;/p&gt;
+&lt;p&gt;El algoritmo en Python:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sattolo_cycle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;Python implementation of the original Sattolo Cycle algorithm.&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="n"&gt;sel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randrange&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# 0 &amp;lt;= sel &amp;lt;= idx-1&lt;/span&gt;
+        &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sel&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;lst&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sel&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Podemos ver aquí un ejemplo de su funcionamiento al ejecutarlo sucesivamente 
+sobre la misma lista, sin partir siempre de la misma permutación, para comprobar 
+como ningún elemento conserva su posición anterior.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;lista = [&amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;]&lt;/span&gt;
+&lt;span class="gp"&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="n"&gt;sattolo_cycle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;... &lt;/span&gt;    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="gp"&gt;...&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;K&amp;#39;, &amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;[&amp;#39;Q&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;K&amp;#39;]&lt;/span&gt;
+&lt;span class="go"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;El código de estos algoritmos y los test de rendimiento se encuentran en el 
+fichero &lt;a href="https://bitbucket.org/joedicastro/python-recipes/src/tip/src/shuffle.py"&gt;shuffle.py&lt;/a&gt; de &lt;a href="https://bitbucket.org/joedicastro/python-recipes"&gt;mi repositorio&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Aunque estos algoritmos no tienen un funcionamiento perfecto, debido al 
+generador de números pseudoaleatorios, son validos para la mayoría de las 
+aplicaciones para las que son necesarios, digamos que son lo suficientemente 
+buenos para las aplicaciones prácticas de los mismos.&lt;/p&gt;
+&lt;h4 id="otras_fuentes_para_saber_m+s"&gt;Otras fuentes para saber más&lt;/h4&gt;
+&lt;p&gt;&lt;a href="http://www.codinghorror.com/blog/2007/12/the-danger-of-naivete.html"&gt;The Danger of Naïveté&lt;/a&gt;, Jeff Atwood&lt;br /&gt;
+&lt;a href="http://www.codinghorror.com/blog/2007/12/shuffling.html"&gt;Shuffling&lt;/a&gt;, Jeff Atwood&lt;br /&gt;
+&lt;a href="http://www.codinghorror.com/blog/2006/11/computers-are-lousy-random-number-generators.html"&gt;Computers are lousy random numbers generators&lt;/a&gt;, Jeff Atwood&lt;br /&gt;
+&lt;a href="http://eli.thegreenplace.net/2010/05/28/the-intuition-behind-fisher-yates-shuffling/"&gt;The intuition behind Fisher-Yates shuffling&lt;/a&gt;, Eli Bendersky&lt;br /&gt;
+&lt;a href="http://www.random.org/"&gt;Ramdom.org&lt;/a&gt;&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:diseño"&gt;
+&lt;p&gt;Diseño de las cartas por &lt;a href="http://svg-cards.sourceforge.net/"&gt;David Bellot&lt;/a&gt;.
+&amp;#160;&lt;a href="#fnref:diseño" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:FYa"&gt;
+&lt;p&gt;Fisher R., Yates F. [1938] (1943) &lt;em&gt;Statistical Tables for Biological, 
+ Agricultural and Medical Research&lt;/em&gt;, 2nd edition, London, Oliver and 
+ Boyd, p. 23-24&amp;#160;&lt;a href="#fnref:FYa" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:RDa"&gt;
+&lt;p&gt;Durstenfeld R.[1964] &lt;em&gt;Communications of the ACM&lt;/em&gt;, vol. 7, issue 7(July)
+&amp;#160;&lt;a href="#fnref:RDa" rev="footnote" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:DKa"&gt;
+&lt;p&gt;Knuth D.[1969] (1981) &lt;em&gt;The Art of Computer Programming&lt;/em&gt;, 2nd edition,
+  Addison-Wesley, pp. 139-140&amp;#160;&lt;a href="#fnref:DKa" rev="footnote" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">joe di castro</dc:creator><pubDate>Thu, 09 Jun 2011 23:35:00 -0000</pubDate><category>python</category><category>algoritmos</category><category>Knuth</category><category>Fisher-Yates</category><category>shuffle</category><category>barajar</category><category>aleatoriedad</category><category>random</category><category>Sattolo</category></item></channel></rss>

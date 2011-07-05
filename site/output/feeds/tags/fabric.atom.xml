@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>joe di castro</title><link href="http://joedicastro.com" rel="alternate"></link><link href="http://joedicastro.com/feeds/tags/fabric.atom.xml" rel="self"></link><id>http://joedicastro.com</id><updated>2011-06-28T23:54:00Z</updated><entry><title>Pelican - Publicación y automatización</title><link href="http://joedicastro.com/pelican-publicacion-y-automatizacion.html" rel="alternate"></link><updated>2011-06-28T23:54:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-06-28:/pelican-publicacion-y-automatizacion.html/</id><summary type="html">&lt;p&gt;Una vez que sabemos como &lt;a href="/pelican-introduccion-e-instalacion.html"&gt;instalar Pelican&lt;/a&gt; y &lt;a href="/pelican-creacion-de-contenido.html"&gt;crear contenido&lt;/a&gt; con él, es 
+hora de saber como convertir ese contenido en un blog real disponible en 
+internet. Es decir, saber como publicar ese contenido. Como hemos visto hasta 
+ahora, al constar básicamente de simples ficheros HTML, un servidor de 
+archivos es más que suficiente para servir el blog. Esto nos abre un gran 
+abanico de posibilidades, desde emplear un potente (y barato) servidor de 
+ficheros en la &lt;em&gt;nube&lt;/em&gt; como &lt;strong&gt;Amazon S3&lt;/strong&gt; (&lt;a href="http://jdacpelican.s3-website-us-east-1.amazonaws.com/"&gt;un ejemplo&lt;/a&gt;), pasando por las 
+páginas web estáticas que nos permiten repositorios como &lt;strong&gt;Bitbucket&lt;/strong&gt; o 
+&lt;strong&gt;GitHub&lt;/strong&gt; (&lt;a href="http://marsam.github.com/blog/"&gt;un ejemplo&lt;/a&gt;), por los tradiciones hostings compartidos (e.g. 
+este blog), hasta un servidor casero sencillo montado sobre un &lt;a href="http://es.wikipedia.org/wiki/Network-attached_storage"&gt;NAS&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Aún cuando es posible emplear un simple servidor de archivos para alojar el blog, 
+siempre es mejor contar con un servidor web detrás (Apache, nginx, lighttpd, 
+...) que nos permita hacer redirecciones para nuestras antiguas páginas si ya 
+disponíamos de un blog anterior o manejar los errores HTTP &lt;a href="http://es.wikipedia.org/wiki/Error_404"&gt;404&lt;/a&gt; o &lt;a href="http://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP"&gt;403&lt;/a&gt; 
+de forma personalizada. &lt;/p&gt;
+&lt;h3 id="publicar_el_contenido"&gt;Publicar el contenido&lt;/h3&gt;
+&lt;p&gt;Publicar el contenido de una web es tan sencillo como volcar el contenido del 
+directorio que nos genera Pelican (en nuestro ejemplo sería 
+&lt;em&gt;myblog.com/site/output/*&lt;/em&gt;) en el directorio destino de nuestro servidor web. 
+Dependiendo del método que hayamos elegido para alojar nuestro blog, puede ser 
+tan sencillo como una copia de archivos o emplear FTP (SFTP) ó &lt;a href="http://es.wikipedia.org/wiki/SSH"&gt;SSH&lt;/a&gt; (&lt;a href="http://es.wikipedia.org/wiki/SCP"&gt;SCP&lt;/a&gt;, 
+&lt;a href="http://en.wikipedia.org/wiki/Unison_%28file_synchronizer%29"&gt;Unison&lt;/a&gt; ó &lt;a href="http://es.wikipedia.org/wiki/Rsync"&gt;rsync&lt;/a&gt;). Aquí el tema radica no en la primera vez que 
+vayamos a subir el contenido al servidor, si no en las sucesivas, a medida que 
+vayamos creando contenido nuevo. No tendría ningún sentido volver a subir todo 
+el contenido cada vez, si no solamente el nuevo o el que haya cambiado. Para eso 
+necesitamos sincronizar los dos directorios. &lt;/p&gt;
+&lt;p&gt;Si solamente disponemos de acceso FTP (o SFTP) a nuestro servidor, entonces 
+tendremos que emplear una herramienta que nos permita la sincronización sobre 
+FTP, como puede ser &lt;strong&gt;lftp&lt;/strong&gt;. Y el proceso se puede automatizar con un script 
+como el que describo en &lt;a href="/sincronizar-una-carpeta-local-y-una-remota-a-traves-de-ftp-lftp-mirror.html"&gt;Sincronizar una carpeta local y una remota a través de 
+FTP: lftp-mirror&lt;/a&gt;. Si disponemos de acceso a través de SSH, entonces la 
+elección es clarisima, &lt;strong&gt;rsync&lt;/strong&gt;. Más adelante explico una manera de emplearlo 
+de forma automática.&lt;/p&gt;
+&lt;p&gt;Cualquiera de ambas soluciones nos permite subir el contenido en apenas segundos, 
+(sobre todo en el caso de rsync) cuando se trata de añadir un articulo nuevo, 
+por ejemplo. Y lo mismo a la hora de hacer una rectificación, es tan inmediato 
+como lo pueden ser plataformas como Wordpress, Drupal y similares. Además, con 
+las potentes herramientas que existen para hacer cambios múltiples en varios 
+ficheros de texto a la vez, se pueden realizar tareas casi imposibles con una 
+plataforma de blogs tradicional sin recurrir a consultas SQL en la BDD o a 
+plugins externos. Una de estas herramientas, sin recurrir a &lt;code&gt;find&lt;/code&gt;, &lt;code&gt;grep&lt;/code&gt;, 
+&lt;code&gt;awk&lt;/code&gt; y &lt;code&gt;sed&lt;/code&gt;, puede ser &lt;a href="http://regexxer.sourceforge.net/"&gt;regexxer&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="generar_el_contenido_en_el_propio_servidor"&gt;Generar el contenido en el propio servidor&lt;/h3&gt;
+&lt;p&gt;Si el alojamiento que hemos escogido nos permite instalar programas python, 
+entonces tenemos la posibilidad de instalar Pelican en el servidor remoto. De 
+esta formar podríamos subir únicamente los archivos markdown o reStructuredText 
+al servidor y generar allí mismo el contenido web. De este modo la cantidad de 
+datos a subir sería ridícula y un simple comando FTP nos serviría. Luego bien 
+podríamos lanzar Pelican a través de una consola SSH o bien dependiendo del 
+servidor, tener un &lt;a href="http://es.wikipedia.org/wiki/Demonio_%28inform%C3%A1tica%29"&gt;demonio&lt;/a&gt; corriendo que cuando detectara un cambio en el 
+sistema de ficheros lanzará un script que generara el contenido con Pelican. &lt;/p&gt;
+&lt;p&gt;Otra posibilidad que me convence más, es de la poder instalar un repositorio en 
+el servidor con un software de control de versiones, como Git o Mercurial. La 
+idea sería tener un repositorio local, y al hacer un push hacia el repositorio 
+remoto, a través de un &lt;em&gt;hook&lt;/em&gt; activar la generación de la página con Pelican. 
+Esto nos permitiría además poder tener varias copias del repositorio (por 
+ejemplo en GitHub o Bitbucket) y por lo tanto de la web, haciendo "innecesarias" 
+las copias de seguridad. &lt;/p&gt;
+&lt;h3 id="automatizar_todos_los_procesos"&gt;Automatizar todos los procesos&lt;/h3&gt;
+&lt;p&gt;Pero lo ideal es poder automatizar todas las tareas que hemos visto hasta ahora, 
+empleando unos pocos comandos para realizarlas sin esfuerzo alguno (bueno, 
+a menos que tengas tú &lt;a href="http://es.wikipedia.org/wiki/Negro_%28escritor%29"&gt;ghostwriter&lt;/a&gt; particular, me temo que los artículos los 
+seguirás teniendo que escribir tú). Para poder realizar esto disponemos de la 
+fantástica y potente herramienta &lt;a href="http://fabfile.org"&gt;Fabric&lt;/a&gt; (el &lt;a href="http://en.wikipedia.org/wiki/Capistrano"&gt;Capistrano&lt;/a&gt; para Python) 
+que nos permite ejecutar comandos locales o remotos en múltiples servidores. Esto 
+nos permite hacer despliegues de software sin apenas esfuerzo en distintas 
+máquinas, copiar ficheros o ejecutar tareas repetitivas empleado una corta 
+serie de comandos. Una grandísima herramienta para administradores de sistema y 
+desarrolladores.&lt;/p&gt;
+&lt;p&gt;Lo único que necesitamos es instalar &lt;strong&gt;fabric&lt;/strong&gt; y crear un fichero llamado 
+&lt;code&gt;fabfile.py&lt;/code&gt; donde especificaremos las tareas que queremos programar. Para 
+instalar la última versión estable de fabric, lo mejor es emplear &lt;code&gt;easy_install&lt;/code&gt; 
+o &lt;code&gt;pip&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; pip install fabric
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Una vez creado el fichero &lt;code&gt;fabfile.py&lt;/code&gt;, lo único que tendremos que hacer para 
+ejecutar una tarea del mismo, sería escribir el comando &lt;code&gt;fab&lt;/code&gt; seguido del nombre 
+que le hayamos dado a la tarea (este sería el funcionamiento básico). Y la tarea 
+se ejecutaría inmediatamente. &lt;/p&gt;
+&lt;p&gt;Para comprender mejor como funciona Fabric, muestro aquí el contenido actual de 
+mi fichero &lt;code&gt;fabfile.py&lt;/code&gt;&lt;br /&gt;
+&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class="c"&gt;# -*- coding: utf8 -*-&lt;/span&gt;
+
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;    fabfile.py: A fabric script for generate my personal blog&lt;/span&gt;
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;__author__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;joe di castro &amp;lt;joe@joedicastro.com&amp;gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;__license__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;GNU General Public License version 3&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;__date__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;28/06/2011&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;__version__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0.2&amp;quot;&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fabric.api&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fabric.contrib.project&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;rsync_project&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fabric.contrib.console&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;confirm&lt;/span&gt;
+
+&lt;span class="n"&gt;PELICAN_REPOSITORY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;git://github.com/ametaireau/pelican.git&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;PROD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;joedicastro.com&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;PROD_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/home/joedicastro/webapps/joedicastro&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;LOCAL_WEB&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;~/www&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PROD&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;abspath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;ENV_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;env&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;PELICAN&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;pelican&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;CONFIG_FILE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;site/pelican.conf.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;OUTPUT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;site/output&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_valid_HTML&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Remove the obsolete rel=&amp;quot;&amp;quot; and rev=&amp;quot;&amp;quot; links in footnotes.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dirs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;walk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OUTPUT&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;fil&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;fil&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sed -i {0} -r -e &amp;#39;s/re[l|v]=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;footnote&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt;//g&amp;#39; {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+                      &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;r&amp;quot;\ &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_make_env&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Make a virtual enviroment&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;virtualenv {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ENV_PATH&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_del_env&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Delete a virtual enviroment.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;rm -rf {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ENV_PATH&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_clone_pelican&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Clone Pelican from repository.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;git clone {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PELICAN_REPOSITORY&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_install&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Install Pelican in the virtual enviroment.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;lcd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PELICAN&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{0}/bin/python setup.py install&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ENV_PATH&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_browse&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Browse the local Apache site.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;firefox -new-window http://localhost/joedicastro.com 2&amp;gt;/dev/null &amp;amp;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_gen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;autoreload&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Generate the site from source.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{0}/bin/pelican {2} -s {1}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ENV_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CONFIG_FILE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                                              &lt;span class="s"&gt;&amp;quot;-r&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;autoreload&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_clean&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;Remove the output folder.&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;rm -rf {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OUTPUT&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_local_deploy&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Deploy to the local apache web server.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;rm  -rf {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LOCAL_WEB&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cp -r {0} {1}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OUTPUT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;LOCAL_WEB&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;pull_pelican&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Update Pelican to last revision from repository.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;lcd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PELICAN&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;git pull&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;bootstrap&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Get Pelican and install it in a virtual enviroment.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;warn_only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;_del_env&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_make_env&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;warn_only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;_clone_pelican&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_install&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;regen&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Regenerate the site from source.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;_clean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_gen&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_valid_HTML&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_local_deploy&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="nd"&gt;@hosts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;my_user@&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;PROD&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;publish&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Publish into remote web server with rsync.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;regen&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;_browse&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;confirm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;¿Estas seguro de querer publicarlo?&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;rsync_project&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PROD_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;OUTPUT&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Create a new blog article.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;gedit --new-window {0}/site/source/blog/{1}.md 2&amp;gt;/dev/null &amp;amp;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+          &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;\ &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;firefox --new-window {0}/index.html &amp;amp;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OUTPUT&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;_gen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;img4web&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Optimize .jpg &amp;amp; .png images and copy them into source pictures dir.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;./img4web.py -d {0} {1} {2}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+          &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ROOT_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;site/source/pictures&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                 &lt;span class="s"&gt;&amp;quot;--delete&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;delete&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                 &lt;span class="s"&gt;&amp;quot;-s {0}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora, veremos el funcionamiento básico que nos permite este script. Primero 
+vemos las tareas que tenemos disponibles:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab -l
+&lt;span class="go"&gt;    fabfile.py: A fabric script for generate my personal blog&lt;/span&gt;
+
+&lt;span class="go"&gt;Available commands:&lt;/span&gt;
+
+&lt;span class="go"&gt;    bootstrap     Get Pelican and install it in a virtual enviroment.&lt;/span&gt;
+&lt;span class="go"&gt;    img4web       Optimize .jpg &amp;amp; .png images and copy them into source pict...&lt;/span&gt;
+&lt;span class="go"&gt;    new           Create a new blog article.&lt;/span&gt;
+&lt;span class="go"&gt;    publish       Publish into remote server with rsync.&lt;/span&gt;
+&lt;span class="go"&gt;    pull_pelican  Update Pelican to last revision from repository.&lt;/span&gt;
+&lt;span class="go"&gt;    regen         Regenerate the site from source.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Veamos que hacen cada una de ellas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;bootstrap&lt;/em&gt;&lt;/strong&gt; Si observamos el código, veremos que lo hace es, en este orden: 
+eliminar cualquier entorno virtual previo, crear un entorno virtual nuevo, 
+descargar Pelican desde el repositorio (si no lo hemos hecho anteriormente) e 
+instalar Pelican dentro de este entorno virtual. Y todo esto en un solo paso, casi 
+todos los comandos que explicaba en &lt;a href="/pelican-introduccion-e-instalacion.html"&gt;Pelican - Introducción e Instalación&lt;/a&gt; con 
+solo  teclear &lt;code&gt;fab bootstrap&lt;/code&gt;. Así de fácil. Con este comando podemos tanto crear 
+una instalación de Pelican desde cero, como actualizar la instalación de Pelican 
+después de actualizar este a la última versión con &lt;strong&gt;&lt;em&gt;pull-pelican&lt;/em&gt;&lt;/strong&gt;. Siguiendo 
+con nuestro ejemplo, lo que haría este comando es crear los directorios &lt;em&gt;env&lt;/em&gt; y 
+&lt;em&gt;pelican&lt;/em&gt; dentro de &lt;em&gt;myblog.com&lt;/em&gt; con el entorno virtual creado y pelican 
+instalado.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab bootstrap
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;img4web&lt;/em&gt;&lt;/strong&gt; Este comando hace uso del script que describía en &lt;a href="/optimizar-imagenes-para-la-web.html"&gt;Optimizar 
+imágenes para la web&lt;/a&gt; para hacer precisamente eso, reducir el peso de las 
+imágenes que empleo en los artículos. Lo que hago es a medida que voy escribiendo 
+el articulo es ir guardando las imágenes en el directorio raíz (en nuestro 
+ejemplo, &lt;em&gt;myblog.com/&lt;/em&gt;) y cuando lo termino, simplemente ejecuto el comando 
+&lt;code&gt;fab img4web&lt;/code&gt; y este me optimiza las imágenes, me guarda las optimizadas en el 
+directorio de imágenes del contenido (&lt;em&gt;myblog.com/site/source/pictures/&lt;/em&gt;) y me 
+elimina las imágenes originales del directorio raíz. Cuando termina me muestra un 
+resumen con la cantidad de imágenes procesadas y el ahorro en espacio conseguido. 
+Espacio en disco ahorrado que se resume en menos ancho de banda consumido y en 
+páginas web que se cargan más rápido.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab img4web
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;new&lt;/em&gt;&lt;/strong&gt; Con este creo o edito los artículos del blog. Realiza 
+tres funciones: me abre una venta de Gedit con el articulo que le indico con la 
+extensión &lt;code&gt;.md&lt;/code&gt;, me abre una ventana de Firefox que me muestra el fichero 
+&lt;em&gt;index.html&lt;/em&gt; del directorio del sitio generado por Pelican 
+(&lt;em&gt;myblog.com/site/output/index.html&lt;/em&gt;) y finalmente me activa Pelican con la 
+opción &lt;code&gt;autoreload&lt;/code&gt;. Luego empleando el plugin &lt;strong&gt;Grid&lt;/strong&gt; de Compiz, divido la 
+pantalla en dos mitades y coloco a la izquierda Gedit y a la derecha Firefox. 
+Esto me permite, como explicaba en &lt;a href="/de-drupal-a-pelican.html"&gt;De Drupal a Pelican&lt;/a&gt; editar el contenido 
+y previsualizar el resultado casi en tiempo real, disponiendo al mismo tiempo de 
+un buen corrector ortográfico. &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab new:&lt;span class="s2"&gt;&amp;quot;Articulo de prueba&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;publish&lt;/em&gt;&lt;/strong&gt; El más importante, el que sube los artículos al servidor web. 
+Publicar el contenido de la web es tan sencillo como ejecutar este comando. Lo 
+que hace es regenerar el contenido (por si hubiera algún cambio sin guardar) y 
+luego mostrarme el resultado en firefox. Pero el resultado que me muestra no es 
+el del directorio de salida de Pelican, si no de una copia que tengo en un 
+servidor Apache local. Esto me permite ver los cambios de manera más fiel a la 
+versión web, puesto que hace uso del fichero .htaccess y de las reglas que tengo 
+establecidas en él. Finalmente me pregunta si realmente deseo publicar el 
+contenido, por si se me hubiera escapado algo. Si le digo que no, aborta la 
+publicación, pero si le digo que si, me sincroniza el contenido de la carpeta 
+local con la remota empleando &lt;strong&gt;rsync&lt;/strong&gt;. De esta manera solo se transmiten los 
+ficheros nuevos, se borran los que se hayan eliminado en local y &lt;strong&gt;solo transmite 
+la parte que haya cambiado de los archivos modificados&lt;/strong&gt;. Gracias a esto, 
+modificar o añadir contenido es cuestión de segundos. Y sencillisimo.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab publish
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;pull_pelican&lt;/em&gt;&lt;/strong&gt; Nos sirve para actualizar Pelican a la última revisión 
+disponible en el repositorio oficial. Si después de ejecutarlo, queremos instalar 
+la nueva versión en nuestro entorno virtual para poder emplearla, simplemente 
+tenemos que volver a ejecutar &lt;code&gt;fab bootstrap&lt;/code&gt; y todo se realizará de forma 
+automática.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab pull_pelican
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;regen&lt;/em&gt;&lt;/strong&gt; El proceso principal, es el que le pide a Pelican que genere el 
+sitio web a partir de nuestro directorio de origen. También realiza varios 
+procesos: primero eliminar el directorio de salida actual (para tener una copia 
+fresca), genera el nuevo contenido, luego procesa los archivos para que 
+validen en HTML5 y finalmente hace una copia del directorio de salida a mi 
+servidor local Apache. El procesar los archivos para validar en HTML5 se debe a 
+que markdown crea unos enlaces &lt;code&gt;rel="footnote"&lt;/code&gt; y &lt;code&gt;rev="footnote"&lt;/code&gt; en las notas 
+al pie que se han quedado obsoletos y no son necesarios. De momento es un 
+post-procesado, pero puede que finalmente modifique Pelican para que se haga en 
+tiempo de generación del sitio. Aunque creo que  el rendimiento de esta manera 
+sería menor que emplear el comando &lt;code&gt;sed&lt;/code&gt; que ejecuta este proceso, será cuestión 
+de probarlo. También se podría modificar markdown.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Con solo &lt;strong&gt;6&lt;/strong&gt; comandos tengo automatizadas todas las tareas básicas para 
+administrar y crear contenido en mi blog. Ni siquiera el potente y buenísimo 
+&lt;a href="http://drupal.org/project/drush"&gt;drush&lt;/a&gt; de Drupal me permitía este nivel de automatización (aunque se 
+acercaba bastante). De esta manera solo me tengo que preocupar de crear 
+artículos y de las posibles personalizaciones que le quiera realizar al tema del 
+sitio. Me olvido de todo lo demás, de todo lo que conlleva un CMS. Solo hay una 
+manera de bloguear más cómoda para los que a estos les parezca algo complejo, 
+servicios como Tumblr. Aunque si quieres tener el control sobre tu sitio, no 
+conozco manera más cómoda y con más ventajas que esta. &lt;/p&gt;</summary><category term="Pelican"></category><category term="python"></category><category term="markdown"></category><category term="reStructuredText"></category><category term="blog"></category><category term="HTML"></category><category term="rsync"></category><category term="fabric"></category></entry></feed>

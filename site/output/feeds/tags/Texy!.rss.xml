@@ -1,0 +1,1010 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>joe di castro</title><link>http://joedicastro.com</link><description></description><atom:link href="http://joedicastro.com/feeds/tags/Texy!.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 02 Apr 2011 20:29:00 -0000</lastBuildDate><item><title>Comparativa de Lenguajes de marcado ligero</title><link>http://joedicastro.com/comparativa-de-lenguajes-de-marcado-ligero.html</link><description>&lt;p&gt;Esta es una comparativa de los lenguajes de marcado ligero más empleados de los 
+disponibles actualmente. Dicha comparativa surge a partir de este articulo, 
+&lt;a href="/markdown-la-mejor-opcion-para-crear-contenidos-web.html"&gt;Markdown, la mejor opción para crear contenidos web&lt;/a&gt;, donde defiendo la 
+idoneidad de markdown para crear contenidos web.&lt;/p&gt;
+&lt;p&gt;En esta comparativa se verá como emplear cada uno de los lenguajes de marcado 
+disponibles para crear un contenido web similar. Tomo como referencia a markdown, 
+aunque no todos los lenguajes soportan todas o las mismas características que 
+este.&lt;/p&gt;
+&lt;h2 id="documento_de_ejemplo_realizado_con_markdown"&gt;Documento de ejemplo realizado con Markdown&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 50%;"&gt;Markdown&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+Documento de ejemplo
+====================
+
+Lorem ipsum [dolor sit amet](#mark), consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit _sit amet aliquam_ vel, pulvinar molestie augue.
+
+&gt; Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+* **Markdown**
+ * Textile
+ * reStructuredText
+ * Texy!
+ * Txt2tags
+ * Marcado Wiki
+   1. Creole
+   2. MediaWiki
+
+![avatar](pictures/no_wysiwyg.png)
+
+### Cabecera H3 ###
+
+- - -
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+|   | solo texto | HTML Limpio  |
+| -------------- | -- | ------- |
+| Markdown       | Si | Si      |
+| Editor WYSISWG | X  | A veces |
+
+_Ejemplo de código_
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;import lifetime
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for each_day in lifetime.days():
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;carpe_diem()
+
+Suspendisse posuere velit et velit vehicula at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
+
+Esto es un texto con nota al pie [^ejemplo] y esta es otra nota [^segunda]
+
+*[vehicula]: automobila
+[^ejemplo]: Esto es una nota al pie.
+[^segunda]: Esto es la segunda nota.
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h1&gt;Documento de ejemplo&lt;/h1&gt;
+
+&lt;p&gt;Lorem ipsum &lt;a href="#mark"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;strong&gt;semper adipiscing leo&lt;/strong&gt; et blandit.&lt;/p&gt;
+
+&lt;p&gt;Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar molestie augue.&lt;/p&gt;
+
+&lt;blockquote&gt; 
+  &lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt; 
+&lt;/blockquote&gt;
+
+&lt;p&gt;Lenguajes de marcado ligero&lt;/p&gt;
+
+&lt;ul&gt; 
+&lt;li&gt;&lt;strong&gt;Markdown&lt;/strong&gt;&lt;/li&gt; 
+&lt;li&gt;Textile&lt;/li&gt; 
+&lt;li&gt;reStructuredText&lt;/li&gt; 
+&lt;li&gt;Texy!&lt;/li&gt; 
+&lt;li&gt;Txt2tags&lt;/li&gt; 
+&lt;li&gt;Marcado Wiki
+
+&lt;ol&gt; 
+&lt;li&gt;Creole&lt;/li&gt; 
+&lt;li&gt;MediaWiki&lt;/li&gt; 
+&lt;/ol&gt;&lt;/li&gt; 
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src="pictures/no_wysiwyg.png" alt="avatar" /&gt;&lt;/p&gt;
+
+&lt;h3&gt;Cabecera H3&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+
+&lt;table&gt; 
+&lt;thead&gt; 
+&lt;tr&gt; 
+  &lt;th&gt;&lt;/th&gt; 
+  &lt;th&gt;solo texto&lt;/th&gt; 
+  &lt;th&gt;HTML Limpio&lt;/th&gt; 
+&lt;/tr&gt; 
+&lt;/thead&gt; 
+&lt;tbody&gt; 
+&lt;tr&gt; 
+  &lt;td&gt;Markdown&lt;/td&gt; 
+  &lt;td&gt;Si&lt;/td&gt; 
+  &lt;td&gt;Si&lt;/td&gt; 
+&lt;/tr&gt; 
+&lt;tr&gt; 
+  &lt;td&gt;Editor WYSISWG&lt;/td&gt; 
+  &lt;td&gt;X&lt;/td&gt; 
+  &lt;td&gt;A veces&lt;/td&gt; 
+&lt;/tr&gt; 
+&lt;/tbody&gt; 
+&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;Ejemplo de código&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre class="txt" style="font-family:monospace;"&gt;import lifetime
+&amp;nbsp;
+for each_day in lifetime.days():
+    carpe_diem()&lt;/pre&gt;
+
+&lt;p&gt;Suspendisse posuere velit et velit &lt;abbr title="automobila"&gt;vehicula&lt;/abbr&gt; at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.&lt;/p&gt;
+
+&lt;p&gt;Esto es un texto con nota al pie &lt;sup id="fnref:ejemplo"&gt;&lt;a href="#fn:ejemplo" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; y esta es otra nota &lt;sup id="fnref:segunda"&gt;&lt;a href="#fn:segunda" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;div class="footnotes"&gt; 
+&lt;hr /&gt; 
+&lt;ol&gt;
+
+&lt;li id="fn:ejemplo"&gt; 
+&lt;p&gt;Esto es una nota al pie.&amp;#160;&lt;a href="#fnref:ejemplo" rev="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt; 
+&lt;/li&gt;
+
+&lt;li id="fn:segunda"&gt; 
+&lt;p&gt;Esto es la segunda nota.&amp;#160;&lt;a href="#fnref:segunda" rev="footnote"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt; 
+&lt;/li&gt;
+
+&lt;p&gt;&lt;/ol&gt; 
+&lt;/div&gt; 
+   &lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="textile"&gt;Textile&lt;/h2&gt;
+&lt;p&gt;Es una buena alternativa a Markdown y bastante extendido, aunque quizás menos 
+que Markdown. Tiene algunas posibilidades que no tiene Markdown como emplear 
+colores, poder alinear el texto o emplear superindice y subindice. También tiene 
+carencias como el no poder dibujar líneas horizontales o el poder emplear 
+acronimos solo con mayusculas y tener que declararlos en cada una de las partes 
+del texto que aparezcan. Pero quiźas para mi la mayor desventaja es la menor 
+legibilidad del texto, es menos evidente a un vistazo que markdown.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 50%;"&gt;Textile&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+h1. Documento de ejemplo
+
+Lorem ipsum "dolor sit amet":#mark, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit _sit amet aliquam_ vel, pulvinar molestie augue.
+
+bq. Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+* **Markdown**
+* Textile
+* reStructuredText
+* Texy!
+* Txt2tags
+* Marcado Wiki
+## Creole
+## MediaWiki
+
+!pictures/no_wysiwyg.png (avatar)!
+
+h3. Cabecera H3
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+|_. @@|_. solo texto|_. HTML Limpio|
+|Markdown|Si|Si|
+|Editor WYSISWG|X|A veces|
+
+_Ejemplo de código_
+
+bc.. import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+
+p. Suspendisse posuere velit et velit VEHICULA(automobila) at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
+
+Esto es un texto con nota al pie[1] y esta es otra nota[2]
+
+fn1. Esto es una nota al pie.
+
+fn2. Esto es la segunda nota.
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h1&gt;Documento de ejemplo&lt;/h1&gt;
+
+&lt;p&gt;Lorem ipsum &lt;a href="#mark"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;b&gt;semper adipiscing leo&lt;/b&gt; et blandit.&lt;/p&gt;
+
+&lt;p&gt;Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar molestie augue.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Lenguajes de marcado ligero &lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;b&gt;Markdown&lt;/b&gt;&lt;/li&gt;
+    &lt;li&gt;Textile&lt;/li&gt;
+    &lt;li&gt;reStructuredText&lt;/li&gt;
+    &lt;li&gt;Texy!&lt;/li&gt;
+    &lt;li&gt;Txt2tags&lt;/li&gt;
+    &lt;li&gt;Marcado Wiki
+&lt;ol&gt;
+    &lt;li&gt;Creole&lt;/li&gt;
+    &lt;li&gt;MediaWiki&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src="pictures/no_wysiwyg.png" title="avatar" alt="avatar" /&gt;&lt;/p&gt;
+
+&lt;h3&gt;Cabecera H3&lt;/h3&gt;
+
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;th&gt;solo texto&lt;/th&gt;
+        &lt;th&gt;&lt;span class="caps"&gt;&lt;span class="caps"&gt;HTML&lt;/span&gt;&lt;/span&gt; Limpio&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Markdown&lt;/td&gt;
+        &lt;td&gt;Si&lt;/td&gt;
+        &lt;td&gt;Si&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Editor &lt;span class="caps"&gt;&lt;span class="caps"&gt;WYSISWG&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;X&lt;/td&gt;
+        &lt;td&gt;A veces&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;Ejemplo de código&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;
+import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+&lt;/pre&gt;
+
+&lt;p&gt;Suspendisse posuere velit et velit &lt;acronym title="automobila"&gt;&lt;span class="caps"&gt;VEHICULA&lt;/span&gt;&lt;/acronym&gt; at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.&lt;/p&gt;
+
+&lt;p&gt;Esto es un texto con nota al pie&lt;sup class="footnote"&gt;&lt;a href="#fn8701048694d94660b0d4d4"&gt;1&lt;/a&gt;&lt;/sup&gt; y esta es otra nota&lt;sup class="footnote"&gt;&lt;a href="#fn13831162204d94660b122f5"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p id="fn8701048694d94660b0d4d4" class="footnote"&gt;&lt;sup&gt;1&lt;/sup&gt; Esto es una nota al pie.&lt;/p&gt;
+
+&lt;p id="fn13831162204d94660b122f5" class="footnote"&gt;&lt;sup&gt;2&lt;/sup&gt; Esto es la segunda nota.&lt;/p&gt;
+
+&lt;p&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="bbcode"&gt;BBCode&lt;/h2&gt;
+&lt;p&gt;Es uno de los más extendido porque es ampliamente usado en foros por toda la red. 
+Nació para ser empleado en foros y es prácticamente el único ámbito en el que se 
+emplea. Es también muy limitado porque no soporta muchas de las características 
+de los otros lenguajes y además hay múltiples variantes que no ayudan a crear un 
+estándar. Por ejemplo las listas y las tablas no son contempladas en algunas de 
+esas variantes.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 50%;"&gt;BBCode&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+Documento de ejemplo
+
+Lorem ipsum [url=http://joedicastro.com]dolor sit amet[/url], consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum [b]semper adipiscing leo[/b] et blandit.
+
+Sed nibh quam, hendrerit [i]sit amet aliquam[/i] vel, pulvinar molestie augue.
+
+[quote]Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.[/quote]
+
+[img]http://joedicastro/files/
+imagenes/no_wysiwyg.png[/img]
+
+Cabecera H3
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+[i]Ejemplo de codigo[/i]
+
+[code]
+import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+[/code]
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;div&gt;
+&lt;p&gt;
+Documento de ejemplo&lt;br /&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Lorem ipsum &lt;a href="http://joedicastro.com" target="_new"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;strong&gt;semper adipiscing leo&lt;/strong&gt; et blandit.
+&lt;/p&gt;
+&lt;p&gt;
+Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar molestie augue.
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="pictures/no_wysiwyg.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;Cabecera H3&lt;/p&gt;
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+&lt;em&gt;Ejemplo de codigo&lt;/em&gt;
+&lt;pre class="code"&gt;
+import lifetime
+
+for each_day in lifetime.days():
+carpe_diem()
+&lt;/pre&gt;&lt;/div&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+&lt;h2 id="restructuredtext"&gt;reStructuredText&lt;/h2&gt;
+&lt;p&gt;Fue creado para crear documentación, en concreto documentación para lenguajes de 
+programación como Python. Tiene algunas carencias al no estar orientado a HTML, 
+pero también tiene posibilidades de las que carece Markdown. Es muy potente, 
+bastante legible, pero un poco incomodo para según que cosas, a mi modo de ver. &lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 53%;"&gt;reStructuredText&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+Documento de ejemplo
+====================
+
+Lorem ipsum `dolor sit amet &lt;#mark&gt;`_, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit *sit amet aliquam* vel, pulvinar molestie augue.
+
+Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+&amp;nbsp;* **Markdown**
+&amp;nbsp;* Textile
+&amp;nbsp;* reStructuredText
+&amp;nbsp;* Texy!
+&amp;nbsp;* Txt2tags
+&amp;nbsp;* Marcado Wiki
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Creole
+&amp;nbsp;&amp;nbsp;&amp;nbsp;2. MediaWiki
+
+.. image:: pictures/no_wysiwyg.png
+   :alt: avatar
+
+---------------
+
+Cabecera H3
+^^^^^^^^^^^
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+============== ========== ===========
+\              solo texto HTML Limpio
+============== ========== ===========
+Markdown           Si         Si      
+Editor WYSISWG     X        A veces 
+============== ========== ===========
+
+*Ejemplo de código*::
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;import lifetime
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for each_day in lifetime.days():
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;carpe_diem()
+
+Suspendisse posuere velit et velit vehicula at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
+
+Esto es un texto con nota al pie [1]_ y esta es otra nota [2]_
+
+.. [1] Esto es una nota al pie.
+.. [2] Esto es la segunda nota.
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h1 id="documento-de-ejemplo"&gt;Documento de ejemplo&lt;/h1&gt;
+&lt;p&gt;Lorem ipsum &lt;a href="#mark"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;strong&gt;semper adipiscing leo&lt;/strong&gt; et blandit.&lt;/p&gt;
+&lt;p&gt;Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar molestie augue.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Lenguajes de marcado ligero&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Markdown&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Textile&lt;/li&gt;
+&lt;li&gt;reStructuredText&lt;/li&gt;
+&lt;li&gt;Texy!&lt;/li&gt;
+&lt;li&gt;Txt2tags&lt;/li&gt;
+&lt;li&gt;Marcado Wiki
+&lt;ol style="list-style-type: decimal"&gt;
+&lt;li&gt;Creole&lt;/li&gt;
+&lt;li&gt;MediaWiki&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p /&gt;
+&lt;img src="pictures/no_wysiwyg.png" alt="avatar" /&gt;
+&lt;hr /&gt;
+&lt;h2 id="cabecera-h3"&gt;Cabecera H3&lt;/h2&gt;
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class="header"&gt;
+&lt;th align="left"&gt; &lt;/th&gt;
+&lt;th align="left"&gt;solo texto&lt;/th&gt;
+&lt;th align="left"&gt;HTML Limpio&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class="odd"&gt;
+&lt;td align="left"&gt;Markdown&lt;/td&gt;
+&lt;td align="left"&gt;Si&lt;/td&gt;
+&lt;td align="left"&gt;Si&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class="even"&gt;
+&lt;td align="left"&gt;Editor WYSISWG&lt;/td&gt;
+&lt;td align="left"&gt;X&lt;/td&gt;
+&lt;td align="left"&gt;A veces&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;Ejemplo de código&lt;/em&gt;:&lt;/p&gt;
+&lt;pre&gt;import lifetime
+
+&lt;p&gt;for each_day in lifetime.days():
+    carpe_diem()
+&lt;/pre&gt;
+&lt;p&gt;Suspendisse posuere velit et velit vehicula at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.&lt;/p&gt;
+&lt;p&gt;Esto es un texto con nota al pie &lt;sup&gt;&lt;a href="#fn1" class="footnoteRef" id="fnref1"&gt;1&lt;/a&gt;&lt;/sup&gt; y esta es otra nota &lt;sup&gt;&lt;a href="#fn2" class="footnoteRef" id="fnref2"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn1"&gt;&lt;p&gt;Esto es una nota al pie. &lt;a href="#fnref1" class="footnoteBackLink" title="Jump back to footnote 1"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn2"&gt;&lt;p&gt;Esto es la segunda nota. &lt;a href="#fnref2" class="footnoteBackLink" title="Jump back to footnote 2"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="texy"&gt;Texy!&lt;/h2&gt;
+&lt;p&gt;Fue específicamente diseñado para crear documentos XHTML, por ello es bastante 
+completo, pero no está muy extendido. Es legible, pero también tiene carece de 
+soporte para ciertos tags de HTML.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 53%;"&gt;Texy!&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+Documento de ejemplo
+====================
+
+Lorem ipsum [dolor sit amet | http://joedicastro.com], consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit *sit amet aliquam* vel, pulvinar molestie augue.
+
+&gt; Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+- **Markdown**
+- Textile
+- reStructuredText
+- Texy!
+- Txt2tags
+- Marcado Wiki
+ 1) Creole
+ 2) MediaWiki
+
+[* pictures/no_wysiwyg.png .(alt text)[avatar] *]
+
+### Cabecera H3 ###
+
+-----
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+|------------------------------
+|   | solo texto | HTML Limpio  
+|------------------------------
+| Markdown       | Si | Si      
+| Editor WYSISWG | X  | A veces
+
+*Ejemplo de código*
+
+/---code
+&amp;nbsp;&amp;nbsp;import lifetime
+
+&amp;nbsp;&amp;nbsp;for each_day in lifetime.days():
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;carpe_diem()
+\---
+
+Suspendisse posuere velit et velit "vehicula"((automobila)) at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+
+&lt;h1 id="toc-documento-de-ejemplo"&gt;Documento de ejemplo&lt;/h1&gt;
+
+&lt;p&gt;Lorem ipsum &lt;a href="http://joedicastro.com"&gt;dolor sit amet&lt;/a&gt;, consectetur
+adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id
+rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula.
+Vestibulum &lt;strong&gt;semper adipiscing leo&lt;/strong&gt; et blandit.&lt;/p&gt;
+
+&lt;p&gt;Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar
+molestie&amp;nbsp;augue.&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel
+    convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis,
+    ultrices pharetra&amp;nbsp;nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Lenguajes de marcado ligero&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Markdown&lt;/strong&gt;&lt;/li&gt;
+
+&lt;li&gt;Textile&lt;/li&gt;
+
+&lt;li&gt;reStructuredText&lt;/li&gt;
+
+&lt;li&gt;Texy!&lt;/li&gt;
+
+&lt;li&gt;Txt2tags&lt;/li&gt;
+
+&lt;li&gt;Marcado Wiki
+        &lt;ol&gt;
+            &lt;li&gt;Creole&lt;/li&gt;
+
+&lt;li&gt;MediaWiki&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div&gt;&lt;img src="pictures/no_wysiwyg.png" class="avatar"
+alt="alt text"&gt;&lt;/div&gt;
+
+&lt;h1 id="toc-cabecera-h3"&gt;Cabecera H3&lt;/h1&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce
+dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui
+fermentum vitae blandit risus aliquet.&lt;/p&gt;
+
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;&amp;nbsp;&lt;/th&gt;
+
+&lt;th&gt;solo texto&lt;/th&gt;
+
+&lt;th&gt;HTML Limpio&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+
+&lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Markdown&lt;/td&gt;
+
+&lt;td&gt;Si&lt;/td&gt;
+
+&lt;td&gt;Si&lt;/td&gt;
+        &lt;/tr&gt;
+
+&lt;tr&gt;
+            &lt;td&gt;Editor WYSISWG&lt;/td&gt;
+
+&lt;td&gt;X&lt;/td&gt;
+
+&lt;td&gt;A&amp;nbsp;veces&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;Ejemplo de código&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()&lt;/pre&gt;
+
+&lt;p&gt;Suspendisse posuere velit et velit &lt;acronym
+title="automobila"&gt;vehicula&lt;/acronym&gt; at scelerisque orci suscipit. Nulla
+facilisis lorem eu sem viverra varius nec ut&amp;nbsp;felis.&lt;/p&gt;
+
+&lt;p&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="txt2tags"&gt;txt2tags&lt;/h2&gt;
+&lt;p&gt;Está escrito en Python y es muy potente, al igual que RestructuredText, 
+permitiendo macros. Permite la salida en muchos formatos, incluido el XHTML. 
+Es muy legible y muy fácil de emplear, es una pena que no esté más extendido y 
+soportado. Aunque aún tiene algunas carencias como las notas al pie o las 
+abreviaturas, que pueden ser soportadas con macros, también tiene un desarrollo 
+muy activo. En la futura versión 3.0 serán soportados directamente las notas al 
+pie. Es una alternativa con muy buen futuro.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 53%;"&gt;txt2tags&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+=Documento de ejemplo=
+
+Lorem ipsum [dolor sit amet #mark], consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit //sit amet aliquam// vel, pulvinar molestie augue.
+
+&lt;tab&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+- **Markdown**
+ - Textile
+ - reStructuredText
+ - Texy!
+ - Txt2tags
+ - Marcado Wiki
+  + Creole
+  + MediaWiki
+
+[pictures/no_wysiwyg.png]
+
+===Cabecera H3===
+
+--------------------
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+||   | solo texto | HTML Limpio
+| Markdown       |  Si  |  Si  |
+| Editor WYSISWG |  X  |  A veces  |
+
+//Ejemplo de codigo//
+
+```
+import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+```
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h1&gt;Documento de ejemplo&lt;/h1&gt;
+
+&lt;p&gt;
+Lorem ipsum &lt;a href="#mark"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;b&gt;semper adipiscing leo&lt;/b&gt; et blandit.
+&lt;/p&gt;
+&lt;p&gt;
+Sed nibh quam, hendrerit &lt;i&gt;sit amet aliquam&lt;/i&gt; vel, pulvinar molestie augue.
+&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;
+Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+Lenguajes de marcado ligero 
+&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;b&gt;Markdown&lt;/b&gt;
+ &lt;li&gt;Textile
+ &lt;li&gt;reStructuredText
+ &lt;li&gt;Texy!
+ &lt;li&gt;Txt2tags
+ &lt;li&gt;Marcado Wiki
+  &lt;ol&gt;
+  &lt;li&gt;Creole
+  &lt;li&gt;MediaWiki
+  &lt;/ol&gt;
+ &lt;/ul&gt;
+
+&lt;p&gt;
+&lt;img src="pictures/no_wysiwyg.png" alt=""&gt;
+&lt;/p&gt;
+
+&lt;h3&gt;Cabecera H3&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+&lt;/p&gt;
+
+&lt;table cellapadding="4"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;&lt;/th&gt;
+    &lt;th&gt;solo texto&lt;/th&gt;
+    &lt;th&gt;HTML Limpio&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Markdown&lt;/td&gt;
+    &lt;td align="center"&gt;Si&lt;/td&gt;
+    &lt;td align="center"&gt;Si&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Editor WYSISWG&lt;/td&gt;
+    &lt;td align="center"&gt;X&lt;/td&gt;
+    &lt;td align="center"&gt;A veces&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;
+ &lt;i&gt;Ejemplo de codigo&lt;/i&gt;
+&lt;/p&gt;
+
+&lt;pre&gt;
+import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+&lt;/pre&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+&lt;h2 id="creole"&gt;Creole&lt;/h2&gt;
+&lt;p&gt;Creado a partir de los lenguajes más empleados en los Wikis y usado 
+fundamentalmente en Wikis, por lo que también tiene ciertas carencias.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 50%;"&gt;Creole&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+== Documento de ejemplo ==
+
+Lorem ipsum [[#mark|dolor sit amet]], consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
+
+Sed nibh quam, hendrerit //sit amet aliquam// vel, pulvinar molestie augue.
+
+&gt; Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
+
+Lenguajes de marcado ligero
+
+* **Markdown**
+ * Textile
+ * reStructuredText
+ * Texy!
+ * Txt2tags
+ * Marcado Wiki
+ ## Creole
+ ## MediaWiki
+
+{{pictures/no_wysiwyg.png|avatar}}
+
+==== Cabecera H3 ====
+
+-----
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+|= |= solo texto |= HTML Limpio |
+| Markdown       | Si | Si      |
+| Editor WYSISWG | X  | A veces |
+
+//Ejemplo de código//
+{{{
+import lifetime
+
+for each_day in lifetime.days():
+    carpe_diem()
+}}}
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h1&gt;Documento de ejemplo&lt;/h1&gt;
+
+&lt;p&gt;Lorem ipsum &lt;a href="#mark"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;strong&gt;semper adipiscing leo&lt;/strong&gt; et blandit.&lt;/p&gt;
+&lt;p&gt;Sed nibh quam, hendrerit &lt;em&gt;sit amet aliquam&lt;/em&gt; vel, pulvinar molestie augue.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Lenguajes de marcado ligero &lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Markdown&lt;/strong&gt;
+&lt;/li&gt;&lt;li&gt;Textile
+&lt;/li&gt;&lt;li&gt;reStructuredText
+&lt;/li&gt;&lt;li&gt;Texy!
+&lt;/li&gt;&lt;li&gt;Txt2tags
+&lt;/li&gt;&lt;li&gt;Marcado Wiki
+&lt;ol&gt;&lt;li&gt;Creole
+&lt;/li&gt;&lt;li&gt;MediaWiki
+&lt;/li&gt;&lt;/ol&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;p&gt;&lt;img src="pictures/no_wysiwyg.png" alt="avatar" title="avatar" /&gt;&lt;/p&gt;
+&lt;h3&gt;Cabecera H3&lt;/h3&gt;
+&lt;p&gt;-----&lt;/p&gt;
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+
+&lt;table&gt;&lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;solo texto&lt;/th&gt;&lt;th&gt;HTML Limpio&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Markdown&lt;/td&gt;&lt;td&gt;Si&lt;/td&gt;&lt;td&gt;Si&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Editor WYSISWG&lt;/td&gt;&lt;td&gt;X&lt;/td&gt;&lt;td&gt;A veces&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;Ejemplo de código&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;
+import lifetime
+
+&lt;p&gt;for each_day in lifetime.days():
+    carpe_diem()
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="mediawiki"&gt;MediaWiki&lt;/h2&gt;
+&lt;p&gt;Quizás el más extendido, no en vano MediaWiki es el Wiki empleado por la 
+Wikipedia. Igual que Creole, tiene ciertas limitaciones que suple con plugins y 
+etiquetas HTML. No me acaba de gustar. La manera que tiene de crear tablas - 
+por ejemplo - aunque potente, no me parece nada legible en texto plano.&lt;br /&gt;
+&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="width: 53%;"&gt;MediaWiki&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+    &lt;pre class="no_mrkdwn"&gt;
+==Documento de ejemplo==
+
+Lorem ipsum [http://joedicastro.com dolor sit amet], consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum '''semper adipiscing leo''' et blandit.
+
+Sed nibh quam, hendrerit ''sit amet aliquam'' vel, pulvinar molestie augue.
+
+&lt;blockquote&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/blockquote&gt;
+
+Lenguajes de marcado ligero
+
+* '''Markdown'''
+* Textile
+* reStructuredText
+* Texy!
+* Txt2tags
+* Marcado Wiki
+*# Creole
+*# MediaWiki
+
+[[File:pictures/no_wysiwyg.png|caption]]
+
+=== Cabecera H3 ===
+
+----
+
+Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
+
+{| 
+! 
+! solo texto
+! HTML Limpio
+|-
+|Markdown
+|Si
+|Si
+|-
+|Editor WYSISWG
+|X
+|A veces
+|}
+
+''Ejemplo de código''
+
+&amp;nbsp;&amp;nbsp;import lifetime
+&amp;nbsp;&amp;nbsp; 
+&amp;nbsp;&amp;nbsp;for each_day in lifetime.days():
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;carpe_diem()
+
+Suspendisse posuere velit et velit &lt;span title="automobila"&gt;vehicula&lt;/span&gt; at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
+
+Esto es un texto con nota al pie &lt;ref name="ejemplo"&gt;Esto es una nota al pie.&lt;/ref&gt; y esta es otra nota &lt;ref name="segunda"&gt; Esto es la segunda nota.&lt;/ref&gt;
+
+{{reflist}}
+    &lt;/pre&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+&lt;h2&gt;&lt;span class="mw-headline" id="Documento_de_ejemplo"&gt;Documento de ejemplo&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;Lorem ipsum &lt;a href="http://joedicastro.com" class="external text" rel="nofollow"&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum &lt;b&gt;semper adipiscing leo&lt;/b&gt; et blandit.&lt;/p&gt;
+
+&lt;p&gt;Sed nibh quam, hendrerit &lt;i&gt;sit amet aliquam&lt;/i&gt; vel, pulvinar molestie augue.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Lenguajes de marcado ligero&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Markdown&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;Textile&lt;/li&gt;
+&lt;li&gt;reStructuredText&lt;/li&gt;
+
+&lt;li&gt;Texy!&lt;/li&gt;
+&lt;li&gt;Txt2tags&lt;/li&gt;
+&lt;li&gt;Marcado Wiki
+&lt;ol&gt;
+&lt;li&gt;Creole&lt;/li&gt;
+&lt;li&gt;MediaWiki&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="pictures/no_wysiwyg.png" alt="" /&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;span class="mw-headline" id="Cabecera_H3"&gt;Cabecera H3&lt;/span&gt;&lt;/h3&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;solo texto&lt;/th&gt;
+&lt;th&gt;HTML Limpio&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Markdown&lt;/td&gt;
+&lt;td&gt;Si&lt;/td&gt;
+&lt;td&gt;Si&lt;/td&gt;
+
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Editor WYSISWG&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;A veces&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;i&gt;Ejemplo de código&lt;/i&gt;&lt;/p&gt;
+&lt;pre&gt;
+import lifetime
+
+&lt;p&gt;for each_day in lifetime.days():
+    carpe_diem()&lt;/p&gt;
+&lt;p&gt;&lt;/pre&gt;
+&lt;p&gt;Suspendisse posuere velit et velit &lt;span title="automobila"&gt;vehicula&lt;/span&gt; at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.&lt;/p&gt;&lt;/p&gt;
+&lt;p&gt;Esto es un texto con nota al pie &lt;sup id="cite_ref-ejemplo_0-0" class="reference"&gt;&lt;a href="#cite_note-ejemplo-0"&gt;&lt;span&gt;[&lt;/span&gt;1&lt;span&gt;]&lt;/span&gt;&lt;/a&gt;&lt;/sup&gt; y esta es otra nota &lt;sup id="cite_ref-segunda_1-0" class="reference"&gt;&lt;a href="#cite_note-segunda-1"&gt;&lt;span&gt;[&lt;/span&gt;2&lt;span&gt;]&lt;/span&gt;&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;div class="reflist" style="list-style-type: decimal;"&gt;
+&lt;ol class="references"&gt;
+&lt;li id="cite_note-ejemplo-0"&gt;&lt;b&gt;&lt;a href="#cite_ref-ejemplo_0-0"&gt;^&lt;/a&gt;&lt;/b&gt; Esto es una nota al pie.&lt;/li&gt;
+&lt;li id="cite_note-segunda-1"&gt;&lt;b&gt;&lt;a href="#cite_ref-segunda_1-0"&gt;^&lt;/a&gt;&lt;/b&gt; Esto es la segunda nota.&lt;/li&gt;
+
+&lt;p&gt;&lt;/ol&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">joe di castro</dc:creator><pubDate>Sat, 02 Apr 2011 20:29:00 -0000</pubDate><category>markdown</category><category>Textile</category><category>BBCode</category><category>reStructuredText</category><category>Texy!</category><category>txt2tags</category><category>Creole</category><category>MediaWiki</category><category>marcado</category><category>HTML</category><category>XHTML</category></item></channel></rss>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
+  <meta name="author" content="{{ AUTHOR }}" />
+  {% block keywords %}<meta name="keywords" content="joe di castro, blog">{% endblock %}
+  <link rel="author" href="humans.txt" />
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/{{ CSS_FILE }}" type="text/css" />
+  <link href="{{ SITEURL }}/{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
+  {% if FEED_RSS %}<link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />{% endif %}
+  {% block rss %}{%endblock%}
+  <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body id="index" class="home">
+{% include 'github.html' %}
+  <header id="banner" class="body">
+    <h1><a href="{{ SITEURL }}"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAAxBAMAAADKNk2HAAAAElBMVEW/kiXQsGLey5vn3b/s5dH3+fXlDfF2AAADFElEQVRIDa3Bu3LbOABA0QtQ7KFo0TPOqmfiZU/PmD1A8v7/r6yejpPIkxlL5+BP85aQ/Ty8WhJH2U/Dixl2ky80fhqeVaJHI34answ0nlS8bR38GzwhejYzeFPK/g0ejUyezUzesuBHusEzPFjIXlS8qTR+YMYLPOiDVwVvStkPjBsvUFdar0rwlgU/wt4L1IJvusZbSuMHanh9nTxB7aNvaL0lZX8z86tJUVPj1cLeG2b8Xd1ut09P337w3+vr8/PzNxU1Ra8K3jJu/ECJvkHt2T151kdvYe8HUvYNaoXgGa03VJy84dkZf8KDeTd5MrP3hr6t0T+Nwb519QrfK3jDyj5l/8RGhgWv8L2u8c3kVQkuvrc8eVAZSrALXuF7ZJ3j10m/gyfLtk2tF2tirz1kNW1M7Urrwcvui+I7FV2A1gTBowpbhpfBkxRS60hkryPDgoWp0woM4jt9XDsIqe3Zd3snXYh2YWXwqA8L+4V/1qALWKJ96IJCZFrwHQIHmSeyOm40RWfaEj2qDH00RUujXcSUTdA6wgtzwJ9mCClQSXEdXBmsaGIi22dN2TR0TJKtoYQFa9gyrdD0kYxv1sRupoSOg439RlNrJc44ozWoldYRV3LZlGjKJTqG1EAjXi3QOm4K8IMwVXRlWKEdW1OrXdYVpoXWFE1tynMw5ZWcICheLMBkGhbiVBkkaw12MDHUoCtqR2NiGPke2TF0ecEeCzsVz1ZCH1xxZDC1do1a4gt9nMPMoLXRnpR7qLQpMfIlWDaVxhQ8wLMUJloXOrIVx+BBgZzaGslqaX1hk7Z0sFkhdiFl+0CKicEDPOkZKpNC1NK8sPeg0qwMM40HJXZEO3IhusDA16A9TYXsER5Vsn1U571aYOPJq3PUV49miLoMzkFddEpZHfTH5Ake0SjZi4WdN3z/11998Vd4MDJZ8F6oC1nTxnuh9kFn9t4LXcg6Bu+GjkGl9W4orVYm74aVSVPj/bCLOrP3fkjWPvgAVHQl+wCUqAUfga5VWh8BsgUfAvJK60NAk/AxSJB9DEY2Psj/Dz0Ida72jQIAAAAASUVORK5CYII=" alt="{{ SITENAME }}" title="{{ SITENAME }}" width="150" height="49" /> {% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
+      <nav>
+      	<ul>
+         {% for title, link in MENUITEMS %}<li><a href="{{ link }}">{{ title }}</a></li>{% endfor %}
+         {% for cat, null in categories %}<li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/category/{{ cat }}.html">{{ cat }}</a></li>{% endfor %}
+         <li><a href="{{ SITEURL }}/archives.html">archivos</a></li>
+         <li><a href="{{ SITEURL }}/tags.html">etiquetas</a></li>
+         {% if DISPLAY_PAGES_ON_MENU %}
+         {% for page in PAGES %}<li><a href="{{ SITEURL }}/pages/{{ page.url }}">{{ page.title }}</a></li>{% endfor %}
+         {% endif %}
+       </ul>
+     </nav>
+  </header><!-- /#banner -->
+  {%- block content %}{% endblock -%}
+  <section id="extras" class="body">
+    {% if LINKS %}
+    <div class="blogroll">
+      <h2>enlaces</h2>
+        <ul>{% for name, link in LINKS %}
+          <li><a href="{{ link }}">{{ name }}</a></li>{% endfor %}
+        </ul>
+    </div><!-- /.blogroll -->
+    {% endif %}
+    {% if SOCIAL %}
+    <div class="social">
+      <h2>social</h2>
+        <ul>
+          <li><a href="{{ SITEURL }}/{{ FEED }}" rel="alternate">atom</a></li>
+          {% if FEED_RSS %}<li><a href="{{ SITEURL }}/{{ FEED_RSS }}" rel="alternate">rss</a></li>{% endif %}
+          {% for name, link in SOCIAL %}
+          <li><a href="{{ link }}">{{ name }}</a></li>{% endfor %}
+        </ul>
+    </div><!-- /.social -->
+    {% endif %}
+  </section><!-- /#extras -->
+  <footer id="contentinfo" class="body">
+    <address id="about" class="vcard body">
+      © 2010-2011 joe di castro. Powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a><span id="license">Los contenidos están bajo una <a href="http://creativecommons.org/licenses/by-sa/3.0/es">licencia Creative Commons</a></span>
+    </address><!-- /#about -->
+  </footer><!-- /#contentinfo -->
+{% include 'piwik.html' %}
+{% include 'disqus_script.html' %}
+</body>
+</html>
