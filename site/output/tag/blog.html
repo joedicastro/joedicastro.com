@@ -55,6 +55,7 @@ Pelican e instalar el entorno virtual en un minuto. </p>
 añadido al fichero fabric <em>fabfile.py</em> dos tareas más:</p>
 <div class="codehilite"><pre><span class="k">def</span> <span class="nf">commit</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Make a commit to the local mercurial repository.&quot;&quot;&quot;</span>
+    <span class="n">local</span><span class="p">(</span><span class="s">&quot;hg add&quot;</span><span class="p">)</span>
     <span class="n">local</span><span class="p">(</span><span class="s">&quot;hg commit -m &#39;{0}&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">message</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">push</span><span class="p">():</span>
