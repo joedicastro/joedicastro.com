@@ -8,7 +8,7 @@ To generate the site use the generator of static content blogs
 files.
 
 
-### Directorios en ./
+### Directories in ./
 
 * **site**:
  
@@ -27,7 +27,7 @@ files.
   The blog's theme.
 
 
-### Files en ./
+### Files in ./
 
 * **fafbile.py**
 

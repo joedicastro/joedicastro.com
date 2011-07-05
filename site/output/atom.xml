@@ -1,5 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>joe di castro</title><link href="http://joedicastro.com" rel="alternate"></link><link href="http://joedicastro.com/atom.xml" rel="self"></link><id>http://joedicastro.com</id><updated>2011-06-30T01:21:00Z</updated><entry><title>Pelican - Configuración y personalización</title><link href="http://joedicastro.com/pelican-configuracion-y-personalizacion.html" rel="alternate"></link><updated>2011-06-30T01:21:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-06-30:/pelican-configuracion-y-personalizacion.html/</id><summary type="html">&lt;p&gt;Con este articulo cierro la serie que le he dedicado a &lt;a href="/tag/Pelican.html"&gt;Pelican&lt;/a&gt; como 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>joe di castro</title><link href="http://joedicastro.com" rel="alternate"></link><link href="http://joedicastro.com/atom.xml" rel="self"></link><id>http://joedicastro.com</id><updated>2011-07-05T23:02:00Z</updated><entry><title>Pelican - Repositorio</title><link href="http://joedicastro.com/pelican-repositorio.html" rel="alternate"></link><updated>2011-07-05T23:02:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-07-05:/pelican-repositorio.html/</id><summary type="html">&lt;p&gt;Como complemento a la &lt;a href="/tag/Pelican.html"&gt;serie de artículos&lt;/a&gt; que he publicado sobre &lt;a href="http://docs.notmyidea.org/alexis/pelican/"&gt;Pelican&lt;/a&gt;, 
+el software que genera este blog, añado el repositorio, &lt;a href="/pelican-configuracion-y-personalizacion.html"&gt;como había prometido&lt;/a&gt;, 
+del contenido del mismo. El repositorio emplea el sistema de control de versiones 
+&lt;a href="http://mercurial.selenic.com/"&gt;Mercurial&lt;/a&gt; y está alojado en &lt;a href="https://bitbucket.org/"&gt;Bitbucket&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Las ventajas de disponer del contenido del blog en un repositorio son las de 
+poder enmendar un error con suma facilidad y en muy poco tiempo, además de la de 
+poder trabajar con distintas versiones del mismo (pruebas y producción). Además 
+el repositorio en Bitbucket me proporciona una copia de seguridad adicional del 
+sitio sin esfuerzo alguno. Y si alguien está interesado en crear su propio blog 
+con Pelican y quiere saber como he realizado el mio, ahí tiene las claves. Salvo 
+el propio Pelican (que no tendría mucho sentido) todo el material empleado para 
+generarlo está en el. Y disponiendo del fichero &lt;strong&gt;fabric&lt;/strong&gt;, se pueden descargar 
+Pelican e instalar el entorno virtual en un minuto. &lt;/p&gt;
+&lt;p&gt;Para automatizar todas las tareas, incluso las más comunes del repositorio, he 
+añadido al fichero fabric &lt;em&gt;fabfile.py&lt;/em&gt; dos tareas más:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;commit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Make a commit to the local mercurial repository.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hg commit -m &amp;#39;{0}&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;push&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Make a push to the remote mercurial repository.&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hg push ssh://hg@bitbucket.org/joedicastro/joedicastro.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con estas puedo hacer un &lt;code&gt;commit&lt;/code&gt; y un &lt;code&gt;push&lt;/code&gt; a Bitbucket en un solo paso, por 
+ejemplo:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;fab commit:&amp;quot;Añadido articulo: Pelican - Repositorio&amp;quot; push&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;También he cambiado la página que generaba los archivos del blog, ya que no me 
+gustaba el formato anterior: una fecha, un articulo. He pasado de esto:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;base.html&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;content&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;section id=&amp;quot;content&amp;quot; class=&amp;quot;body&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;h1&amp;gt;Archivos de &lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;SITENAME&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class="x"&gt;&amp;lt;dl&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;article&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;dates&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &amp;lt;dt&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;article.locale_date&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;lt;/dt&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &amp;lt;dd&amp;gt;&amp;lt;a href=&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;article.url&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;#39;&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;article.title&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;lt;/a&amp;gt;&amp;lt;/dd&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;/dl&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;a esto:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;base.html&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;block&lt;/span&gt; &lt;span class="nv"&gt;content&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;section id=&amp;quot;content&amp;quot; class=&amp;quot;body&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;h1&amp;gt;Archivos de &lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;SITENAME&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;years_month&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;{}&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nv"&gt;months&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Enero&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Febrero&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Marzo&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Abril&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Mayo&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; 
+                  &lt;span class="m"&gt;6&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Junio&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="m"&gt;7&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Julio&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Agosto&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="m"&gt;9&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Septiembre&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; 
+                  &lt;span class="m"&gt;10&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Octubre&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="m"&gt;11&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Noviembre&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;&lt;span class="s1"&gt;:&amp;#39;Diciembre&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt; &lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;article&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;dates&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;article.date.year&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;years_month&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="nv"&gt;years_month.update&lt;/span&gt;&lt;span class="o"&gt;({&lt;/span&gt;&lt;span class="nv"&gt;article.date.year&lt;/span&gt;&lt;span class="o"&gt;:[&lt;/span&gt;&lt;span class="nv"&gt;article.date.month&lt;/span&gt;&lt;span class="o"&gt;]})&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;else&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;article.date.month&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;years_month&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;article.date.year&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt; &lt;/span&gt;
+&lt;span class="x"&gt;      &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="nv"&gt;years_month&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;article.date.year&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;.append&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;article.date.month&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;endif&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;endif&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;year&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;years_month&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nf"&gt;sort&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;reverse&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kp"&gt;True&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;  &amp;lt;h2 class=&amp;quot;year&amp;quot;&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;year&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;lt;/h2&amp;gt;&amp;lt;dl&amp;gt;  &lt;/span&gt;
+&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;month&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;years_month&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;year&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &amp;lt;dt class=&amp;quot;month&amp;quot;&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;months&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;month&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;lt;/dt&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;article&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;dates&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;      &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;article.date.year&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nv"&gt;year&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;article.date.month&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nv"&gt;month&lt;/span&gt; -&lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;        &amp;lt;dd&amp;gt;&amp;lt;span class=&amp;quot;day&amp;quot;&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;article.locale_date.split&lt;/span&gt;&lt;span class="o"&gt;()[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;lt;/span&amp;gt;  &amp;lt;a href=&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;article.url&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;#39;&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;article.title&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;lt;/a&amp;gt;&amp;lt;/dd&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;      &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;endif&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt;- &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&amp;lt;/dl&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endfor&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endblock&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Donde los artículos están archivados por año, mes y día, con un formato que 
+personalmente me agrada bastante más.&lt;/p&gt;
+&lt;p&gt;El repositorio de este blog se encuentra en 
+&lt;a href="https://bitbucket.org/joedicastro/joedicastro.com/"&gt;https://bitbucket.org/joedicastro/joedicastro.com/&lt;/a&gt;&lt;/p&gt;</summary><category term="Pelican"></category><category term="python"></category><category term="markdown"></category><category term="reStructuredText"></category><category term="blog"></category><category term="mercurial"></category><category term="hg"></category></entry><entry><title>Pelican - Configuración y personalización</title><link href="http://joedicastro.com/pelican-configuracion-y-personalizacion.html" rel="alternate"></link><updated>2011-06-30T01:21:00Z</updated><author><name>joe di castro</name></author><id>tag:joedicastro.com,2011-06-30:/pelican-configuracion-y-personalizacion.html/</id><summary type="html">&lt;p&gt;Con este articulo cierro la serie que le he dedicado a &lt;a href="/tag/Pelican.html"&gt;Pelican&lt;/a&gt; como 
 herramienta idónea para crear blogs estáticos con mantenimiento cero. Aquí voy a 
 tratar de la parte más compleja de Pelican, la que nos permite personalizarlo y 
 adaptarlo a nuestros gustos y necesidades. El primer nivel de personalización se 
