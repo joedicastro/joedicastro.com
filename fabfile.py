@@ -128,3 +128,8 @@ def img4web(delete=False, source=""):
           format(os.path.join(ROOT_PATH, "site/source/pictures"),
                  "--delete" if delete else "",
                  "-s {0}".format(source) if source else ""))
+
+def commit(message):
+    """Make a commit to the local mercurial repository."""
+    local("hg commit -m '{0}'".format(message))
+

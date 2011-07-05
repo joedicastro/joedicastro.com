@@ -31,7 +31,8 @@ Redirect 301 /notificaciones_de_escritorio_en_ubuntu_desde_python /notificacione
   RewriteRule ^ammap/(.*) /static/ammap/$1 [R=301,L] 
   RewriteRule ^feeds/tags/pictures/(.*) /static/pictures/$1 [R=301,L]
   RewriteRule ^etiquetas/(.*) /tag/$1.html [R=301,L]
-  
+ 
+  RewriteRule "(^|/)\." - [F] 
 </IfModule>
 
 
@@ -76,13 +77,8 @@ Redirect 301 /notificaciones_de_escritorio_en_ubuntu_desde_python /notificacione
 Options -Indexes
 Options +FollowSymLinks
 
-<IfModule mod_rewrite.c>
-  RewriteRule "(^|/)\." - [F]
-</IfModule>
-
 ErrorDocument 403 /access_denied.html
 ErrorDocument 404 /notfound.html
-
 
 <IfModule mod_headers.c>
   <FilesMatch "\.(js|css|xml|gz)$">
