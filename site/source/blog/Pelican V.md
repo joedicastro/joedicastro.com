@@ -1,6 +1,7 @@
 title: Pelican - Repositorio
-tags:  Pelican, python, markdown, reStructuredText, blog, mercurial, hg
 date: 2011-07-05 23:02
+tags:  Pelican, python, markdown, reStructuredText, blog, mercurial, hg
+
 
 Como complemento a la [serie de artículos][0] que he publicado sobre [Pelican][1], 
 el software que genera este blog, añado el repositorio, [como había prometido][2], 
