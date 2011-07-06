@@ -11,3 +11,5 @@ syntax: regexp
 
 syntax: regexp
 ^site/output$
+syntax: glob
+*.*~
