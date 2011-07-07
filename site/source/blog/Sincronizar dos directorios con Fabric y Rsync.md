@@ -48,7 +48,7 @@ función predefinida sería esta:
     def rsync_down(dlt="yes"):
         local("rsync -pthrvz {0}:{1}/ {2} {3}".
               format(env.host_string, REMOTE_PATH, LOCAL_PATH, 
-              "--delete" if dlt == "yes"' else ""))
+              "--delete" if dlt == "yes" else ""))
 
 Y luego solo tendríamos que llamar a la función deseada:
 
@@ -115,7 +115,7 @@ y el resto de ficheros y finalmente eliminar ese respaldo. Puede haber cientos
 de razones para preferir emplear fabric antes de un script independiente para 
 la sincronización.
 
-# Ejecución de la sincronización desatendida
+### Ejecución desatendida de la sincronización
 
 Si queremos programar esta tarea, no sería mala idea que nos avisara de cuando 
 comienza a ejecutarse y del resultado de la misma. Para ello puedo emplear 
