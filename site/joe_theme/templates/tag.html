@@ -1,6 +1,37 @@
-{% extends "index.html" %}
-{% block rss %}
+{% extends "base.html" %}
+{% block rss -%}
   <link href="{{ SITEURL }}/feeds/tags/{{ tag }}.{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} - {{ tag }} ATOM Feed" />
   {% if FEED_RSS %}<link href="{{ SITEURL }}/feeds/tags/{{ tag }}.{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} - {{ tag }} RSS Feed" />{% endif %}
-{%endblock%}
+{%- endblock %}
 {% block title %}{{ SITENAME }} - {{ tag }}{% endblock %}
+{% block content %}        
+{% if articles %}
+        <section id="content" class="body">
+          <ol id="posts-list" class="hfeed" start="{{ articles_paginator.per_page -1 }}">
+  {% for article in articles_page.object_list %}
+              <li>     
+              <article class="hentry">    
+                <header>
+                  <h1><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink a {{ article.title}}">{{ article.title }}</a></h1>
+                </header> 
+                <div class="entry-content">
+                  {{ article.summary }}
+                  <a class="readmore" href="{{ SITEURL }}/{{ article.url }}">leer más</a>
+                  {% include 'comments.html' %}
+                </div><!-- /.entry-content -->
+              </article>
+            </li>
+    {% if loop.last %}
+      {% include 'pagination.html' %}
+    {% endif %}
+{% endfor %}
+     </ol><!-- /#posts-list -->
+    </section><!-- /#content -->
+{% else %}
+  <section id="content" class="body">    
+    <h2>Paginas</h2>{% for page in PAGES %}
+      <li><a href="{{ SITEURL }}/pages/{{ page.url }}">{{ page.title }}</a></li>
+      {% endfor %}
+  </section>
+{% endif %}
+{% endblock content %}
