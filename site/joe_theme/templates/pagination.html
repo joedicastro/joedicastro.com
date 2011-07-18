@@ -1,3 +1,4 @@
+{% if WITH_PAGINATION %}
 <li id="paginator">
   {% if articles_page.has_previous() %}
     {% if articles_page.previous_page_number() == 1 %}
@@ -11,3 +12,4 @@
     <a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.next_page_number() }}.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAABYlBMVEUAAAABAQECAgIDAwMFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0QEBARERESEhIXFxcYGBgaGhodHR0oKCgpKSksLCwtLS0uLi4yMjIzMzM0NDQ3Nzc8PDxDQ0NFRUVGRkZYWFhcXFxdXV1jY2NlZWV9fX2BgYGCgoKDg4OFhYWHh4eKioqLi4uMjIyOjo6SkpKVlZWWlpacnJydnZ2fn5+kpKSmpqapqamsrKytra2urq6vr6+zs7O1tbW2tra3t7e9vb3Dw8PExMTFxcXGxsbHx8fJycnKysrMzMzOzs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/i4uLj4+Pl5eXm5ubo6Ojp6enq6urr6+vs7Ozu7u7v7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7///+41hGNAAABZElEQVQYVyWR51vCQAzG48DKnbj33ntvpSqKA3ADKihaQbTWlqu9Xv5/U8yTD/e8SZ68+R0golLyVzg/juP+SqVIAFQoxXfpS3ie+Ho3hSQBED37493/yRzH7r/91w/bo04lbeMNY72RUKip5wwNw5YKlCjmcQMYZ5SwgPmi8EGaOTsb4bxjlwo8nKjkTA88I40TGuf9eNYW5uFBvDVcELkk1lIPG8VCS5iBlXq2oZI+LwOn0PqsQjuH5O29Bc71sV8VG0ZkopXD08WVCc7VEXb8j58CY/V4eE3i3YHYbggWnTYzHppROo2L/P55ZVDj7cs1jDd2ft7s5WyydLL6YA3XMI3xum6jvBInS9LMROcfcHOoq2tgBQtzeobM05mpnbl5A12B5cXZnVRwZgDkMro8NTY9PT65pF9WgQToitm4vrW+tqXHs8UqOmLqu1bp5TGdfnwpWa7/D5m+QylfUvjBi4Q/dvFzY07mp8kAAAAASUVORK5CYII=" alt="&laquo;" title="siguiente" width="20" height="20" /></a>
   {% endif %}
 </li>
+{% endif %}
