@@ -1,5 +1,3 @@
-<!-- -*- markdown -*- -->
-
 # joedicastro.com
 
 Son los ficheros que utilizo para generar mi blog en http://joedicastro.com. 

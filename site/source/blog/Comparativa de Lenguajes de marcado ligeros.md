@@ -17,6 +17,7 @@ este.
 
 ## Documento de ejemplo realizado con Markdown
 
+<div>
 <table>
  <thead>
   <tr>
@@ -162,9 +163,9 @@ for each_day in lifetime.days():
   </tr>
  </tbody>
 </table>
+</div>
 
 ----
-
 
 ## Textile
 

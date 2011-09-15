@@ -142,6 +142,7 @@ empezar demostrándolo con un ejemplo:
 
 <br />
 
+<div>
 <table>
   <thead><tr><th style="width: 50%;">Markdown</th><th>Resultado</th></tr></thead>
 <tbody><tr>
@@ -255,7 +256,7 @@ Esto es un texto con nota al pie [^prima] y esta es otra nota [^secunda]
     </td>
   </tr>
 </tbody></table>
-
+</div>
 
 Es así de sencillo, el texto plano que se escribe en la columna de la izquierda 
 genera el HTML que se puede ver representado en la derecha. Es además HTML 

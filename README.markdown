@@ -1,5 +1,3 @@
-<!-- -*- markdown -*- -->
-
 # joedicastro.com
 
 Are the files I use to create my blog http://joedicastro.com.

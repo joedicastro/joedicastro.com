@@ -18,6 +18,9 @@ SITESUBTITLE = u""
 # If you do manage multiple languages, you can set the date formatting here.
 DATE_FORMATS = {}
 
+#Empty by default. Allows to render URLs in a particular way
+ARTICLE_PERMALINK_STRUCTURE = ''
+
 # The default category to fallback on.
 #DEFAULT_CATEGORY = "blog"
 
@@ -32,6 +35,9 @@ DISPLAY_PAGES_ON_MENU = True
 # informations from the metadata
 #FALLBACK_ON_FS_DATE = True
 
+#A list of the extensions that the markdown processor will use.
+MD_EXTENSIONS = ['codehilite','extra']
+
 # A list of any Jinja2 extensions you want to use.
 JINJA_EXTENSIONS = ['jinja2.ext.do']
 
@@ -42,6 +48,10 @@ DELETE_OUTPUT_DIRECTORY = False # True for debugging, False for productive
 # representing one locale. When providing a list, all the locales will be tried
 # until one works.
 LOCALE = ""
+
+#The timezone used in the date information, to generate atom and rss feeds.
+TIMEZONE = "Europe/Madrid"
+
 
 #A list of available markup languages you want to use. For the moment, only
 # available values are rst and md.
@@ -92,6 +102,10 @@ TAG_FEED_RSS = "feeds/tags/%s.rss.xml"
 
 # Where to put the Atom feed for translations.
 #TRANSLATION_FEED = "feeds/all-%s.atom.xml"
+
+#Maximum number of items allowed in a feed. Feeds are unrestricted by default.
+#FEED_MAX_ITEMS = ""
+
 
 # The minimum number of articles allowed on the last page. Use this when you
 # don’t want to have a last page with very few articles.
