@@ -105,7 +105,7 @@ para otro próximo articulo, [Pelican][13]. Pero si voy a hacer un repaso de los
 pros y los contras de emplear Pelican frente a un CMS como Drupal para crear un 
 blog.
 
- [13]: /pelican-introduccion-e-instalacion.html
+ [13]: http://joedicastro.com/pelican-introduccion-e-instalacion.html
  
 
 ## Ventajas de Pelican vs CMS

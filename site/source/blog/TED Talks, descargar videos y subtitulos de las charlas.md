@@ -4,7 +4,7 @@ tags: python, script, TED, TED Talks, video, subtitulos
 
 ![TED logo][1]
 
-  [1]: /pictures/ted_logo.png (TED logo)
+  [1]: http://joedicastro.com/pictures/ted_logo.png (TED logo)
 
 Como introducción, para aquellos que aun no conozcan [TED][3] **(Technology, 
 Enternaiment, Design)** y sus famosas charlas, **TED Talks**, podría resumirlo 

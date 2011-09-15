@@ -44,7 +44,7 @@ guardamos allí este fichero. Ahora ejecutamos pelican dentro del entorno virtua
 y nos creara una carpeta *output* donde como resultado tendremos un blog por 
 defecto creado como por arte de magia. Es decir, hacemos esto:
 
-  [0]: /pelican-introduccion-e-instalacion.html
+  [0]: http://joedicastro.com/pelican-introduccion-e-instalacion.html
 
     ::console
     $ mkdir prueba

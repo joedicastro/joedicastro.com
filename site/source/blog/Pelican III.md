@@ -14,8 +14,8 @@ __GitHub__ ([un ejemplo][3]), por los tradiciones hostings compartidos (e.g.
 este blog), hasta un servidor casero sencillo montado sobre un [NAS][4]. 
  
 
-  [0]: /pelican-introduccion-e-instalacion.html
-  [1]: /pelican-creacion-de-contenido.html
+  [0]: http://joedicastro.com/pelican-introduccion-e-instalacion.html
+  [1]: http://joedicastro.com/pelican-creacion-de-contenido.html
   [2]: http://jdacpelican.s3-website-us-east-1.amazonaws.com/
   [3]: http://marsam.github.com/blog/
   [4]: http://es.wikipedia.org/wiki/Network-attached_storage
@@ -56,7 +56,7 @@ FTP: lftp-mirror][10]. Si disponemos de acceso a través de SSH, entonces la
 elección es clarisima, __rsync__. Más adelante explico una manera de emplearlo 
 de forma automática.
 
-  [10]: /sincronizar-una-carpeta-local-y-una-remota-a-traves-de-ftp-lftp-mirror.html
+  [10]: http://joedicastro.com/sincronizar-una-carpeta-local-y-una-remota-a-traves-de-ftp-lftp-mirror.html
 
 Cualquiera de ambas soluciones nos permite subir el contenido en apenas segundos, 
 (sobre todo en el caso de rsync) cuando se trata de añadir un articulo nuevo, 
@@ -291,7 +291,7 @@ páginas web que se cargan más rápido.
         ::console
         $ fab img4web
         
-  [16]: /optimizar-imagenes-para-la-web.html
+  [16]: http://joedicastro.com/optimizar-imagenes-para-la-web.html
   
 * ***new*** Con este creo o edito los artículos del blog. Realiza 
 tres funciones: me abre una venta de Gedit con el articulo que le indico con la 
@@ -307,7 +307,7 @@ un buen corrector ortográfico.
         ::console
         $ fab new:"Articulo de prueba"
 
-  [17]: /de-drupal-a-pelican.html
+  [17]: http://joedicastro.com/de-drupal-a-pelican.html
 
 * ***publish*** El más importante, el que sube los artículos al servidor web. 
 Publicar el contenido de la web es tan sencillo como ejecutar este comando. Lo 

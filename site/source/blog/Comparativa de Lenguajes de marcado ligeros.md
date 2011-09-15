@@ -8,7 +8,7 @@ disponibles actualmente. Dicha comparativa surge a partir de este articulo,
 [Markdown, la mejor opción para crear contenidos web][mrkdwn], donde defiendo la 
 idoneidad de markdown para crear contenidos web.
 
-  [mrkdwn]: /markdown-la-mejor-opcion-para-crear-contenidos-web.html
+  [mrkdwn]: http://joedicastro.com/markdown-la-mejor-opcion-para-crear-contenidos-web.html
 
 En esta comparativa se verá como emplear cada uno de los lenguajes de marcado 
 disponibles para crear un contenido web similar. Tomo como referencia a markdown, 
