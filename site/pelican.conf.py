@@ -36,7 +36,7 @@ DISPLAY_PAGES_ON_MENU = True
 #FALLBACK_ON_FS_DATE = True
 
 #A list of the extensions that the markdown processor will use.
-MD_EXTENSIONS = ['codehilite','extra']
+MD_EXTENSIONS = ['codehilite', 'extra']
 
 # A list of any Jinja2 extensions you want to use.
 JINJA_EXTENSIONS = ['jinja2.ext.do']
@@ -178,6 +178,7 @@ LINKS = ((u'Fotografías', 'http://photo.joedicastro.com/'),
 SOCIAL = (('twitter', 'http://twitter.com/joe_di_castro'),
           ('identi.ca', 'http://identi.ca/joedicastro'),
           ('facebook', 'http://www.facebook.com/joedicastr0'),
+          ('delicious', 'http://www.delicious.com/joe_di_castro'),
           ('bitbucket', 'https://bitbucket.org/joedicastro'),)
 
 # Allows to add a button on the articles to tweet about them. Add you twitter
