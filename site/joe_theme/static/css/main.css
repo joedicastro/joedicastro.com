@@ -198,3 +198,4 @@ li:last-child .hentry, #content > .hentry{border:0;margin:0;}
 .vi{color:#000000;}
 .il{color:#0000CF;font-weight:bold;}
 pre{color:#7F7F7F;}
+#cse-search-results iframe{width: 760px;height:1300px;}

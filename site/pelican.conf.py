@@ -5,8 +5,7 @@
 #===============================================================================
 
 # Add personalized 404 & 403 error pages to direct templates
-DIRECT_TEMPLATES = ('index', 'tags', 'categories', 'archives', 'notfound',
-                    'access_denied')
+DIRECT_TEMPLATES = ('index', 'tags', 'archives', 'notfound', 'access_denied')
 
 # Default author (put your name)
 AUTHOR = u'joe di castro'
@@ -136,7 +135,7 @@ REVERSE_CATEGORY_ORDER = False
 
 # theme to use to produce the output. can be the complete static path to a
 # theme folder, or chosen between the list of default themes
-THEME = "/home/enxebree/workspace/joedicastro.com/site/joe_theme"
+THEME = "/home/joedicastro/workspace/joedicastro.com/site/joe_theme"
 
 # Static theme paths you want to copy. Default values is static, but if
 # your theme has other static paths, you can put them here.
