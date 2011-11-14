@@ -1,6 +1,6 @@
 title: De Drupal a Pelican
 date: 2011-06-22 02:10
-tags: markdown, reStructuredText, Pelican, Drupal, cms, python, blog, HTML
+tags: markdown, restructuredtext, pelican, drupal, cms, python, blog, html
 
 Este blog no está realizado con ningún CMS, ni siquiera utiliza BDD alguna, es 
 simplemente HTML + CSS y nada más. Es decir, es contenido estático, no dinámico.

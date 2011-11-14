@@ -1,6 +1,6 @@
 titLe: Generar informes de cambios en paquetes instalados en Debian y Ubuntu.
 date: 2011-05-06 22:55
-tags: python, script, paquetes, linux, Debian, Ubuntu, dpkg
+tags: python, script, paquetes, linux, debian, ubuntu, dpkg
 
 Una de las políticas de seguridad que tengo con mis sistemas **Linux**, es 
 además de efectuar respaldos periódicos (diarios) del contenido del directorio 

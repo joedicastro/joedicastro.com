@@ -1,6 +1,6 @@
 title: Pelican - Publicación y automatización
 date: 2011-06-28 23:54
-tags: Pelican, python, markdown, reStructuredText, blog, HTML, rsync, fabric
+tags: pelican, python, markdown, restructuredtext, blog, html, rsync, fabric
 
 Una vez que sabemos como [instalar Pelican][0] y [crear contenido][1] con él, es 
 hora de saber como convertir ese contenido en un blog real disponible en 

@@ -1,6 +1,6 @@
 title: Comprobar si un programa está instalado con Python
 date: 2011-04-28 14:04
-tags: Python Idiom, script, python
+tags: python idiom, script, python
 
 Cuando creamos un script en **Python**, sobre todo aquellos orientados a 
 ejecutarse en la línea de comandos, a veces necesitamos echar mano de un 

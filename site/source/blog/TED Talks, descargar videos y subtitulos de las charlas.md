@@ -1,6 +1,6 @@
 title: TED Talks, descargar videos y subtitulos de las charlas
 date:2010-07-29 22:01
-tags: python, script, TED, TED Talks, video, subtitulos
+tags: python, script, ted, ted talks, video, subtitulos
 
 ![TED logo][1]
 

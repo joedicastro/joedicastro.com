@@ -1,6 +1,6 @@
 title: Markdown, la mejor opción para crear contenidos web
 date: 2011-04-02 20:29
-tags: markdown, WYSIWYG, Textile, editores, marcado, HTML, XHTML
+tags: markdown, wysiwyg, textile, editores, marcado, html, xhtml
 
 Normalmente cuando se crea contenido en un blog o CMS, como Wordpress, Blogger, 
 Drupal, Joomla, Plone, Typo, etc, se hace a través de un editor visual (WYSIWYG). 

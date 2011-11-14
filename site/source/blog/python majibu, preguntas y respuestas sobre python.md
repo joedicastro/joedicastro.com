@@ -1,6 +1,6 @@
 title: python majibu, preguntas y respuestas sobre python
 date: 2011-03-30 00:32
-tags: python, majibu, preguntas, respuestas, OSQA, StackOverflow
+tags: python, majibu, preguntas, respuestas, osqa, stackoverflow
 
 [![python majibu][1]][2]
 

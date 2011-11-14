@@ -1,6 +1,6 @@
 title: Pelican - Introducción e Instalación
 date: 2011-06-27 10:21
-tags: Pelican, python, markdown, reStructuredText, blog, HTML, Piwik, Disqus
+tags: pelican, python, markdown, restructuredtext, blog, html, piwik, disqus
 
 
 [Pelican][0] es un generador de sitios web con contenido estático. Está orientado 

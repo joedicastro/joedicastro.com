@@ -1,6 +1,6 @@
 title: Pelican - Creación de contenido
 date: 2011-06-27 18:27
-tags: Pelican, python, markdown, reStructuredText, blog, HTML.
+tags: pelican, python, markdown, restructuredtext, blog, html
 
 Crear contenido con **Pelican** es lo más sencillo que uno pueda imaginarse. Por 
 ejemplo, crear este articulo, se puede hacer del siguiente modo. Abrimos un 

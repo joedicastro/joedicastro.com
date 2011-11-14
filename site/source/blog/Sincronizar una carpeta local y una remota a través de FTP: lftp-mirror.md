@@ -1,6 +1,6 @@
 title: Sincronizar una carpeta local y una remota a través de FTP: lftp-mirror
 date: 2010-12-19 14:58
-tags: linux, python, script, lftp, FTP mirror, sincronizar, lftp-mirror, FTP sync, FTP
+tags: linux, python, script, lftp, ftp mirror, sincronizar, lftp-mirror, ftp sync, ftp
 
 
 

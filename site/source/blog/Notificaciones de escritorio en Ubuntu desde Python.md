@@ -1,6 +1,6 @@
 title: Notificaciones de escritorio en Ubuntu desde Python
 date: 2011-06-12 23:05
-tags: linux, Ubuntu, python
+tags: linux, ubuntu, python
 
 
 En **Ubuntu**[^1] las notificaciones de escritorio son esos **cuadros

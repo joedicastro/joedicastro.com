@@ -118,7 +118,7 @@ li:last-child .hentry, #content > .hentry{border:0;margin:0;}
 .published{float:left;margin-bottom:30px;width:100%;font-style:italic;text-decoration:none;}
 .tagged{font-style:italic;}
 #cloud{list-style-type:none;}
-#cloud li{float:left;margin-right:0.23em;}
+#cloud li{float:left;margin-right:12px;}
 #cloud a{text-decoration:none;}
 #cloud .tag-0{font-size:4em;line-height:0.5}
 #cloud .tag-1{font-size:3em;line-height:1;}

@@ -1,6 +1,6 @@
 title: Pelican - Configuración y personalización
 date: 2011-06-30 01:21
-tags: Pelican, python, markdown, reStructuredText, blog, HMTL, CSS, jinja2
+tags: pelican, python, markdown, restructuredtext, blog, html, css, jinja2
 
 Con este articulo cierro la serie que le he dedicado a [Pelican][0] como 
 herramienta idónea para crear blogs estáticos con mantenimiento cero. Aquí voy a 

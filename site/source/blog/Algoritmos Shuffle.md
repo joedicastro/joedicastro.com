@@ -1,6 +1,6 @@
 title: Algoritmos Shuffle
 date: 2011-06-09 23:35
-tags: python, algoritmos, Knuth, Fisher-Yates, shuffle, barajar, aleatoriedad, random, Sattolo
+tags: python, algoritmos, knuth, fisher-yates, shuffle, barajar, aleatoriedad, random, sattolo
 
 Los algoritmos **shuffle** se emplean para barajar o desordenar los elementos de
  una lista (como si fueran las cartas de una baraja) al azar. Se intenta 

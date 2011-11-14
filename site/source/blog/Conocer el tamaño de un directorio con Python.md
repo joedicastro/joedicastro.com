@@ -1,6 +1,6 @@
 title: Conocer el tamaño de un directorio con Python
 date: 2011-05-16 21:05
-tags: python, script, linux, IEC, tamaño, directorio, fichero
+tags: python, script, linux, iec, tamaño, directorio, fichero
 
 
 Aunque conocer el tamaño de un directorio en sistemas como Linux es algo 

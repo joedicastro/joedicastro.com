@@ -1,6 +1,6 @@
 title: Comparativa de Lenguajes de marcado ligero
 date: 2011-04-02 20:29
-tags: markdown, Textile, BBCode, reStructuredText, Texy!, txt2tags, Creole, MediaWiki, marcado, HTML, XHTML
+tags: markdown, textile, bbcode, restructuredtext, texy!, txt2tags, creole, mediawiki, marcado, html, xhtml
 
 
 Esta es una comparativa de los lenguajes de marcado ligero más empleados de los 

@@ -1,6 +1,6 @@
 title: Crear un arbol de directorios falso para entorno de pruebas
 date: 2011-04-27 20:52
-tags: script, python, Lorem Ipsum
+tags: script, python, lorem ipsum
 
 A veces, para realizar pruebas con nuestros propios programas o para, por 
 ejemplo, hacer pruebas con programas de Backup o FTP, necesitamos crear un 
