@@ -147,52 +147,26 @@ empezar demostrándolo con un ejemplo:
   <thead><tr><th style="width: 50%;">Markdown</th><th>Resultado</th></tr></thead>
 <tbody><tr>
     <td><pre class="no_mrkdwn">
-Documento de ejemplo
-====================
-
-Lorem ipsum [dolor sit amet](#mark), consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
-
-Sed nibh quam, hendrerit _sit amet aliquam_ vel, pulvinar molestie augue.
-
-> Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
-
-Lista numerada (ordenada)
-
-1. Este es el primer elemento
+<p>Documento de ejemplo
+====================</p><p>Lorem ipsum [dolor sit amet](#mark), consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.</p><p>Sed nibh quam, hendrerit _sit amet aliquam_ vel, pulvinar molestie augue.</p><p>&gt; Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.</p><p>Lista numerada (ordenada)</p><p>1. Este es el primer elemento
 2. Este es el segundo elemento
-  * Una lista de puntos anidada
-  * Se llama también desordenada
+   * Una lista de puntos anidada
+   * Se llama también desordenada
      * Tercer nivel de anidamiento
-3. Este es el tercer elemento
-
-![avatar](pictures/avatar.png)
-
-### Cabecera ###
-
-- - -
-
-Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
-
+3. Este es el tercer elemento</p><p>![avatar](pictures/avatar.png)</p><p>### Cabecera ###</p><p>- - -</p><p>Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.</p><p>
 |   | solo texto | HTML Limpio  |
 | -------------- | -- | ------- |
 | Markdown       | Si | Si      |
-| Editor WYSISWG | X  | A veces |
-
+| Editor WYSISWG | X  | A veces |</p><p>
 &nbsp;&nbsp;&nbsp;&nbsp;:::python
 &nbsp;&nbsp;&nbsp;&nbsp;import lifetime
 &nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;for each_day in lifetime.days():
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carpe_diem()
-
-
-Suspendisse posuere velit et velit vehicula at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
-
-Esto es un texto con nota al pie [^prima] y esta es otra nota [^secunda]
-
-*[vehicula]: automobila
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carpe_diem()</p><p>Suspendisse posuere velit et velit vehicula at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.</p><p>Esto es un texto con nota al pie [^prima] y esta es otra nota [^secunda]</p><p>
+ *[vehicula]: automobila
 [^prima]: Esto es una nota al pie.
-[^secunda]: Esto es la segunda nota.
-</pre></td>
+[^secunda]: Esto es la segunda nota.</p></pre>
+     </td>
      <td>
 <h1>Documento de ejemplo</h1>
 

@@ -102,9 +102,9 @@ son también muy buenas opciones, y seguramente serían la primera opción para 
 de uno. Y siempre podría cambiar fácilmente, porque el contenido seguiría estando 
 guardado en ficheros de texto con marcado markdown. 
 
-**Actualización** (2-12-2011): 
+  >**Actualización** (2-12-2011): 
 
-La estructura de Pelican es tan sencilla y eficaz, que [Jökull Sólberg][jokull] 
+  >La estructura de Pelican es tan sencilla y eficaz, que [Jökull Sólberg][jokull] 
 ha creado a partir de una versión hospedada del mismo (y modificada) una de las 
 plataformas de blogs más simples de utilizar que existen, [calepin.co][caco]. 
 Publicar articulos es tán fácil como crear un archivo markdown y guardarlo en tu 

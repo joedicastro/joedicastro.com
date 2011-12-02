@@ -27,55 +27,24 @@ este.
   <tr>
    <td>
     <pre class="no_mrkdwn">
-Documento de ejemplo
-====================
- 
-Lorem ipsum [dolor sit amet](#mark), consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.
- 
-Sed nibh quam, hendrerit _sit amet aliquam_ vel, pulvinar molestie augue.
- 
-> Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.
- 
-Lenguajes de marcado ligero 
-
- * **Markdown**
+<p>Documento de ejemplo
+====================</p><p>Lorem ipsum [dolor sit amet](#mark), consectetur adipiscing elit. Curabitur eget ante nunc. Pellentesque a tortor ipsum, id rhoncus orci. Quisque leo sapien, rutrum id convallis id, rutrum in ligula. Vestibulum **semper adipiscing leo** et blandit.</p><p>Sed nibh quam, hendrerit _sit amet aliquam_ vel, pulvinar molestie augue.</p><p>&gt; Integer cursus, nunc eu ultrices pellentesque, eros leo malesuada turpis, vel convallis neque dolor a nunc. Sed lacus risus, condimentum vitae posuere quis, ultrices pharetra nunc.</p><p>Lenguajes de marcado ligero</p><p> * **Markdown**
  * Textile
  * reStructuredText
  * Texy!
  * Txt2tags
  * Marcado Wiki
    1. Creole
-   2. MediaWiki
-
-![avatar](pictures/no_wysiwyg.png)
- 
-### Cabecera H3 ###
- 
-- - -
- 
-Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
- 
-|   | solo texto | HTML Limpio  |
+   2. MediaWiki</p><p>![avatar](pictures/no_wysiwyg.png)</p><p>### Cabecera H3 ###</p><p>- - -</p><p>Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.</p><p>|   | solo texto | HTML Limpio  |
 | -------------- | -- | ------- |
 | Markdown       | Si | Si      |
-| Editor WYSISWG | X  | A veces |
-
-_Ejemplo de código_
-
-&nbsp;&nbsp;&nbsp;&nbsp;import lifetime
+| Editor WYSISWG | X  | A veces |</p>_Ejemplo de código_</p><p>&nbsp;&nbsp;&nbsp;&nbsp;import lifetime
 &nbsp;&nbsp;&nbsp;&nbsp; 
 &nbsp;&nbsp;&nbsp;&nbsp;for each_day in lifetime.days():
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carpe_diem()
- 
- 
-Suspendisse posuere velit et velit vehicula at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.
- 
-Esto es un texto con nota al pie [^ejemplo] y esta es otra nota [^segunda]
- 
-*[vehicula]: automobila
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carpe_diem()</p><p>Suspendisse posuere velit et velit vehicula at scelerisque orci suscipit. Nulla facilisis lorem eu sem viverra varius nec ut felis.</p><p>Esto es un texto con nota al pie [^ejemplo] y esta es otra nota [^segunda]</p><p>
+ *[vehicula]: automobila
 [^ejemplo]: Esto es una nota al pie.
-[^segunda]: Esto es la segunda nota.
-    </pre>
+[^segunda]: Esto es la segunda nota.</p></pre>
    </td>
    <td>
 <h1>Documento de ejemplo</h1> 
