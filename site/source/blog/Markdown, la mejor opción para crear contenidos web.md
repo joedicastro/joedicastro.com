@@ -456,6 +456,11 @@ las opciones que conozco para publicar contenidos empleando **Markdown**.
 * [Webby](http://webby.rubyforge.org/)
 * [toto](http://cloudhead.io/toto)
 * [Rote](http://rote.rubyforge.org/)
+
+### Plataforma de Blogs con contenido estático (HTML):
+
+* [Calepin.co](http://calepin.co/) es un **Pelican** hospedado, que lee ficheros 
+markdown desde **DropBox**
   
 ### Wiki:
 
@@ -495,6 +500,8 @@ las opciones que conozco para publicar contenidos empleando **Markdown**.
 ### Editor Markdown:
 
 * [ReText](http://sourceforge.net/p/retext/home/)
+* [Markdown Pad](http://markdownpad.com/)
+* [Byword](http://bywordapp.com/)
 
 ### Editor Offline para blogs:
 
@@ -505,6 +512,7 @@ las opciones que conozco para publicar contenidos empleando **Markdown**.
 * [Dingus](http://daringfireball.net/projects/markdown/dingus) por [John Gruber](http://daringfireball.net/)
 * [Dingus PHP](http://michelf.com/projects/php-markdown/dingus/) por Michel Fortin
 * [Markdown Extra + GeShi](http://anthonybush.com/markdown_extra_geshi/) por Anthony Bush
+* [Dilinger](http://dillinger.io/) es una aplicación en HTML 5 por Joe McCann
 * [Babelmark](http://babelmark.bobtfish.net/?markdown=*This+**is+a+test*.&normalize=on) para comparar las distintas implementaciones de Markdown
 * [Markdown Editor](http://joncom.be/experiments/markdown-editor/edit/) por John Combe
 * [Showdown](http://softwaremaniacs.org/playground/showdown-highlight/)

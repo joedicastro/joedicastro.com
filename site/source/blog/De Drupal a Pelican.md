@@ -84,21 +84,36 @@ aparentemente potentes, los veía innecesariamente complejos, en cambió
 **Pelican** era bastante más sencillo. Otra forma de determinar su repercusión 
 era contar el número de descargas de cada una de las aplicaciones desde PyPi. 
 Los números son los siguientes (a 27 de Junio de 2011), obtenidos con 
-[Vanity][vnt]:
+[Vanity][vnt] o [pythonpackages.com][ppkg]:
 
-| Paquete | Descargas |
-| ------- | :-------: |
-| Blogofile | 2.419 |
-| Hyde | 1.945 |
-| Pelican | 3.919 |
+| Paquete   | Descargas | Descargas (2 de Diciembre de 2011) |
+| --------- | :-------: | :--------------------------------: |
+| Blogofile |     2.419 |                              3.854 |
+| Hyde      |     1.945 |                              4.518 |
+| Pelican   |     3.919 |                              6.138 |
 
   [vnt]: https://github.com/aclark4life/vanity
+  [ppkg]: http://pythonpackages.com/
+  
 
 La elección final era Pelican y no me arrepiento en absoluto, la prueba es que 
 esté blog está funcionando gracias a él (Gracias Alexis!). Aunque las otras dos 
 son también muy buenas opciones, y seguramente serían la primera opción para más 
 de uno. Y siempre podría cambiar fácilmente, porque el contenido seguiría estando 
 guardado en ficheros de texto con marcado markdown. 
+
+**Actualización** (2-12-2011): 
+
+La estructura de Pelican es tan sencilla y eficaz, que [Jökull Sólberg][jokull] 
+ha creado a partir de una versión hospedada del mismo (y modificada) una de las 
+plataformas de blogs más simples de utilizar que existen, [calepin.co][caco]. 
+Publicar articulos es tán fácil como crear un archivo markdown y guardarlo en tu 
+cuenta de [Dropbox][dbox]. Así de sencillo.
+
+  [jokull]: http://www.solberg.is/
+  [caco]: http://calepin.co/
+  [dbox]: http://www.dropbox.com/
+  
 
 No entraré en detalles ahora de como instalar y emplear **Pelican**, eso lo dejo 
 para otro próximo articulo, [Pelican][13]. Pero si voy a hacer un repaso de los 

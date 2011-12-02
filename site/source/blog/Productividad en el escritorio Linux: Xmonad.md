@@ -1,6 +1,6 @@
 title: Productividad en el escritorio Linux: Xmonad
 date: 2011-11-26
-tags: linux, ubuntu, unity, tiling, twm, productividad, xmonad, gnome
+tags: linux, ubuntu, unity, tiling, twm, productividad, xmonad, gnome, haskell
 
 
 [xmonad][xmonad] es un [Gestor de ventanas de mosaico][twm], uno de los más 
