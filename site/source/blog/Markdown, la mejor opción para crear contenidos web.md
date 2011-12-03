@@ -486,7 +486,7 @@ markdown desde **DropBox**
 * [Dingus](http://daringfireball.net/projects/markdown/dingus) por [John Gruber](http://daringfireball.net/)
 * [Dingus PHP](http://michelf.com/projects/php-markdown/dingus/) por Michel Fortin
 * [Markdown Extra + GeShi](http://anthonybush.com/markdown_extra_geshi/) por Anthony Bush
-* [Dilinger](http://dillinger.io/) es una aplicación en HTML 5 por Joe McCann
+* [Dillinger](http://dillinger.io/) es una aplicación en HTML 5 por Joe McCann
 * [Babelmark](http://babelmark.bobtfish.net/?markdown=*This+**is+a+test*.&normalize=on) para comparar las distintas implementaciones de Markdown
 * [Markdown Editor](http://joncom.be/experiments/markdown-editor/edit/) por John Combe
 * [Showdown](http://softwaremaniacs.org/playground/showdown-highlight/)
