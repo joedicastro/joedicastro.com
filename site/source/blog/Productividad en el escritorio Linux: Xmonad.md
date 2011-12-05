@@ -30,8 +30,9 @@ por ti.
 de xmonad trabajando con mi configuración, uno se puede hacer una idea de lo que 
 es capaz.
 
+
 <div style="text-align:center">
-<iframe src="http://player.vimeo.com/video/32747627?title=0&amp;byline=0&amp;portrait=0&amp;color=59a5d1" width="667" height="417" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><p>Esbozo de las posibilidades de un Tiling Window Manager como Xmonad trabajando conjuntamente con Gnome 3 y Unity 2D sobre un Ubuntu 11.10</p>
+<iframe src="http://player.vimeo.com/video/33164152?title=0&amp;byline=0&amp;portrait=0&amp;color=59a5d1" width="667" height="417" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><p>Esbozo de las posibilidades de un Tiling Window Manager como Xmonad trabajando conjuntamente con Gnome 3 y Unity 2D sobre un Ubuntu 11.10. Recomiendo ver en HD.</p>
 </div>
 
 

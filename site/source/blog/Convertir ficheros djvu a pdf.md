@@ -6,14 +6,15 @@ tags: script, python, djvu, pdf, linux
 Tengo por costumbre almacenar mis documentos escaneados en el formato 
 [djvu][djvu], que fue expresamente creado para esa tarea y que otorga la mejor 
 calidad posible en el menor espacio. Es el formato perfecto para documentos 
-complejos sobre los que no se va a realizar un OCR (aunque también lo soporta). 
-Además es un formato abierto, por lo que nos garantiza que podrá seguir 
+complejos sobre los que no se va a realizar un [OCR][ocr] (aunque también lo soporta). Además es un formato abierto, por lo que nos garantiza que podrá seguir 
 empleándose en un futuro. Pero a veces necesito compartir estos ficheros con 
 otros y para evitarme problemas suelo convertirlos a un formato más conocido y 
 difundido como [PDF][pdf].
 
   [djvu]: http://es.wikipedia.org/wiki/DjVu
   [pdf]: http://es.wikipedia.org/wiki/Pdf
+  [ocr]: http://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres
+  
 
 Para realizar esta conversión empleo desde hace años (la primera versión es del 
 2009) un sencillo script en python. Ahora que he necesitado una conversión 

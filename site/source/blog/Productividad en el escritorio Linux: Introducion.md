@@ -118,7 +118,7 @@ integra una aplicación similar denominada **KRunner**.
 
 Merecen un [articulo aparte][twm] para hablar de ellos.
 
-  [twm]: http://joedicastro.com/productividad-en-el-escritorio-linux-twm.html
+  [twm]: http://joedicastro.com/productividad-en-el-escritorio-linux-tiling.html
     
 
 
