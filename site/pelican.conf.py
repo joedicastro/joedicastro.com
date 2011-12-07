@@ -167,8 +167,7 @@ PIWIK_URL = "joedicastro.com/piwik"
 PIWIK_SITE_ID = "1"
 
 # A list of tuples (Title, Url) for links to appear on the footer.
-LINKS = ((u'Fotografías', 'http://photo.joedicastro.com/'),
-         (u'Código', "http://code.joedicastro.com/"),
+LINKS = ((u'Código', "http://code.joedicastro.com/"),
          ('python majibu', "http://python.majibu.org/"),
          ('python hispano', "http://python-hispano.org/"),
          ('planeta python hispano', "http://planet.python-hispano.org/"),)
