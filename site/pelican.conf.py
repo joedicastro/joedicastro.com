@@ -174,8 +174,6 @@ LINKS = ((u'Código', "http://code.joedicastro.com/"),
 
 # A list of tuples (Title, Url) to appear in the “social” section.
 SOCIAL = (('twitter', 'http://twitter.com/joe_di_castro'),
-          ('identi.ca', 'http://identi.ca/joedicastro'),
-          ('facebook', 'http://www.facebook.com/joedicastr0'),
           ('delicious', 'http://www.delicious.com/joe_di_castro'),
           ('bitbucket', 'https://bitbucket.org/joedicastro'),)
 
