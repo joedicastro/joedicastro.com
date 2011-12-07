@@ -1,10 +1,8 @@
 User-agent: *
 Disallow: /static/pictures/*
 Disallow: /static/ammap/*
-Disallow: /author/*
 Disallow: /category/*
 Disallow: /drafts/*
 Disallow: /photo/*
 Disallow: /feeds/*
 Disallow: /feeds/tags/*
-Disallow: index*

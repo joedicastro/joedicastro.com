@@ -80,6 +80,12 @@ def _clean():
     "Remove the output folder."
     local("rm -rf {0}".format(OUTPUT))
 
+def _clean_unwanted():
+    "Remove no wanted files & folders."
+    local("rm -rf {0}/author".format(OUTPUT))
+    local("rm {0}/index?.html".format(OUTPUT))
+    local("rm {0}/index??.html".format(OUTPUT))
+
 def _local_deploy():
     """Deploy to the local apache web server."""
     local("rm -rf {0}".format(LOCAL_WEB))
@@ -104,6 +110,7 @@ def regen():
     """Regenerate the site from source."""
     _clean()
     _gen()
+    _clean_unwanted()
     _valid_HTML()
     _local_deploy()
 

@@ -71,23 +71,6 @@ img.left, figure.left{float:right;margin:0 0 2em 2em;}
 #featured h3 a:link, #featured h3 a:visited{color:#000305;text-decoration:none;}
 #featured h3 a:hover, #featured h3 a:active{color:#4682B4;}
 #content{background:#fff;margin-bottom:2em;overflow:hidden;padding:20px 20px;width:760px;border:1px solid #E1E1E1;box-shadow:0px 4px 5px #ccc;}
-#extras{margin:0 auto 3em auto;overflow:hidden;}
-#extras ul{list-style:none;margin:0;}
-#extras li{border-bottom:1px solid #fff;}
-#extras h2{color:#A52A2A;font-size:1.429em;margin-bottom:.25em;padding:0 3px;}
-#extras a:link, #extras a:visited{color:#444;display:block;border-bottom:1px solid #F4E3E3;text-decoration:none;padding:.3em .25em;}
-#extras a:hover, #extras a:active{color:#4682B4;}
-#extras .blogroll{float:left;width:615px;}
-#extras .blogroll li{float:left;margin:0 20px 0 0;width:185px;}
-#extras .social{float:right;width:175px;}
-#extras div[class='social'] a{background-repeat:no-repeat;background-image:url("data:image/png;base64,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");padding-left:25px;}
-.social a[href*='atom.xml']{background-position:3px 6px;}
-.social a[href*='rss.xml']{background-position:3px -20px;}
-.social a[href*='twitter.com']{background-position:3px -46px;}
-.social a[href*='identi.ca']{background-position:3px -72px;}
-.social a[href*='facebook.com']{background-position:3px -98px;}
-.social a[href*='delicious.com']{background-position:3px -124px;}
-.social a[href*='bitbucket.org']{background-position:3px -150px;}
 #about{font-size:0.9em;font-style:normal;margin-bottom:2em;overflow:hidden;padding:0px 20px;text-align:left;width:760px;}
 #about .primary{float:left;width:165px;}
 #about .primary strong{color:#C64350;display:block;font-size:1.286em;}

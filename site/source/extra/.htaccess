@@ -20,7 +20,8 @@ Redirect 301 /markdown_la_mejor_opcion_para_crear_contenidos_web /markdown-la-me
 Redirect 301 /aplanar_listas_en_python /aplanar-listas-en-python.html
 Redirect 301 /algoritmos_shuffle /algoritmos-shuffle.html
 Redirect 301 /notificaciones_de_escritorio_en_ubuntu_desde_python /notificaciones-de-escritorio-en-ubuntu-desde-python.html
-  
+Redirect 301 /pages/sobre-mi.html /
+ 
 <IfModule mod_rewrite.c>
   RewriteEngine on
 

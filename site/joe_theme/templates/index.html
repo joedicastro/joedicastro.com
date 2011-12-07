@@ -1,55 +1,28 @@
 {% extends "base.html" %}
 {% block content_title %}{% endblock %}
-{% block content %}        
-{% if articles %}
-  {% for article in articles_page.object_list %}        
-    {# First item #}
-    {% if loop.first and not articles_page.has_previous() %}
-    <aside id="featured" class="body">
-      <article>
-        <h1 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1> 
-        {{ article.content }}
-        {% include 'comments.html' %}
-      </article>
-      {% if loop.length == 1 %}{% include 'pagination.html' %}{% endif %}
-    </aside><!-- /#featured -->
-      {% if loop.length > 1 %}
-      <section id="content" class="body">
-        <h1>Otros articulos</h1>
-        <hr />
-        <ol id="posts-list" class="hfeed">
-      {% endif %}
-    {# other items #}
-    {% else %} 
-      {% if loop.first and articles_page.has_previous %}
-        <section id="content" class="body">
-          <ol id="posts-list" class="hfeed" start="{{ articles_paginator.per_page -1 }}">
-      {% endif %}
-            <li>
-              <article class="hentry">    
-                <header>
-                  <h1><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink a {{ article.title}}">{{ article.title }}</a></h1>
-                </header> 
-                <div class="entry-content">
-                  {{ article.summary }}
-                  <a class="readmore" href="{{ SITEURL }}/{{ article.url }}">leer más</a>
-                  {% include 'comments.html' %}
-                </div><!-- /.entry-content -->
-              </article></li>
-    {% endif %}
-    {% if loop.last and (articles_page.has_previous() or not articles_page.has_previous() and loop.length > 1) %}
-      {% include 'pagination.html' %}
-    {% endif %}
-{% endfor %}
-    {% if loop.length > 1 or articles_page.has_previous() %}
-     </ol><!-- /#posts-list -->
-    </section><!-- /#content -->
-{% endif %}
-{% else %}
-  <section id="content" class="body">    
-    <h2>Paginas</h2>{% for page in PAGES %}
-      <li><a href="{{ SITEURL }}/pages/{{ page.url }}">{{ page.title }}</a></li>
-      {% endfor %}
-  </section>
-{% endif %}
+{% block content %}   
+<section id="content" class="body">
+<h1>Sobre mí</h1>
+<p>Soy <strong>joe di castro</strong> de <a href="http://es.wikipedia.org/wiki/La_Coru%C3%B1a">A Coruña</a>, soy SysAdmin y en mis ratos libres 
+me dedico a programar. </p></br>
+<p>Aunque por vocación, formación y experiencia profesional estoy ligado a la 
+Informática a través de la administración de sistemas, después de varios años 
+de relación de amor y odio con la programación, he sido finalmente seducido por 
+un lenguaje de programación: <a href="http://es.wikipedia.org/wiki/Python">Python</a>. </p></br>
+<p>Me encanta la elegancia de lo sencillo, <em>menos es más</em>, por eso admiro tanto a 
+Linux como a Python. Es la esencia misma de este sitio, basado en contenido 
+estático y en un diseño limpio. Creado con un programa en Python a partir de 
+ficheros de texto simple en formato <a href="http://es.wikipedia.org/wiki/Markdown">Markdown</a>. Porque, lo simple 
+funciona y además, funciona bien.</p></br>
+<p>Mi pasión por Python me llevó a crear un portal de Q&amp;A en español sobre Python, 
+<a href="http://python.majibu.org">Python Majibu</a> y a ser uno de los miembros 
+fundadores de <a href="http://python-hispano.org/">Python Hispano</a>. </p></br>
+<p>En el pasado también he tenido mis escarceos con la fotografía y el diseño 
+gráfico. Y soy un profundo apasionado de la música (sobre todo Jazz y Blues) y 
+la literatura.</p></br>
+<p>Si quieres contactar conmigo puedes enviarme un 
+<a href="mailto:joe@joedicastro.com">correo</a> o encontrarme en <a href="http://twitter.com/joe_di_castro">twitter</a>,
+<a href="https://bitbucket.org/joedicastro">bitbucket</a> o <a href="http://www.delicious.com/joe_di_castro">delicious</a>.</p>
+
+</section>
 {% endblock content %}

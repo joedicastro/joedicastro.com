@@ -167,15 +167,10 @@ PIWIK_URL = "joedicastro.com/piwik"
 PIWIK_SITE_ID = "1"
 
 # A list of tuples (Title, Url) for links to appear on the footer.
-LINKS = ((u'Código', "http://code.joedicastro.com/"),
-         ('python majibu', "http://python.majibu.org/"),
-         ('python hispano', "http://python-hispano.org/"),
-         ('planeta python hispano', "http://planet.python-hispano.org/"),)
+LINKS = ()
 
 # A list of tuples (Title, Url) to appear in the “social” section.
-SOCIAL = (('twitter', 'http://twitter.com/joe_di_castro'),
-          ('delicious', 'http://www.delicious.com/joe_di_castro'),
-          ('bitbucket', 'https://bitbucket.org/joedicastro'),)
+SOCIAL = ()
 
 # Allows to add a button on the articles to tweet about them. Add you twitter
 # username if you want this button to appear.
