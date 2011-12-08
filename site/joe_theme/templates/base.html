@@ -21,7 +21,7 @@
          {% for title, link in MENUITEMS %}<li><a href="{{ link }}">{{ title }}</a></li>{% endfor %}
          {% for cat, null in categories %}<li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/category/{{ cat }}.html">{{ cat }}</a></li>{% endfor %}
          <li><a href="{{ SITEURL }}/archives.html">archivo</a></li>
-         <li><a href="{{ SITEURL }}/tags.html">tags</a></li>
+         <li><a href="{{ SITEURL }}/tags.html">etiquetas</a></li>
          {% if DISPLAY_PAGES_ON_MENU %}
          {% for page in PAGES %}<li><a href="{{ SITEURL }}/pages/{{ page.url }}">{{ page.title }}</a></li>{% endfor %}
          {% endif %}
