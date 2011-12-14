@@ -61,7 +61,7 @@ y obtenemos esto:
 alt="pelican sample article" title="pelican sample article" width=700 
 height=465 /></p>
 
-### Estructura del articulo
+## Estructura del articulo
 
 En el ejemplo anterior lo único que varía entre ambos formatos (aparte de la 
 sintaxis) es la cabecera del mismo. En la cabecera se incluye el titulo del 
@@ -135,7 +135,7 @@ eliminando las pruebas que acabamos de realizar.
     env  pelican  site
 
 
-### Estructura del contenido del ejemplo
+## Estructura del contenido del ejemplo
 
 Ahora, en el directorio de contenido del sitio de ejemplo, tenemos la siguiente 
 estructura de ficheros:

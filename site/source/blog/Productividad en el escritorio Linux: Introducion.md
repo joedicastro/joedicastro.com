@@ -114,7 +114,7 @@ lo incluyen como pilar básico en sus Shells (combinado con un dock) y KDE 4
 integra una aplicación similar denominada **KRunner**.
 
 
-### Gestores de ventanas de mosaico.
+## Gestores de ventanas de mosaico.
 
 Merecen un [articulo aparte][twm] para hablar de ellos.
 

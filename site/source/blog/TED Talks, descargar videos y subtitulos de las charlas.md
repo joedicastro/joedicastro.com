@@ -381,17 +381,15 @@ la comida][28]
 
 ------
 
-# Comentarios realizados anteriormente en Drupal
+## Comentarios realizados anteriormente en Drupal
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
 <a href="http://www.elnaranjal.com.ve/"><img src="pictures/avtr_dennis.png" 
 height=28 width=28 alt="avatar" title="avatar de Dennis"/></a></div>
 
-## Excelente!
+### Excelente!
 por [Dennis](http://www.elnaranjal.com.ve/) el Sáb, 31/07/2010 - 21:12 
 
-
-<br />
 
 Amigo, he leído con atención su articulo acerca de los subtítulos. El nivel de 
 automatización alcanzado resulta sorprendente, sin embargo, para aquellos que no 
@@ -415,10 +413,9 @@ Gracias mil por la ayuda con este tema.
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Script para subtitulos de una charla
-por [joe di castro](pages/sobre-mi.html) el Dom, 01/08/2010 - 01:38
+### Script para subtitulos de una charla
+por [joe di castro](http://joedicastro.com) el Dom, 01/08/2010 - 01:38
 
-<br />
 
 Bueno, para conseguir eso que me comentas, he modificado el script anterior un 
 poco y he creado este [**nuevo script**][29].
@@ -453,11 +450,9 @@ Saludos
 <img src="pictures/avtr_ignacio.png" height=28 width=28
 alt="avatar" title="avatar de Ignacio"/></div>
 
-## TED
+### TED
 por Ignacio el Mié, 04/08/2010 - 01:02 
 
-
-<br />
 
 Estimado muy bueno lo que haces, me parecen excelentes los vídeos y me gustaría 
 contar con ellos. ¿Donde corro el script?¿podrías subírmelos con subtítulos a 
@@ -471,10 +466,9 @@ Muchas gracias
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Vamos por partes...
-por [joe di castro](pages/sobre-mi.html) el Jue, 05/08/2010 - 19:47
+### Vamos por partes...
+por [joe di castro](http://joedicastro.com) el Jue, 05/08/2010 - 19:47
 
-<br />
 
 Vamos por partes...
 
@@ -522,11 +516,9 @@ Saludos
 <img src="pictures/avtr_daniel.png" height=28 width=28
 alt="avatar" title="avatar de Daniel"/></div>
 
-## Gracias
+### Gracias
 por Daniel el Mié, 22/09/2010 - 04:38 
 
-
-<br />
 
 Hermano, muchas gracias.. excelente script.. ya te imaginaras lo importante que 
 es que para muchos, poder adquirir estas excelente conferencias. Gracias de 
@@ -538,11 +530,9 @@ nuevo
 <img src="pictures/avtr_xavier.png" height=28 width=28
 alt="avatar" title="avatar de Xavier"/></div>
 
-## Funcionan los Subtitulos?
+### Funcionan los Subtitulos?
 por Xavier el Mié, 24/11/2010 - 00:35 
 
-
-<br />
 
 Hola,
 
@@ -565,10 +555,10 @@ Xavier
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Si, funcionan, pero...
-por [joe di castro](pages/sobre-mi.html) el Mié, 24/11/2010 - 09:28
+### Si, funcionan, pero...
+por [joe di castro](http://joedicastro.com) el Mié, 24/11/2010 - 09:28
 
-<br />
+
 
 Si, funcionan, pero a veces los subtítulos aún no están disponibles, o peor, el 
 fichero original en formato json es defectuoso. Lo de que el formato json sea 
@@ -601,10 +591,10 @@ otra que siempre descarga el fichero completo.
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Bueno, ya estan incorporadas
-por [joe di castro](pages/sobre-mi.html) el Mié, 24/11/2010 - 23:26
+### Bueno, ya estan incorporadas
+por [joe di castro](http://joedicastro.com) el Mié, 24/11/2010 - 23:26
 
-<br />
+
 
 Bueno, ya están incorporadas las mejoras también al otro script. En principio no 
 veo necesario el crear el método para los ficheros JSON defectuosos, en parte 
@@ -628,11 +618,11 @@ Saludos y gracias por reportarme el fallo, Xavier.
 <img src="pictures/avtr_xavier.png" height=28 width=28
 alt="avatar" title="avatar de Xavier"/></div>
 
-## Aun tengo algun problemilla
+### Aun tengo algun problemilla
 por Xavier el Jue, 25/11/2010 - 00:40
 
 
-<br />
+
 
 Muchas gracias por tan rápida respuesta. Me he copiado el código para bajar los 
 vídeos individuales, pero aun tengo problemas. Esta vez parece como si me 
@@ -658,10 +648,10 @@ muchas gracias de antemano
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## No, en este caso no te falta
-por [joe di castro](pages/sobre-mi.html) el Jue, 25/11/2010 - 10:12
+### No, en este caso no te falta
+por [joe di castro](http://joedicastro.com) el Jue, 25/11/2010 - 10:12
 
-<br />
+
 
 No, en este caso no te falta ningún modulo para ejecutar el script, eso es algo 
 que ya tengo contemplado y es lo primero que compruebo, y lanzo un aviso del 
@@ -694,11 +684,11 @@ posibilidades, así será más fácil diagnosticar los fallos.
 <img src="pictures/avtr_xavier.png" height=28 width=28
 alt="avatar" title="avatar de Xavier"/></div>
 
-## En efecto, no encuentra la página
+### En efecto, no encuentra la página
 por Xavier el Jue, 25/11/2010 - 12:01 
 
 
-<br />
+
 
 Tal y como predices, no parece encontrar la pagina buscada. Ahora me lanza este 
 error:
@@ -737,10 +727,10 @@ Xavier
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Bueno, teniendo en cuenta los
-por [joe di castro](pages/sobre-mi.html) el Jue, 25/11/2010 - 12:33
+### Bueno, teniendo en cuenta los
+por [joe di castro](http://joedicastro.com) el Jue, 25/11/2010 - 12:33
 
-<br />
+
 
 Bueno, teniendo en cuenta los errores que te da ahora y que al principio si 
 podías bajar el vídeo, el problema está en el cambio que hice de urllib a 
@@ -764,10 +754,10 @@ Saludos
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Ya tienes la nueva versión
-por [joe di castro](pages/sobre-mi.html) el Jue, 25/11/2010 - 14:00
+### Ya tienes la nueva versión
+por [joe di castro](http://joedicastro.com) el Jue, 25/11/2010 - 14:00
 
-<br />
+
 
 Ya tienes la nueva versión con wget, esta no debería darte esos problemas. Ya me 
 dirás el resultado.
@@ -780,11 +770,11 @@ Saludos
 <img src="pictures/avtr_xavier.png" height=28 width=28
 alt="avatar" title="avatar de Xavier"/></div>
 
-## fantástico!
+### fantástico!
 por Xavier el Jue, 25/11/2010 - 14:43 
 
 
-<br />
+
 
 Ahora ya funciona perfectamente!
 
@@ -801,10 +791,10 @@ Xavier
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## De nada, gracias a ti por el
-por [joe di castro](pages/sobre-mi.html) el Jue, 25/11/2010 - 14:47
+### De nada, gracias a ti por el
+por [joe di castro](http://joedicastro.com) el Jue, 25/11/2010 - 14:47
 
-<br />
+
 
 De nada, gracias a ti por el feedback, le servirá a futuros usuarios.
 
@@ -822,10 +812,10 @@ Joe
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Nuevas versiones mejoradas de
-por [joe di castro](pages/sobre-mi.html) el Mié, 01/12/2010 - 23:51
+### Nuevas versiones mejoradas de
+por [joe di castro](http://joedicastro.com) el Mié, 01/12/2010 - 23:51
 
-<br />
+
  
 Nuevas versiones mejoradas de los scripts (versión 1.3) y probadas en las 831 
 charlas disponibles hasta hoy, contemplando todos los casos diferentes.

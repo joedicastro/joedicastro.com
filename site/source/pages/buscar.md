@@ -2,10 +2,8 @@ title: buscar
 date: 2011-11-09
 category: buscar
 
-Busqueda
-========
 
-<form action="" id="cse-search-box">
+<form action="" id="cse-search-box" style="text-align:center;">
   <div>
     <input type="hidden" name="cx" value="partner-pub-5603255954241274:0792901248" />
     <input type="hidden" name="cof" value="FORID:10" />

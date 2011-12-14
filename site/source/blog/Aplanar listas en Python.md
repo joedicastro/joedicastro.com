@@ -27,7 +27,7 @@ quedaría del siguiente modo:
 Bien, ¿y como se consigue esto? Eso es precisamente lo que voy a tratar aquí,
 diversos métodos para aplanar una lista.
 
-### Listas anidadas a un solo nivel.
+## Listas anidadas a un solo nivel.
 
 Un primer modo de hacer esto podría ser emplear una función similar a esta:
 
@@ -74,7 +74,7 @@ demasiado concreto y probablemente poco frecuente. Vamos a ver ahora cuatro
 métodos que funcionan en todos los casos, en todo tipo de listas anidadas y a
 cualquier nivel de anidamiento.
 
-### Aplanar cualquier tipo de lista anidada.
+## Aplanar cualquier tipo de lista anidada.
 
 El primer ejemplo que pongo aquí se deriva del primero en que empleábamos la
 función `sum()` y que realizó [Chema Cortés][CC] en [esta pregunta][0] de
@@ -158,7 +158,7 @@ objetivo. Es una función recursiva al igual que la anterior.
         return result
 
 
-#### El problema de la recursividad.
+### El problema de la recursividad.
 
 El problema de los dos métodos anteriores es que emplean recursividad, y no
 digo que la recursividad sea un problema, el problema son los limites por
@@ -186,7 +186,7 @@ de recursión. Aunque no me parece la manera idónea de hacer las cosas, desde
 luego. Si bien es cierto que será bastante difícil que nos encontremos listas
 anidadas hasta estos niveles en el mundo real.
 
-### La mejor solución.
+## La mejor solución.
 
 Sin embargo tenemos una última solución que funciona en todos los casos y que no
  es recursiva y que además tiene el mejor rendimiento, con diferencia, de todos
@@ -203,7 +203,7 @@ Cortés en [la misma pregunta][0] de majibu.
         return lst
 
 
-### Pruebas de rendimiento
+## Pruebas de rendimiento
 
 Para poder comprobar las diferencias de rendimiento entre unos métodos y otros,
 he preparado unos tests que ejecutan cada una de las funciones analizadas 10
@@ -346,16 +346,16 @@ encuentran en el fichero [flatten_nested_lists.py][fnl] de [mi repositorio][repo
 
 ------
 
-# Comentarios realizados anteriormente en Drupal
+## Comentarios realizados anteriormente en Drupal
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
 <img src="pictures/avtr_kiko.png" height=28 width=28
 alt="avatar" title="avatar de kikocorreoso"/></div>
 
-## Interesante artículo.
+### Interesante artículo.
 por kikocorreoso el Jue, 02/06/2011 - 10:53
 
-<br />
+
 
 Interesante artículo.
 
@@ -367,10 +367,10 @@ Por cierto, ¡Qué gráficas más chulas! ;-D
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Si, la librería matplotlib da
-por [joe di castro](pages/sobre-mi.html) el Jue, 02/06/2011 - 11:03
+### Si, la librería matplotlib da
+por [joe di castro](http://joedicastro.com) el Jue, 02/06/2011 - 11:03
 
-<br />
+
 
 Si, la librería [matplotlib](http://matplotlib.sourceforge.net/) da unos 
 resultados muy buenos :)
@@ -385,10 +385,10 @@ Gracias por la [recomendación][recom].
 <a href="http://ch3m4.org/blog"><img src="pictures/avtr_ch3m4.png" height=28 
 width=28 alt="avatar" title="avatar de Chema Cortés"/></a></div>
 
-## ¡Buen trabajo!
+### ¡Buen trabajo!
 por [Chema Cortés](http://ch3m4.org/blog) el Vie, 03/06/2011 - 21:28 
 
-<br />
+
 
 ¡Buen trabajo!
 
@@ -428,10 +428,10 @@ debería simplificar el número de "contextos" a mantener:
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Gracias. Si, la verdad es que yo
-por [joe di castro](pages/sobre-mi.html) el Vie, 03/06/2011 - 23:16
+### Gracias. Si, la verdad es que yo
+por [joe di castro](http://joedicastro.com) el Vie, 03/06/2011 - 23:16
 
-<br />
+
 
 Gracias. Si, la verdad es que yo tampoco esperaba una respuesta tan lineal en 
 los resultados, pero engañan algo, como ya comentaba, la espectacular 
@@ -481,10 +481,10 @@ los comentarios, parece que me pesaban demasiado :-)*
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Fíjate en lo que ocurre
-por [joe di castro](pages/sobre-mi.html) el Sáb, 04/06/2011 - 00:56
+### Fíjate en lo que ocurre
+por [joe di castro](http://joedicastro.com) el Sáb, 04/06/2011 - 00:56
 
-<br />
+
 
 Fíjate en lo que ocurre cuando empleo iterables dentro de las listas anidadas 
 generadas:

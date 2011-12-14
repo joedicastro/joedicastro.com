@@ -53,7 +53,7 @@ que nos mostraría una notificación como esta:
 <p style="text-align:center;"><img src="pictures/notify_send.png" width="341"
 height="84" alt="notify_send.png" /></p>
 
-### Notificaciones desde Python ###
+## Notificaciones desde Python ##
 
 Empleando `pynotify` podemos emplear estas notificaciones en nuestros programas
 y scripts Python y se visualizaran igual que las propias del sistema. El

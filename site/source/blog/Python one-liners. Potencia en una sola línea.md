@@ -45,7 +45,7 @@ Y que nos devuelve el popular [Zen of Python][0]:
 Pero existen varios one-liners muy útiles que nos pueden hacer la vida más fácil 
 para determinadas tareas. 
 
-**Iniciar un servidor web y compartir un directorio**
+### Iniciar un servidor web y compartir un directorio
 
     :::python
     python -m SimpleHTTPServer
@@ -63,7 +63,7 @@ Para interrumpir el servicio basta con que interrumpamos el programa con
     python -m SimpleHTTPServer 8080
 
 
-**Iniciar un servidor SMTP**
+### Iniciar un servidor SMTP
 
     :::python
     python -m smtpd -n -c DebuggingServer localhost:25
@@ -75,7 +75,7 @@ configuración de nuestro sistema, es muy probable que necesitemos ejecutar este
 comando como administrador (_root_). Si ya tenemos corriendo un servidor de 
 correo en ese puerto, podemos cambiarlo por otro (eg: _2525_)
 
-**Iniciar un servidor FTP**
+### Iniciar un servidor FTP
 
     :::python
     python -m pyftpdlib.ftpserver
@@ -88,7 +88,7 @@ servidor FTP de solo lectura en el directorio en el que lo iniciemos.
 
   [1]: http://code.google.com/p/pyftpdlib/
 
-**Ejecutar un cliente FTP**
+### Ejecutar un cliente FTP
 
     :::python
     python -m ftplib
@@ -97,7 +97,7 @@ servidor FTP de solo lectura en el directorio en el que lo iniciemos.
 Si ejecutamos este comando, nos devolverá la ayuda con los argumentos necesarios 
 para poder conectarnos a un servidor FTP.
 
-**Abrir una página web en el navegador**
+### Abrir una página web en el navegador
 
     :::python
     python -m webbrowser http://joedicastro.com
@@ -106,7 +106,7 @@ para poder conectarnos a un servidor FTP.
 Nos abrirá la dirección web que le indiquemos en el navegador web predeterminado 
 de nuestro equipo.
 
-**Obtener el código fuente de una página web**
+### Obtener el código fuente de una página web
 
     :::python
     python -m urllib http://example.com
@@ -114,7 +114,7 @@ de nuestro equipo.
 
 Esto nos imprime en pantalla el código fuente (HTML) de una dirección web.
 
-**Eliminar las etiquetas HTML de un fichero HTML**
+### Eliminar las etiquetas HTML de un fichero HTML
 
     :::python
     python -m htmllib test.html
@@ -124,7 +124,7 @@ Esto nos imprime el contenido del fichero `test-html` pero sin mostrarnos las
 etiquetas HTML, solo texto plano. Algo parecido a lo que hace un navegador en 
 modo texto como _links_, pero de forma estática.
 
-**Comparar dos directorios**
+### Comparar dos directorios
 
     :::python
     python -m filecmp dir_1 dir_2
@@ -133,7 +133,7 @@ modo texto como _links_, pero de forma estática.
 De esta manera podemos comparar dos directorios. El resultado será un resumen de 
 que ficheros son iguales, cuales diferentes y lo mismo con los subdirectorios.
 
-**Identificar la plataforma**
+### Identificar la plataforma
 
     :::python
     python -c 'from sys import platform; print platform'
@@ -147,7 +147,7 @@ Otra opción más simple y que nos devuelve un resultado más completo sería:
     python -m platform
 
 
-**Obtener el nombre de la maquina (hostname)**
+### Obtener el nombre de la maquina (hostname)
 
     :::python
     python -c 'from socket import gethostname; print gethostname()'
@@ -161,7 +161,7 @@ Otra opción más simple y que nos devuelve un resultado más completo sería:
 Cualquiera de estos dos one-liners nos devolverán el nombre de la maquina en que 
 los ejecutemos.
 
-**Imprimir el calendario del año en curso**
+### Imprimir el calendario del año en curso
 
     :::python
     python -m calendar
@@ -171,7 +171,7 @@ Imprime en pantalla el calendario de todo el año. Para conocer más opciones,
 como imprimir el calendario de otro año, mes, etc añadir la opción `-h` al final 
 de la línea.
 
-**Mostrar los módulos empleados en un script**
+### Mostrar los módulos empleados en un script
 
     :::python
     python -m modulefinder script.py 
@@ -184,7 +184,7 @@ Aquí he mencionado solo algunos que empleo con cierta frecuencia o que me han
 parecido reseñables, pero existen bastantes más. Una buena pista es que la 
 mayoría hace uso de los módulos de la librería estándar de Python.
 
-### Como funciona ###
+## Como funciona ##
 
 Básicamente se trata de llamar al interprete Python utilizando uno de los 
 siguientes argumentos:
@@ -198,7 +198,7 @@ siguientes argumentos:
  `python -m locale`
 
 
-### HTTPS Server
+## HTTPS Server
 
 Este no es un one-liner en Python, pero sirve como complemento a los distintos 
 servidores que hemos visto que se podían iniciar con mucha facilidad gracias a 
@@ -226,7 +226,7 @@ para probar un script.
  
 <br />
 
-#### Editar una página web con javascript
+### Editar una página web con javascript
 
 No es un one-liner escrito en Python, si no en javascript, pero lo menciono aquí 
 a modo de curiosidad porque siempre me ha parecido curioso y aparentemente 

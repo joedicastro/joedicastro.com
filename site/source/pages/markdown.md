@@ -38,13 +38,13 @@ y los lexers más comunes de Pygments para resaltar el código fuente.
 
 <br />
 
-# Markdown  {#header1}
+## Markdown  {#header1}
 
 Este es el lenguaje de marcado empleado para crear este sitio, que permite 
 formatear el texto fácilmente sin la necesidad de emplear el más engorroso HTML 
 o emplear un editor visual.
 
-#### ¿Que es Markdown? {#mark0}
+### ¿Que es Markdown? {#mark0}
 
 [Markdown][3] es un lenguaje de marcado ligero parecido al que se emplea en 
 muchas wikis y basado originalmente en convenciones existentes en el marcado de 
@@ -66,7 +66,7 @@ sitio, [artículos markdown](../tag/markdown.html)
 
 ----
 
-# Sintaxis Markdown {#mark1}
+## Sintaxis Markdown {#mark1}
 
 ### Cabeceras {#mark2}
 
@@ -723,7 +723,7 @@ Esto es un párrafo normal.
     Esto es un párrafo de código.
 </pre> 
    </td>
-   <td><p>Esto es un párrafo normal.</p><pre><code>Esto es un párrafo de código.</code></pre>
+   <td><p>Esto es un párrafo normal.</p><div class="codehilite"><pre><code>Esto es un párrafo de código.</code></pre></div>
 </td>
   </tr>
 </table>
@@ -739,7 +739,7 @@ Esto es un párrafo normal
 ~~~
 Esto es un párrafo de código.
 ~~~</pre></td>
-     <td><p>Esto es un párrafo normal.</p><pre><code>Esto es un párrafo de código.</code></pre>
+     <td><p>Esto es un párrafo normal.</p><div class="codehilite"><pre><code>Esto es un párrafo de código.</code></pre></div>
 </td>
   </tr>
 </table>
@@ -761,7 +761,7 @@ Esto es un párrafo normal, con un trozo de código, `import this` insertado en 
 
 ----
 
-#### Líneas Horizontales {#mark12}
+### Líneas Horizontales {#mark12}
 
 Para crear líneas horizontales se debe crear una línea rodeada de líneas en 
 blanco y compuesta por 3 o más símbolos, que pueden ser guiones, asteriscos o 
@@ -946,7 +946,7 @@ establezcamos.
 
 
 
-# Pygments: Resaltado de Sintaxis para Código Fuente  {#header2}
+## Pygments: Resaltado de Sintaxis para Código Fuente  {#header2}
 
 Para introducir ejemplos de código fuente en el sitio, habilitar el 
 resaltado (o coloreado) de sintaxis mejora la presentación y legibilidad de los 
@@ -994,7 +994,7 @@ A continuación muestro una relación de los lexers más comunes empleados para 
 resaltado de código fuente.
 
 
-* ### `apache` - configuración Apache
+* #### `apache` - configuración Apache
 
         :::apache
         <VirtualHost *:80>
@@ -1006,24 +1006,24 @@ resaltado de código fuente.
         </VirtualHost>
 
 
-* ### `bash` y  `console` - Bash y Shell
+* #### `bash` y  `console` - Bash y Shell
 
         :::bash
          #!/bin/bash
          echo "Hola mundo"
 
-* ### `bat` - Fichero Batch DOS/Windows
+* #### `bat` - Fichero Batch DOS/Windows
 
         :::bat
         @echo ¡Hola, Mundo!
     
-* ### `boo` - Boo
+* #### `boo` - Boo
 
         :::boo
         print "Hello, world!"
     
 
-* ### `c` - C
+* #### `c` - C
 
         :::c
         #include <stdio.h>
@@ -1035,7 +1035,7 @@ resaltado de código fuente.
         }
 
 
-* ### `cpp` - C++
+* #### `cpp` - C++
 
         :::cpp
         #include <iostream.h>
@@ -1047,7 +1047,7 @@ resaltado de código fuente.
         }
 
 
-* ### `csharp` - C#
+* #### `csharp` - C#
 
         :::csharp
         using System;
@@ -1061,7 +1061,7 @@ resaltado de código fuente.
         }
 
 
-* ### `css` - Cascade Style Sheet (CSS)
+* #### `css` - Cascade Style Sheet (CSS)
 
         :::css
         </pre>
@@ -1077,7 +1077,7 @@ resaltado de código fuente.
         }
 
 
-* ### `diff` ó  `udiff` - Diff
+* #### `diff` ó  `udiff` - Diff
 
         :::diff
         --- /path/to/original ''timestamp''
@@ -1093,7 +1093,7 @@ resaltado de código fuente.
          document has stayed the
          same from version to
 
-* ### `erlang` - Erlang
+* #### `erlang` - Erlang
 
         :::erlang
         -module (hola).
@@ -1102,7 +1102,7 @@ resaltado de código fuente.
         hola_mundo() -> io:fwrite("Hola mundo!\n").
 
 
-* ### `go` - Go
+* #### `go` - Go
 
         :::go
         package main
@@ -1113,14 +1113,14 @@ resaltado de código fuente.
            fmt.Println("Hello World!")
         }    
 
-* ### `haskell` - Haskell
+* #### `haskell` - Haskell
 
         :::haskell
         holaMundo :: IO ()
         holaMundo = putStrLn "Hola mundo!"
 
 
-* ###  `html` - HTML
+* ####  `html` - HTML
 
         :::html
         <html>
@@ -1134,7 +1134,7 @@ resaltado de código fuente.
         </html>
 
 
-* ### `java` - Java
+* #### `java` - Java
 
         :::java
         public class HolaMundo {
@@ -1144,7 +1144,7 @@ resaltado de código fuente.
         }
 
 
-* ### `js` - javascript
+* #### `js` - javascript
 
         :::js
         <script type="text/javascript">
@@ -1152,7 +1152,7 @@ resaltado de código fuente.
         </script>
 
 
-* ### `latex` - LaTeX
+* #### `latex` - LaTeX
 
         :::latex
         \documentclass[12pt]{article}
@@ -1163,25 +1163,25 @@ resaltado de código fuente.
         \section*{Notes for My Paper}
 
 
-* ### `lisp` - Lisp
+* #### `lisp` - Lisp
 
         :::lisp
         (format t "¡Hola, mundo!")
 
 
-* ### `lua` - Lua
+* #### `lua` - Lua
 
         :::lua
         print("¡Hola, Mundo!\n")
 
 
-* ### `mysql` - MySQL
+* #### `mysql` - MySQL
 
         :::mysql
         SELECT 'HOLA MUNDO';
 
 
-* ### `pascal` y  `delphi` - Pascal y Delphi
+* #### `pascal` y  `delphi` - Pascal y Delphi
 
         :::pascal
         Program HolaMundo;
@@ -1190,54 +1190,54 @@ resaltado de código fuente.
         End.
 
 
-* ### `perl` - Perl
+* #### `perl` - Perl
 
         :::perl
         print "Hola, mundo\n"
 
 
-* ### `php` - PHP
+* #### `php` - PHP
 
         :::php
         <?php print "Hola Mundo!"; ?>
 
 
-* ### `python` ó  `py` ó  `pycon` ó  `pytb` ó  `python3` ó  `cython` - Python
+* #### `python` ó  `py` ó  `pycon` ó  `pytb` ó  `python3` ó  `cython` - Python
 
         :::python
         print "¡Hola Mundo!"
 
 
-* ### `ruby` - Ruby
+* #### `ruby` - Ruby
 
         :::ruby
         puts "Hola Mundo"
 
-* ### `scala` - Scala
+* #### `scala` - Scala
 
         :::scala
         object HelloWorld extends Application {
           println("Hello world!")
         }
 
-* ### `scheme` -  Scheme
+* #### `scheme` -  Scheme
 
         :::scheme
         (display "Hello World")
 
-* ### `smalltalk` - Smalltalk
+* #### `smalltalk` - Smalltalk
 
         :::smalltalk
         Transcript show: '¡Hola, mundo!'
 
 
-* ### `sql` - SQL
+* #### `sql` - SQL
 
         :::sql
         SELECT 'HOLA MUNDO'
         FROM DUAL;
 
-* ### `sqlite3` - sqlite3
+* #### `sqlite3` - sqlite3
 
         :::sqlite3
         sqlite> CREATE TABLE tbl2 (
@@ -1247,12 +1247,12 @@ resaltado de código fuente.
            ...> );
         sqlite>
 
-* ### `text` - Texto simple monoespaciado
+* #### `text` - Texto simple monoespaciado
 
         :::text
         Hola Mundo
 
-* ### `vala` - Vala
+* #### `vala` - Vala
 
         :::vala
         class Demo.HelloWorld : GLib.Object {
@@ -1262,7 +1262,7 @@ resaltado de código fuente.
             }
         }
 
-* ### `vbnet` - Visual Basic .NET
+* #### `vbnet` - Visual Basic .NET
 
         :::vbnet
         Private Sub Form_Load()
@@ -1270,7 +1270,7 @@ resaltado de código fuente.
          End Sub
 
 
-* ### `vim` - Vim Script
+* #### `vim` - Vim Script
 
         :::vim
         function! ToggleSyntax()
@@ -1284,7 +1284,7 @@ resaltado de código fuente.
         nmap <silent>  ;s  :call ToggleSyntax()<CR>
 
 
-* ### `xml` - XML
+* #### `xml` - XML
 
         :::xml
         <?xml version="1.0" encoding="ISO-8859-1"?>

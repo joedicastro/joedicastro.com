@@ -52,7 +52,7 @@ esta, pero será mejor que lo explique con un ejemplo sobre la marcha.
   [11]: https://github.com/ametaireau/pelican
   
 
-### Instalación (para Linux)
+## Instalación (para Linux)
 
 La instalación del mismo es relativamente sencilla si no queremos complicarnos 
 la vida, siempre tenemos la última versión disponible en el [PyPi][12]. Así que 

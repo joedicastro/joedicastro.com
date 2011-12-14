@@ -26,7 +26,7 @@ a largo plazo es cuando empiezas a verle los peros y los problemas, que los
 tienen, y bastantes. Veamos cuales son esos problemas y la alternativa, que para 
 mi personalmente, es la solución. 
 
-### Los problemas de los editores WYSIWYG
+## Los problemas de los editores WYSIWYG
 
 Los editores visuales están pensados para que de una forma muy fácil, se pueda 
 editar el contenido de forma visualmente atractiva, sin tenerse que andar 
@@ -130,7 +130,7 @@ necesidades cambian, entonces pueden darte más de un quebradero de cabeza.
 
 <br />
 
-### Texto plano y Markdown {#mark}
+## Texto plano y Markdown {#mark}
 
 ¿Cual sería entonces la solución para esquivar estos problemas? Texto plano, 
 nada más, que se transforme automáticamente en HTML valido respetando el formato 
@@ -139,8 +139,6 @@ de marcado ligero, entre los que se encuentra [Markdown][mkdwn]. Nada mejor que
 empezar demostrándolo con un ejemplo:
 
    [mkdwn]: http://daringfireball.net/projects/markdown/
-
-<br />
 
 <div>
 <table>
@@ -245,8 +243,8 @@ otro sin problema alguno. Todo son ventajas, el único inconveniente es que tien
 que aprender a usar **Markdown**, algo que es sumamente sencillo, a la par que 
 incrementa la legibilidad del texto plano. 
 
-La legibilidad del texto es uno de los pilares fundamentales de **Markdown**, 
-tal y como el mismo autor, [John Gruber][jgrub], lo cuenta[^1]:
+La legibilidad del texto es uno de los pilares fundamentales de **Markdown**, tal 
+y como el mismo autor, [John Gruber][jgrub], lo cuenta[^1]:
 
 > El objetivo fundamental de diseño para la sintaxis de Markdown es hacerlo tan 
 legible como sea posible. La idea es que un documento formateado con Markdown 
@@ -322,7 +320,7 @@ complejos, con sucesivas re-ediciones del texto y con editores mal configurados.
 Eso si, lo que se almacena en la BDD con **Markdown** es texto plano, con los 
 otros editores, el texto, las etiquetas HTML y CSS embebido. 
 
-### ¿Porque Markdown y no otros?
+## ¿Porque Markdown y no otros?
 
 Evidentemente **Markdown** no es el único [lenguaje de marcado ligero][lml], 
 existen otros también conocidos y extendidos como [Textile][6], [BBCode][7], 
@@ -354,7 +352,7 @@ creado un articulo aparte para mostrarla.
 [Comparativa](/comparativa-de-lenguajes-de-marcado-ligero.html)
 
 
-### ¿Quién emplea Markdown?
+## ¿Quién emplea Markdown?
 
 Una de las razones para emplear **Markdown** es porque es uno de los más 
 extendidos, sobre todo en el mundo de la programación. Por ejemplo, 
@@ -387,7 +385,7 @@ dejando en el tintero muchos más lugares donde es empleado habitualmente.
 Hay que tener en cuenta de que aquí no he hablado de software CMS que lo soporta, 
 eso lo contemplo en el próximo punto, si no más bien de organizaciones/compañías.
 
-### Excusas para no emplearlo
+## Excusas para no emplearlo
 
 La primera que dice todo el mundo, es un incordio usarlo y aprenderlo, la 
 pregunta es: ¿Has intentado emplearlo? Créeme se aprende en nada, sobre la 
@@ -399,7 +397,7 @@ Ganarás mucho tiempo para ti mismo y lo agredeceras, créeme.
 La segunda, no puedo usarlo en mi CMS o blog. ¿Seguro? A continuación te detallo 
 las opciones que conozco para publicar contenidos empleando **Markdown**.
 
-#### CMS y Blogs:
+### CMS y Blogs:
 
 * Por defecto, como opción o nativamente:
     * [Nesta](http://nestacms.com/)

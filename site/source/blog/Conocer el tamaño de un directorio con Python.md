@@ -82,7 +82,7 @@ en el empleo de generadores.
         return sum(get_sizes(the_path))
 
 
-### Obtener el tamaño del directorio en la mejor unidad posible ###
+## Obtener el tamaño del directorio en la mejor unidad posible ##
 
 Estas funciones proporcionan el resultado que deseamos, pero lo entregan en una 
 unidad difícilmente legible, en bytes. ¿Que ocurre si queremos verlo en 

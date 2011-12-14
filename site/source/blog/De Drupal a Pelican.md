@@ -126,7 +126,7 @@ blog.
 ## Ventajas de Pelican vs CMS
 
 
-#### Solo ficheros de texto, No BDD
+### Solo ficheros de texto, No BDD
 
 Simplemente te tienes que preocupar de eso, ficheros de texto, es donde guardas 
 el contenido que creas. Todo lo demás lo genera Pelican por ti. Nada de crear y 
@@ -134,7 +134,7 @@ gestiónar bases de datos, ni copias de seguridad de la misma y un montón de
 espacio y recursos desaprovechado solamente para generar dinámicamente el mismo 
 contenido que te genera Pelican.
 
-#### Mejor rendimiento, carga de página más rápida
+### Mejor rendimiento, carga de página más rápida
 
 Generar contenido dinámico es más caro en recursos y es más lento (consultas a 
 la BDD). Sobre todo a medida que llenas tu CMS de personalizaciones y plugins. 
@@ -152,7 +152,7 @@ Piwik, lo único que se descarga es un fichero HTML, una hoja CSS y las imágene
 que se incluyen en los artículos (cuando las hay). Es decir sirves el mismo 
 contenido pero generando menos tráfico desde tu servidor. 
 
-#### Soporta mejor el tráfico
+### Soporta mejor el tráfico
 
 Cuando un sitio web soporta mucho tráfico, emplear un CMS requiere de mucha 
 optimización y generalmente de mucha maquina o complejas instalaciones. Y la 
@@ -164,7 +164,7 @@ BDD, solo de tener un buen servidor web y si quieres, cachear en memoria o
 ampliar máquina. Pero poco más.
 
 
-#### Seguridad
+### Seguridad
 
 Olvídate de problemas de seguridad, los únicos agujeros de seguridad de un sitio 
 con contenido estático están del lado del servidor web, de todo lo demás, te 
@@ -173,7 +173,7 @@ contenido dinámico del sitio (javascript) ni siquiera es algo que deba
 preocuparte, es algo externo que le concierne a **Disqus** o al sistema de 
 analíticas web que elijas (Google Analytics o Piwik).
 
-#### Olvidarse de gestionar un CMS. Mantenimiento mucho más sencillo (nulo)
+### Olvidarse de gestionar un CMS. Mantenimiento mucho más sencillo (nulo)
 
 Instalar el CMS, crear la BDD, encontrar, instalar y probar los plugins que 
 necesitas, actualizaciones, actualizaciones de seguridad, personalizaciones, 
@@ -185,7 +185,7 @@ Todo eso lo olvidas con Pelican, lo instalas, personalizas y automatizas una
 sola vez, luego te olvidas de todo lo que no sea escribir (si quieres, nada te 
 impide seguir cambiándolo y mejorándolo). Emplea tú tiempo en crear contenido.
 
-#### Backups más sencillos
+### Backups más sencillos
 
 Con un CMS deberías hacer Backups del servidor web tanto del sistema de ficheros 
 como de la BDD. Y sería aconsejable tener un servidor web local montado para 
@@ -200,7 +200,7 @@ regularmente ya haces de tu ordenador personal.
 *[deberías hacer Backups]: No hacerlas es una decisión nefasta
 *[regularmente ya haces]: No me digas que aún no las haces, ¿estas de broma?
 
-#### Hosting en cualquier sitio
+### Hosting en cualquier sitio
 
 Solo tienes que alojar contenido estático, no necesitas BDD ni soporte para 
 ningún lenguaje o librería en particular. Puedes hasta utilizar recursos 
@@ -214,7 +214,7 @@ el hosting más económico te sirve.
   [AS3]: http://aws.amazon.com/es/s3/
   [ACF]: http://aws.amazon.com/es/cloudfront/
 
-#### Emplear un CVS para gestionarlo
+### Emplear un CVS para gestionarlo
 
 Poder emplear Git o Mercurial o cualquier otro CVS para gestionar los cambios 
 del blog no tiene precio. Ningún sistema de revisiones de CMS es tan potente. 
@@ -231,7 +231,7 @@ sencilla, potente y menos propensa a errores que con un CMS.
 *[CVS]: Control Version System (en español, "Sistema de Control de Versiones")
 
 
-#### Crear los articulos off-line
+### Crear los articulos off-line
 
 Eso te permite ir creando los artículos al ritmo que te de la gana, cuando 
 quieras y en cualquier sitio con un portátil. No necesitas estar conectado a la 
@@ -240,7 +240,7 @@ red. Esto también puede hacerse con un CMS, pero suele ser más complejo
 de artículos). Yo lo había logrado en Drupal empleando markdown, pero seguía 
 necesitando un segundo paso on-line para personalizar las etiquetas. 
 
-#### Edición de artículos más cómoda
+### Edición de artículos más cómoda
 
 Puede parecer que un CMS con su editor WYSIWYG es más cómodo, pero todo lo 
 contrario. Ya lo comentaba en el [artículo sobre markdown][3]. Pero es que 
@@ -267,7 +267,7 @@ potente.
 
  [14]: https://addons.mozilla.org/es-ES/firefox/addon/auto-reload/?src=api
 
-#### Control del Spam
+### Control del Spam
 
 El Spam, esa lacra que azota toda la web. En Pelican, ese problema, lo tiene que 
 gestionar Disqus, no tú. Tú solo tienes que gestionar el poco que se le escape. 
@@ -276,20 +276,20 @@ tienes que preocuparte. En Drupal tenía este asunto solucionado, pero fue cosa
 de probar varios plugins, hasta que al final [di con uno que me lo solucionaba de
 verdad](http://joedicastro.com/combatir-el-spam-en-drupal.html). 
 
-#### Recursos de CPU y RAM
+### Recursos de CPU y RAM
 
 El contenido dinámico consume mucha más memoria RAM y CPU en el servidor que 
 servir contenido estático. Al fin y al cabo, en el caso del contenido estático, 
 es poco más complejo que servir ficheros. Si tienes que compartir el servidor 
 con más proyectos, agradecerás no tener que emplear un CMS para servir el blog.
 
-#### Resaltado de Sintaxis incorporada con Pygments
+### Resaltado de Sintaxis incorporada con Pygments
 
 Mientras en la mayoría de CMS necesitas un plugin para habilitar el resaltado de 
 sintaxis para código fuente, en Pelican esto viene por defecto empleando el 
 excelente [Pygments](http://pygments.org/)
 
-#### Cumplimiento de Estándares Web
+### Cumplimiento de Estándares Web
 
 Con Pelican es relativamente sencillo configurar el tema para que cumpla los 
 estándares web y genere contenido valido. Y una vez que lo haces, es para 
@@ -304,21 +304,21 @@ modificar un tema casi por completo, casi como crearlo desde cero.
 
 ## Inconvenientes de Pelican vs CMS
 
-#### Comentarios sin resaltado de sintaxis
+### Comentarios sin resaltado de sintaxis
 
 Algo que me permitía Drupal y no me permite Disqus (por ahora) era emplear 
 markdown en los comentarios y resaltado de sintaxis para el código fuente. Es el 
 mayor inconveniente que he encontrado hasta ahora. Pero bueno, tampoco es algo 
 imprescindible y esperemos que Disqus lo soporte en un futuro.
 
-#### Sitemap
+### Sitemap
 
 Tampoco Pelican genera sitemaps en xml para los buscadores. Aunque tampoco es 
 algo imprescindible y Drupal tampoco lo soporta por defecto, si no a través de 
 un módulo. El autor lo tiene como tarea pendiente, y si tarda mucho, a lo mejor 
 me animo y lo creo yo mismo.
 
-#### Personalización más sencilla para non geeks
+### Personalización más sencilla para non geeks
 
 Esta es la parte que menos me afecta, pero es el gran inconveniente para la gran 
 mayoría sin conocimientos avanzados. Aunque Pelican no es difícil de instalar y 
@@ -326,7 +326,7 @@ configurar, si queremos personalizarlo bastante, la cosa cambia. Los CMS son
 mucho más sencillos en ese sentido, pero el coste a pagar por otro lado no me 
 compensa. 
 
-#### No tiene búsqueda incorporada
+### No tiene búsqueda incorporada
 
 Es otro pequeño inconveniente que puede suplirse empleando la de Google AdSense 
 en el sitio, por ejemplo. Personalmente no me importa demasiado, teniendo 
@@ -334,7 +334,7 @@ disponibles en el sitio recursos como el archivo de todos los artículos
 publicados o la nube de etiquetas.
 
 
-#### No puedes personalizar el contenido dinámicamente
+### No puedes personalizar el contenido dinámicamente
 
 Con un CMS puedes hacer cosas como mostrar un contenido o un tema distinto según 
 el perfil del usuario, o según la carga del servidor, etc. Con contenido 

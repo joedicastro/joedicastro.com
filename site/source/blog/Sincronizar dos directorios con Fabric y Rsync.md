@@ -115,7 +115,7 @@ y el resto de ficheros y finalmente eliminar ese respaldo. Puede haber cientos
 de razones para preferir emplear fabric antes de un script independiente para 
 la sincronización.
 
-### Ejecución desatendida de la sincronización
+## Ejecución desatendida de la sincronización
 
 Si queremos programar esta tarea, no sería mala idea que nos avisara de cuando 
 comienza a ejecutarse y del resultado de la misma. Para ello puedo emplear 

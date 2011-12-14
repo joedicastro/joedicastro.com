@@ -205,7 +205,7 @@ el que se basa el plugin Grid, aunque los primeros gestores para linux son del
 2000 y WinSplit aparece en el 2007). Me centrare aquí solo en los más populares.
 
 
-#### [awesome][aw]
+### [awesome][aw]
 
 Automático. Escrito en *C* y *Lua*, es configurable y extensible en *Lua*. Basado 
 en **dwm**
@@ -216,10 +216,11 @@ mayor agilidad. Aporta su propia barra de información, bandeja del sistema
 (systray) y lanzador de aplicaciones integrado. Tiene un soporte de ratón 
 superior a la competencia. Pero su desarrollo no es aún solido, varía demasiado a 
 lo largo de las distintas versiones y te obliga a reconfigurarlo cada vez que 
-sale una nueva. 
+sale una nueva.
+
 </br>
 
-#### [bluetile][bt]
+### [bluetile][bt]
 
 
 Automático. Escrito en *Haskell*. Basado en **Xmonad**
@@ -236,7 +237,7 @@ vídeo realizado por su autor, Jan Vornberger, se puede ver como funciona:
 
 </br>
 
-#### [dwm][dwm]
+### [dwm][dwm]
 
 Automático. Escrito, configurable y extensible en *C*. 
 
@@ -251,7 +252,7 @@ gráficos como Gnome Do.
 
 </br>
 
-#### [i3][i3]
+### [i3][i3]
 
 Manual. Escrito en *C* y configurable con ficheros de texto. Basado en **wmii**
 
@@ -261,7 +262,7 @@ que por otro lado le resta comodidad.
 
 </br>
 
-#### [wmii][wmii]
+### [wmii][wmii]
 
 Manual. Escrito en *C* y configurable en *bash*, *rc*, *ruby* o *python*
 
@@ -270,7 +271,7 @@ equivalente a **dwm** pero manual.
 
 </br>
 
-#### [xmonad][xmnd]
+### [xmonad][xmnd]
 
 Automático. Escrito, extensible y configurable en *Haskell*. Inspirado en **dwm**
 

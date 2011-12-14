@@ -30,7 +30,7 @@ de forma personalizada.
   [6]: http://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP
 
   
-### Publicar el contenido
+## Publicar el contenido
 
 Publicar el contenido de una web es tan sencillo como volcar el contenido del 
 directorio que nos genera Pelican (en nuestro ejemplo sería 
@@ -71,7 +71,7 @@ plugins externos. Una de estas herramientas, sin recurrir a `find`, `grep`,
   [11]: http://regexxer.sourceforge.net/
 
 
-### Generar el contenido en el propio servidor
+## Generar el contenido en el propio servidor
 
 Si el alojamiento que hemos escogido nos permite instalar programas python, 
 entonces tenemos la posibilidad de instalar Pelican en el servidor remoto. De 
@@ -93,7 +93,7 @@ ejemplo en GitHub o Bitbucket) y por lo tanto de la web, haciendo "innecesarias"
 las copias de seguridad. 
 
 
-### Automatizar todos los procesos
+## Automatizar todos los procesos
 
 Pero lo ideal es poder automatizar todas las tareas que hemos visto hasta ahora, 
 empleando unos pocos comandos para realizarlas sin esfuerzo alguno (bueno, 
@@ -342,7 +342,7 @@ procesos: primero eliminar el directorio de salida actual (para tener una copia
 fresca), genera el nuevo contenido, luego procesa los archivos para que 
 validen en HTML5 y finalmente hace una copia del directorio de salida a mi 
 servidor local Apache. El procesar los archivos para validar en HTML5 se debe a 
-que markdown crea unos enlaces `rel="footnote"` y `rev="footnote"` en las notas 
+que markdown crea unos enlaces `rel = "footnote"` y `rev = "footnote"` en las notas 
 al pie que se han quedado obsoletos y no son necesarios. De momento es un 
 post-procesado, pero puede que finalmente modifique Pelican para que se haga en 
 tiempo de generación del sitio. Aunque creo que  el rendimiento de esta manera 

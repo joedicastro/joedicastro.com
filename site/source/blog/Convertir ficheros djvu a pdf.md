@@ -21,7 +21,7 @@ Para realizar esta conversión empleo desde hace años (la primera versión es d
 masiva de documentos de un formato al otro, he modificado el script para hacer 
 esto más sencillo y he decidido compartirlo con cualquiera que pueda necesitarlo. 
 
-### Los requisitos previos
+## Los requisitos previos
 
 Está diseñado para funcionar en Linux y necesita de la instalación de dos 
 pequeños programas que son los que realmente realizan la conversión. Estos dos 
@@ -41,7 +41,7 @@ sencilla, para distribuciones basadas en Debian/Ubuntu:
 
 `ddjvu` nos extrae las páginas que conforman el documento *.djvu* a un archivo intermedio en formato *.tiff* y `tiff2pdf` nos lo convierte en *.pdf*.
  
-### Modo de empleo
+## Modo de empleo
 
 Emplearlo es muy sencillo, como se puede ver en la ayuda del mismo:
 
@@ -79,7 +79,7 @@ con algunos visores y lectores de ebooks.
   [zip]: http://es.wikipedia.org/wiki/Formato_de_compresi%C3%B3n_ZIP
   
   
-### El script, djvu2pdf.py
+## El script, djvu2pdf.py
 
 El contenido del scipt es el que sigue. Este está disponible, actualizado siempre 
 a la última versión, en mi [repositorio][repo]

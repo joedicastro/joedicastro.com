@@ -64,7 +64,7 @@ algunas nuevas funcionalidades, [lftp-mirror][8].**
    [7]: http://es.wikipedia.org/wiki/Python
    [8]: http://code.joedicastro.com/lftp-mirror/wiki/Leer_en_espanol
 
-### ¿Que ventajas aporta este script?
+## ¿Que ventajas aporta este script?
 
   * **Proporciona un log detallado y legible** que graba en un fichero en disco
 y **que puede ser enviado por correo electrónico** a una o varias direcciones
@@ -105,7 +105,7 @@ copia de seguridad por cada uno de los últimos 7 días, para poder revertir alg
    [9]: http://es.wikipedia.org/wiki/Ubuntu
    [10]: http://es.wikipedia.org/wiki/Base64
 
-### ¿Para que nos puede servir este script?
+## ¿Para que nos puede servir este script?
 
 Vamos a ver un ejemplo de lo más común, las **copias de seguridad de una página web**. En muchos [hosting compartidos][11] la única posibilidad de transferir archivos con el servidor es a través de una cuenta **FTP**. Empleando este script, podemos crear un directorio en local donde haremos las copias de seguridad de los ficheros de la web y luego sincronizarlo automáticamente todos los días, descargando únicamente los ficheros que han cambiado. Con esto tendremos no solo el directorio actualizado diariamente, si no que además dispondremos de una copia de seguridad por cada uno de los siete días anteriores para poder corregir cualquier problema ocurrido entre esas fechas. Configurar algo así es realmente sencillo, únicamente tendríamos que cambiar los valores incorporados dentro del script por los que necesitamos y luego programar su ejecución diaria con cron.
 

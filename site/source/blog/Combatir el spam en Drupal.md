@@ -23,18 +23,18 @@ consumido por los spammers**, como se puede observar en la siguiente tabla:
 
 Estadísticas de Trafico generado por ataques de spam en deaparatos.com
 	 	 	 	 	 
-|                           |     | Días | Ataques Spam | Trafico (GB) | Media pagina (KB) | Trafico mes (MB) |
-| -------------------- | -- | ------ | ------------------: | ---------------: | -----------------------: | ---------------------: |
-| Mollom              |     | **359** |         48741 |      7,116 |    146,000 |      602,927 |
-| Mollom + script |      | **359** |      358666 |      0,016 |        0,046 |          1,389 |
-| **Total**            |      |             | **407407** | **7,133** | **17,507** | **604,316** |
+|        | Días | Ataques | Trafico (GB) | Media pagina (KB) | Trafico mes (MB) |
+|---------------- | ------- | ---------: | --------: | ---------: | ----------: |
+| Mollom          | **359** |      48741 |     7,116 |    146,000 |     602,927 |
+| Mollom + script | **359** |     358666 |     0,016 |      0,046 |       1,389 |
+| **Total**       |         | **407407** | **7,133** | **17,507** | **604,316** |
  	 	 	 	 	 
 Si solo hubiera empleado el modulo Mollom, sin emplear mi script
  	 	 	 	 	 
-|                                          |                                                                           | Trafico (GB) | Ahorro (GB) |
-| :------------------------------- | ---------------------------------------------------------: | ---------------: | ---------------: |
-| **Trafico spam total**        | (358666 * (146,000 – 0,046) KB) + 7,133 GB = |         59,481 |     **52,349** |
-| **Trafico spam mensual** |                 ((59,465 GB * 365) / 359) / 12) MB = |           5,040 |       **4,435** |
+|Trafico spam|| Trafico (GB) | Ahorro (GB) |
+| :-------------------| ------------------------------------------: | -----: | ---------: |
+| **Trafico total**   |(358666 * (146,000 – 0,046) KB) + 7,133 GB = | 59,481 | **52,349** |
+| **Trafico mensual** |        ((59,465 GB * 365) / 359) / 12) MB = |  5,040 |  **4,435** |
 
 Como podemos ver en las cifras mostradas de esta tabla, **se ha conseguido en** 
 un periodo de aproximadamente **un año reducir el ancho de banda consumido por 
@@ -68,7 +68,7 @@ Después de comprobar la eficacia de esta doble estrategia durante más de un a�
 explicaros el porqué y el como he llegado a ella, a continuación. También se
 puede ver el script que ha marcado la diferencia de tráfico.
 
-### **El spam en internet**  
+## El spam en internet
   
 El [spam][3] es una de las lacras más tediosas y difíciles de combatir en 
 Internet, por no mencionar las tareas delictivas que se apoyan en él. Después 
@@ -124,7 +124,7 @@ su funcionalidad, a su aspecto, etc.
    [7]: http://www.idg.es/pcworldtech/Los-hackers-controlan-una-botnet-desde-Amazon-EC2/doc88089-actualidad.htm
    [8]: http://googlewebmaster-es.blogspot.com/2009/12/comentarios-spam-la-dura-realidad.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+ElBlogParaWebmasters+%28El+Blog+para+Webmasters%29
   
-### **deaparatos.com y el spam**  
+## deaparatos.com y el spam
   
 Y **deaparatos** no está exento de esta amenaza, de hecho se había convertido en 
 un serio problema en el 2009. Este sitio está gestionado con [Drupal][9], y 
@@ -204,7 +204,7 @@ algunos de los otros métodos.
 En este mapa podemos ver el país de origen de los ataques de spam contra 
 deaparatos.com
 
-### **Drupal y el spam**  
+## Drupal y el spam
   
 Con que armas contamos en **Drupal** para combatir el spam? Por un lado tenemos 
 el clásico modulo [Spam][24], que emplee en este mismo sitio durante más de dos 
@@ -372,7 +372,7 @@ height="114" width="600" /></p>
 
 Ejemplo de captcha generado por Mollom
   
-### **La solución definitiva, Mollom + ban_drupal_spammers.py**  
+## La solución definitiva, Mollom + ban_drupal_spammers.py
   
 **Aunque Mollom funciona de manera muy efectiva, bloqueando aprox. el 99,98% 
 (en deaparatos.com) de los mensajes spam**, esto no impide que los atacantes 
@@ -479,7 +479,7 @@ flexibilidad, lo que me hizo decidirme por él.
    [59]: http://es.wikipedia.org/wiki/Servidor_virtual_privado
    [60]: http://www.webfaction.com/?affiliate=joedicastro
 
-### **El script, ban_drupal_spammers.py**
+## El script, ban_drupal_spammers.py
 
 El script (siempre la versión más actualizada), los ficheros auxiliares y las 
 instrucciones de como emplearlos, pueden ser encontrados en mi repositorio
@@ -812,16 +812,16 @@ El código de **ban_drupal_spammers.py** es el siguiente:
 
 ------
 
-# Comentarios realizados anteriormente en Drupal
+## Comentarios realizados anteriormente en Drupal
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
 <a href="http://inseguridad.org/"><img src="pictures/avtr_jbone.png" height=28 
 width=28 alt="avatar" title="avatar de bjone"/></a></div>
 
-## Muy interesante  
+### Muy interesante  
 por [bjone](http://inseguridad.org/) el Jue, 14/10/2010 - 11:40
 
-<br />
+
 
 muy interesante... voy a probar el mollom... gracias por la información.
 
@@ -831,10 +831,10 @@ muy interesante... voy a probar el mollom... gracias por la información.
 <img src="pictures/avtr_anonimo.png" height=28 width=28
 alt="avatar" title="avatar de anónimo"/></div>
 
-## Preguntita
+### Preguntita
 por Anónimo el Mié, 27/10/2010 - 14:00
 
-<br />
+
 
 Estoy armando mi sitio, que poseerá foro y tendré lo que entendí tu llamas 
 hosting compartido. Es decir, me alquilaran espacio de hosting. La pregunta es: 
@@ -849,10 +849,10 @@ Gracias.
 <img src="pictures/avtr_anonimo.png" height=28 width=28
 alt="avatar" title="avatar de anónimo"/></div>
 
-## Gracias, terminé de leer el
+### Gracias, terminé de leer el
 por Anónimo el Mié, 27/10/2010 - 14:03
 
-<br />
+
 
 Gracias, terminé de leer el artículo y me respondí solo :)
 
@@ -864,10 +864,10 @@ Si, parece que deberé hacerme cargo activamente :(.
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Si, efectivamente así es,
-por [joe di castro](pages/sobre-mi.html) el Mié, 27/10/2010 - 20:04
+### Si, efectivamente así es,
+por [joe di castro](http://joedicastro.com) el Mié, 27/10/2010 - 20:04
 
-<br />
+
 
 Si, efectivamente así es, pero además es así también en los servidores 
 administrados y en los servidores dedicados.
@@ -896,10 +896,10 @@ Saludos y suerte con el foro.
 <a href="http://sigt.net/"><img src="pictures/avtr_armonth.png" height=28 
 width=28 alt="avatar" title="avatar de armonth"/></a></div>
 
-## Sobre el Spamicide
+### Sobre el Spamicide
 por [Armonth][armth] el Sáb, 30/10/2010 - 19:59 
 
-<br />
+
 
 Buenas, yo ese sistema lo conocía por el de "campo oculto" y lo comenté hace ya 
 más de 3 años en SigT (te he enlazado mi nombre al artículo) con la implementación.
@@ -923,10 +923,10 @@ ignorando otros campos...
 <a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
-## Si, desde luego es bastante
-por [joe di castro](pages/sobre-mi.html) el Sáb, 30/10/2010 - 22:05
+### Si, desde luego es bastante
+por [joe di castro](http://joedicastro.com) el Sáb, 30/10/2010 - 22:05
 
-<br />
+
 
 Si, desde luego es bastante más lógico hacerlo de esa manera, engañando 
 doblemente a los spammers. De todos modos el modulo Spamicide te deja renombrar 
@@ -944,10 +944,10 @@ Saludos
 <a href="http://sigt.net/"><img src="pictures/avtr_armonth.png" height=28 
 width=28 alt="avatar" title="avatar de armonth"/></a></div>
 
-## Bueno
+### Bueno
 por [Armonth](http://sigt.net/) el Sáb, 30/10/2010 - 22:57 
 
-<br />
+
 
 Bueno, yo estoy "inactivo" de sigt que no de otro proyecto aún no revelado y que 
 dejé los MMO ;P

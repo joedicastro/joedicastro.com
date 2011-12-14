@@ -24,7 +24,7 @@ modificarlo, y espero poder así contribuir en alguna medida a su desarrollo.
 
   [1]: https://github.com/ametaireau/pelican/pull/138
 
-### Configuración
+## Configuración
 
 La configuración se hace a través de un fichero python, que en el ejemplo por 
 defecto se llama `pelican.conf.py` y en nuestro ejemplo estaría en 
@@ -116,7 +116,7 @@ dentro de la documentación. Entre paréntesis indico los valores por defecto.
                          ('extra/favicon.ico', 'favicon.ico'),
                          ('extra/.htaccess', '.htaccess'),)
   
-### Personalización
+## Personalización
 
 
 Pero si realmente queremos personalizar el sitio, tanto en funcionalidad básica 

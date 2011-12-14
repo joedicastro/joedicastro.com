@@ -27,7 +27,7 @@ nombre sonoro y corto, en la moda de nombres como Ubuntu.
    [8]: http://mail.python.org/pipermail/python-es/2011-February/029151.html
    [9]: http://mail.python.org/pipermail/python-es/2011-February/029167.html
 
-### Origen del formato Q&A
+## Origen del formato Q&A
 
 Este sitio se monta sobre la plataforma [**OSQA**][3] (Open Source Questions & 
 Answers) que la gente de **[DZone][7]** creo a partir del extinto proyecto 
@@ -103,7 +103,7 @@ también sobre OSQA como son [Trabber][28] y [Cientifi.net][29]
     que alternativas reales en el presente, pero un claro indicio de lo que nos 
     espera en el futuro.
 
-### Ventajas del formato Q&A
+## Ventajas del formato Q&A
 
 Básicamente un sitio de Q&A, es una web de preguntas y respuestas dirigida por 
 sus propios usuarios, que son quienes hacen las preguntas, las responden 
@@ -131,7 +131,7 @@ naturalidad que con los foros y con muchos mejores resultados.
 
 <p style="text-align:center;"><img src="pictures/python_majibu.png" title="Aspecto actual de python majibu"/></p>
 
-### Python majibu
+## Python majibu
 
 Yo echaba de menos algo como Stack Overflow  en español, aunque no tengo 
 problemas con el inglés y consulto habitualmente los sitios de StackExchange, 

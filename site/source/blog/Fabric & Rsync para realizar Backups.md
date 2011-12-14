@@ -149,7 +149,7 @@ Megabytes y el total de espacio ocupado por el directorio y los siete archivos
 comprimidos es de 1.60 Gibibytes (1,72 Gigabytes). 
   
   
-#### Ventajas
+## Ventajas
 
 Las ventajas de sincronizarlo con **rsync + ssh** vs **ftp**, como ya comenté en el 
 anterior articulo son enormes. Se ahorra muchísimo tiempo y ancho de banda, lo 
@@ -160,7 +160,7 @@ red; la sincronización remoto → local a través de FTP emplea entre 35 y 45
 minutos y cuando lo hacemos a través de rsync emplea entre 2 y 4 minutos**. Ahí 
 es nada, estamos hablando de un proceso ~13 veces más rápido. 
 
-### Código
+## Código
 
 El código del fichero fabric es el siguiente:
 
