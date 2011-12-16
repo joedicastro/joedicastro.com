@@ -71,22 +71,24 @@ Estas son las reglas CSS 3 que empleo para implementarlo:
 
     :::css
     .codehilite:before, .codehilite:after {
-        content: "";
+        content: " ";
         position: absolute;
         z-index: -1;
+        transform: skew(-3deg,-2deg);
         -ms-transform: skew(-3deg,-2deg);
         -webkit-transform: skew(-3deg,-2deg);
         -o-transform: skew(-3deg,-2deg);
         -moz-transform: skew(-3deg,-2deg);
         bottom: 14px;
-        box-shadow: 0 15px 5px rgba(0, 0, 0, 0.3);
-        height: 50px;
         left: 1px;
+        box-shadow: 0px 15px 5px #aaa;
+        height: 50px;
         max-width: 50%;
         width: 50%;
     }
-    
+        
     .codehilite:after {
+        transform: skew(3deg,2deg);
         -ms-transform: skew(3deg,2deg);
         -webkit-transform: skew(3deg,2deg);
         -o-transform: skew(3deg,2deg);
@@ -98,14 +100,14 @@ Estas son las reglas CSS 3 que empleo para implementarlo:
     .codehilite {
         position: relative;
         padding: 1px;
-        background: #FAFAFA;
-        box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.2);
-        -o-box-shadow: 0px 0px 1px 1px  rgba(0,0,0,0.2);
-        -moz-box-shadow: 0px 0px 1px 1px  rgba(0,0,0,0.2);
+        background: #fafafa;
         margin: 25px;
+        box-shadow: 0px 0px 1px 1px #ccc;
     }
     
-
+Aunque desafortunadamente emplear la propiedad `transform` y sus equivalentes 
+para cada familia de navegadores, provoca que no se valide por ahora correctamente 
+como CSS 3 valido, ya que la propiedad aún está en proceso de estandarización.
 
 ### Diseño antiguo
 
