@@ -126,7 +126,8 @@ def new(title):
     """Create a new blog article."""
     local("gedit --new-window {0}/site/source/blog/{1}.md 2>/dev/null &".
           format(ROOT_PATH, title.replace(" ", "\ ")))
-    local("firefox --new-window {0}/index.html 2>/dev/null &".format(OUTPUT))
+    local("firefox --new-window {0}/category/blog.html 2>/dev/null &".
+          format(OUTPUT))
     _gen(True)
 
 def img4web(delete=False, source=""):
