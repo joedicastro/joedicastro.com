@@ -164,7 +164,7 @@ mensajes de error allí donde algo puede ir mal.
 Para las situaciones en las que no disponemos de un servidor de correo SMTP 
 funcionando, podemos montar uno temporalmente para realizar pruebas. La tarea 
 puede tan sencilla como recurrir a uno de los **python one-liners** que 
-mencionaba en [Python one-liners. Potencia en una sola línea](python_one_liners_potencia_en_una_sola_linea).
+mencionaba en [Python one-liners. Potencia en una sola línea](http://joedicastro.com/python_one_liners_potencia_en_una_sola_linea).
 
     :::python
     python -m smtpd -n -c DebuggingServer localhost:8025

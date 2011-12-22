@@ -751,7 +751,7 @@ Lenguajes de marcado ligero
 Morbi erat augue, feugiat eu pellentesque eget, hendrerit quis lectus. Fusce dignissim pretium nibh sed dignissim. Pellentesque lobortis ante eu dui fermentum vitae blandit risus aliquet.
 </p>
 
-<table cellapadding="4">
+<table cellpadding="4">
   <tr>
     <th></th>
     <th>solo texto</th>

@@ -5,7 +5,7 @@ tags: drupal, spam, python, mysql, mollom, script
 
 ### Articulo publicado originalmente en el antiguo sitio deaparatos.com
 
- <p style="text-align: center;"><img src="pictures/spam_stats.png" 
+<p style="text-align: center;"><img src="pictures/spam_stats.png" 
  alt="deaparatos spam statistiscs" title="estadísticas de spam en deaparatos" 
  height="550" width="593" /></p>
 
@@ -23,15 +23,15 @@ consumido por los spammers**, como se puede observar en la siguiente tabla:
 
 Estadísticas de Trafico generado por ataques de spam en deaparatos.com
 	 	 	 	 	 
-|        | Días | Ataques | Trafico (GB) | Media pagina (KB) | Trafico mes (MB) |
+| Estrategia | Días | Ataques | Trafico (GB) | Media pagina (KB) | Trafico mes (MB) |
 |---------------- | ------- | ---------: | --------: | ---------: | ----------: |
 | Mollom          | **359** |      48741 |     7,116 |    146,000 |     602,927 |
 | Mollom + script | **359** |     358666 |     0,016 |      0,046 |       1,389 |
-| **Total**       |         | **407407** | **7,133** | **17,507** | **604,316** |
+| **Total**       | **359** | **407407** | **7,133** | **17,507** | **604,316** |
  	 	 	 	 	 
 Si solo hubiera empleado el modulo Mollom, sin emplear mi script
  	 	 	 	 	 
-|Trafico spam|| Trafico (GB) | Ahorro (GB) |
+|Trafico spam| Calculo | Trafico (GB) | Ahorro (GB) |
 | :-------------------| ------------------------------------------: | -----: | ---------: |
 | **Trafico total**   |(358666 * (146,000 – 0,046) KB) + 7,133 GB = | 59,481 | **52,349** |
 | **Trafico mensual** |        ((59,465 GB * 365) / 359) / 12) MB = |  5,040 |  **4,435** |

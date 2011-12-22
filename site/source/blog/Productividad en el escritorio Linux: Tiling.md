@@ -166,7 +166,7 @@ como se comporta este plugin manejándolo desde el teclado. Personalmente opino
 que mejor lo hubieran dejado como estaba.
 
 <div style="text-align:center">
-<iframe src="http://player.vimeo.com/video/32746967?title=0&amp;byline=0&amp;portrait=0&amp;color=59a5d1" width="667" height="417" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><p>Demostración del tiling básico del plugin de Compiz, Grid, en Ubuntu 11.10 con Unity</p>
+<iframe src="http://player.vimeo.com/video/32746967?title=0&amp;byline=0&amp;portrait=0&amp;color=59a5d1" width="667" height="417"></iframe><p>Demostración del tiling básico del plugin de Compiz, Grid, en Ubuntu 11.10 con Unity</p>
 </div>
 
 * **Gnome Shell**, tiene un tiling muy básico parecido al que emplea Unity. Te 
@@ -218,7 +218,7 @@ superior a la competencia. Pero su desarrollo no es aún solido, varía demasiad
 lo largo de las distintas versiones y te obliga a reconfigurarlo cada vez que 
 sale una nueva.
 
-</br>
+<br />
 
 ### [bluetile][bt]
 
@@ -232,10 +232,10 @@ acostumbrados al ratón lo usen indistintamente con el teclado. En el siguiente
 vídeo realizado por su autor, Jan Vornberger, se puede ver como funciona:
 
 <div style="text-align:center">
-<iframe src="http://player.vimeo.com/video/6661713?title=0&amp;byline=0&amp;portrait=0" width="667" height="500" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+<iframe src="http://player.vimeo.com/video/6661713?title=0&amp;byline=0&amp;portrait=0" width="667" height="500"></iframe>
 </div>
 
-</br>
+<br />
 
 ### [dwm][dwm]
 
@@ -250,7 +250,7 @@ Para lanzar las aplicaciones se desarrolló **dmenu** un lanzador basado en text
 que es muy empleado en otros gestores. Funciona al igual que los lanzadores 
 gráficos como Gnome Do. 
 
-</br>
+<br />
 
 ### [i3][i3]
 
@@ -260,7 +260,7 @@ Muy sencillo y que presume de estar bien documentado. Fácil de usar y configura
 Es manual, lo que le permite crear esquemas muy flexibles y personalizados, pero 
 que por otro lado le resta comodidad. 
 
-</br>
+<br />
 
 ### [wmii][wmii]
 
@@ -269,7 +269,7 @@ Manual. Escrito en *C* y configurable en *bash*, *rc*, *ruby* o *python*
 Escrito por el mismo desarrollador que **dwm**. Digamos que es el gestor 
 equivalente a **dwm** pero manual. 
 
-</br>
+<br />
 
 ### [xmonad][xmnd]
 
@@ -280,7 +280,7 @@ muchas extensiones disponibles. Se integra muy bien con Gnome y KDE. Tiene un
 desarrollo muy activo y una gran comunidad de usuarios detrás. Es el que empleo 
 desde hace meses y le he dedicado un [articulo completo][proxm].
 
-</br>
+<br />
 
 Todos estos gestores están incluidos en los repositorios de Ubuntu, Debian, 
 Gentoo y Arch Linux, y la mayoría están disponibles también en otras 
