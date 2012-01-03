@@ -266,7 +266,7 @@ electronicos en texto plano.
 
 No voy ahora, en este articulo, a enseñarte a emplear **Markdown**, pero tienes 
 una guía de prácticamente todas las posibilidades que te brinda en 
-[Markdown & Pygments Lexers Cheat Sheet](/pages/markdown.html). 
+[Markdown & Pygments Lexers Cheat Sheet](http://joedicastro.com/pages/markdown.html). 
 Además, si somos así de vagos, podemos emplear también algunos editores visuales 
 que generan y emplean markdown, como [markItUP!][4] o el conocido [WMD][wmd] que 
 empleamos en [python majibu](http://python.majibu.org). Aunque ambos editores 
@@ -349,7 +349,7 @@ Como no, lo mejor, es ver una comparativa co un ejemplo de el mismo documento y
 el texto empleado por cada uno de los lenguajes para generarlo. Para ello he 
 creado un articulo aparte para mostrarla.
 
-[Comparativa](/comparativa-de-lenguajes-de-marcado-ligero.html)
+[Comparativa](http://joedicastro.com/comparativa-de-lenguajes-de-marcado-ligero.html)
 
 
 ## ¿Quién emplea Markdown?

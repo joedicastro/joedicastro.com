@@ -6,10 +6,10 @@ Cuando creamos un script en **Python**, sobre todo aquellos orientados a
 ejecutarse en la línea de comandos, a veces necesitamos echar mano de un 
 programa externo que no siempre viene por defecto instalado en el sistema. Por 
 ejemplo, en el script que empleo en 
-[optimizar imágenes para la web](/optimizar_imagenes_para_la_web) empleo los 
-programas externos *pngcrush* y *jpegtran*. ¿Como comprobamos entonces si el 
-programa está instalado? Desde luego es siempre mejor comprobarlo y avisar al 
-usuario, que dejar que arroje un feo error.
+[optimizar imágenes para la web](http://joedicastro.com/optimizar_imagenes_para_la_web) 
+empleo los programas externos *pngcrush* y *jpegtran*. ¿Como comprobamos 
+entonces si el programa está instalado? Desde luego es siempre mejor 
+comprobarlo y avisar al usuario, que dejar que arroje un feo error.
 
 Una forma de comprobar si el programa está instalado es capturando la excepción 
 cuando se produzca con las sentencias `try` y `except`, incluyendo la llamada al 
