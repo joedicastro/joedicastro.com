@@ -145,3 +145,8 @@ def commit(message):
 def push():
     """Make a push to the remote mercurial repository."""
     local("hg push ssh://hg@bitbucket.org/joedicastro/joedicastro.com")
+
+def blinks():
+    """Check the webpage for broken links."""
+    local("wget --spider --no-parent -r -nd -o blinks.txt {0}".format(PROD))
+    local("vim blinks.txt")
