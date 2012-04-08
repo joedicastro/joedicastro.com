@@ -147,7 +147,7 @@ saber cuando se activan y cuando terminan, sobre todo cuando son procesos
 largos. Un ejemplo puede verse en el código de [Sincronizar una carpeta local y
 una remota a través de FTP: lftp-mirror][10]
 
-  [10]:/sincronizar-una-carpeta-local-y-una-remota-a-traves-de-ftp-lftp-mirror.html
+  [10]: http://joedicastro.com/sincronizar-una-carpeta-local-y-una-remota-a-traves-de-ftp-lftp-mirror.html
 
 El fichero con este código, [notify.py][file] se encuentra en
 [mi repositorio][repo].

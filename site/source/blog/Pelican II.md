@@ -210,10 +210,11 @@ este caso, sería así en el fichero de configuración `pelican.conf.py`
 
 * ***pages*** Serían las páginas estáticas del sitio, lo que no son artículos. 
 Este nombre de directorio está reservado para esta función por defecto. Por 
-ejemplo la página [*sobre mí*](pages/sobre-mi.html) que empleo en este blog, 
-sería una de estas páginas estáticas. En estas páginas no están disponibles los 
-comentarios. Si se especifica en el fichero de configuración, estas páginas 
-aparecerán como entradas en el menú principal del tema por defecto. 
+ejemplo la página [*markdown*](http://joedicastro.com/pages/markdown.html) que 
+empleo en este blog, sería una de estas páginas estáticas. En estas páginas 
+no están disponibles los comentarios. Si se especifica en el fichero de 
+configuración, estas páginas aparecerán como entradas en el menú principal 
+del tema por defecto. 
 
 * ***pictures*** Este es uno de los directorios que se pueden emplear para 
 albergar contenido estático como son las imágenes. Esto es configurable en el 

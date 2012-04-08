@@ -5,7 +5,7 @@
   <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
   <meta name="author" content="{{ AUTHOR }}" />
   {% block keywords %}<meta name="keywords" content="joe di castro, blog">{% endblock %}
-  <link rel="author" href="humans.txt" />
+  <link rel="author" href="{{ SITEURL }}/humans.txt" />
   <link href='http://fonts.googleapis.com/css?family=Vollkorn:400' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/{{ CSS_FILE }}" type="text/css" />
   <link href="{{ SITEURL }}/{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />

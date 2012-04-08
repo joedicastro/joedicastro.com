@@ -8,7 +8,7 @@ el software que genera este blog, añado el repositorio, [como había prometido]
 del contenido del mismo. El repositorio emplea el sistema de control de versiones 
 [Mercurial][3] y está alojado en [Bitbucket][4].
 
-  [0]: http://joedicastro.com/tag/Pelican.html
+  [0]: http://joedicastro.com/tag/pelican.html
   [1]: http://docs.notmyidea.org/alexis/pelican/
   [2]: http://joedicastro.com/pelican-configuracion-y-personalizacion.html
   [3]: http://mercurial.selenic.com/

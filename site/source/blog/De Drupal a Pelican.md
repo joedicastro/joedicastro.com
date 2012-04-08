@@ -86,11 +86,11 @@ era contar el número de descargas de cada una de las aplicaciones desde PyPi.
 Los números son los siguientes (a 27 de Junio de 2011), obtenidos con 
 [Vanity][vnt] o [pythonpackages.com][ppkg]:
 
-| Paquete   | Descargas | Descargas (2 de Diciembre de 2011) |
-| --------- | :-------: | :--------------------------------: |
-| Blogofile |     2.419 |                              3.854 |
-| Hyde      |     1.945 |                              4.518 |
-| Pelican   |     3.919 |                              6.138 |
+| Paquete   | Descargas | Descargas (2-12-2011) | Descargas (7-4-2012) |
+| --------- | :-------: | :-------------------: | :------------------: |
+| Blogofile |     2.419 |                 3.854 |                5.276 |
+| Hyde      |     1.945 |                 4.518 |                7.644 |
+| Pelican   |     3.919 |                 6.138 |               10.126 |
 
   [vnt]: https://github.com/aclark4life/vanity
   [ppkg]: http://pythonpackages.com/

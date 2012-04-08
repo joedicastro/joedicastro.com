@@ -364,7 +364,7 @@ Por cierto, ¡Qué gráficas más chulas! ;-D
 ----
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Si, la librería matplotlib da
@@ -425,7 +425,7 @@ debería simplificar el número de "contextos" a mantener:
 
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Gracias. Si, la verdad es que yo
@@ -478,7 +478,7 @@ los comentarios, parece que me pesaban demasiado :-)*
 
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Fíjate en lo que ocurre

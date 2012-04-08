@@ -12,7 +12,7 @@ tema empleado, bien creando uno nuevo o bien modificando el que viene por
 defecto. El último nivel vendría de modificar el propio Pelican. Todos son 
 posibles y están a nuestro alcance, gracias a que es Software Libre. 
 
-  [0]: http://joedicastro.com/tag/Pelican.html
+  [0]: http://joedicastro.com/tag/pelican.html
   
 Si bien yo he personalizado mi sitio con respecto al sitio por defecto, y aún 
 quedan ciertas cosas que aún quiero cambiar, no he necesitado de momento más que 

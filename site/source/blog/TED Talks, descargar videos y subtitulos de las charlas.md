@@ -410,7 +410,7 @@ Gracias mil por la ayuda con este tema.
 ----
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Script para subtitulos de una charla
@@ -463,7 +463,7 @@ Muchas gracias
 ---- 
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Vamos por partes...
@@ -552,7 +552,7 @@ Xavier
 
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Si, funcionan, pero...
@@ -588,7 +588,7 @@ otra que siempre descarga el fichero completo.
 
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Bueno, ya estan incorporadas
@@ -645,7 +645,7 @@ muchas gracias de antemano
 ----
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### No, en este caso no te falta
@@ -724,7 +724,7 @@ Xavier
 ----
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Bueno, teniendo en cuenta los
@@ -751,7 +751,7 @@ Saludos
 ----
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Ya tienes la nueva versión
@@ -788,7 +788,7 @@ Xavier
 -----
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### De nada, gracias a ti por el
@@ -809,7 +809,7 @@ Joe
 
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Nuevas versiones mejoradas de

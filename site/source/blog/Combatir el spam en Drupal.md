@@ -861,7 +861,7 @@ Si, parece que deberé hacerme cargo activamente :(.
 ----
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Si, efectivamente así es,
@@ -920,7 +920,7 @@ ignorando otros campos...
 
 
 <div style="float:right; padding:2px; border: 1px solid #ccc; height:28px;">
-<a href="pages/sobre-mi.html"><img src="pictures/avtr_joedicastro.png" height=28 
+<a href="http://joedicastro.com"><img src="pictures/avtr_joedicastro.png" height=28 
 width=28 alt="avatar" title="avatar de joedicastro"/></a></div>
 
 ### Si, desde luego es bastante
