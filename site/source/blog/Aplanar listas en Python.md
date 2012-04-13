@@ -326,7 +326,7 @@ recursividad, tenemos una diferencia de 119,38 ms por cada ejecución para
 más de un segundo para diez ejecuciones. Y aunque esta gran diferencia desvirtua
  un poco la comparación entre el resto de funciones, básicamente siguen un 
  comportamiento similar a la de la anterior gráfica, destacando otra vez el 
-metodo flat_slice como el más eficaz de todos ellos.
+metodo `flat_slice` como el más eficaz de todos ellos.
 
 Como conclusión podriamos decir que moviendonos en los valores que nos movemos,
 en ms, y con listas anidadas "normales" (sin llegar a cifras tan elevadas en
