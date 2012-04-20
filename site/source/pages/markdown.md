@@ -926,7 +926,7 @@ que empleo para crear el índice de esta página. Funcionaría como un *anchor* 
     <td><pre class="no_mrkdwn">
 ### Esto es una cabecera con un Id {#cabecera1}
 
-[Enlace a esa cabecera]{#cabecera1}
+[Enlace a esa cabecera](#cabecera1)
 </pre></td>
      <td>
 
