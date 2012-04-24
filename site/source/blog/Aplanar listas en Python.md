@@ -335,11 +335,12 @@ descartaría directamente el método de la función `flat_sum()` y apostaría po
 emplear siempre `flat_slice()`, sobre todo si va a ser ejecutado numerosas veces.
 
 Estas funciones, alguna más, ejemplos de uso y los test de rendimento se 
-encuentran en el fichero [flatten_nested_lists.py][fnl] de [mi repositorio][repo].
+encuentran en el fichero `flatten_nested_lists.py` de mi repositorio *Python
+Recipes*  que se encuentra tanto en [bitbucket][bb] como en [github][gh].
 
-   [fnl]: https://bitbucket.org/joedicastro/python-recipes/src/tip/src/flatten_nested_lists.py
-   [repo]: https://code.joedicastro.com/python-recipes/
-   
+   [bb]: http://bitbucket.org/joedicastro/python-recipes 
+   [gh]: http://github.com/joedicastro/python-recipes
+     
    
 
 <br />

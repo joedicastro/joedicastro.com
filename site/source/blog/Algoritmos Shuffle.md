@@ -424,10 +424,12 @@ como ningún elemento conserva su posición anterior.
 
 
 El código de estos algoritmos y los test de rendimiento se encuentran en el 
-fichero [shuffle.py][shf] de [mi repositorio][repo]
+fichero `shuffle.py` de mi repositorio *Python Recipes* que se encuentra tanto
+en [bitbucket][bb] como en [github][gh]  
 
-   [shf]: https://bitbucket.org/joedicastro/python-recipes/src/tip/src/shuffle.py
-   [repo]: https://bitbucket.org/joedicastro/python-recipes
+   [bb]: https://bitbucket.org/joedicastro/python-recipes
+   [gh]: http://github.com/joedicastro/python-recipes
+      
 
 Aunque estos algoritmos no tienen un funcionamiento perfecto, debido al 
 generador de números pseudoaleatorios, son validos para la mayoría de las 
