@@ -43,6 +43,7 @@ CONFIG_FILE = os.path.join(ROOT_PATH, "site/pelican.conf.py")
 OUTPUT = os.path.join(ROOT_PATH, "site/output")
 env.user = "joedicastro"
 
+
 def _valid_HTML():
     """Remove the obsolete rel="" and rev="" links in footnotes."""
     for path, dirs, files in os.walk(OUTPUT):
@@ -51,40 +52,50 @@ def _valid_HTML():
                 local("sed -i {0} -r -e 's/re[l|v]=\"footnote\"//g' {0}".
                       format(os.path.join(path, fil.replace(" ", r"\ "))))
 
+
 def _make_env():
     """Make a virtual enviroment"""
     local("virtualenv {0}".format(ENV_PATH))
+
 
 def _del_env():
     """Delete a virtual enviroment."""
     local("rm -rf {0}".format(ENV_PATH))
 
+
 def _clone_pelican():
     """Clone Pelican from repository."""
     local("git clone {0}".format(PELICAN_REPOSITORY))
+
 
 def _install():
     """Install Pelican in the virtual enviroment."""
     with lcd(PELICAN):
         local("{0}/bin/python setup.py install".format(ENV_PATH))
 
+
 def _browse():
     """Browse the local Apache site."""
     local("firefox -new-window http://localhost/joedicastro.com 2>/dev/null &")
+
 
 def _gen(autoreload=False):
     """Generate the site from source."""
     local("{0}/bin/pelican {2} -s {1}".format(ENV_PATH, CONFIG_FILE,
                                               "-r" if autoreload else ""))
+
+
 def _clean():
     "Remove the output folder."
     local("rm -rf {0}".format(OUTPUT))
+
 
 def _clean_unwanted():
     "Remove no wanted files & folders."
     local("rm -rf {0}/author".format(OUTPUT))
     local("rm {0}/index?.html".format(OUTPUT))
     local("rm {0}/index??.html".format(OUTPUT))
+
 
 def _local_deploy():
     """Deploy to the local apache web server."""
@@ -97,6 +108,7 @@ def pull_pelican():
     with lcd(PELICAN):
         local("git pull")
 
+
 def bootstrap():
     """Get Pelican and install it in a virtual enviroment."""
     with settings(warn_only=True):
@@ -106,6 +118,7 @@ def bootstrap():
         _clone_pelican()
     _install()
 
+
 def regen():
     """Regenerate the site from source."""
     _clean()
@@ -113,6 +126,7 @@ def regen():
     _clean_unwanted()
     _valid_HTML()
     _local_deploy()
+
 
 @hosts(PROD)
 def publish():
@@ -122,13 +136,25 @@ def publish():
     if confirm("¿Estas seguro de querer publicarlo?"):
         rsync_project(PROD_PATH, OUTPUT + "/", delete=True)
 
+
 def new(title):
     """Create a new blog article."""
     local("tmux new-window 'vim {0}/site/source/blog/{1}.md'".
           format(ROOT_PATH, title.replace(" ", "\ ")))
-    local("firefox --new-window {0}/category/blog.html 2>/dev/null &".
-          format(OUTPUT))
+    local("firefox {0}/category/blog.html 2>/dev/null &".format(OUTPUT))
     _gen(True)
+
+
+def edit(title=None):
+    """Edit a blog article."""
+    if title:
+        local("tmux new-window 'vim {0}/site/source/blog/{1}.md'".
+                format(ROOT_PATH, title.replace(" ", "\ ")))
+    else:
+        local("tmux new-window 'vim'")
+    local("firefox {0}/category/blog.html 2>/dev/null &".format(OUTPUT))
+    _gen(True)
+
 
 def img4web(delete=False, source=""):
     """Optimize .jpg & .png images and copy them into source pictures dir."""
@@ -137,24 +163,29 @@ def img4web(delete=False, source=""):
                  "--delete" if delete else "",
                  "-s {0}".format(source) if source else ""))
 
+
 def commit(message):
     """Make a commit to the local mercurial repository."""
     local("hg add")
     local("hg commit -m '{0}'".format(message))
 
+
 def pushb():
     """Make a push to the remote mercurial repository."""
     local("hg push ssh://hg@bitbucket.org/joedicastro/joedicastro.com")
 
+
 def pushg():
     """Make a push to the remote git repository."""
     local("hg push git+ssh://git@github.com:joedicastro/joedicastro.com.git")
+
 
 def push():
     """Make a push to booth remote (hg & git) repositories."""
     with settings(warn_only=True):
         pushb()
         pushg()
+
 
 def blinks():
     """Check the webpage for broken links."""
