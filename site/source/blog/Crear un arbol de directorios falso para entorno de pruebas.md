@@ -159,6 +159,9 @@ Este es el núcleo central del script **test_dir_tree.py**:
         return dirs, files
 
 
-Para obtener el script completo, acudir a mi [repositorio][3].
+Para obtener el script completo, acudir a mi repositorio *Python Recipes* que
+está alojado tanto en [bitbucket][bb] como en [github][gh].
 
-  [3]: https://bitbucket.org/joedicastro/python-recipes/src/tip/src/test_dir_tree.py
+  [bb]: http://bitbucket.org/joedicastro/python-recipes
+  [gh]: http://github.com/joedicastro/python-recipes
+  

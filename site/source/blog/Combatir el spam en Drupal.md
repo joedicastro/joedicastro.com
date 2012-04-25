@@ -482,14 +482,16 @@ flexibilidad, lo que me hizo decidirme por él.
 ## El script, ban_drupal_spammers.py
 
 El script (siempre la versión más actualizada), los ficheros auxiliares y las 
-instrucciones de como emplearlos, pueden ser encontrados en mi repositorio
+instrucciones de como emplearlos, pueden ser encontrados en mi repositorio que
+se encuentra alojado tanto en [bitbucket][bb] como en [github][gh].Y donde tambien
+se puede encontrar el script python que empleo para recoger los datos que se 
+muestran en el mapa de este árticulo.
 
-[**code.joedicastro.com/ban-drupal-spammers**][61]
 
-   [61]: http://code.joedicastro.com/ban-drupal-spammers/wiki/Leer_en_espanol
 
-donde tambien se puede encontrar el script python que empleo para recoger los 
-datos que se muestran en el mapa de este árticulo.
+  [bb]: http://bitbucket.org/joedicastro/ban-drupal-spammers
+  [gh]: http://github.com/joedicastro/ban-drupal-spammers
+
 
 El código de **ban_drupal_spammers.py** es el siguiente:
 

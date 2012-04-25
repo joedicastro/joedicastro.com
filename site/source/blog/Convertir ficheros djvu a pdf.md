@@ -81,10 +81,13 @@ con algunos visores y lectores de ebooks.
   
 ## El script, djvu2pdf.py
 
-El contenido del scipt es el que sigue. Este está disponible, actualizado siempre 
-a la última versión, en mi [repositorio][repo]
+El contenido del scipt es el que sigue. Este está disponible como el fichero 
+`djvu2pdf.py` dentro del repositorio *Python Recipes*  que está alojado tanto en
+[bitbucket][bb] como en [github][gh] y actualizado siempre a la última versión.
 
-  [repo]: https://bitbucket.org/joedicastro/python-recipes/src/tip/src/djvu2pdf.py
+  [bb]: http://bitbucket.org/joedicastro/python-recipes
+  [gh]: http://github.com/joedicastro/python-recipes
+    
   
     :::python
     #!/usr/bin/env python

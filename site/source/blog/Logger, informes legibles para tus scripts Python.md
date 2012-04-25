@@ -437,9 +437,13 @@ El código del script es el siguiente:
 
 
 
-Para acceder a la versión más reciente del mismo, acudir a mi [repositorio][repo]
+Para acceder a la versión más reciente del mismo, acudir a el repositorio
+*Python Recipes* en [bitbucket][bb] o en [github][gh].
 
-  [repo]: http://code.joedicastro.com/python-recipes
+  [bb]: http://bitbucket.org/joedicastro/python-recipes
+  [gh]: http://github.com/joedicastro/python-recipes
+  
+
 
 Ejemplos de utilización de este modulo pueden ser 
 [lftp-mirror](http://joedicastro.com/sincronizar_una_carpeta_local_y_una_remota_a_traves_de_ftp_lftp_mirror) (incluido dentro del mismo), [TEDTalks](http://joedicastro.com/ted_talks_descargar_videos_y_subtitulos_de_las_charlas), [dpkg_diff](http://joedicastro.com/generar_informes_de_cambios_en_paquetes_instalados_en_debian_y_ubuntu) y [ban_drupal_spammers](http://joedicastro.com/combatir_el_spam_en_drupal)

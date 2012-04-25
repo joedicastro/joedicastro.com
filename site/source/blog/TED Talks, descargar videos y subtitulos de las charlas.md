@@ -35,7 +35,6 @@ pensar y me abriera tanto la mente. Lo único que se acerca, entre la telebasura
 reinante, en el mundo audiovisual actual, es el programa
 [Redes][16] de [Eduardo Punset][17].
 
-   [2]: https://bitbucket.org/joedicastro/ted-talks-download/wiki/Leer_en_espanol
    [3]: http://www.ted.com/
    [4]: http://www.muyinteresante.es/
    [5]: http://www.investigacionyciencia.es/
@@ -364,8 +363,12 @@ los nombres de las variables)  es que me siento más cómodo de esta manera y
 ayuda a que un espectro más amplio de personas sea capaz de comprenderlo. Si 
 este script le sirve a alguien más o le inspira para crear el suyo propio, pues 
 habrá valido la pena el publicarlo. El resto del script, **TEDTalks.py** está 
-disponible en [mi repositorio de bickbucket][2], al igual que instrucciones 
-ampliadas de su uso.
+disponible en mi repositorio alojado en [bitbucket][bb] y en [github][gh], 
+al igual que instrucciones ampliadas de su uso.
+
+  [bb]: http://bitbucket.org/joedicastro/ted-talks-download
+  [gh]: http://github.com/joedicastro/ted-talks-download
+    
 
 Finalmente como ejemplo, publico una de las charlas más impactantes este año y 
 ganadora del **TED Prize**, [Jamie Oliver: Enseñarle a todos los niños acerca de 

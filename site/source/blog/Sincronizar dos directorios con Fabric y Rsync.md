@@ -190,6 +190,9 @@ parecido a este:
     ================================================================================
 
 
-Este fichero está disponible en [mi repositorio][repo].
+Este fichero está disponible en el repositorio *Python Recipes* alojado en 
+[bitbucket][bb] y en [github][gh].
  
-  [repo]: https://bitbucket.org/joedicastro/python-recipes/src/tip/src/rsync_fabfile.py
+  [bb]: http://bitbucket.org/joedicastro/python-recipes
+  [gh]: http://github.com/joedicastro/python-recipes
+

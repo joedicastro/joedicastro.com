@@ -158,6 +158,9 @@ mismo:
       -v, --version      show program's version number and exit
 
 
-El script completo puede encontrarse en mi [repositorio][0].
+El script completo puede encontrarse en el repositorio *Python Recipes* alojado
+tanto en [bitbucket][bb] como en [github][gh].
 
-  [0]: https://bitbucket.org/joedicastro/python-recipes/src/tip/src/move_by_ext.py
+  [bb]: http://bitbucket.org/joedicastro/python-recipes
+  [gh]: http://github.com/joedicastro/python-recipes
+

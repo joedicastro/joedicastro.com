@@ -307,7 +307,8 @@ El código del fichero fabric es el siguiente:
         _log_end(server)
 
 
-El fichero siempre actualizado puede ser encontrado en [mi repositorio][repo] 
+El fichero siempre actualizado puede ser encontrado en el repositorio *Python Recipes* que está alojado tanto en [bitbucket][bb] como en [github][gh] con el nombre `rsync_fabfile.py` 
 
-  [repo]: https://bitbucket.org/joedicastro/python-recipes/src/tip/src/rsync_fabfile.py
+  [bb]: http://bitbucket.org/joedicastro/python-recipes
+  [gh]: http://github.com/joedicastro/python-recipes
   

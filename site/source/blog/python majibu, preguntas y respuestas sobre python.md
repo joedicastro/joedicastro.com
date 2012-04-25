@@ -145,10 +145,11 @@ sitio y los que decidirán el éxito o no del proyecto y su rumbo.
 
 Para personalizar el sitio, con respecto a la instalación por defecto de OSQA, 
 completé la traducción que otros habían iniciado anteriormente al Español y cree 
-un nuevo tema para majibu. Este trabajo [está disponible en mi repositorio][30] 
-para todo aquel que quiera aprovecharlo.
+un nuevo tema para majibu. Este trabajo está disponible en mi repositorio
+alojado en [bitbucket][bb] o [github][gh] para todo aquel que quiera aprovecharlo.
 
-   [30]: http://code.joedicastro.com/majibu/
+  [bb]: http://bitbucket.org/joedicastro/majibu
+  [gh]: http://github.com/joedicastro/majibu
 
 Adelante, usadlo si queréis, resolver vuestras dudas sobre Python y ayudar a 
 resolver las de los demás... el sitio es todo vuestro, yo solamente soy el 

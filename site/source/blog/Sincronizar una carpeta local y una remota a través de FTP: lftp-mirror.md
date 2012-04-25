@@ -58,11 +58,10 @@ Como ya he mencionado es muy potente y repleto de opciones y permite muchas más
 operaciones más allá de la sincronización entre directorios. Por este motivo
 **he creado un [script][6] en [Python][7] que empleando lftp, se centra
 únicamente en la sincronización entre directorios a través de FTP y añade
-algunas nuevas funcionalidades, [lftp-mirror][8].**
+algunas nuevas funcionalidades, `lftp-mirror`.**
 
    [6]: http://es.wikipedia.org/wiki/Script
    [7]: http://es.wikipedia.org/wiki/Python
-   [8]: http://code.joedicastro.com/lftp-mirror/wiki/Leer_en_espanol
 
 ## ¿Que ventajas aporta este script?
 
@@ -73,33 +72,33 @@ empleando el servidor de correo local o uno externo.
 local sincronizado**. Esto nos permite tener el directorio actualizado y una
 copia de seguridad por cada uno de los últimos 7 días, para poder revertir algún
  cambio o borrado accidental.
-  * **Se centra únicamente en la sincronización (mirror)** entre directorios, 
+  * **Se centra únicamente en la sincronización (mirror)** entre directorios,
   obviando las otras opciones que nos ofrece lftp
-  * **Nos proporciona** (en el log) **el tamaño del espacio ocupado en el disco 
+  * **Nos proporciona** (en el log) **el tamaño del espacio ocupado en el disco
   duro por el directorio local y las copias de seguridad.**
-  * **Permite tres modos de ejecución distintos,** lo que lo convierte en muy 
+  * **Permite tres modos de ejecución distintos,** lo que lo convierte en muy
   versátil:
-    * **Como tarea programada**. En este modo los parámetros de la sincronización 
-    se incluyen directamente dentro del script y solo es necesario programar su 
-    ejecución para automatizar el proceso. Es ideal para la sincronización 
+    * **Como tarea programada**. En este modo los parámetros de la sincronización
+    se incluyen directamente dentro del script y solo es necesario programar su
+    ejecución para automatizar el proceso. Es ideal para la sincronización
     periódica de un único directorio/servidor **FTP**
-    * **Interactivo.** En este modo los parámetros se introducen directamente 
-    como argumentos en la línea de comandos. Es ideal para ejecutar una 
+    * **Interactivo.** En este modo los parámetros se introducen directamente
+    como argumentos en la línea de comandos. Es ideal para ejecutar una
     sincronización puntual manual
-    * **Importando los parámetros desde un fichero de configuración.** Este modo 
-    es similar al primero, con la diferencia de que en este caso los parámetros 
-    los tomamos de un fichero de configuración externo. Este fichero que podemos 
-    crear nosotros mismos (se sirve uno de ejemplo) nos permite establecer 
-    múltiples operaciones de sincronización que se ejecutaran de manera 
+    * **Importando los parámetros desde un fichero de configuración.** Este modo
+    es similar al primero, con la diferencia de que en este caso los parámetros
+    los tomamos de un fichero de configuración externo. Este fichero que podemos
+    crear nosotros mismos (se sirve uno de ejemplo) nos permite establecer
+    múltiples operaciones de sincronización que se ejecutaran de manera
     secuencial una detrás de otra.
-  * **En sistemas operativos que lo soporten nos muestra notificaciones 
-  emergentes** a través de la librería libnotify de la ejecución del script y 
-  su correcta finalización. Por ejemplo, a través de las notificaciones 
-  emergentes de [**Ubuntu**][9]. Muy útil para conocer cuando se está ejecutando 
+  * **En sistemas operativos que lo soporten nos muestra notificaciones
+  emergentes** a través de la librería libnotify de la ejecución del script y
+  su correcta finalización. Por ejemplo, a través de las notificaciones
+  emergentes de [**Ubuntu**][9]. Muy útil para conocer cuando se está ejecutando
   una tarea programada sin salida por consola.
-  * Si empleamos los modos de ejecución no interactivos, **emplea [base64][10] 
-  para una mínima protección de la contraseñas de acceso** a los servidores 
-  **FTP** y evitar almacenarlas las mismas en texto claro. No es una fuerte 
+  * Si empleamos los modos de ejecución no interactivos, **emplea [base64][10]
+  para una mínima protección de la contraseñas de acceso** a los servidores
+  **FTP** y evitar almacenarlas las mismas en texto claro. No es una fuerte
   medida de seguridad, pero es lo mínimo que deberíamos tener en cuenta.
 
    [9]: http://es.wikipedia.org/wiki/Ubuntu
@@ -107,13 +106,28 @@ copia de seguridad por cada uno de los últimos 7 días, para poder revertir alg
 
 ## ¿Para que nos puede servir este script?
 
-Vamos a ver un ejemplo de lo más común, las **copias de seguridad de una página web**. En muchos [hosting compartidos][11] la única posibilidad de transferir archivos con el servidor es a través de una cuenta **FTP**. Empleando este script, podemos crear un directorio en local donde haremos las copias de seguridad de los ficheros de la web y luego sincronizarlo automáticamente todos los días, descargando únicamente los ficheros que han cambiado. Con esto tendremos no solo el directorio actualizado diariamente, si no que además dispondremos de una copia de seguridad por cada uno de los siete días anteriores para poder corregir cualquier problema ocurrido entre esas fechas. Configurar algo así es realmente sencillo, únicamente tendríamos que cambiar los valores incorporados dentro del script por los que necesitamos y luego programar su ejecución diaria con cron.
+Vamos a ver un ejemplo de lo más común, las **copias de seguridad de una página
+web**. En muchos [hosting compartidos][11] la única posibilidad de transferir
+archivos con el servidor es a través de una cuenta **FTP**. Empleando este
+script, podemos crear un directorio en local donde haremos las copias de
+seguridad de los ficheros de la web y luego sincronizarlo automáticamente todos
+los días, descargando únicamente los ficheros que han cambiado. Con esto
+tendremos no solo el directorio actualizado diariamente, si no que además
+dispondremos de una copia de seguridad por cada uno de los siete días
+anteriores para poder corregir cualquier problema ocurrido entre esas fechas.
+Configurar algo así es realmente sencillo, únicamente tendríamos que cambiar
+los valores incorporados dentro del script por los que necesitamos y luego
+programar su ejecución diaria con cron.
 
    [11]: http://es.wikipedia.org/wiki/Hosting#Alojamiento_compartido_.28shared_hosting.29
 
-Para una introducción más detallada, instrucciones de ejecución, control de versiones y enlaces para la descarga, acudir al [**repositorio del script**][12]
+Para una introducción más detallada, instrucciones de ejecución, control de
+versiones y enlaces para la descarga, acudir al repositorio del script en
+[bitbucket][bb] o en [github][gh].
 
-   [12]: https://bitbucket.org/joedicastro/lftp-mirror/wiki/Leer_en_espanol
+  [bb]: http://bitbucket.org/joedicastro/lftp-mirror
+  [gh]: http://github.com/joedicastro/lftp-mirror
+
 
 Un extracto del código de **lftp-mirror.py**:
 
@@ -185,4 +199,3 @@ Un extracto del código de **lftp-mirror.py**:
         os.remove(script.name)
 
 Para obtener el código completo, ir al [fichero fuente](https://bitbucket.org/joedicastro/lftp-mirror/src/tip/src/lftp_mirror.py).
-

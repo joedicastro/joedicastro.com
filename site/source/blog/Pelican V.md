@@ -100,5 +100,9 @@ a esto:
 Donde los artículos están archivados por año, mes y día, con un formato que 
 personalmente me agrada bastante más.
 
-El repositorio de este blog se encuentra en 
-<https://bitbucket.org/joedicastro/joedicastro.com/>
+El repositorio de este blog se puede encontrar en [bitbucket][bb] y en 
+[github][gh].
+
+  [bb]: http://bitbucket.org/joedicastro/joedicastro.com 
+  [gh]: http://github.com/joedicastro/joedicastro.com
+
