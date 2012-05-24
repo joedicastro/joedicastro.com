@@ -41,7 +41,7 @@ MD_EXTENSIONS = ['codehilite', 'extra']
 JINJA_EXTENSIONS = ['jinja2.ext.do']
 
 # Delete the output directory and just the generated files. Default = False
-DELETE_OUTPUT_DIRECTORY = False # True for debugging, False for productive
+DELETE_OUTPUT_DIRECTORY = False  # True for debugging, False for productive
 
 # Change the locale. A list of locales can be provided here or a single string
 # representing one locale. When providing a list, all the locales will be tried
@@ -192,4 +192,3 @@ FILES_TO_COPY = (('extra/robots.txt', 'robots.txt'),
 # foobar will not be used, because it's not in caps. All configuration keys
 # have to be in caps
 foobar = "barbaz"
-

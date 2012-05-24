@@ -27,6 +27,7 @@ a Bitbucket, aunque me sigue gustando más el *feeling* de este último.
   [gh]: http://github.com
   [diff]: http://blog.bitbucket.org/2011/12/08/pull-requests-with-side-by-side-diffs/
   [^gt]: Bueno, algunos rivales como [Gitorius][gts], también soportan esta característica
+
   [gts]: http://gitorious.org/
         
 
@@ -126,7 +127,7 @@ El código del `hook` es el siguiente:
     # push to the site non described in the command line argument. This way, it's
     # irrelevant which site I decided to push every time, booth are done by this
     # hook.
-    ##==============================================================================
+    #===============================================================================
 
     #==============================================================================
     #    Copyright 2012 joe di castro <joe@joedicastro.com>
@@ -160,7 +161,7 @@ El código del `hook` es el siguiente:
         """Main section"""
 
         tmp_dir = gettempdir()
-        lock_file = os.path.join(tmp_dir, "bb_gh.lock")
+        lock_file = os.path.join(tmp_dir, "bb_gh_sync.lock")
 
         # make sure that only runs once for each repository
         if not os.path.exists(lock_file):
@@ -194,12 +195,12 @@ alojamientos es tan sencillo como:
     running ssh hg@bitbucket.org 'hg -R joedicastro/joedicastro.com serve --stdio'
     searching for changes
     no changes found
-    running hook post-push: $HOME/dotfiles/hg/bb_gh.py
+    running hook post-push: $HOME/dotfiles/hg/bb_gh_sync.py
     pushing to git+ssh://git@github.com:joedicastro/joedicastro.com.git
     creating and sending data
     ["git-receive-pack 'joedicastro/joedicastro.com.git'"]
         github::refs/heads/master => GIT:198e8cc9
-    running hook post-push: $HOME/dotfiles/hg/bb_gh.py
+    running hook post-push: $HOME/dotfiles/hg/bb_gh_sync.py
     $
 
 

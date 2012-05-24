@@ -1163,9 +1163,9 @@ resaltado de código fuente.
         \section*{Notes for My Paper}
 
 
-* #### `lisp` - Lisp
+* #### `cl` - Common Lisp
 
-        :::lisp
+        :::cl
         (format t "¡Hola, mundo!")
 
 

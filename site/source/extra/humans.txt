@@ -16,4 +16,4 @@ Names (& URL):
 Language: Castellano
 Standards: HTML5, CSS3, Atom 1.0, RSS 1.0
 Components: Disqus, Piwik
-Software: Pelican, Fabric, Aptana Studio 3, Python, Linux.
+Software: Pelican, Fabric, Vim, Python, Linux.

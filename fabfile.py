@@ -5,7 +5,7 @@
     fabfile.py: A fabric script for _gen my personal blog
 """
 
-#===============================================================================
+#==============================================================================
 #    Copyright 2011 joe di castro <joe@joedicastro.com>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -20,12 +20,12 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#===============================================================================
+#==============================================================================
 
 __author__ = "joe di castro <joe@joedicastro.com>"
 __license__ = "GNU General Public License version 3"
-__date__ = "28/06/2011"
-__version__ = "0.2"
+__date__ = "23/05/2012"
+__version__ = "0.3"
 
 import os
 from fabric.api import *
@@ -74,6 +74,11 @@ def _install():
         local("{0}/bin/python setup.py install".format(ENV_PATH))
 
 
+def _install_mkd():
+    """Install Pelican in the virtual enviroment."""
+    local("{0}/bin/pip install markdown==2.0.3".format(ENV_PATH))
+
+
 def _browse():
     """Browse the local Apache site."""
     local("firefox -new-window http://localhost/joedicastro.com 2>/dev/null &")
@@ -117,6 +122,7 @@ def bootstrap():
     with settings(warn_only=True):
         _clone_pelican()
     _install()
+    _install_mkd()
 
 
 def regen():
@@ -145,13 +151,25 @@ def new(title):
     _gen(True)
 
 
-def edit(title=None):
-    """Edit a blog article."""
-    if title:
-        local("tmux new-window 'vim {0}/site/source/blog/{1}.md'".
-                format(ROOT_PATH, title.replace(" ", "\ ")))
-    else:
-        local("tmux new-window 'vim'")
+def edit():
+    """Choose a markdown file to edit."""
+    mkd_files = []
+    for path, dirs, files in os.walk(os.path.join(ROOT_PATH, 'site/source')):
+        for fil in sorted(files):
+            if fil[-3:] == ".md":
+                mkd_files.append(os.path.join(path, fil))
+    print("Estos son los archivos disponibles: " + os.linesep)
+    for f in mkd_files:
+        filename = os.path.splitext(os.path.basename(f))[0]
+        print("{0:3} ··· {1}".format(mkd_files.index(f), filename))
+    while True:
+        choice = raw_input("{0}¿Cual quieres editar?{0}".format(os.linesep))
+        try:
+            chosen = mkd_files[int(choice)]
+            break
+        except(ValueError, IndexError):
+            print('¡Incorrecto! Debes elegir un número de la lista.')
+    local("tmux new-window 'vim {0}'".format(chosen.replace(" ", "\ ")))
     local("firefox {0}/category/blog.html 2>/dev/null &".format(OUTPUT))
     _gen(True)
 
