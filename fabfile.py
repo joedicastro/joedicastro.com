@@ -75,7 +75,7 @@ def _install():
 
 
 def _install_mkd():
-    """Install Pelican in the virtual enviroment."""
+    """Install Markdown in the virtual enviroment."""
     local("{0}/bin/pip install markdown==2.0.3".format(ENV_PATH))
 
 
