@@ -24,10 +24,11 @@
 
 __author__ = "joe di castro <joe@joedicastro.com>"
 __license__ = "GNU General Public License version 3"
-__date__ = "23/05/2012"
-__version__ = "0.3"
+__date__ = "26/05/2012"
+__version__ = "0.4"
 
 import os
+from re import search
 from fabric.api import *
 from fabric.contrib.project import rsync_project
 from fabric.contrib.console import confirm
@@ -37,11 +38,17 @@ PROD = "joedicastro.com"
 PROD_PATH = "/home/joedicastro/webapps/joedicastro"
 LOCAL_WEB = os.path.join("~/www", PROD)
 ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
+BLOG_PATH = os.path.join(ROOT_PATH, "site/source/blog")
 ENV_PATH = os.path.join(ROOT_PATH, "env")
 PELICAN = os.path.join(ROOT_PATH, "pelican")
 CONFIG_FILE = os.path.join(ROOT_PATH, "site/pelican.conf.py")
 OUTPUT = os.path.join(ROOT_PATH, "site/output")
 env.user = "joedicastro"
+
+
+def _escape(filename):
+    """Escape spaces in unix filenames to local commands."""
+    return filename.replace(" ", r"\ ")
 
 
 def _valid_HTML():
@@ -50,7 +57,7 @@ def _valid_HTML():
         for fil in files:
             if fil[-5:] == ".html":
                 local("sed -i {0} -r -e 's/re[l|v]=\"footnote\"//g' {0}".
-                      format(os.path.join(path, fil.replace(" ", r"\ "))))
+                      format(os.path.join(path, _escape(fil))))
 
 
 def _make_env():
@@ -98,6 +105,7 @@ def _clean():
 def _clean_unwanted():
     "Remove no wanted files & folders."
     local("rm -rf {0}/author".format(OUTPUT))
+    local("rm -rf {0}/drafts".format(OUTPUT))
     local("rm {0}/index?.html".format(OUTPUT))
     local("rm {0}/index??.html".format(OUTPUT))
 
@@ -143,35 +151,66 @@ def publish():
         rsync_project(PROD_PATH, OUTPUT + "/", delete=True)
 
 
-def new(title):
-    """Create a new blog article."""
-    local("tmux new-window 'vim {0}/site/source/blog/{1}.md'".
-          format(ROOT_PATH, title.replace(" ", "\ ")))
-    local("firefox {0}/category/blog.html 2>/dev/null &".format(OUTPUT))
+def _edit(mkd_path, new):
+    """Edit a markdown file."""
+    local("tmux new-window 'vim {0}'".format(_escape(mkd_path)))
+    local("firefox {0}{1} 2>/dev/null &".format(OUTPUT, "/drafts" if new else
+                                                        "/archives.html"))
     _gen(True)
+
+
+def _get_status(mkd_file):
+    """Get the draft status of a source markdown file."""
+    with open(mkd_file, 'r') as f:
+        if search("status: draft", f.read()):
+            return True
+        return False
+
+
+def _get_mkd_files():
+    """Get a list of the source markdown files of the blog."""
+    mkds = []
+    for path, dirs, files in os.walk(os.path.join(ROOT_PATH, BLOG_PATH)):
+        for fil in sorted(files):
+            if fil[-3:] == ".md":
+                fpath = os.path.join(path, fil)
+                title = fil[:-3]
+                draft = _get_status(fpath)
+                mkds.append({'path': fpath, 'title': title, 'draft': draft})
+    return mkds
+
+
+def _print_list(lst, header, draft):
+    """Print a list of markdown files filtered by their draft status."""
+    print("{0}{1}".format(header, os.linesep))
+    for f in lst:
+        if f['draft'] == draft:
+            print("{0:3} | {1}".format(lst.index(f), f['title']))
+    print(os.linesep)
 
 
 def edit():
-    """Choose a markdown file to edit."""
-    mkd_files = []
-    for path, dirs, files in os.walk(os.path.join(ROOT_PATH, 'site/source')):
-        for fil in sorted(files):
-            if fil[-3:] == ".md":
-                mkd_files.append(os.path.join(path, fil))
-    print("Estos son los archivos disponibles: " + os.linesep)
-    for f in mkd_files:
-        filename = os.path.splitext(os.path.basename(f))[0]
-        print("{0:3} ··· {1}".format(mkd_files.index(f), filename))
+    """Choose a markdown article to edit or create a new one."""
+    markdown_files = _get_mkd_files()
+    _print_list(markdown_files, "Articulos publicados", False)
+    _print_list(markdown_files, "Borradores", True)
+
+    request = "Elige un articulo o crea uno nuevo (n):{0}".format(os.linesep)
+    error = "¡Error! El valor introducido no es valido.{0}".format(os.linesep)
     while True:
-        choice = raw_input("{0}¿Cual quieres editar?{0}".format(os.linesep))
+        choice = raw_input(request)
         try:
-            chosen = mkd_files[int(choice)]
+            chosen = markdown_files[int(choice)]
+            _edit(chosen['path'], True if chosen['draft'] else False)
             break
-        except(ValueError, IndexError):
-            print('¡Incorrecto! Debes elegir un número de la lista.')
-    local("tmux new-window 'vim {0}'".format(chosen.replace(" ", "\ ")))
-    local("firefox {0}/category/blog.html 2>/dev/null &".format(OUTPUT))
-    _gen(True)
+        except IndexError:
+            print(error)
+        except ValueError:
+            if choice == 'n':
+                new = raw_input("Introduce el nombre:{0}".format(os.linesep))
+                _edit(os.path.join(BLOG_PATH, new + ".md"), True)
+                break
+            print(error)
 
 
 def img4web(delete=False, source=""):
