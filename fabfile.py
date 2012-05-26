@@ -223,7 +223,6 @@ def img4web(delete=False, source=""):
 
 def commit(message):
     """Make a commit to the local mercurial repository."""
-    local("hg add")
     local("hg commit -m '{0}'".format(message))
 
 
