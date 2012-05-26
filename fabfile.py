@@ -227,21 +227,9 @@ def commit(message):
     local("hg commit -m '{0}'".format(message))
 
 
-def pushb():
-    """Make a push to the remote mercurial repository."""
-    local("hg push ssh://hg@bitbucket.org/joedicastro/joedicastro.com")
-
-
-def pushg():
-    """Make a push to the remote git repository."""
-    local("hg push git+ssh://git@github.com:joedicastro/joedicastro.com.git")
-
-
 def push():
-    """Make a push to booth remote (hg & git) repositories."""
-    with settings(warn_only=True):
-        pushb()
-        pushg()
+    """Make a push to the remote mercurial repository."""
+    local("hg push bitbucket")
 
 
 def blinks():
