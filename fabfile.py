@@ -24,11 +24,11 @@
 
 __author__ = "joe di castro <joe@joedicastro.com>"
 __license__ = "GNU General Public License version 3"
-__date__ = "26/05/2012"
-__version__ = "0.4"
+__date__ = "27/05/2012"
+__version__ = "0.5"
 
 import os
-from re import search
+import re
 from fabric.api import *
 from fabric.contrib.project import rsync_project
 from fabric.contrib.console import confirm
@@ -162,7 +162,7 @@ def _edit(mkd_path, new):
 def _get_status(mkd_file):
     """Get the draft status of a source markdown file."""
     with open(mkd_file, 'r') as f:
-        if search("status: draft", f.read()):
+        if re.search("status: draft", f.read()):
             return True
         return False
 
