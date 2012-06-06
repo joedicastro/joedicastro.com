@@ -244,7 +244,7 @@ Automático. Escrito, configurable y extensible en *C*.
 Uno de los más ligeros, rápidos y simples. Su configuración se hace modificando 
 su código fuente en *C* y luego hay que recompilarlo y reiniciarlo. Esto lo 
 limita a usuarios avanzados con conocimientos de programación. Su diseño 
-minimalista sido la inspiración para los dos más grandes: Awesome y Xmonad. 
+minimalista ha sido la inspiración para los dos más grandes: Awesome y Xmonad. 
 
 Para lanzar las aplicaciones se desarrolló **dmenu** un lanzador basado en texto, 
 que es muy empleado en otros gestores. Funciona al igual que los lanzadores 
