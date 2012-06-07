@@ -216,7 +216,7 @@ mayor agilidad. Aporta su propia barra de información, bandeja del sistema
 (systray) y lanzador de aplicaciones integrado. Tiene un soporte de ratón 
 superior a la competencia. Pero su desarrollo no es aún solido, varía demasiado a 
 lo largo de las distintas versiones y te obliga a reconfigurarlo cada vez que 
-sale una nueva.
+sale una nueva. Le he dedicado un [articulo completo][awesome] 
 
 <br />
 
@@ -295,6 +295,8 @@ Como curiosidad, mencionar otros dos, que aunque no son muy populares, están de
   [wmii]: http://wmii.suckless.org/
   [xmnd]: http://xmonad.org/
   [proxm]: http://joedicastro.com/productividad-en-el-escritorio-linux-xmonad.html
+  [awesome]: http://joedicastro.com/productividad-en-el-escritorio-linux-awesome.html
+  
   
   
 
