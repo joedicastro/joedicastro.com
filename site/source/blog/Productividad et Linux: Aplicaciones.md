@@ -1,6 +1,6 @@
 title: Productividad & Linux: Aplicaciones
 date: 2012-06-07 22:40
-tags: linux, productividad
+tags: linux, productividad, usabilidad
 
 En la anterior serie de artículos sobre [Productividad en el escritorio
 Linux][pro], hacia referencia a los lanzadores de aplicaciones y a los gestores
