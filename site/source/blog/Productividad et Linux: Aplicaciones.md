@@ -188,3 +188,15 @@ comparten en general tres puntos en común:
 
 Iré actualizando la entrada a medida que vaya creando los artículos para cada
 aplicación.
+
+### Aplicaciones
+
+Estas son algunas de las aplicaciones que yo empleo a menudo y que al igual que
+a mí, pueden servirte para incrementar de forma notable tu productividad.
+
++ [Pentadactyl][penta], complemento para Firefox para controlar el navegador
+  completamente desde el teclado, permite navegar entre las páginas a velocidad
+  de vértigo. Además es muy potente y posee muchísimas opciones y posibilidades.
+
+  [penta]: http://joedicastro.com/productividad-linux-pentadactyl.html
+
