@@ -24,8 +24,8 @@
 
 __author__ = "joe di castro <joe@joedicastro.com>"
 __license__ = "GNU General Public License version 3"
-__date__ = "27/05/2012"
-__version__ = "0.5"
+__date__ = "17/06/2012"
+__version__ = "0.6"
 
 import os
 import re
@@ -185,7 +185,7 @@ def _print_list(lst, header, draft):
     print("{0}{1}".format(header, os.linesep))
     for f in lst:
         if f['draft'] == draft:
-            print("{0:3} | {1}".format(lst.index(f), f['title']))
+            print("{0:3} | {1}".format(lst.index(f) + 1, f['title']))
     print(os.linesep)
 
 
@@ -200,7 +200,7 @@ def edit():
     while True:
         choice = raw_input(request)
         try:
-            chosen = markdown_files[int(choice)]
+            chosen = markdown_files[int(choice) - 1]
             _edit(chosen['path'], True if chosen['draft'] else False)
             break
         except IndexError:

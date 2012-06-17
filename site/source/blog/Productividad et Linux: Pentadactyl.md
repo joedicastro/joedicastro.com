@@ -54,7 +54,7 @@ línea de comandos se accede igual que en Vim, pulsando la tecla __`:`__
 ## Características
 
 Estas son algunas de las funciones que proporciona Pentadactyl para Firefox, sin
-contar con las [extensiones disponibles para el mismo Pentadactyl][exts] :
+contar con las [extensiones disponibles para el mismo Pentadactyl][exts]:
 
   [exts]: http://5digits.org/pentadactyl/plugins
 
