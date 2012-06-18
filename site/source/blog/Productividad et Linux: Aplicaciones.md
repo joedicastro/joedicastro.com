@@ -198,5 +198,11 @@ a mí, pueden servirte para incrementar de forma notable tu productividad.
   completamente desde el teclado, permite navegar entre las páginas a velocidad
   de vértigo. Además es muy potente y posee muchísimas opciones y posibilidades.
 
++ [Newsbeuter][news], aplicación para leer subscripciones RSS y Atom. Funciona
+  en modo texto, con una interfaz tipo ncurses y completamente controlable desde
+  el teclado. Es una aplicación rapidisima y con un consumo muy escaso de
+  recursos.
+
   [penta]: http://joedicastro.com/productividad-linux-pentadactyl.html
+  [news]: http://joedicastro.com/productividad-linux-newsbeuter.html
 
