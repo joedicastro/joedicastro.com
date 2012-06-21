@@ -209,5 +209,5 @@ a mí, pueden servirte para incrementar de forma notable tu productividad.
 
   [penta]: http://joedicastro.com/productividad-linux-pentadactyl.html
   [news]: http://joedicastro.com/productividad-linux-newsbeuter.html
-  [trs]: https://github.com/alejandrogomez/turses
+  [trs]: http://joedicastro.com/productividad-linux-turses.html
 
