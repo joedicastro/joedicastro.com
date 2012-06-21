@@ -203,6 +203,11 @@ a mí, pueden servirte para incrementar de forma notable tu productividad.
   el teclado. Es una aplicación rapidisima y con un consumo muy escaso de
   recursos.
 
++ [Turses][trs], cliente twitter para la consola con interfaz ncurses.
+  Controlable desde el teclado con atajos basados en Vim. Muy personalizable y
+  con un funcionamiento muy versátil y ágil.
+
   [penta]: http://joedicastro.com/productividad-linux-pentadactyl.html
   [news]: http://joedicastro.com/productividad-linux-newsbeuter.html
+  [trs]: https://github.com/alejandrogomez/turses
 
