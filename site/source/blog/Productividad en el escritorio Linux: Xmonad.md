@@ -3,56 +3,60 @@ date: 2011-11-26
 tags: linux, ubuntu, unity, tiling, twm, productividad, xmonad, gnome, haskell
 
 
-[xmonad][xmonad] es un [Gestor de ventanas de mosaico][twm], uno de los más 
-empleados y de los más potentes. Después de haber probado varios (dwm, bluetile, 
-wmii y el plugin Compiz Grid) llevo ya unos cuantos meses trabajando con él y 
-posiblemente siga conmigo mucho, mucho tiempo. Una vez que trabajas con un 
+[xmonad][xmonad] es un [Gestor de ventanas de mosaico][twm], uno de los más
+empleados y de los más potentes. Después de haber probado varios (dwm, bluetile,
+wmii y el plugin Compiz Grid) llevo ya unos cuantos meses trabajando con él y
+posiblemente siga conmigo mucho, mucho tiempo. Una vez que trabajas con un
 **tiling window manager** es muy difícil que echarse atrás, volver a un gestor de
-ventanas flotantes tradicional es casi impensable. Probaré uno más, 
-[awesome][awesome], que promete mucho y solo si este logra convencerme del cambio, 
-abandonaré Xmonad. 
+ventanas flotantes tradicional es casi impensable. Probaré uno más,
+[awesome][awesome], que promete mucho y solo si este logra convencerme del cambio,
+abandonaré Xmonad.
 
   [xmonad]: http://xmonad.org
   [twm]: http://joedicastro.com/productividad-en-el-escritorio-linux-tiling.html
   [awesome]: http://awesome.naquadah.org
-  
 
-¿Pero que tiene de especial un **twm** como **Xmonad** para haber decidido 
-abandonar la gestión de ventanas por defecto de Compiz, Gnome Shell, Unity, Kwin, 
-etc y apostar por él? Cuando uno está cansado de perder el tiempo con maniobras y 
-decisiones triviales -ajustar las ventanas en la pantalla, que si el navegador por 
-aquí, que si este terminal por allá, etc y cambiando continuamente la mano del 
-teclado al ratón y viceversa- pues entonces decides que hay que darle una 
-oportunidad a un twm, que sea el gestor de ventanas quien haga el trabajo sucio 
+
+¿Pero que tiene de especial un **twm** como **Xmonad** para haber decidido
+abandonar la gestión de ventanas por defecto de Compiz, Gnome Shell, Unity, Kwin,
+etc y apostar por él? Cuando uno está cansado de perder el tiempo con maniobras y
+decisiones triviales -ajustar las ventanas en la pantalla, que si el navegador por
+aquí, que si este terminal por allá, etc y cambiando continuamente la mano del
+teclado al ratón y viceversa- pues entonces decides que hay que darle una
+oportunidad a un twm, que sea el gestor de ventanas quien haga el trabajo sucio
 por ti.
 
-¿Y hasta que punto resuelve bien este problema un twm como Xmonad? En este vídeo 
-de xmonad trabajando con mi configuración, uno se puede hacer una idea de lo que 
+¿Y hasta que punto resuelve bien este problema un twm como Xmonad? En este vídeo
+de xmonad trabajando con mi configuración, uno se puede hacer una idea de lo que
 es capaz.
 
 
 <div style="text-align:center">
-<iframe src="http://player.vimeo.com/video/33164152?title=0&amp;byline=0&amp;portrait=0&amp;color=59a5d1" width="667" height="417"></iframe><p>Esbozo de las posibilidades de un Tiling Window Manager como Xmonad trabajando conjuntamente con Gnome 3 y Unity 2D sobre un Ubuntu 11.10. Recomiendo ver en HD.</p>
+<iframe width="700" height="525"
+src="http://www.youtube.com/embed/P_67Bq-RHb8?rel=0"></iframe>
+<p>Esbozo de las posibilidades de un Tiling Window Manager como Xmonad
+trabajando conjuntamente con Gnome 3 y Unity 2D sobre un Ubuntu 11.10.
+Recomiendo ver en resolución original y a pantalla completa.</p>
 </div>
 
 
-**Xmonad** no necesita de un entorno de escritorio para trabajar, se puede iniciar 
-una sesión directamente en él, al igual que la mayoría de gestores de ventanas 
-de mosaico y otros gestores de ventanas como [OpenBox][ob]. En el vídeo se puede 
-apreciar que lo estoy empleando conjuntamente con Unity, en concreto **Unity 2D**. 
-Esto es así porque emplear Xmonad (u otro twm) de forma autónoma te obliga a 
-montar una serie de servicios que vienen montados por defecto normalmente en un 
-escritorio, como salvapantallas, fondo de pantalla, bandeja de sistema, gestor 
-de red, notificaciones, control de volumen, soporte impresoras, etc. Como estoy 
-contento con el funcionamiento en general de Gnome, lo mejor es no reinventar la 
-rueda y aprovechar lo mejor de los dos mundos empleando ambos a la vez. 
-Anteriormente con Gnome 2, lo tenia funcionando sin Unity, pero con Gnome 3 me 
-encuentro con la desagradable situación de que Gnome classic (el fallback mode) 
-tiene un panel que es un autentico desastre y que además no es redimensionable 
-en altura (tiene 30px y yo lo quiero con 21px). Actualmente hay una 
-[forma de arreglar esto][fix], pero de momento lo tengo montado todo con Unity 
-2D y no hecho nada en falta. Eso si, de Unity solo empleo el panel, el Global Menu 
-y la base de Gnome 3, lo demás lo descarto. Resumiendo, que básicamente sustituyo 
+**Xmonad** no necesita de un entorno de escritorio para trabajar, se puede iniciar
+una sesión directamente en él, al igual que la mayoría de gestores de ventanas
+de mosaico y otros gestores de ventanas como [OpenBox][ob]. En el vídeo se puede
+apreciar que lo estoy empleando conjuntamente con Unity, en concreto **Unity 2D**.
+Esto es así porque emplear Xmonad (u otro twm) de forma autónoma te obliga a
+montar una serie de servicios que vienen montados por defecto normalmente en un
+escritorio, como salvapantallas, fondo de pantalla, bandeja de sistema, gestor
+de red, notificaciones, control de volumen, soporte impresoras, etc. Como estoy
+contento con el funcionamiento en general de Gnome, lo mejor es no reinventar la
+rueda y aprovechar lo mejor de los dos mundos empleando ambos a la vez.
+Anteriormente con Gnome 2, lo tenia funcionando sin Unity, pero con Gnome 3 me
+encuentro con la desagradable situación de que Gnome classic (el fallback mode)
+tiene un panel que es un autentico desastre y que además no es redimensionable
+en altura (tiene 30px y yo lo quiero con 21px). Actualmente hay una
+[forma de arreglar esto][fix], pero de momento lo tengo montado todo con Unity
+2D y no hecho nada en falta. Eso si, de Unity solo empleo el panel, el Global Menu
+y la base de Gnome 3, lo demás lo descarto. Resumiendo, que básicamente sustituyo
 `metacity` por `xmonad`.
 
   [ob]: http://es.wikipedia.org/wiki/Openbox
@@ -62,20 +66,20 @@ y la base de Gnome 3, lo demás lo descarto. Resumiendo, que básicamente sustit
 ## Xmonad con Unity 2D
 
 Aquí contaré como tengo configurado actualmente __Xmonad__ con __Ubuntu 11.10__
-(Oneiric Ocelot) y con __Gnome 3__ y el panel de __Unity 2D__ (`unity-2p-panel`). 
-Si alguien continua con Gnome 2D o alguna versión anterior de Ubuntu puede revisar 
-[este enlace][lucid], la base es muy parecida, y luego solo habría que aplicar mi 
+(Oneiric Ocelot) y con __Gnome 3__ y el panel de __Unity 2D__ (`unity-2p-panel`).
+Si alguien continua con Gnome 2D o alguna versión anterior de Ubuntu puede revisar
+[este enlace][lucid], la base es muy parecida, y luego solo habría que aplicar mi
 configuración (u otra).
 
   [lucid]: http://markhansen.co.nz/xmonad-ubuntu-lucid/
-  
+
 Lo primero que se necesita es instalar xmonad, que en Ubuntu viene siendo así:
 
     ::bash
     $ sudo apt-get install xmonad
-    
-A continuación crearíamos un fichero `~/.xmonad/xmonad.hs` de configuración 
-básica 
+
+A continuación crearíamos un fichero `~/.xmonad/xmonad.hs` de configuración
+básica
 
     ::bash
     $ mkdir ~/.xmonad           # El carácter ~ se obtiene pulsando Alt Gr + 4
@@ -95,19 +99,19 @@ e incluiríamos lo siguiente dentro de él:
 
     main = xmonad gnomeConfig { manageHook = myManageHook }
 
-Ahora tendríamos que recompilar Xmonad, es algo necesario cada vez que realizamos 
-algún cambio en la configuración, pero es un proceso que no suele llevar más de 
+Ahora tendríamos que recompilar Xmonad, es algo necesario cada vez que realizamos
+algún cambio en la configuración, pero es un proceso que no suele llevar más de
 5 segundos (y Xmonad se puede reiniciar sin tener que cerrar la sesión):
 
     ::bash
     $ xmonad --recompile
-    
-Lo siguiente es crear los ficheros necesarios para crear una nueva sesión de 
+
+Lo siguiente es crear los ficheros necesarios para crear una nueva sesión de
 Gnome. Creamos primero el fichero que define nuestra nueva sesión:
 
     ::bash
     $ sudo vi /usr/share/gnome-session/sessions/xmonad.session
-    
+
 y dentro añadimos esto:
 
     [GNOME Session]
@@ -132,35 +136,35 @@ con este contenido:
     Type=XSession
 
 
-Con esto estaría ya montada una sesión con la configuración por defecto de 
-Xmonad funcionado sobre Gnome y empleando el panel de Unity 2D. Ahora solo 
-tendrías que cerrar la sesión e iniciar la sesión con *Xmonad Unity 2D*. 
+Con esto estaría ya montada una sesión con la configuración por defecto de
+Xmonad funcionado sobre Gnome y empleando el panel de Unity 2D. Ahora solo
+tendrías que cerrar la sesión e iniciar la sesión con *Xmonad Unity 2D*.
 
- >**Advertencia:** Por defecto verás que se ha creado automáticamente una sesión 
- llamada Xmonad al instalar este. Bien, si vas iniciar esa sesión, será mejor 
- que sepas que para salir tienes que pulsar **Win + Mayús + Q**, porque será una 
+ >**Advertencia:** Por defecto verás que se ha creado automáticamente una sesión
+ llamada Xmonad al instalar este. Bien, si vas iniciar esa sesión, será mejor
+ que sepas que para salir tienes que pulsar **Win + Mayús + Q**, porque será una
  sesión donde solo tendrás Xmonad, y es la única forma de cerrar la sesión.
 
-Si queréis hacer alguna prueba con esta configuración básica por defecto, es 
-mejor tener a mano una referencia con las combinaciones de teclas disponibles, 
+Si queréis hacer alguna prueba con esta configuración básica por defecto, es
+mejor tener a mano una referencia con las combinaciones de teclas disponibles,
 aquí hay un [mapa del teclado][keys] de referencia que será muy útil.
 
   [keys]: http://haskell.org/wikiupload/b/b8/Xmbindings.png
 
 ## Mi configuración
 
-Para poder emplear la configuración que se puede ver en el vídeo simplemente 
-habría que editar el fichero `~/.xmonad/xmonad.hs` y sustituir su contenido por 
-el de mi fichero de configuración. El contenido del fichero lo incluyo al final 
+Para poder emplear la configuración que se puede ver en el vídeo simplemente
+habría que editar el fichero `~/.xmonad/xmonad.hs` y sustituir su contenido por
+el de mi fichero de configuración. El contenido del fichero lo incluyo al final
 del articulo para no entorpecer la lectura del mismo.
 
 ### Atajos de teclado
 
-Al comienzo del fichero enumero las combinaciones de teclas empleadas en mi 
-configuración, que difieren de las combinaciones por defecto y se asemejan de 
-algún modo a las que estaba habituado en Gnome y son más intuitivas para los que 
-estamos acostumbrados a él. Aunque las que se emplean por defecto también me son 
-muy familiares al estar basadas en parte en Vim. Voy a detallar algunas de estas 
+Al comienzo del fichero enumero las combinaciones de teclas empleadas en mi
+configuración, que difieren de las combinaciones por defecto y se asemejan de
+algún modo a las que estaba habituado en Gnome y son más intuitivas para los que
+estamos acostumbrados a él. Aunque las que se emplean por defecto también me son
+muy familiares al estar basadas en parte en Vim. Voy a detallar algunas de estas
 combinaciones.
 
 #### Lanzar aplicaciones
@@ -173,29 +177,29 @@ combinaciones.
     -- Win  +  F4                      RSSOwl                   (single instance)
     -- Win  +  F5                      Hotot                    (single instance)
     -- Win  +  F6                      ncmpcpp  - MPD player
-    -- Win  +  F7                      taskwarrior               
+    -- Win  +  F7                      taskwarrior
     -- Win  +  F8                      PAC                      (single instance)
     -- Win  +  F9                      Aptana                   (single instance)
     -- Win  +  F10                     Xmind                    (single instance)
     -- Win  +  F11                     Dbeaver                  (single instance)
     -- Win  +  F12                     VirtualBox               (single instance)
 
-Lo primero que se puede ver es una serie de atajos para lanzar aplicaciones 
-empleando la tecla **Win** más las teclas de función. La tecla **Win** (también 
-llamada **Super**) es la tecla maestra por defecto de Xmonad (`mod4Mask`) y es la 
-que se emplea en combinación con otras para realizar todo tipo de acciones. Estas 
-combinaciones me permiten lanzar las aplicaciones que uso con más frecuencia con 
-un par de teclas. 
+Lo primero que se puede ver es una serie de atajos para lanzar aplicaciones
+empleando la tecla **Win** más las teclas de función. La tecla **Win** (también
+llamada **Super**) es la tecla maestra por defecto de Xmonad (`mod4Mask`) y es la
+que se emplea en combinación con otras para realizar todo tipo de acciones. Estas
+combinaciones me permiten lanzar las aplicaciones que uso con más frecuencia con
+un par de teclas.
 
-Algunas aparecen con la frase *single instance* entre paréntesis, esto quiere 
-decir que de estas aplicaciones solamente se abrirá una ventana. De hecho, lo que 
-ocurre si volvemos a pulsar la combinación de teclas que abre la aplicación (una 
-vez que esta ya está abierta) es que en lugar de abrir una nueva, nos movemos a 
-la ventana ya abierta, esté en el escritorio que esté. Lo que es muy útil para 
+Algunas aparecen con la frase *single instance* entre paréntesis, esto quiere
+decir que de estas aplicaciones solamente se abrirá una ventana. De hecho, lo que
+ocurre si volvemos a pulsar la combinación de teclas que abre la aplicación (una
+vez que esta ya está abierta) es que en lugar de abrir una nueva, nos movemos a
+la ventana ya abierta, esté en el escritorio que esté. Lo que es muy útil para
 localizar la ventana de una de estas aplicaciones de forma inmediata.
 
-Adicionalmente la combinación **Alt + Enter** nos permite abrir una ventana del 
-terminal. En este caso lo tengo predeterminado para que abra una venta de 
+Adicionalmente la combinación **Alt + Enter** nos permite abrir una ventana del
+terminal. En este caso lo tengo predeterminado para que abra una venta de
 `terminator`
 
 #### Consola emergente
@@ -206,53 +210,53 @@ terminal. En este caso lo tengo predeterminado para que abra una venta de
     -- Win  +  Control +  Space        Window Prompt
 
 
-A continuación podemos ver las teclas dedicadas a la consola emergente inferior 
-(al estilo de Guake, Yakuake o Tilda) y que según la combinación pulsada 
-realizara una acción u otra. La consola cuenta con auto-completado de texto, con 
-lo cual escribiendo las primeras letras se nos muestran todas las coincidencias 
+A continuación podemos ver las teclas dedicadas a la consola emergente inferior
+(al estilo de Guake, Yakuake o Tilda) y que según la combinación pulsada
+realizara una acción u otra. La consola cuenta con auto-completado de texto, con
+lo cual escribiendo las primeras letras se nos muestran todas las coincidencias
 disponibles, a través de las que podemos desplazarnos con el tabulador.
 
-*  **Win + Espacio** nos despliega una consola que nos permite lanzar una 
-aplicación de igual modo que los lanzadores gráficos. Si la aplicación ya se 
+*  **Win + Espacio** nos despliega una consola que nos permite lanzar una
+aplicación de igual modo que los lanzadores gráficos. Si la aplicación ya se
 encuentra abierta, nos dirige a la ventana de la misma.
 
-* **Win + Mayús + Espacio** ejecuta el comando que escribamos. Similar a la 
+* **Win + Mayús + Espacio** ejecuta el comando que escribamos. Similar a la
 ventana de ejecutar comando de Gnome (*Alt + F2* en Gnome)
 
-* **Win + Control + Espacio** nos muestra las ventanas que están abiertas en ese 
-momento. Seleccionando una nos envía directamente a ella. Gracias a esto, 
-localizar una ventana abierta entre los múltiples escritorios es cuestión de 
-segundos. Si conocemos el nombre de la ventana podemos filtrarla escribiendo las 
-primeras letras con el teclado. Imagina una sesión en la que tenemos abiertas más 
-de 10 aplicaciones en varios escritorios distintos, esto nos permite localizar 
+* **Win + Control + Espacio** nos muestra las ventanas que están abiertas en ese
+momento. Seleccionando una nos envía directamente a ella. Gracias a esto,
+localizar una ventana abierta entre los múltiples escritorios es cuestión de
+segundos. Si conocemos el nombre de la ventana podemos filtrarla escribiendo las
+primeras letras con el teclado. Imagina una sesión en la que tenemos abiertas más
+de 10 aplicaciones en varios escritorios distintos, esto nos permite localizar
 una ventana en segundos, es muy útil.
 
 #### Reiniciar Xmonad
 
-Con la combinación **Win + q** lo que hacemos es reiniciar Xmonad sin necesidad 
-de reiniciar la sesión. Esto es muy útil cuando introducimos cambios en la 
-configuración, después de guardar el fichero y ejecutar `xmonad --recompile` en 
-un terminal, pulsamos esta combinación y los cambios se reflejaran de forma 
+Con la combinación **Win + q** lo que hacemos es reiniciar Xmonad sin necesidad
+de reiniciar la sesión. Esto es muy útil cuando introducimos cambios en la
+configuración, después de guardar el fichero y ejecutar `xmonad --recompile` en
+un terminal, pulsamos esta combinación y los cambios se reflejaran de forma
 inmediata.
 
 
 ## Transparencias
 
-Una de las carencias de Xmonad es que no incorpora un [gestor de composición][cm] 
-por lo que si queremos manejar transparencias en nuestros terminales, 
-notificaciones, ventanas, etc, debemos emplear uno externo. Para esto empleo 
-`xcompmgr` que funciona perfectamente y es muy ligero. Como aún conservo las 
-otras sesiones de Ubuntu (Unity, Unity 2 D, Gnome Shell, etc) lo que hago para 
+Una de las carencias de Xmonad es que no incorpora un [gestor de composición][cm]
+por lo que si queremos manejar transparencias en nuestros terminales,
+notificaciones, ventanas, etc, debemos emplear uno externo. Para esto empleo
+`xcompmgr` que funciona perfectamente y es muy ligero. Como aún conservo las
+otras sesiones de Ubuntu (Unity, Unity 2 D, Gnome Shell, etc) lo que hago para
 que solo se ejecute en la sesión de *Xmonad Unity 2D* es emplear este script bash:
 
     ::bash
     #!/bin/bash
 
     if [ $DESKTOP_SESSION = "xmonad-unity-session" ]; then
-        xcompmgr -I1 -O1 -Ff;    
+        xcompmgr -I1 -O1 -Ff;
     fi
 
-Luego añado el script a las aplicaciones que se ejecutan al inicio de la sesión 
+Luego añado el script a las aplicaciones que se ejecutan al inicio de la sesión
 y listo.
 
   [cm]:  http://es.wikipedia.org/wiki/Gestor_de_composici%C3%B3n_de_ventanas
@@ -260,12 +264,12 @@ y listo.
 
 ## Bandeja del sistema
 
-Una de las carencias de Unity en la versión 11.10 es que no han incorporado una 
-bandeja del sistema donde alojar los iconos de aplicaciones que aún no tienen 
-soporte para los *indicadores*. Se supone que debería añadirlos de forma 
-automática al panel, incluso hay una configuración a través de `dconf` para 
-habilitar esto, pero no funciona para todas las aplicaciones. Para añadir un 
-*systray* empleo un script parecido al anterior para lanzar la aplicación 
+Una de las carencias de Unity en la versión 11.10 es que no han incorporado una
+bandeja del sistema donde alojar los iconos de aplicaciones que aún no tienen
+soporte para los *indicadores*. Se supone que debería añadirlos de forma
+automática al panel, incluso hay una configuración a través de `dconf` para
+habilitar esto, pero no funciona para todas las aplicaciones. Para añadir un
+*systray* empleo un script parecido al anterior para lanzar la aplicación
 `trayer` en esta sesión.
 
     ::bash
@@ -281,21 +285,21 @@ habilitar esto, pero no funciona para todas las aplicaciones. Para añadir un
 
 ## Como personalizar Xmonad: Haskell
 
-El mayor inconveniente de Xmonad (y a la vez una de sus ventajas) es que la 
-configuración es necesario hacerla a través del mismo lenguaje de programación 
-en el que está creado: [Haskell][hskll]. Esto es una importante barrera de 
-entrada para los que no conocen el lenguaje, yo incluido, pero a base de ir 
-probando algunas de las configuraciones aportadas y el prueba y error, puedes 
-salir del paso muy satisfactoriamente. Con un poco de práctica y estudiando un 
-poco el lenguaje (que de entrada no es de los más fáciles de leer) y gracias a 
-la documentación disponible, puedes conseguir exactamente lo que quieres. Y esa es 
-precisamente también su mayor ventaja, que puedes llegar a un gran nivel de 
-personalización si conoces Haskell. Además Haskell le proporciona una gran 
-estabilidad y extensibilidad. 
-  
+El mayor inconveniente de Xmonad (y a la vez una de sus ventajas) es que la
+configuración es necesario hacerla a través del mismo lenguaje de programación
+en el que está creado: [Haskell][hskll]. Esto es una importante barrera de
+entrada para los que no conocen el lenguaje, yo incluido, pero a base de ir
+probando algunas de las configuraciones aportadas y el prueba y error, puedes
+salir del paso muy satisfactoriamente. Con un poco de práctica y estudiando un
+poco el lenguaje (que de entrada no es de los más fáciles de leer) y gracias a
+la documentación disponible, puedes conseguir exactamente lo que quieres. Y esa es
+precisamente también su mayor ventaja, que puedes llegar a un gran nivel de
+personalización si conoces Haskell. Además Haskell le proporciona una gran
+estabilidad y extensibilidad.
+
   [hskll]: http://haskell.org/haskellwiki/Haskell
-  
-Afortunadamente hay varios recursos disponibles que nos hacen el trabajo más 
+
+Afortunadamente hay varios recursos disponibles que nos hacen el trabajo más
 fácil, porque Xmonad está aceptablemente bien documentado (en Inglés).
 
 * [Pantallazos](http://haskell.org/haskellwiki/Xmonad/Screenshots)
@@ -303,7 +307,7 @@ fácil, porque Xmonad está aceptablemente bien documentado (en Inglés).
 * [Wiki](http://haskell.org/haskellwiki/Xmonad)
 * [API Docs](http://xmonad.org/xmonad-docs/xmonad/index.html)
 * [API Extensiones Docs](http://xmonad.org/xmonad-docs/xmonad-contrib/index.html)
-  
+
 
 ## Xmonad.hs
 
@@ -324,12 +328,12 @@ Este es mi mi fichero de configuración de Xmonad:
     -- Win  +  F4                      RSSOwl                   (single instance)
     -- Win  +  F5                      Hotot                    (single instance)
     -- Win  +  F6                      ncmpcpp  - MPD player
-    -- Win  +  F7                      taskwarrior               
+    -- Win  +  F7                      taskwarrior
     -- Win  +  F8                      PAC                      (single instance)
     -- Win  +  F9                      Aptana                   (single instance)
     -- Win  +  F10                     Xmind                    (single instance)
     -- Win  +  F11                     Dbeaver                  (single instance)
-    -- Win  +  F12                     VirtualBox               (single instance)                                                             
+    -- Win  +  F12                     VirtualBox               (single instance)
     ----------------------------------------------------------- Shell/Window prompts
     -- Win  +  Space                   Run or Raise Shell Prompt
     -- Win  +  Shift   +  Space        Run Shell Prompt
@@ -375,23 +379,23 @@ Este es mi mi fichero de configuración de Xmonad:
     -- Win  +  Button 3                Float Window and Resize by dragging
 
 
-     
+
     import XMonad
     import qualified XMonad.StackSet as W
     import qualified Data.Map        as M
     import Data.Monoid
-     
+
     import XMonad.Actions.CycleWS
     import XMonad.Actions.FlexibleResize as Flex
     import XMonad.Actions.SinkAll
     import XMonad.Actions.UpdatePointer
     import XMonad.Actions.WindowGo
-     
+
     import XMonad.Hooks.DynamicLog
     import XMonad.Hooks.EwmhDesktops
     import XMonad.Hooks.ManageDocks
     import XMonad.Hooks.ManageHelpers
-     
+
     import XMonad.Layout.LayoutHints
     import XMonad.Layout.NoBorders
     import XMonad.Layout.ResizableTile
@@ -399,13 +403,13 @@ Este es mi mi fichero de configuración de Xmonad:
     import XMonad.Layout.ToggleLayouts
     import XMonad.Layout.WindowArranger
     import XMonad.Layout.Mosaic
-     
+
     import XMonad.Prompt
     import XMonad.Prompt.Input
     import XMonad.Prompt.RunOrRaise
     import XMonad.Prompt.Shell
     import XMonad.Prompt.Window
-     
+
     import XMonad.Util.Run
     import XMonad.Util.Scratchpad
     import XMonad.Util.WorkspaceCompare
@@ -426,17 +430,17 @@ Este es mi mi fichero de configuración de Xmonad:
         , ((winMask,                    xK_F4       ), runOrRaise "./rssowl/RSSOwl" (className =? "RSSOwl"))
         , ((winMask,                    xK_F5       ), runOrRaise "hotot" (className =? "Hotot"))
         , ((winMask,                    xK_F6       ), spawn "terminator -e ncmpcpp")
-        , ((winMask,                    xK_F7       ), spawn "terminator -e 'task shell' -p task")    
-        , ((winMask,                    xK_F8       ), runOrRaise "pac" (className =? "Pac"))        
-        , ((winMask,                    xK_F9       ), runOrRaise "./Aptana Studio 3/AptanaStudio3" (className =? "Aptana Studio 3"))            
-        , ((winMask,                    xK_F10      ), runOrRaise "/usr/local/xmind/xmind" (className =? "XMind"))            
-        , ((winMask,                    xK_F11      ), runOrRaise "./dbeaver/dbeaver" (className =? "DBeaver"))        
-        , ((winMask,                    xK_F12      ), runOrRaise "VirtualBox" (className =? "VirtualBox"))    
+        , ((winMask,                    xK_F7       ), spawn "terminator -e 'task shell' -p task")
+        , ((winMask,                    xK_F8       ), runOrRaise "pac" (className =? "Pac"))
+        , ((winMask,                    xK_F9       ), runOrRaise "./Aptana Studio 3/AptanaStudio3" (className =? "Aptana Studio 3"))
+        , ((winMask,                    xK_F10      ), runOrRaise "/usr/local/xmind/xmind" (className =? "XMind"))
+        , ((winMask,                    xK_F11      ), runOrRaise "./dbeaver/dbeaver" (className =? "DBeaver"))
+        , ((winMask,                    xK_F12      ), runOrRaise "VirtualBox" (className =? "VirtualBox"))
         , ((winMask,                    xK_space    ), runOrRaisePrompt mySP)
         , ((winMask .|. shiftMask,      xK_space    ), shellPrompt mySP)
         , ((winMask .|. controlMask,    xK_space    ), windowPromptGoto mySP)
         , ((0,                          xK_Print    ), unsafeSpawn "gnome-screenshot")
-        , ((altMask .|. controlMask,    xK_Right    ), moveTo Next (WSIs (return $ not . (=="NSP") . W.tag)))  
+        , ((altMask .|. controlMask,    xK_Right    ), moveTo Next (WSIs (return $ not . (=="NSP") . W.tag)))
         , ((altMask .|. controlMask,    xK_Left     ), moveTo Prev (WSIs (return $ not . (=="NSP") . W.tag)))
         , ((winMask .|. shiftMask,      xK_Right    ), shiftTo Next (WSIs (return $ not . (=="NSP") . W.tag)))
         , ((winMask .|. shiftMask,      xK_Left     ), shiftTo Prev (WSIs (return $ not . (=="NSP") . W.tag)))
@@ -461,27 +465,27 @@ Este es mi mi fichero de configuración de Xmonad:
         , ((winMask .|. controlMask,    xK_n        ), sendMessage Reset)
         , ((winMask,                    xK_m        ), sendMessage (Toggle "Full") >> (dynamicLogString myPP >>= \d->safeSpawn "gnome-osd-client" [d]))
         , ((winMask,                    xK_t        ), withFocused $ windows . W.sink)
-        , ((winMask .|. shiftMask,      xK_t        ), sinkAll)    
+        , ((winMask .|. shiftMask,      xK_t        ), sinkAll)
         , ((winMask,                    xK_f        ), sendMessage ToggleStruts)
         , ((winMask,                    xK_w        ), kill)
         , ((altMask,                    xK_F4       ), kill)
         , ((winMask,                    xK_q        ), broadcastMessage ReleaseResources >> restart "xmonad" True)
-        , ((winMask .|. shiftMask,      xK_q        ), spawn "gnome-session-quit")   
+        , ((winMask .|. shiftMask,      xK_q        ), spawn "gnome-session-quit")
         ]
-     
+
         ++
         -- mod-[1..9], Switch to workspace N
         -- mod-shift-[1..9], Move client to workspace N
         [ ((m .|. winMask, k), windows $ f i)
             | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
             , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)] ]
-            
-    -- mouse bindings 
+
+    -- mouse bindings
     myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
         [ ((winMask, button1), (\w -> focus w >> mouseMoveWindow w))
         , ((winMask, button2), (\w -> focus w >> windows W.shiftMaster))
         , ((winMask, button3), (\w -> focus w >> Flex.mouseResizeWindow w)) ]
-     
+
     -- decoration theme
     myDeco = defaultTheme
         { activeColor           = "orange"
@@ -494,7 +498,7 @@ Este es mi mi fichero de configuración de Xmonad:
         , inactiveTextColor     = "#222222"
         , urgentTextColor       = "yellow"
         , decoHeight            = 10 }
-     
+
     -- tab theme
     myTab = defaultTheme
         { activeColor           = "black"
@@ -506,7 +510,7 @@ Este es mi mi fichero de configuración de Xmonad:
         , activeTextColor       = "orange"
         , inactiveTextColor     = "#222222"
         , urgentTextColor       = "yellow" }
-     
+
     -- shell prompt theme
     mySP = defaultXPConfig
         { bgColor               = "black"
@@ -519,7 +523,7 @@ Este es mi mi fichero de configuración de Xmonad:
         , height                = 40
         --, autoComplete        = Just 1000
         , historySize           = 1000 }
-     
+
     -- dynamicLog theme (suppress everything but layout)
     myPP = defaultPP
         { ppLayout  = (\ x -> case x of
@@ -537,7 +541,7 @@ Este es mi mi fichero de configuración de Xmonad:
         , ppTitle               = const ""
         , ppWsSep               = ""
         , ppSep                 = "" }
-     
+
 
     -- layouts
     myLayout = avoidStruts $ toggleLayouts (noBorders Full)
@@ -547,7 +551,7 @@ Este es mi mi fichero de configuración de Xmonad:
             nmaster = 1
             delta   = 2/100
             ratio   = 1/2
-     
+
     -- special windows
     myManageHook = composeAll
         [ className =? "MPlayer"                --> doFloat
@@ -571,11 +575,11 @@ Este es mi mi fichero de configuración de Xmonad:
         --                                      x y w h
         , scratchpadManageHook $ W.RationalRect 0 0 1 0.42
         , manageDocks ] <+> manageHook defaultConfig
-     
+
     -- let Gnome know about Xmonad actions
     myLogHook = ewmhDesktopsLogHookCustom scratchpadFilterOutWorkspace >> updatePointer (Relative 0.5 0.5)
 
-           
+
     myConfig = ewmh defaultConfig
         { terminal           = "terminator"
         , borderWidth        = 2

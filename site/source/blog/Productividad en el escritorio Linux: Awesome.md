@@ -492,17 +492,17 @@ los cambios. Dentro de esta sesión vuelvo a editar la configuración de test pa
 deshacer los cambios y después reinicio este Awesome de pruebas. Se puede ver
 como efectivamente todo vuelve a el estado anterior. Cierro la sesión y
 compruebo el log de la sesión para ver los mensajes de error. Finalmente abro
-varias sesiones de Awesome a la vez y una a pantalla completa.   
+varias sesiones de Awesome a la vez y una a pantalla completa.
 
 
 <div style="text-align:center">
-<iframe src="http://player.vimeo.com/video/43562306?title=0&amp;byline=0&amp;portrait=0&amp;color=59a5d1" width="667" height="417">
+<iframe width="700" height="525"
+src="http://www.youtube.com/embed/V2qqurslZ_Q?rel=0">
 </iframe>
 <p>Muestra de las posibilidades que ofrecen Xephyr y el script
 <strong>awdt.py</strong> para poder depurar la configuración de Awesome.
-Recomiendo ver en HD.</p>
+Recomiendo ver en la resolución original y a pantalla completa.</p>
 </div>
-
 
 Para realizar estas acciones programé un script en Python, `awdt.py`, que incluyo
 al final del articulo.
