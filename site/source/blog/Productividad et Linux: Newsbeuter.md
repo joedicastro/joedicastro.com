@@ -321,9 +321,19 @@ claves de mi cuenta de Pocket, este modulo sería algo similar a esto
 
     :::python
     # ril credentials
-    ril_apikey = '987u1ksjsdfRk54kKLKL34jkjij9945k'
+    RIL_APIKEY = '987u1ksjsdfRk54kKLKL34jkjij9945k'
     RIL_USERNAME = 'usuario'
     RIL_PASSWORD = 'ADRKSD-Xk3kj5kjljFl'
+
+Por lo tanto para hacerlo funcionar necesitamos crear un fichero `ril_config.py`
+con las credenciales de cada uno para Pocket. Los campos `RIL_USERNAME` y
+`RIL_PASSWORD` se corresponden evidentemente con el usuario y la contraseña que
+tengamos para el servicio. El otro campo, `RIL_APIKEY` es una clave que podemos
+obtener en [esta página][AKY] para registrar nuestra aplicación (en este caso
+nuestro script) y que pueda acceder de forma autorizada a la API de Pocket.
+
+  [AKY]: http://getpocket.com/api/signup/
+
 
 ### Copia de seguridad de las urls de Pocket
 
