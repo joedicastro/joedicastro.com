@@ -207,7 +207,13 @@ a mí, pueden servirte para incrementar de forma notable tu productividad.
   Controlable desde el teclado con atajos basados en Vim. Muy personalizable y
   con un funcionamiento muy versátil y ágil.
 
++ [tmux][tmux], es un multiplexor de terminales. Permite agrupar varios
+  terminales en una sola ventana de forma muy eficiente. La herramienta ideal
+  para los amantes de la consola, desarrolladores y administradores de sistemas.
+
   [penta]: http://joedicastro.com/productividad-linux-pentadactyl.html
   [news]: http://joedicastro.com/productividad-linux-newsbeuter.html
   [trs]: http://joedicastro.com/productividad-linux-turses.html
+  [tmux]: http://joedicastro.com/productividad-linux-tmux.html
+
 
