@@ -211,9 +211,13 @@ a mí, pueden servirte para incrementar de forma notable tu productividad.
   terminales en una sola ventana de forma muy eficiente. La herramienta ideal
   para los amantes de la consola, desarrolladores y administradores de sistemas.
 
++ [zathura][zathura], es un visor de documentos minimalista y controlable desde
+  el teclado. Soporta documentos en formato PDF, DJVU, PostScript y Comic Book.
+
   [penta]: http://joedicastro.com/productividad-linux-pentadactyl.html
   [news]: http://joedicastro.com/productividad-linux-newsbeuter.html
   [trs]: http://joedicastro.com/productividad-linux-turses.html
   [tmux]: http://joedicastro.com/productividad-linux-tmux.html
+  [zathura]: http://joedicastro.com/productividad-linux-zathura.html
 
 
