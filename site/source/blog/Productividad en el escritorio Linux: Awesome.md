@@ -325,7 +325,7 @@ cuando eliminamos la última ventana de una etiqueta y la abandonamos, se
 destruye. La ventaja de esto es que por un lado nos facilita localizar donde
 estamos más fácilmente y por otro, que en caso de ser necesario, si necesitamos
 más etiquetas (de las creadas por defecto), las creara de forma automática. De
-este modo cuando llegamos a la etiqueta `θ`, si necesitamos otra, creara la `11`
+este modo cuando llegamos a la etiqueta `θ`, si necesitamos otra, creara la `10`
 y así en lo sucesivo.
 
   [mnt]: http://git.glacicle.org/eminent
