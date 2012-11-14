@@ -6,6 +6,3 @@ Disallow: /drafts/*
 Disallow: /feeds/*
 Disallow: /feeds/tags/*
 Disallow: /piwik/*
-# old site
-Disallow: /photo/*
-Disallow: /comment/*
