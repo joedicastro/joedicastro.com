@@ -29,11 +29,16 @@ Redirect 301 /productividad-en-el-escritorio-linux-twm.html /productividad-en-el
 Redirect 301 /tag/Pelican.html /tag/pelican.html
 Redirect 301 "/tag/TED Talks.html" /tag/ted%20talks.html
 
+ # wrong links from external sites
+Redirect 410 /productividad
+Redirect 410 /combatir-el-spam-en-drupal
+
  # old site
  Redirect 410 /view
  Redirect 410 /photo
  Redirect 410 /comment
  Redirect 410 /main.php
+ Redirect 410 /cse
  Redirect 410 /Catoira
  Redirect 410 /tag/Vilagarcia+de+Arousa
  Redirect 410 /tag/Castelo+de+Andrade

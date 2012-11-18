@@ -214,10 +214,21 @@ a mí, pueden servirte para incrementar de forma notable tu productividad.
 + [zathura][zathura], es un visor de documentos minimalista y controlable desde
   el teclado. Soporta documentos en formato PDF, DJVU, PostScript y Comic Book.
 
++ [Ranger][ranger], es un administrador de archivos en modo texto y
+  revolucionario en su interfaz y manejo. Muy potente y personalizable. 
+
++ [Ncdu][ncdu], una herramienta con interfaz ncurses que nos permite conocer el
+  espacio consumido en nuestro disco duro y navegar por los distintos
+  directorios. La mejor herramienta del estilo que existe para la consola.
+
   [penta]: http://joedicastro.com/productividad-linux-pentadactyl.html
   [news]: http://joedicastro.com/productividad-linux-newsbeuter.html
   [trs]: http://joedicastro.com/productividad-linux-turses.html
   [tmux]: http://joedicastro.com/productividad-linux-tmux.html
   [zathura]: http://joedicastro.com/productividad-linux-zathura.html
+  [ranger]: http://joedicastro.com/productividad-linux-ranger.html
+  [ncdu]: http://joedicastro.com/productividad-linux-ncdu.html
+
+  
 
 
