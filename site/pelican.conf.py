@@ -135,7 +135,7 @@ REVERSE_CATEGORY_ORDER = False
 
 # theme to use to produce the output. can be the complete static path to a
 # theme folder, or chosen between the list of default themes
-THEME = "/home/joedicastro/workspace/joedicastro.com/site/joe_theme"
+THEME = "/home/joedicastro/code/joedicastro.com/site/joe_theme"
 
 # Static theme paths you want to copy. Default values is static, but if
 # your theme has other static paths, you can put them here.

@@ -33,7 +33,7 @@ from fabric.api import *
 from fabric.contrib.project import rsync_project
 from fabric.contrib.console import confirm
 
-PELICAN_REPOSITORY = "git://github.com/ametaireau/pelican.git"
+PELICAN_REPOSITORY = "git://github.com/getpelican/pelican.git"
 PROD = "joedicastro.com"
 PROD_PATH = "/home/joedicastro/webapps/joedicastro"
 LOCAL_WEB = os.path.join("~/www", PROD)
@@ -73,6 +73,9 @@ def _del_env():
 def _clone_pelican():
     """Clone Pelican from repository."""
     local("git clone {0}".format(PELICAN_REPOSITORY))
+    with lcd(PELICAN):
+        local("git checkout 9543ce0")
+        local("git reset --hard")
 
 
 def _install():
