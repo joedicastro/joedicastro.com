@@ -2,22 +2,20 @@ title: Pelican - Publicación y automatización
 date: 2011-06-28 23:54
 tags: pelican, python, markdown, restructuredtext, blog, html, rsync, fabric
 
-Una vez que sabemos como [instalar Pelican][0] y [crear contenido][1] con él, es 
-hora de saber como convertir ese contenido en un blog real disponible en 
-internet. Es decir, saber como publicar ese contenido. Como hemos visto hasta 
-ahora, al constar básicamente de simples ficheros HTML, un servidor de 
-archivos es más que suficiente para servir el blog. Esto nos abre un gran 
-abanico de posibilidades, desde emplear un potente (y barato) servidor de 
-ficheros en la *nube* como __Amazon S3__ ([un ejemplo][2]), pasando por las 
-páginas web estáticas que nos permiten repositorios como __Bitbucket__ o 
-__GitHub__ ([un ejemplo][3]), por los tradiciones hostings compartidos (e.g. 
-este blog), hasta un servidor casero sencillo montado sobre un [NAS][4]. 
+Una vez que sabemos como [instalar Pelican][0] y [crear contenido][1] con él, es
+hora de saber como convertir ese contenido en un blog real disponible en
+internet. Es decir, saber como publicar ese contenido. Como hemos visto hasta
+ahora, al constar básicamente de simples ficheros HTML, un servidor de archivos
+es más que suficiente para servir el blog. Esto nos abre un gran abanico de
+posibilidades, desde emplear un potente (y barato) servidor de ficheros en la
+*nube* como __Amazon S3__, pasando por las páginas web estáticas que nos
+permiten repositorios como __Bitbucket__ o __GitHub__, por los tradiciones
+hostings compartidos (e.g.  este blog), hasta un servidor casero sencillo
+montado sobre un [NAS][4]. 
  
 
   [0]: http://joedicastro.com/pelican-introduccion-e-instalacion.html
   [1]: http://joedicastro.com/pelican-creacion-de-contenido.html
-  [2]: http://jdacpelican.s3-website-us-east-1.amazonaws.com/
-  [3]: http://marsam.github.com/blog/
   [4]: http://es.wikipedia.org/wiki/Network-attached_storage
   
 Aún cuando es posible emplear un simple servidor de archivos para alojar el blog, 
