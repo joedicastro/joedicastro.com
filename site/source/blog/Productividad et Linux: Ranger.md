@@ -47,7 +47,7 @@ manazas con el teclado).
   [rz]: https://github.com/hut
   [vim]: https://es.wikipedia.org/wiki/Vim
 
-__Ranger__ está desarrollado en __Python__ y emplea la librería Urwid igual que
+__Ranger__ está desarrollado en __Python__ y emplea una interfaz ncurses igual que
 [Turses][trs]. Al contrario de lo que algunos puedan pensar, el estar
 desarrollado en Python no lo convierte ni en pesado ni en lento, si no que se
 mueve a velocidad endiablada y consume una cantidad de memoria ridícula
@@ -162,7 +162,7 @@ qué nos creara los siguientes archivos por defecto en la carpeta
 + `rifle.conf` *(texto)*, para establecer los programas que ejecutaran o abrirán
   un tipo de archivo en orden de preferencia
 + `scope.sh` *(bash)*, los programas empleados para previsualizar un determinado
-  tipo de archivo 
+  tipo de archivo
 
 Adicionalmente, con el uso se añadirán tres ficheros más: `bookmarks`, `history`
 y `tagged` que guardarán los marcadores, la historia de comandos y las etiquetas
@@ -268,7 +268,7 @@ un disco, prefiero hacerlo directamente desde ranger. Para ello en el fichero
 Estos comandos los he sacado de el [Wiki de Arch Linux][warl] y los he adaptado
 a la versión de ranger que estoy empleando en este momento, la 1.5.5
 
-  [warl]: https://wiki.archlinux.org/index.php/Ranger 
+  [warl]: https://wiki.archlinux.org/index.php/Ranger
 
 __Extraer los ficheros de un archivo comprimido__
 
