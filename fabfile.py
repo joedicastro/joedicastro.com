@@ -149,7 +149,7 @@ def regen():
 def publish():
     """Publish into remote web server with rsync."""
     regen()
-    _browse()
+    # _browse()
     if confirm("¿Estas seguro de querer publicarlo?"):
         rsync_project(PROD_PATH, OUTPUT + "/", delete=True)
 

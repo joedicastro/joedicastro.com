@@ -263,7 +263,7 @@ La parte fundamental del código del [script][25], es la siguiente:
         log = Logger()
     
         # log the header
-        url = 'http://code.joedicastro.com/ted-talks-download'
+        url = 'http://joedicastro.com'
         msg = 'Download TED Talks from HD RSS Feed'
         log.header(url, msg)
     

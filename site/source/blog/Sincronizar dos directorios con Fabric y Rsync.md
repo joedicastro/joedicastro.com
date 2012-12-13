@@ -136,7 +136,7 @@ comienza a ejecutarse y del resultado de la misma. Para ello puedo emplear
     def _rsync(source, target, delete):
         """Process the _rsync command."""
         log = _logger()
-        log.header("Fabric Rsync\nhttp://code.joedicastro.com/python-recipes",
+        log.header("Fabric Rsync\nhttp://joedicastro.com",
                    "Syncing {0} to {1}".format(source, target))
         log.time("Start time")
         _notify("Rsync", "Start syncing {0} to {1}".format(source, target), "info")

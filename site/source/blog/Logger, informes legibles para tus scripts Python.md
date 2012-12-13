@@ -22,7 +22,7 @@ mismo que se generaría si ejecutáramos el modulo como script):
     :::text
     SCRIPT =========================================================================
     logger (ver. 0.3)
-    http://code.joedicastro.com/python-recipes
+    http://joedicastro.com
 
     This is a test of class Logger
     ================================================================================
@@ -412,7 +412,7 @@ El código del script es el siguiente:
 
     def main():
         """Main section"""
-        url = 'http://code.joedicastro.com/python-recipes'
+        url = 'http://joedicastro.com'
         head = 'This is a test of class Logger'
 
         log = Logger()

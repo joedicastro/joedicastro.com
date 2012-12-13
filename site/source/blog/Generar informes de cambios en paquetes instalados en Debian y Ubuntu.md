@@ -69,7 +69,7 @@ informe similar a este:
     :::diff
     SCRIPT =========================================================================
     dpkg_diff (ver. 0.1)
-    http://code.joedicastro.com/python-recipes
+    http://joedicastro.com
 
     Changes of packages installed on yourmachine
      ===============================================================================
@@ -154,7 +154,7 @@ Un fragmento de código de la parte principal del script es el siguiente:
 
         # Start logging
         log = Logger()
-        url = "http://code.joedicastro.com/python-recipes"
+        url = "http://joedicastro.com"
         head = "Changes of packages installed on {0}".format(platform.node())
         log.header(url, head)
         log.time("Start time")

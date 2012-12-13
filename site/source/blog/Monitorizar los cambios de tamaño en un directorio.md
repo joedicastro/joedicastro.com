@@ -39,7 +39,7 @@ ver un ejemplo de uno de estos informes.
     :::text
     SCRIPT =========================================================================
     dir_size_monitor (ver. 0.2)
-    http://code.joedicastro.com/python-recipes
+    http://joedicastro.com
 
     Changes in size of directories for .. on yourmachine
     ================================================================================
@@ -208,7 +208,7 @@ Este es el contenido de [dir_size_monitor.py][script] es el siguiente:
 
         # Prepare the log
         log = logger.Logger()
-        url = "http://code.joedicastro.com/python-recipes"
+        url = "http://joedicastro.com"
         head = ("Changes in size of directories for {0} on {1}".
                 format(mon_pth, platform.node()))
         log.header(url, head)

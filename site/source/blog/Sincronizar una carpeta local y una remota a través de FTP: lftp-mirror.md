@@ -141,7 +141,7 @@ Un extracto del código de **lftp-mirror.py**:
         include = ' --include-glob {0}'.format(args.inc_glob) if args.inc_glob else ''
         exclude = ' --exclude-glob {0}'.format(args.exc_glob) if args.exc_glob else ''
 
-        url = 'http://code.joedicastro.com/lftp-mirror'
+        url = 'http://joedicastro.com'
         msg = 'Connected to {1} as {2}{0}'.format(os.linesep, args.site, 'anonymous'
                                                   if args.anonymous
                                                   else args.login[0])

@@ -32,6 +32,7 @@ Redirect 301 "/tag/TED Talks.html" /tag/ted%20talks.html
  # wrong links from external sites
 Redirect 410 /productividad
 Redirect 410 /combatir-el-spam-en-drupal
+Redirect 410 /index2.html
 
  # old site
  Redirect 410 /view
@@ -41,10 +42,13 @@ Redirect 410 /combatir-el-spam-en-drupal
  Redirect 410 /cse
  Redirect 410 /Catoira
  Redirect 410 /Muxia
+ Redirect 410 /Monte_San_Pedro
+ Redirect 410 /QE2
  Redirect 410 /tag/Vilagarcia+de+Arousa
  Redirect 410 /tag/Castelo+de+Andrade
  Redirect 410 /tag/Serra+da+Capelada
  Redirect 410 /tag/Catoira
+ Redirect 410 /tag/Coristanco
 
 
 <IfModule mod_rewrite.c>
