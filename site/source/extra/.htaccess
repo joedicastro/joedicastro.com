@@ -44,11 +44,15 @@ Redirect 410 /index2.html
  Redirect 410 /Muxia
  Redirect 410 /Monte_San_Pedro
  Redirect 410 /QE2
+ Redirect 410 /A_Coruna
  Redirect 410 /tag/Vilagarcia+de+Arousa
  Redirect 410 /tag/Castelo+de+Andrade
  Redirect 410 /tag/Serra+da+Capelada
  Redirect 410 /tag/Catoira
  Redirect 410 /tag/Coristanco
+ Redirect 410 /tag/Parapente
+ Redirect 410 /tag/San+Andres+de+Teixido
+ Redirect 410 /tag/B+&+N
 
 
 <IfModule mod_rewrite.c>
