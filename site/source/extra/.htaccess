@@ -33,6 +33,13 @@ Redirect 301 "/tag/TED Talks.html" /tag/ted%20talks.html
 Redirect 410 /productividad
 Redirect 410 /combatir-el-spam-en-drupal
 Redirect 410 /index2.html
+Redirect 410 /index3.html
+Redirect 410 /index4.html
+Redirect 410 /index5.html
+Redirect 410 /index6.html
+Redirect 410 /index7.html
+Redirect 410 /index8.html
+Redirect 410 /index9.html
 
  # old site
  Redirect 410 /view
@@ -40,19 +47,62 @@ Redirect 410 /index2.html
  Redirect 410 /comment
  Redirect 410 /main.php
  Redirect 410 /cse
- Redirect 410 /Catoira
- Redirect 410 /Muxia
- Redirect 410 /Monte_San_Pedro
- Redirect 410 /QE2
+
  Redirect 410 /A_Coruna
- Redirect 410 /tag/Vilagarcia+de+Arousa
- Redirect 410 /tag/Castelo+de+Andrade
- Redirect 410 /tag/Serra+da+Capelada
- Redirect 410 /tag/Catoira
- Redirect 410 /tag/Coristanco
- Redirect 410 /tag/Parapente
- Redirect 410 /tag/San+Andres+de+Teixido
+ Redirect 410 /Atardeceres
+ Redirect 410 /B_&_N
+ Redirect 410 /Caion
+ Redirect 410 /Castelo_de_Andrade
+ Redirect 410 /Castelo_Andrade
+ Redirect 410 /Catoira
+ Redirect 410 /Chelo
+ Redirect 410 /Coristanco
+ Redirect 410 /Faro_Fisterra
+ Redirect 410 /Fragas_do_Eume
+ Redirect 410 /Marinan_Pedrido
+ Redirect 410 /Monte_San_Pedro
+ Redirect 410 /Muxia
+ Redirect 410 /QE2
+ Redirect 410 /San_Andres_de_Teixido
+ Redirect 410 /Santiago_de_Compostela
+ Redirect 410 /Serra_da_Capelada
+ Redirect 410 /Varias
+ Redirect 410 /Verdes
+ Redirect 410 /Vilagarcia_de_Arousa
+
+ Redirect 410 /tag/A+Coruña
+ Redirect 410 /tag/Aerogenerador
+ Redirect 410 /tag/Atardeceres
+ Redirect 410 /tag/Barco
+ Redirect 410 /tag/Betanzos
+ Redirect 410 /tag/Bodegon
  Redirect 410 /tag/B+&+N
+ Redirect 410 /tag/Caion
+ Redirect 410 /tag/Castelo+de+Andrade
+ Redirect 410 /tag/Castillo
+ Redirect 410 /tag/Catoira
+ Redirect 410 /tag/Chelo
+ Redirect 410 /tag/Coristanco
+ Redirect 410 /tag/Faro
+ Redirect 410 /tag/Faro+Fisterra
+ Redirect 410 /tag/Favoritas
+ Redirect 410 /tag/Fragas+do+Eume
+ Redirect 410 /tag/Galicia
+ Redirect 410 /tag/Iglesia
+ Redirect 410 /tag/Monte+San+Pedro
+ Redirect 410 /tag/Muxia
+ Redirect 410 /tag/Niebla
+ Redirect 410 /tag/Parapente
+ Redirect 410 /tag/Pontedeume
+ Redirect 410 /tag/Puerto
+ Redirect 410 /tag/QE2
+ Redirect 410 /tag/Rio
+ Redirect 410 /tag/San+Andres+de+Teixido
+ Redirect 410 /tag/Santiago+de+Compostela
+ Redirect 410 /tag/Serra+da+Capelada
+ Redirect 410 /tag/Torre+de+Hércules
+ Redirect 410 /tag/Verdes
+ Redirect 410 /tag/Vilagarcia+de+Arousa
 
 
 <IfModule mod_rewrite.c>
