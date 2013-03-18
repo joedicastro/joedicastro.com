@@ -98,11 +98,11 @@ En el siguiente ejemplo vemos la previsualización que hace ranger en función d
 tipo de fichero que se trate.
 
 <div style="text-align:center">
-<iframe width="700" height="460"
-src="http://www.youtube.com/embed/bmmhG0YeRK4?rel=0">
+<iframe src="http://player.vimeo.com/video/62061254?title=0&amp;byline=0&amp;portrait=0" 
+width="700" height="438">
 </iframe>
 <p>Previsualización de archivos en ranger con varios tipos de archivo.
-Recomiendo ver en la resolución original y a pantalla completa.</p>
+Recomiendo ver en alta resolución y a pantalla completa.</p>
 </div>
 
 La previsualización de imágenes en ASCII puede parecer una tontería, pero
@@ -121,11 +121,11 @@ cada momento)
 
 
 <div style="text-align:center">
-<iframe width="700" height="460"
-src="http://www.youtube.com/embed/h8d1EKaX6KU?rel=0">
+<iframe src="http://player.vimeo.com/video/62061469?title=0&amp;byline=0&amp;portrait=0" 
+width="700" height="438">
 </iframe>
 <p>Ejecución automática de aplicaciones en función del tipo de archivo.
-Recomiendo ver en la resolución original y a pantalla completa.</p>
+Recomiendo ver en alta resolución y a pantalla completa.</p>
 </div>
 
 En el caso del fichero Torrent, al que no tengo asociada ninguna aplicación en

@@ -166,8 +166,9 @@ como se comporta este plugin manejándolo desde el teclado. Personalmente opino
 que mejor lo hubieran dejado como estaba.
 
 <div style="text-align:center">
-<iframe width="700" height="525"
-src="http://www.youtube.com/embed/khb6G8hct9U?rel=0"></iframe>
+<iframe src="http://player.vimeo.com/video/32746967?title=0&amp;byline=0&amp;portrait=0" 
+width="700" height="438">
+</iframe>
 <p>Demostración del tiling básico del plugin
 de Compiz, Grid, en Ubuntu 11.10 con Unity</p>
 </div>

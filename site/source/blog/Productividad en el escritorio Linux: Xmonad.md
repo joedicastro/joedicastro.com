@@ -32,11 +32,12 @@ es capaz.
 
 
 <div style="text-align:center">
-<iframe width="700" height="525"
-src="http://www.youtube.com/embed/P_67Bq-RHb8?rel=0"></iframe>
+<iframe src="http://player.vimeo.com/video/33164152?title=0&amp;byline=0&amp;portrait=0" 
+width="700" height="438">
+</iframe>
 <p>Esbozo de las posibilidades de un Tiling Window Manager como Xmonad
 trabajando conjuntamente con Gnome 3 y Unity 2D sobre un Ubuntu 11.10.
-Recomiendo ver en resolución original y a pantalla completa.</p>
+Recomiendo ver en alta resolución y a pantalla completa.</p>
 </div>
 
 

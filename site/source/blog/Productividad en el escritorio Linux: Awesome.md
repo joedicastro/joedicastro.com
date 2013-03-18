@@ -496,12 +496,11 @@ varias sesiones de Awesome a la vez y una a pantalla completa.
 
 
 <div style="text-align:center">
-<iframe width="700" height="525"
-src="http://www.youtube.com/embed/V2qqurslZ_Q?rel=0">
+<iframe src="http://player.vimeo.com/video/43562306" width="700" height="438">
 </iframe>
 <p>Muestra de las posibilidades que ofrecen Xephyr y el script
 <strong>awdt.py</strong> para poder depurar la configuración de Awesome.
-Recomiendo ver en la resolución original y a pantalla completa.</p>
+Recomiendo ver en alta resolución y a pantalla completa.</p>
 </div>
 
 Para realizar estas acciones programé un script en Python, `awdt.py`, que incluyo
