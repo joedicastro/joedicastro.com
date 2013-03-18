@@ -174,7 +174,6 @@ li:last-child .hentry, #content > .hentry{border:0;margin:0;}
 .vi{color:#000000;}
 .il{color:#0000CF;font-weight:bold;}
 pre{color:#7F7F7F;}
-#cse-search-results iframe{width: 760px;height:1300px;}
 .codehilite:before, .codehilite:after {content: " ";position: absolute;z-index: -1;transform: skew(-3deg,-2deg);-ms-transform: skew(-3deg,-2deg);-webkit-transform: skew(-3deg,-2deg);-o-transform: skew(-3deg,-2deg);-moz-transform: skew(-3deg,-2deg);bottom: 14px;box-shadow: 0px 15px 5px #aaa;height: 50px;left: 1px;max-width: 50%;width: 50%;}
 .codehilite:after {transform: skew(3deg,2deg);-ms-transform: skew(3deg,2deg); -webkit-transform: skew(3deg,2deg);-o-transform: skew(3deg,2deg);-moz-transform: skew(3deg,2deg);left:auto;right:1px;}
 .codehilite {position:relative;padding:1px;background:#fafafa;margin:25px;box-shadow:0px 0px 1px 1px #ccc;}
