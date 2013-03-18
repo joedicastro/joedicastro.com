@@ -185,11 +185,7 @@ FILES_TO_COPY = (('extra/robots.txt', 'robots.txt'),
                  ('extra/humans.txt', 'humans.txt'),
                  ('extra/favicon.ico', 'favicon.ico'),
                  ('extra/apple-touch-icon.png', 'apple-touch-icon.png'),
-                 ('extra/.htaccess', '.htaccess'),
-                 ('extra/google8d74e9875d1491cf.html',
-                  'google8d74e9875d1491cf.html'),
-                 ('extra/y_key_99d30f68509828bf.html',
-                  'y_key_99d30f68509828bf.html'))
+                 ('extra/.htaccess', '.htaccess'))
 
 # foobar will not be used, because it's not in caps. All configuration keys
 # have to be in caps

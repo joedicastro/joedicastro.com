@@ -73,6 +73,7 @@ Redirect 410 /index9.html
  Redirect 410 /tag/A+Coruña
  Redirect 410 /tag/Aerogenerador
  Redirect 410 /tag/Atardeceres
+ Redirect 410 /tag/Barcas
  Redirect 410 /tag/Barco
  Redirect 410 /tag/Betanzos
  Redirect 410 /tag/Bodegon
@@ -86,6 +87,7 @@ Redirect 410 /index9.html
  Redirect 410 /tag/Faro
  Redirect 410 /tag/Faro+Fisterra
  Redirect 410 /tag/Favoritas
+ Redirect 410 /tag/Fisterra
  Redirect 410 /tag/Fragas+do+Eume
  Redirect 410 /tag/Galicia
  Redirect 410 /tag/Iglesia
@@ -103,6 +105,7 @@ Redirect 410 /index9.html
  Redirect 410 /tag/Torre+de+Hércules
  Redirect 410 /tag/Verdes
  Redirect 410 /tag/Vilagarcia+de+Arousa
+ Redirect 410 /tag/Yate
 
 
 <IfModule mod_rewrite.c>
