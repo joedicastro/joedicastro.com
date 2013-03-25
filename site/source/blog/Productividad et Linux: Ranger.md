@@ -119,9 +119,8 @@ Aquí vemos como se abren automáticamente los programas adecuados en función d
 tipo de archivo (se puede configurar que aplicaciones emplear y cuales usar en
 cada momento)
 
-
 <div style="text-align:center">
-<iframe src="http://player.vimeo.com/video/62061469?title=0&amp;byline=0&amp;portrait=0" 
+<iframe src="http://player.vimeo.com/video/62634892?title=0&amp;byline=0&amp;portrait=0" 
 width="700" height="438">
 </iframe>
 <p>Ejecución automática de aplicaciones en función del tipo de archivo.
