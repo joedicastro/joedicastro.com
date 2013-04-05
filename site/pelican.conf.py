@@ -103,7 +103,7 @@ TAG_FEED_RSS = "feeds/tags/%s.rss.xml"
 #TRANSLATION_FEED = "feeds/all-%s.atom.xml"
 
 #Maximum number of items allowed in a feed. Feeds are unrestricted by default.
-#FEED_MAX_ITEMS = ""
+FEED_MAX_ITEMS = 12
 
 
 # The minimum number of articles allowed on the last page. Use this when you
