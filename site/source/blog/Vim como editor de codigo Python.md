@@ -14,7 +14,7 @@ panorama en el ecosistema en torno a Vim, que de la lista de plugins que
 empleaba por aquel entonces (y los que tenía pendientes de probar) solo empleo
 actualmente el 10%, el resto son nuevos. Y esta "carrera" por nutrir a Vim de
 características nuevas y cada vez más potentes continua hoy en día, con algunas
-herramientas excelentes. 
+herramientas excelentes.
 
 Por otro lado, a medida que uno va añadiendo plugins y "tuneando" su
 configuración llega un momento que ya no sabes ni donde tienes "mapeados" los
@@ -42,9 +42,3 @@ configuración y ver el documento en [GitHub][gh] o en [Bitbucket][bb]
 
   [gh]: https://github.com/joedicastro/dotfiles/tree/master/vim
   [bb]: https://bitbucket.org/joedicastro/dotfiles/src/master/vim
-
-
-> El documento aún no está finalizado, esta completo aproximadamente al 75%, pero
-> creo que ya es suficiente para que alguien se pueda hacer una idea de mi
-> propósito. La configuración está pensada para Linux, pero seguramente es
-> en buena parte aprovechable en Mac/Windows
