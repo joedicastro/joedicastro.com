@@ -38,7 +38,11 @@ actualizado?
 
 La configuración está documentada en un `README.md` dentro de la carpeta de Vim
 del repositorio de mis dotfiles. Aquí se puede acceder directamente a mi
-configuración y ver el documento en [GitHub][gh] o en [Bitbucket][bb]
+configuración y ver el documento:
+
+- [Documento en GitHub][gh]
+- [Documento en Bitbucket][bb]
 
   [gh]: https://github.com/joedicastro/dotfiles/tree/master/vim
   [bb]: https://bitbucket.org/joedicastro/dotfiles/src/master/vim
+
