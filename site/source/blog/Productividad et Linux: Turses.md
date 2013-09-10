@@ -124,10 +124,9 @@ podamos dar.
 ## Mi configuración
 
 Si a alguien le puede servir como inspiración mi configuración, esta disponible
-en [GitHub][gh] y en [Biitbucket][bb]
+en [GitHub][gh]
 
   [gh]: http://github.com/joedicastro/dotfiles
-  [bb]: http://bitbucket.org/joedicastro/dotfiles
 
 Turses mostrando la información del perfil del autor de un tweet
 

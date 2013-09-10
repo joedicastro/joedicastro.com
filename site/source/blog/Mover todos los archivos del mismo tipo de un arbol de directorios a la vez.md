@@ -159,8 +159,7 @@ mismo:
 
 
 El script completo puede encontrarse en el repositorio *Python Recipes* alojado
-tanto en [bitbucket][bb] como en [github][gh].
+en [github][gh].
 
-  [bb]: http://bitbucket.org/joedicastro/python-recipes
   [gh]: http://github.com/joedicastro/python-recipes
 

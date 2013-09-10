@@ -42,8 +42,6 @@ configuración y ver el documento. Actualmente el articulo está en Inglés, aqu
 se pude acceder a la última revisión en español.
 
 - [Documento en GitHub][gh]
-- [Documento en Bitbucket][bb]
 
  [gh]: https://github.com/joedicastro/dotfiles/blob/a87b42deb9c1132c8f801bb91d119f0b26d21d68/vim/README.md
- [bb]: https://bitbucket.org/joedicastro/dotfiles/src/a87b42deb9c1/vim/README.md
 

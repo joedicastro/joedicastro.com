@@ -39,14 +39,12 @@ of the unique Vim's way.
 The idea is to have a continuously updated document with respect to my current
 setup, What better article than this, an always updated one?
 
-Those are the links to this doc, `README.md`, included in my dotfiles
+This is the link to this doc, `README.md`, included in my dotfiles
 repository:
 
 - [Doc at GitHub][gh]
-- [Doc at Bitbucket][bb]
 
   [gh]: https://github.com/joedicastro/dotfiles/tree/master/vim
-  [bb]: https://bitbucket.org/joedicastro/dotfiles/src/master/vim
 
 *English is not my mother tongue, so maybe the article (and the doc) can be full
 of grammatical mistakes due to my poor English. Sorry for that, I did my best.*

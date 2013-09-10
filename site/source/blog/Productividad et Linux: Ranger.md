@@ -137,10 +137,8 @@ ranger, algo que veremos a continuación.
 ## Mi configuración
 
 No he personalizado mucho mi configuración de momento, pero quien quiera echarle
-un vistazo puede hacerlo en mi repositorio dotfiles, tanto en [Bitbucket][bb]
-como en [GitHub][gh]
+un vistazo puede hacerlo en mi repositorio dotfiles en [GitHub][gh]
 
-  [bb]: http://bitbucket.org/joedicastro/dotfiles
   [gh]: http://github.com/joedicastro/dotfiles
 
 ### Archivos de configuración

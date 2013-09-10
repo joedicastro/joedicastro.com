@@ -138,9 +138,8 @@ caso de *NIX y la ruta del programa (o una cadena vacía) en el caso de Windows.
 
 Las funciones y un ejemplo de su funcionamiento podéis encontrarlas en el
 fichero `check_execs.py` en mi repositorio *Python Recipes* que se encuentra
-alojado tanto en [bitbucket][bb] como en [github][gh].
+alojado en [github][gh].
 
    
-   [bb]: https://bitbucket.org/joedicastro/python-recipes
    [gh]: http://github.com/joedicastro/python-recipes
      

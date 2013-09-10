@@ -194,9 +194,7 @@ desde otros scripts). Emplear una u otra forma, pues ya depende de uno.
 
 
 El código completo con ejemplos de estas funciones, se puede encontrar en mi 
-repositorio *Python Recipes* que se encuentra alojado en [bitbucket][bb] y en
-[github][gh].
+repositorio *Python Recipes* que se encuentra alojado en [github][gh].
 
-  [bb]: http://bitbucket.org/joedicastro/python-recipes
   [gh]: http://github.com/joedicastro/python-recipes
   

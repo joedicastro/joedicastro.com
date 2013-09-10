@@ -423,11 +423,10 @@ como ningún elemento conserva su posición anterior.
     >>>
 
 
-El código de estos algoritmos y los test de rendimiento se encuentran en el 
-fichero `shuffle.py` de mi repositorio *Python Recipes* que se encuentra tanto
-en [bitbucket][bb] como en [github][gh]  
+El código de estos algoritmos y los test de rendimiento se encuentran en el
+fichero `shuffle.py` de mi repositorio *Python Recipes* que se encuentra en
+[github][gh]  
 
-   [bb]: https://bitbucket.org/joedicastro/python-recipes
    [gh]: http://github.com/joedicastro/python-recipes
       
 

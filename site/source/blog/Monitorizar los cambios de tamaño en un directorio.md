@@ -115,7 +115,7 @@ la segunda ejecución no empezara a generar informes.
 
 Este es el contenido de [dir_size_monitor.py][script] es el siguiente:
 
-  [script]: https://bitbucket.org/joedicastro/python-recipes/src/tip/src/dir_size_monitor.py
+  [script]: https://github.com/joedicastro/python-recipes/blob/master/dir_size_monitor.py
 
     :::python
     #!/usr/bin/env python
@@ -271,10 +271,8 @@ Este es el contenido de [dir_size_monitor.py][script] es el siguiente:
 Este script necesita los módulos [get_size][2] y [logger][3] para poder 
 funcionar. Solo es necesario descargar los archivos y guardarlos en el mismo 
 directorio donde se aloje este script. La versión más actualizada de este script 
-se puede encontrar en el repositorio *Python Recipes* alojado en [bitbucket][bb]
-y en [github][gh].
+se puede encontrar en el repositorio *Python Recipes* alojado en [github][gh].
 
-  [bb]: http://bitbucket.org/joedicastro/python-recipes
   [gh]: http://github.com/joedicastro/python-recipes
   [2]: http://joedicastro.com/conocer_el_tamano_de_un_directorio_con_python
   [3]: http://joedicastro.com/logger_informes_legibles_para_tus_scripts_python

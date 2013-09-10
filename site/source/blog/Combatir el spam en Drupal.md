@@ -483,13 +483,11 @@ flexibilidad, lo que me hizo decidirme por él.
 
 El script (siempre la versión más actualizada), los ficheros auxiliares y las 
 instrucciones de como emplearlos, pueden ser encontrados en mi repositorio que
-se encuentra alojado tanto en [bitbucket][bb] como en [github][gh].Y donde tambien
-se puede encontrar el script python que empleo para recoger los datos que se 
-muestran en el mapa de este árticulo.
+se encuentra alojado en [github][gh].Y donde tambien se puede encontrar el
+script python que empleo para recoger los datos que se muestran en el mapa de
+este árticulo.
 
 
-
-  [bb]: http://bitbucket.org/joedicastro/ban-drupal-spammers
   [gh]: http://github.com/joedicastro/ban-drupal-spammers
 
 

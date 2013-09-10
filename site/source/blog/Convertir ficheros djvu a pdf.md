@@ -82,10 +82,9 @@ con algunos visores y lectores de ebooks.
 ## El script, djvu2pdf.py
 
 El contenido del scipt es el que sigue. Este está disponible como el fichero 
-`djvu2pdf.py` dentro del repositorio *Python Recipes*  que está alojado tanto en
-[bitbucket][bb] como en [github][gh] y actualizado siempre a la última versión.
+`djvu2pdf.py` dentro del repositorio *Python Recipes*  que está alojado en
+[github][gh] y actualizado siempre a la última versión.
 
-  [bb]: http://bitbucket.org/joedicastro/python-recipes
   [gh]: http://github.com/joedicastro/python-recipes
     
   

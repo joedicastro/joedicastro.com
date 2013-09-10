@@ -438,9 +438,8 @@ El código del script es el siguiente:
 
 
 Para acceder a la versión más reciente del mismo, acudir a el repositorio
-*Python Recipes* en [bitbucket][bb] o en [github][gh].
+*Python Recipes* en [github][gh].
 
-  [bb]: http://bitbucket.org/joedicastro/python-recipes
   [gh]: http://github.com/joedicastro/python-recipes
   
 

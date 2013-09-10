@@ -123,9 +123,8 @@ programar su ejecución diaria con cron.
 
 Para una introducción más detallada, instrucciones de ejecución, control de
 versiones y enlaces para la descarga, acudir al repositorio del script en
-[bitbucket][bb] o en [github][gh].
+[github][gh].
 
-  [bb]: http://bitbucket.org/joedicastro/lftp-mirror
   [gh]: http://github.com/joedicastro/lftp-mirror
 
 
@@ -198,4 +197,4 @@ Un extracto del código de **lftp-mirror.py**:
 
         os.remove(script.name)
 
-Para obtener el código completo, ir al [fichero fuente](https://bitbucket.org/joedicastro/lftp-mirror/src/tip/src/lftp_mirror.py).
+Para obtener el código completo, ir al [fichero fuente](https://github.com/joedicastro/lftp-mirror/blob/master/src/lftp_mirror.py).

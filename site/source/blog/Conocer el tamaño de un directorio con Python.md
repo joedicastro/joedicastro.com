@@ -174,9 +174,8 @@ posible con una única función.
 
 Todas estas funciones con ejemplos (y además una clase que hace uso de ellas), 
 se pueden encontrar en el fichero `get_size.py` en mi repositorio
-*Python Recipes* que se encuentra alojado tanto en [bitbucket][bb] como en 
-[github][gh]. Si se ejecuta el fichero como un script puede verse una comparativa
-de las diversas funciones en rendimiento y precisión con respecto al comando `du -bs`
+*Python Recipes* que se encuentra alojado en [github][gh]. Si se ejecuta el
+fichero como un script puede verse una comparativa de las diversas funciones en
+rendimiento y precisión con respecto al comando `du -bs`
 
-   [bb]: https://bitbucket.org/joedicastro/python-recipes
    [gh]: http://github.com/joedicastro/python-recipes

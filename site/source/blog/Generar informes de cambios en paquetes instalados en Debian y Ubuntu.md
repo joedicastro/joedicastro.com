@@ -198,9 +198,8 @@ Este script hace uso del modulo logger, que comento en este [artículo][10].
   [10]: http://joedicastro.com/logger_informes_legibles_para_tus_scripts_python
 
 Para obtener la versión más reciente del script y del modulo logger, consultar 
-mi repositorio *Python Recipes* en [bitbucket][bb] o en [github][gh].
+mi repositorio *Python Recipes* en [github][gh].
 
-  [bb]: http://bitbucket.org/joedicastro/python-recipes
   [gh]: http://github.com/joedicastro/python-recipes
 
   [^nota]: Es una relación de los programas instalados empleando el sistema de 

@@ -49,10 +49,8 @@ Es muy sencillo de utilizar y al final del proceso tendremos una nueva carpeta
 
 
 El script, las revisiones del código y las instrucciones de como descargarlo y 
-usarlo podéis encontrarlas en el repositorio que está alojado tanto en 
-[bitbucket][bb] como en [github][gh].
+usarlo podéis encontrarlas en el repositorio que está alojado en [github][gh].
 
-  [bb]: http://bitbucket.org/joedicastro/img4web
   [gh]: http://github.com/joedicastro/img4web
   
 Funciona tanto en Linux como en Windows, no lo he probado en un Mac.
@@ -265,4 +263,4 @@ El código del script, es el siguiente:
         WIN_EXECS, WIN_OS = check_execs_posix_win('jpegtran', 'pngcrush')
         main(WIN_EXECS, WIN_OS)
 
-Para una versión actualizada del código ir a [el fichero fuente.](https://bitbucket.org/joedicastro/img4web/src/tip/src/img4web.py)
+Para una versión actualizada del código ir a [el fichero fuente.](https://github.com/joedicastro/img4web/blob/master/src/img4web.py)

@@ -5,8 +5,8 @@ tags:  pelican, python, markdown, restructuredtext, blog, mercurial, hg
 
 Como complemento a la [serie de artículos][0] que he publicado sobre [Pelican][1], 
 el software que genera este blog, añado el repositorio, [como había prometido][2], 
-del contenido del mismo. El repositorio emplea el sistema de control de versiones 
-[Mercurial][3] y está alojado en [Bitbucket][4].
+del contenido del mismo. El repositorio empleaba el sistema de control de
+versiones [Mercurial][3] y estába alojado en [Bitbucket][4].
 
   [0]: http://joedicastro.com/tag/pelican.html
   [1]: http://docs.notmyidea.org/alexis/pelican/
@@ -17,7 +17,7 @@ del contenido del mismo. El repositorio emplea el sistema de control de versione
 Las ventajas de disponer del contenido del blog en un repositorio son las de 
 poder enmendar un error con suma facilidad y en muy poco tiempo, además de la de 
 poder trabajar con distintas versiones del mismo (pruebas y producción). Además 
-el repositorio en Bitbucket me proporciona una copia de seguridad adicional del 
+el repositorio en Bitbucket me proporcionaba una copia de seguridad adicional del 
 sitio sin esfuerzo alguno. Y si alguien está interesado en crear su propio blog 
 con Pelican y quiere saber como he realizado el mio, ahí tiene las claves. Salvo 
 el propio Pelican (que no tendría mucho sentido) todo el material empleado para 
@@ -100,9 +100,7 @@ a esto:
 Donde los artículos están archivados por año, mes y día, con un formato que 
 personalmente me agrada bastante más.
 
-El repositorio de este blog se puede encontrar en [bitbucket][bb] y en 
-[github][gh].
+El repositorio de este blog se puede encontrar en [github][gh].
 
-  [bb]: http://bitbucket.org/joedicastro/joedicastro.com 
   [gh]: http://github.com/joedicastro/joedicastro.com
 

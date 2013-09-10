@@ -160,8 +160,7 @@ Este es el núcleo central del script **test_dir_tree.py**:
 
 
 Para obtener el script completo, acudir a mi repositorio *Python Recipes* que
-está alojado tanto en [bitbucket][bb] como en [github][gh].
+está alojado en [github][gh].
 
-  [bb]: http://bitbucket.org/joedicastro/python-recipes
   [gh]: http://github.com/joedicastro/python-recipes
   

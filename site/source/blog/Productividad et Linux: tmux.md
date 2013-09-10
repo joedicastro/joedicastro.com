@@ -116,13 +116,12 @@ height="429" alt="tmux con una sesión para internet" /></p>
 
 ## Mi configuración
 
-Mi configuración de tmux puede encontrarse en mi repositorio *dotfiles*  tanto
-en [GitHub][gh] como en [Bitbucket][bb]. Mi configuración se apoya en la muchos
-otros usuarios que me han aportado ideas y en buena parte gracias a la lectura
-del libro [tmux: Productive Mouse-Free Development][book] de Brian P. Hogan.
+Mi configuración de tmux puede encontrarse en mi repositorio *dotfiles* en
+[GitHub][gh]. Mi configuración se apoya en la muchos otros usuarios que me han
+aportado ideas y en buena parte gracias a la lectura del libro [tmux: Productive
+Mouse-Free Development][book] de Brian P. Hogan.
 
   [gh]: http://github.com/joedicastro/dotfiles
-  [bb]: http://bitbucket.org/joedicastro/dotfiles
   [book]: http://pragprog.com/book/bhtmux/tmux
 
 En esta otra imagen se puede ver una sesión de desarrollo con tmux, donde tengo

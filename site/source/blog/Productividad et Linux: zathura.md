@@ -107,10 +107,9 @@ completa como Zathura.
 ## Mi configuración
 
 Aunque mi configuración no tiene nada de particular, está disponible en mis
-*dotfiles* alojados tanto en [GitHub][gh] como en [Bitbucket][bb].
+*dotfiles* alojados en [GitHub][gh].
 
   [gh]: http://github.com/joedicastro/dotfiles
-  [bb]: http://bitbucket.org/joedicastro/dotfiles
 
 
 

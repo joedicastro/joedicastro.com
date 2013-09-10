@@ -60,9 +60,8 @@ ventiladores al llegar el verano, os ahorrareis muchos disgustos.
 Así que descartado el reemplazar los ventiladores, me planteé el crear un script
 que intentara hacer lo mismo pero de forma más suave, intentado reducir el
 número de cambios bruscos de velocidad y fruto de ello es el siguiente script,
-que está disponible tanto en [Bitbucket ][bbkt] como en [GitHub][gh]:
+que está disponible en [GitHub][gh]:
 
-  [bbkt]: http://bitbucket.org/joedicastro/i8kfans
   [gh]: http://github.com/joedicastro/i8kfans
 
     :::python

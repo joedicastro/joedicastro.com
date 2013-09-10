@@ -106,10 +106,8 @@ usar porque los suplo con Pentadactyl.
 Mi configuración es realmente sencilla, ya que aparte de emplear un par de
 extensiones, un par de comandos y un esquema de color, lo demás es cambiar
 ciertas opciones predefinidas del mismo. La configuración la he dejado
-disponible en mi repositorio de `dotfiles`, tanto en [Bitbucket][bbk] como en
-[GitHub][gh].
+disponible en mi repositorio de `dotfiles`, en [GitHub][gh].
 
-  [bbk]: http://bitbucket.org/joedicastro/dotfiles
   [gh]: http://github.com/joedicastro/dotfiles
 
 

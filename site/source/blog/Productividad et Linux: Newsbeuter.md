@@ -194,10 +194,9 @@ lista completa de las mimas en una nueva ventana.
 Mi configuración no tiene demasiado de especial, quizás que emplea una
 combinación de colores distinta a la habitual y que empleo un par de scripts
 para las notificaciones y para crear marcadores. Esta se puede encontrar en mi
-repositorio de mis *dotfiles* tanto en [GitHub][gh] como en [Bitbucket][bb]
+repositorio de mis *dotfiles* en [GitHub][gh]
 
   [gh]: http://github.com/joedicastro/dotfiles
-  [bb]: http://bitbucket.org/joedicastro/dotfiles
 
 ## Notificaciones
 

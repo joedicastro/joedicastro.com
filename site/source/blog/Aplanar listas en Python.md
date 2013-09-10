@@ -336,9 +336,8 @@ emplear siempre `flat_slice()`, sobre todo si va a ser ejecutado numerosas veces
 
 Estas funciones, alguna más, ejemplos de uso y los test de rendimento se 
 encuentran en el fichero `flatten_nested_lists.py` de mi repositorio *Python
-Recipes*  que se encuentra tanto en [bitbucket][bb] como en [github][gh].
+Recipes*  que se encuentra en [github][gh].
 
-   [bb]: http://bitbucket.org/joedicastro/python-recipes 
    [gh]: http://github.com/joedicastro/python-recipes
      
    

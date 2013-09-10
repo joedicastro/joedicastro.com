@@ -150,9 +150,8 @@ una remota a través de FTP: lftp-mirror][10]
   [10]: http://joedicastro.com/sincronizar-una-carpeta-local-y-una-remota-a-traves-de-ftp-lftp-mirror.html
 
 El fichero con este código, `notify.py` se encuentra en el repositorio *Python
-Recipes* alojado en [bitbucket][bb] y en [github][gh].
+Recipes* alojado en [github][gh].
 
-  [bb]: http://bitbucket.org/joedicastro/python-recipes
   [gh]: http://github.com/joedicastro/python-recipes
   
 

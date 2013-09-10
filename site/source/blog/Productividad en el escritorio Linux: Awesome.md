@@ -219,13 +219,12 @@ fichero, ya que el tema y los diversos plugins están alojados dentro de sus
 propios directorios. Además el fichero de configuración `rc.lua` es demasiado
 extenso (cerca de 1200 lineas) para volcarlo aquí. Así que me limitare a
 mencionar los aspectos más destacados, la configuración completa queda
-disponible a través de mis repositorios en [Bitbucket][bbkt] y [GitHub][gh].
+disponible a través de mi repositorio en [GitHub][gh].
 
 Destacar que al principio del fichero incluyo una *Cheat Sheet* ("chuleta") con
 todas las combinaciones de teclado y ratón que tengo habilitadas en mi
 configuración.
 
-  [bbkt]: http://bitbucket.org/joedicastro/dotfiles
   [gh]: http://github.com/joedicastro/dotfiles
 
 

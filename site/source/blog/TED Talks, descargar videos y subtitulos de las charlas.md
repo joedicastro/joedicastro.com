@@ -140,7 +140,7 @@ subtitulos en los dos idiomas.
 
 La parte fundamental del código del [script][25], es la siguiente:
 
-   [25]: https://bitbucket.org/joedicastro/ted-talks-download/src/tip/src/TEDTalks.py (TEDTalks.py)
+   [25]: https://github.com/joedicastro/ted-talks-download/blob/master/src/TEDTalks.py (TEDTalks.py)
 
 
     :::python
@@ -358,15 +358,14 @@ Y un ejemplo de un correo enviado por el mismo quedaría así:
 Pudiendo acceder al vídeo directamente desde el correo, y si se encontraran los 
 subtítulos para el mismo ya disponibles, visualizarlos automáticamente.
 
-El que el script esté fundamentalmente en ingles (la mayoría de comentarios y 
-los nombres de las variables)  es que me siento más cómodo de esta manera y 
-ayuda a que un espectro más amplio de personas sea capaz de comprenderlo. Si 
-este script le sirve a alguien más o le inspira para crear el suyo propio, pues 
-habrá valido la pena el publicarlo. El resto del script, **TEDTalks.py** está 
-disponible en mi repositorio alojado en [bitbucket][bb] y en [github][gh], 
-al igual que instrucciones ampliadas de su uso.
+El que el script esté fundamentalmente en ingles (la mayoría de comentarios y
+los nombres de las variables)  es que me siento más cómodo de esta manera y
+ayuda a que un espectro más amplio de personas sea capaz de comprenderlo. Si
+este script le sirve a alguien más o le inspira para crear el suyo propio, pues
+habrá valido la pena el publicarlo. El resto del script, **TEDTalks.py** está
+disponible en mi repositorio alojado en [github][gh], al igual que instrucciones
+ampliadas de su uso.
 
-  [bb]: http://bitbucket.org/joedicastro/ted-talks-download
   [gh]: http://github.com/joedicastro/ted-talks-download
     
 
@@ -423,7 +422,7 @@ por [joe di castro](http://joedicastro.com) el Dom, 01/08/2010 - 01:38
 Bueno, para conseguir eso que me comentas, he modificado el script anterior un 
 poco y he creado este [**nuevo script**][29].
 
-   [29]: https://bitbucket.org/joedicastro/ted-talks-download/src/tip/src/TEDSubs.py
+   [29]: https://github.com/joedicastro/ted-talks-download/blob/master/src/TEDSubs.py
 
 La forma de utilizarlo es muy sencilla, por ejemplo para bajarse la charla de 
 Jamie Oliver, simplemente en la linea de comandos escribes
@@ -497,11 +496,11 @@ el articulo, o bien descargarlos:
 
 [**TEDTalks.py & TEDSubs.py**][31]
 
-   [31]: https://bitbucket.org/joedicastro/ted-talks-download/get/tip.zip
+   [31]: https://github.com/joedicastro/ted-talks-download/archive/master.zip
 
-o bien vas directamente al mi **[repositorio en bitbucket][32]**
+o bien vas directamente al mi **[repositorio en github][32]**
 
-   [32]: https://bitbucket.org/joedicastro/ted-talks-download
+   [32]: https://github.com/joedicastro/ted-talks-download
 
 Eso si, hay que tener en cuenta que en el caso del primer script, este solo se 
 baja el vídeo del dia anterior en su primera ejecución o bien el más reciente no 
