@@ -230,8 +230,8 @@ def commit(message):
 
 
 def push():
-    """Make a push to the remote mercurial repository."""
-    local("hg push bitbucket")
+    """Make a push to the remote git repository."""
+    local("git push")
 
 
 def blinks():
