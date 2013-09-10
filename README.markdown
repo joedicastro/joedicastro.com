@@ -51,4 +51,4 @@ files.
   [0]: http://docs.notmyidea.org/alexis/pelican/
   [1]: http://blog.notmyidea.org/
   [3]: http://es.wikipedia.org/wiki/Markdown
-  [4]: https://bitbucket.org/joedicastro/img4web
+  [4]: https://github.com/joedicastro/img4web
