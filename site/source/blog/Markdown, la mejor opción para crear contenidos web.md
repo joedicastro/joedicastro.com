@@ -345,7 +345,7 @@ como negritas, etc) y que produce un texto plano más vistoso y legible.
 
 ### Comparativa
 
-Como no, lo mejor, es ver una comparativa co un ejemplo de el mismo documento y
+Como no, lo mejor, es ver una comparativa con un ejemplo del mismo documento y
 el texto empleado por cada uno de los lenguajes para generarlo. Para ello he
 creado un articulo aparte para mostrarla.
 
