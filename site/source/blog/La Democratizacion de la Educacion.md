@@ -438,6 +438,12 @@ limitare a citarlas brevemente:
   buen numero de universidades del Reino Unido y pretende ser la respuesta a la
   plataformas americanas.
 
+* [France Université Numérique](http://www.france-universite-numerique.fr/):
+  Francia tampoco quiere quedarse atrás y en colaboración con edX ha creado una
+  plataforma cuyo despegue es inminente y que por supuesto estará disponible en
+  idioma Francés. Pretende aglutinar a más de 100 instituciones educativas del
+  país. 
+
 * [Miriada-X](https://www.miriadax.net/): Iniciativa Española y en Español que
   puede ser la mejor alternativa para aquellos que no dominen el idioma Ingles.
   Cuenta con un buen numero de universidades españolas. De momento no ofrece un
