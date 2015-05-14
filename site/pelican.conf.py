@@ -156,7 +156,7 @@ DISQUS_SITENAME = "joedicastro"
 #GOOGLE_ANALYTICS = ""
 
 #URL to your Piwik server - without ‘http://‘ at the beginning.
-PIWIK_URL = "joedicastro.com/piwik"
+# PIWIK_URL = "joedicastro.com/piwik"
 
 # If the SSL-URL differs from the normal Piwik-URL you have to include this
 # setting too. (optional)
@@ -164,7 +164,7 @@ PIWIK_URL = "joedicastro.com/piwik"
 
 # ID for the monitored website. You can find the ID in the Piwik admin
 # nterface > settings > websites.
-PIWIK_SITE_ID = "1"
+# PIWIK_SITE_ID = "1"
 
 # A list of tuples (Title, Url) for links to appear on the footer.
 LINKS = ()
