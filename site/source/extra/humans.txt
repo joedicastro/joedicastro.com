@@ -15,5 +15,5 @@ Names (& URL):
 /* SITE */
 Language: Castellano
 Standards: HTML5, CSS3, Atom 1.0, RSS 1.0
-Components: Disqus, Piwik
+Components: Disqus
 Software: Pelican, Fabric, Vim, Python, Linux.

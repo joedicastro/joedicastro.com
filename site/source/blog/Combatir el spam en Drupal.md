@@ -182,24 +182,9 @@ limitado, que afecta a menos del 0,5% de los comentarios enviados. Digamos que
 lo acepto como una razonable excepción a la regla. Si empleo en cierta medida 
 algunos de los otros métodos.
 
-<div>
-<script src="ammap/swfobject.js" type="text/javascript"></script>
-<div id="flashcontent" style="text-align: center;">
-<strong>You need to upgrade your Flash Player</strong>
-</div>
-
-<script type="text/javascript">// <![CDATA[
-
-  var so = new SWFObject("ammap/ammap.swf", "ammap", "600", "400", "8", "#ffffff");
-  so.addVariable("path", "ammap/");
-  so.addVariable("settings_file", escape("ammap/ammap_settings.xml"));
-  so.addVariable("data_file", escape("ammap/ammap_data.xml"));  2
-  so.addVariable("loading_settings", "Cargando configuracion");
-  so.addVariable("loading_data", "Cargando datos"); 
-  so.addVariable("preloader_color", "#999999");       
-  so.write("flashcontent");
-// ]]></script>
-</div>
+<p style="text-align: center;"><img src="pictures/ammap.png" 
+alt="Eficacia del script" title="Eficacia del script" height="419" 
+width="629" /></p>
 
 En este mapa podemos ver el país de origen de los ataques de spam contra 
 deaparatos.com
