@@ -146,7 +146,7 @@ THEME = "/home/joedicastro/code/joedicastro.com/site/joe_theme"
 
 # Pelican can handle disqus comments, specify the sitename you’ve filled in on
 # disqus
-DISQUS_SITENAME = "joedicastro"
+# DISQUS_SITENAME = "joedicastro"
 
 # Your github URL (if you have one), it will then use it to create a
 # github ribbon.
